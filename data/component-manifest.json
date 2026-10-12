@@ -1,0 +1,75 @@
+{
+  "components": [
+    {
+      "assets": [
+        {
+          "bytes": 75527,
+          "sha256": "c4a133c65a112799e35b143c572dfff9e923a3bf39b5fd3b07a06aa0f8f530c2",
+          "url": "https://unpkg.com/docx-preview@0.4.1/dist/docx-preview.min.js",
+          "name": "docx-preview.js"
+        },
+        {
+          "bytes": 97630,
+          "sha256": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e",
+          "url": "https://unpkg.com/jszip@3.10.1/dist/jszip.min.js",
+          "name": "jszip.js"
+        },
+        {
+          "bytes": 11357,
+          "sha256": "0ed0b35bd10cb0d990fbecf7f1e05d113d785dfbbef8332e139fc10b84a4c3d7",
+          "url": "https://raw.githubusercontent.com/VolodymyrBaydalka/docxjs/master/LICENSE",
+          "name": "LICENSE-docx"
+        },
+        {
+          "bytes": 33753,
+          "sha256": "566c953c6090b1218ca6217dd7359d45dde46581968586dc607d59a78af6a9c4",
+          "url": "https://raw.githubusercontent.com/Stuk/jszip/v3.10.1/LICENSE.markdown",
+          "name": "LICENSE-jszip"
+        }
+      ],
+      "id": "word",
+      "license": "Apache-2.0 + MIT",
+      "version": "0.4.1",
+      "name": "Word 快速预览",
+      "expectedInstalledBytes": 219333
+    },
+    {
+      "assets": [
+        {
+          "bytes": 951904,
+          "sha256": "cc015130aa8521e7f088f88898eba949ccdcbfb38df0bd129b44b7273c3a6f41",
+          "url": "https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js",
+          "name": "xlsx.js"
+        },
+        {
+          "bytes": 11355,
+          "sha256": "4d2a38ac35cda06a555c84074a819d413339cd3691b822cae50f8f322fe01f64",
+          "url": "https://cdn.sheetjs.com/xlsx-0.20.3/package/LICENSE",
+          "name": "LICENSE-sheetjs"
+        }
+      ],
+      "id": "sheet",
+      "license": "Apache-2.0",
+      "version": "0.20.3",
+      "name": "表格数据视图",
+      "expectedInstalledBytes": 963844
+    },
+    {
+      "assets": [
+        {
+          "url": "https://download.documentfoundation.org/libreoffice/stable/26.2.6/win/x86_64/LibreOffice_26.2.6_Win_x86-64.msi",
+          "name": "LibreOffice.msi",
+          "bytes": 373252096,
+          "sha256": "f9877032fd908beb9c0ddf06df4af5c2e85f419c42e14876c4cce5aae5fb2660"
+        }
+      ],
+      "installer": "msi",
+      "license": "MPL-2.0 + LGPL-3.0-or-later",
+      "id": "office",
+      "name": "办公兼容与分页预览",
+      "version": "26.2.6",
+      "expectedInstalledBytes": 1576916254
+    }
+  ],
+  "schemaVersion": 1
+}

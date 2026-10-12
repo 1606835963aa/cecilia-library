@@ -1,0 +1,5 @@
+Windows PDF display uses Windows.Data.Pdf APIs and the Microsoft.Windows.SDK.NET.Ref 10.0.19041.57 projection files, including WinRT.Runtime.
+Copyright Microsoft Corporation. All rights reserved.
+Windows SDK license terms: https://aka.ms/WinSDKLicenseURL
+C#/WinRT source and notices: https://github.com/microsoft/CsWinRT
+The Windows PDF drawing engine is provided by the operating system and is not bundled with this application.

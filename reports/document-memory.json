@@ -1,0 +1,102 @@
+{
+  "measuredAt": "2026-10-12T17:28:02.5419451+08:00",
+  "records": [
+    {
+      "processes": [
+        {
+          "name": "LightReader.exe",
+          "workingSetBytes": 123396096
+        },
+        {
+          "name": "msedgewebview2.exe",
+          "workingSetBytes": 120483840
+        },
+        {
+          "name": "msedgewebview2.exe",
+          "workingSetBytes": 10555392
+        },
+        {
+          "name": "msedgewebview2.exe",
+          "workingSetBytes": 50339840
+        },
+        {
+          "name": "msedgewebview2.exe",
+          "workingSetBytes": 35078144
+        },
+        {
+          "name": "msedgewebview2.exe",
+          "workingSetBytes": 20770816
+        },
+        {
+          "name": "msedgewebview2.exe",
+          "workingSetBytes": 97849344
+        }
+      ],
+      "file": "阅读样本.docx",
+      "renderer": "WebView2",
+      "sampleAfter": "UI-ready marker + 1000ms",
+      "workingSetBytes": 458473472.0
+    },
+    {
+      "processes": [
+        {
+          "name": "LightReader.exe",
+          "workingSetBytes": 123322368
+        },
+        {
+          "name": "msedgewebview2.exe",
+          "workingSetBytes": 121995264
+        },
+        {
+          "name": "msedgewebview2.exe",
+          "workingSetBytes": 10547200
+        },
+        {
+          "name": "msedgewebview2.exe",
+          "workingSetBytes": 49315840
+        },
+        {
+          "name": "msedgewebview2.exe",
+          "workingSetBytes": 35090432
+        },
+        {
+          "name": "msedgewebview2.exe",
+          "workingSetBytes": 20795392
+        },
+        {
+          "name": "msedgewebview2.exe",
+          "workingSetBytes": 86839296
+        }
+      ],
+      "file": "数据样本.xlsx",
+      "renderer": "WebView2",
+      "sampleAfter": "UI-ready marker + 1000ms",
+      "workingSetBytes": 447905792.0
+    },
+    {
+      "processes": [
+        {
+          "name": "LightReader.exe",
+          "workingSetBytes": 217403392
+        }
+      ],
+      "file": "分页样本.pdf",
+      "renderer": "Windows.Data.Pdf",
+      "sampleAfter": "UI-ready marker + 1000ms",
+      "workingSetBytes": 217403392.0
+    },
+    {
+      "processes": [
+        {
+          "name": "LightReader.exe",
+          "workingSetBytes": 244948992
+        }
+      ],
+      "file": "旧文字样本.doc",
+      "renderer": "Windows.Data.Pdf",
+      "sampleAfter": "UI-ready marker + 1000ms",
+      "workingSetBytes": 244948992.0
+    }
+  ],
+  "method": "Sum of working sets, including shared pages and all descendants. One isolated profile per document; installed components, fresh Office conversion cache. Only sample after the actual document-ready marker."
+}

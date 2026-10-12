@@ -1,0 +1,7 @@
+{
+  "name": "light-reader-preview",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {"build": "tsc -p src/preview/tsconfig.json"},
+  "devDependencies": {"typescript": "5.9.3"}
+}

@@ -1,0 +1,85 @@
+"use strict";
+(() => {
+    const context = globalThis;
+    context.importScripts("/component/sheet/xlsx.js");
+    const api = context.XLSX;
+    let book, searchCursor = -1, lastQuery = "", lastSheet = -1;
+    function value(cell) { if (!cell)
+        return ""; if (cell.v === undefined || cell.v === null)
+        return cell.f ? "=" + cell.f : ""; return cell.w ?? api.utils.format_cell(cell); }
+    function page(index, start, firstColumn, selected, found) {
+        const sheet = book.Sheets[book.SheetNames[index]];
+        if (!sheet)
+            throw new Error("工作表不存在");
+        const range = sheet["!ref"] ? api.utils.decode_range(sheet["!ref"]) : { s: { r: 0, c: 0 }, e: { r: -1, c: -1 } };
+        const totalRows = range.e.r + 1, totalColumns = range.e.c + 1;
+        start = Math.max(0, Math.min(start, Math.max(0, totalRows - 1)));
+        firstColumn = Math.max(0, Math.min(firstColumn, Math.max(0, totalColumns - 1)));
+        const rows = Math.min(200, totalRows - start), columns = Math.min(50, totalColumns - firstColumn);
+        const cells = [];
+        let formulaMissing = 0;
+        const merged = new Map();
+        for (const merge of sheet["!merges"] ?? []) {
+            const sr = Math.max(start, merge.s.r), sc = Math.max(firstColumn, merge.s.c), er = Math.min(start + rows - 1, merge.e.r), ec = Math.min(firstColumn + columns - 1, merge.e.c);
+            if (sr > er || sc > ec)
+                continue;
+            for (let r = sr; r <= er; r++)
+                for (let c = sc; c <= ec; c++)
+                    merged.set(`${r},${c}`, r === sr && c === sc ? { source: merge.s, spanRows: er - sr + 1, spanCols: ec - sc + 1 } : { skip: true });
+        }
+        for (let r = start; r < start + rows; r++)
+            for (let c = firstColumn; c < firstColumn + columns; c++) {
+                const merge = merged.get(`${r},${c}`);
+                if (merge?.skip)
+                    continue;
+                const cell = sheet[api.utils.encode_cell(merge?.source ?? { r, c })];
+                const formulaOnly = !!cell?.f && cell.v === undefined;
+                if (formulaOnly)
+                    formulaMissing++;
+                cells.push({ row: r, col: c, value: value(cell), numeric: cell?.t === "n", formulaOnly, spanRows: merge?.spanRows, spanCols: merge?.spanCols });
+            }
+        context.postMessage({ type: "page", names: book.SheetNames, sheet: index, start, rows, columns, totalRows, totalColumns, firstColumn, cells, formulaMissing, found, selected: selected ? { row: selected.r, col: selected.c } : undefined });
+    }
+    context.onmessage = async (event) => {
+        try {
+            const message = event.data;
+            if (message.type === "open") {
+                const response = await fetch(message.url);
+                if (!response.ok)
+                    throw new Error("读取表格失败");
+                const data = await response.arrayBuffer();
+                book = api.read(data, { type: "array", cellDates: true, cellNF: true, cellText: true, raw: message.extension === "csv", codepage: 936 });
+                if (book.SheetNames.length === 0)
+                    throw new Error("文件没有可显示的工作表");
+                page(0, 0, 0);
+            }
+            else if (message.type === "page")
+                page(message.sheet, message.start, message.firstColumn);
+            else if (message.type === "find") {
+                const query = String(message.query).toLocaleLowerCase(), index = Number(message.sheet);
+                const sheet = book.Sheets[book.SheetNames[index]];
+                if (query !== lastQuery || index !== lastSheet) {
+                    searchCursor = -1;
+                    lastQuery = query;
+                    lastSheet = index;
+                }
+                const matches = [];
+                for (let offset = 0; offset < book.SheetNames.length; offset++) {
+                    const sheetIndex = (index + offset) % book.SheetNames.length, target = book.Sheets[book.SheetNames[sheetIndex]];
+                    const addresses = Object.keys(target).filter(key => !key.startsWith("!") && value(target[key]).toLocaleLowerCase().includes(query)).map(key => api.utils.decode_cell(key)).sort((a, b) => a.r - b.r || a.c - b.c);
+                    matches.push(...addresses.map(address => ({ address, sheet: sheetIndex })));
+                }
+                if (matches.length) {
+                    searchCursor = (searchCursor + 1) % matches.length;
+                    const match = matches[searchCursor];
+                    page(match.sheet, Math.floor(match.address.r / 200) * 200, Math.floor(match.address.c / 50) * 50, match.address, true);
+                }
+                else
+                    page(index, 0, 0, undefined, false);
+            }
+        }
+        catch (error) {
+            context.postMessage({ error: error instanceof Error ? error.message : "无法读取表格" });
+        }
+    };
+})();

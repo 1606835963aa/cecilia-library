@@ -1,0 +1,17 @@
+tmp/
+.tools/
+.packages/
+node_modules/
+**/bin/
+**/obj/
+dist/
+components/
+.local-data/
+*.user
+.env
+.env.*
+*.pfx
+*.p12
+*.key
+tests/user-fixtures/
+reports/private/

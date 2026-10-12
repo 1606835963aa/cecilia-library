@@ -1,0 +1,81 @@
+{
+  "ranAt": "2026-10-12T17:27:25.4851163+08:00",
+  "results": [
+    {
+      "name": "Text encoding utf-8 BOM=False",
+      "status": "PASS"
+    },
+    {
+      "name": "Text encoding utf-8 BOM=True",
+      "status": "PASS"
+    },
+    {
+      "name": "Text encoding utf-16 BOM=True",
+      "status": "PASS"
+    },
+    {
+      "name": "Text encoding utf-16BE BOM=True",
+      "status": "PASS"
+    },
+    {
+      "name": "GBK preserves Chinese",
+      "status": "PASS"
+    },
+    {
+      "name": "Changed original cannot be overwritten",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing destination protected",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancelled save retains original and removes staging",
+      "status": "PASS"
+    },
+    {
+      "name": "PDF recognized by contents",
+      "status": "PASS"
+    },
+    {
+      "name": "Renamed DOCX rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "XML external entities rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Special formats remain undefined",
+      "status": "PASS"
+    },
+    {
+      "name": "Broken component not installed",
+      "status": "PASS"
+    },
+    {
+      "name": "Installed fixture signatures",
+      "status": "PASS"
+    },
+    {
+      "name": "MHTML decodes Chinese MIME part",
+      "status": "PASS"
+    },
+    {
+      "name": "Component checksum failure is atomic",
+      "status": "PASS"
+    },
+    {
+      "name": "Installed component works without network",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancelled component download leaves no installation",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancelled Office profile-lock wait cleans work directory",
+      "status": "PASS"
+    }
+  ]
+}

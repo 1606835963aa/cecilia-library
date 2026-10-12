@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "fixtures": [
+    {
+      "file": "分页样本.pdf",
+      "sha256": "ab47bafc921c5dc6b627a6760f4d48e6918884213181d350ddfc7149e0bf0fb2",
+      "bytes": 73142,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "办公表格.xml",
+      "sha256": "3f2189254a340cf3f15f75e1bc8b70ae038c90a9ab3555e56b153a957d517d4c",
+      "bytes": 336,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "图片样本.bmp",
+      "sha256": "57df6890b14ba094b8264ba88a5572d148101ab6487cc51d0b6dc41a8ae76b6d",
+      "bytes": 1512054,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "图片样本.jpg",
+      "sha256": "b54f03191019c204ed0e19cff1cc3c34b8d42a9f63a391f30405f772174e48f3",
+      "bytes": 19088,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "图片样本.png",
+      "sha256": "5b1bb9f6b5a382851c13cc52707b90381664cd22e7e9b702ebe38d9ead3c629c",
+      "bytes": 12287,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "多页样本.tif",
+      "sha256": "5fb30dc227605268f94332d43e7f8e49f6a0e9a2214b63e370e07ed0c50218bc",
+      "bytes": 28976,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "富文本样本.rtf",
+      "sha256": "8176c74e2b7ac153ac50423ee5618846c870541459711ac0575b3bdf42a1c347",
+      "bytes": 158,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "归档样本.mht",
+      "sha256": "06854a6f6384cad8de4174b100e636c4ab616cdb9339e2b5f198607536a7d87f",
+      "bytes": 476,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "归档样本.mhtml",
+      "sha256": "06854a6f6384cad8de4174b100e636c4ab616cdb9339e2b5f198607536a7d87f",
+      "bytes": 476,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "扫描样本.pdf",
+      "sha256": "973f773c6e336cb0ce04480421ba18e7b77ab6d4ea611600c3291876a0afbfd9",
+      "bytes": 37997,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "数据样本.csv",
+      "sha256": "9bf972d348232c04eb39ce35fae8edc948f8fc309a0548851507e4b144428304",
+      "bytes": 101,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "数据样本.xlsx",
+      "sha256": "53fc109ec08134827a5d86f04138380a8647dad5b5176af65aab23f6acf43aa2",
+      "bytes": 6326,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "文本样本.txt",
+      "sha256": "1320369935e39837e704e416365bb0ceb8324508ff5352ed60910ff60d0510f0",
+      "bytes": 73,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "旧文字样本.doc",
+      "sha256": "7dc7c908d5a450696970289db97ab32deb6021ea088f750bf7b447e03784ba16",
+      "bytes": 33792,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "旧文字模板.dot",
+      "sha256": "12dfdcafd11b10895457720d640a4343b09eefd075afd85a3d70416e5bc6cf38",
+      "bytes": 33792,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "旧演示播放.pps",
+      "sha256": "b69400612d7d3425ac365eb0d2873194d2365038b038133d669e055951a9a459",
+      "bytes": 664064,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "旧演示样本.ppt",
+      "sha256": "b69400612d7d3425ac365eb0d2873194d2365038b038133d669e055951a9a459",
+      "bytes": 664064,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "旧演示模板.pot",
+      "sha256": "b69400612d7d3425ac365eb0d2873194d2365038b038133d669e055951a9a459",
+      "bytes": 664064,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "旧表格样本.dbf",
+      "sha256": "6bc7e95eac908e65d34a4323ecabb9971279be90efa9feaaebebfc3d3b364a69",
+      "bytes": 657,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "旧表格样本.dif",
+      "sha256": "6be4d9ef5917836552bad774f3dc57f879cfc058da22ba96861df289572dd9d0",
+      "bytes": 510,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "旧表格样本.prn",
+      "sha256": "c4928747228c29fc58e4edb59b290eb3c89dbe691c2db05657fb880cbe3525e5",
+      "bytes": 314,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "旧表格样本.xls",
+      "sha256": "0daa050480007390937e61f6264651061763f955a8798b8ffbac230a1b198770",
+      "bytes": 5632,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "旧表格模板.xlt",
+      "sha256": "b1f27ea336fed93a4cc54fe88552e6cb86429b1342910a98dc8804dbc51c9c1a",
+      "bytes": 7680,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "模板样本.dotx",
+      "sha256": "553d9f89c832a4b6705466fcb0fe5db1ef5f2a4212ae6561d45d64c83b1e8cdc",
+      "bytes": 48978,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "演示变体.potm",
+      "sha256": "fd9d2e082a12847d74b9c5b270937e75b299f3a958f2cb06d44eee174f05f36e",
+      "bytes": 39805,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "演示变体.potx",
+      "sha256": "28c151ef8b18c85c5c6170399d2e446c27806159be597218d4a3350ee401ad0b",
+      "bytes": 39789,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "演示变体.ppsm",
+      "sha256": "99bff9247a9a8f0f83a62d07c0af8f15e72d600ae1bb3500e62388cfe65c2153",
+      "bytes": 39807,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "演示变体.ppsx",
+      "sha256": "7a6b4616dad8971063da07b94b38b694d5703acc493981b15585b818250b6ccb",
+      "bytes": 39789,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "演示变体.pptm",
+      "sha256": "bff3b9c4d79eb08837142edcbf13e6dc699bb47d83e850a925146b2c6aa7ffcb",
+      "bytes": 39801,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "演示样本.pptx",
+      "sha256": "a07d1c4ff78deff495fe7cfa04af52bfb4fa35bc6b57116aaac2553e4f78e3f3",
+      "bytes": 39786,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "网页样本.htm",
+      "sha256": "ce8c7d421e07063731115fd5aa34d6d7f3d97f0caaae77a787332234d3ae2d2e",
+      "bytes": 343,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "网页样本.html",
+      "sha256": "ce8c7d421e07063731115fd5aa34d6d7f3d97f0caaae77a787332234d3ae2d2e",
+      "bytes": 343,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "表格模板.xltx",
+      "sha256": "cb16a4956ddb598254900811d618cf96278f2ec3677328b30baddec1d9ddb49f",
+      "bytes": 6329,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "通用样本.xml",
+      "sha256": "9837b3e6e9a8c0cf10bbb7ae38b31c6f4fe6d89d734dc9fbca35cf8de62b9ba4",
+      "bytes": 112,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "阅读样本.docx",
+      "sha256": "99bfd0fef7e514d1534746c203e530c2449786be25bf2cc9bdbc7b9d9bcfb670",
+      "bytes": 48973,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "静态宏模板.dotm",
+      "sha256": "421603ed5b5413f8c6bba009e565b9a3e20320025f5b3fab81c49a7d7122fd9d",
+      "bytes": 48986,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "静态宏类型.docm",
+      "sha256": "e795cf17a0d44aca7041b19d17dbaa01a5a3a63a80e93789302782944d486ef2",
+      "bytes": 48980,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "静态宏表格.xlsm",
+      "sha256": "904321b1dce0af20a38d8e43ae9861cfe02864c787396161d7a2b0457c9c66e4",
+      "bytes": 6339,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "静态宏表格模板.xltm",
+      "sha256": "282e98c3cdd83d0155677ee73e88fad469e942385977d5b79fd26c7e8758dea9",
+      "bytes": 6341,
+      "origin": "synthetic",
+      "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    }
+  ]
+}

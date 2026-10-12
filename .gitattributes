@@ -1,0 +1,34 @@
+* text=auto
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.cs text eol=lf
+*.ts text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.png binary
+*.jpg binary
+*.bmp binary
+*.tif binary
+*.pdf binary
+*.doc binary
+*.docx binary
+*.dot binary
+*.dotx binary
+*.docm binary
+*.dotm binary
+*.xls binary
+*.xlsx binary
+*.xlt binary
+*.xltx binary
+*.xlsm binary
+*.xltm binary
+*.ppt binary
+*.pptx binary
+*.pot binary
+*.potx binary
+*.potm binary
+*.pptm binary
+*.pps binary
+*.ppsx binary
+*.ppsm binary
+*.dbf binary

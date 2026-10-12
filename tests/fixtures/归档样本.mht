@@ -1,0 +1,15 @@
+Content-Type: multipart/related;
+ boundary="===============0337380041366752814=="
+MIME-Version: 1.0
+Subject: Synthetic web archive
+
+--===============0337380041366752814==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Location: https://fixture.local/index.html
+
+PGh0bWw+PGJvZHk+PGgxPue9kemhteW9kuaho+a1i+ivlTwvaDE+PHA+5Lit5paH6Z2Z5oCB5YaF
+5a65IDAwMTIzNDwvcD48L2JvZHk+PC9odG1sPg==
+
+--===============0337380041366752814==--

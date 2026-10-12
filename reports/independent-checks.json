@@ -1,0 +1,128 @@
+{
+  "checks": [
+    {
+      "file": "扫描样本.pdf",
+      "status": "PASS",
+      "pages": 2,
+      "expectedText": "中文",
+      "expectedPresent": false,
+      "source": "reports\\reference-pdfs\\扫描样本.pdf.pdf"
+    },
+    {
+      "file": "分页样本.pdf",
+      "status": "PASS",
+      "pages": 2,
+      "expectedText": "中文",
+      "expectedPresent": true,
+      "source": "reports\\reference-pdfs\\分页样本.pdf.pdf"
+    },
+    {
+      "file": "旧文字样本.doc",
+      "status": "PASS",
+      "pages": 2,
+      "expectedText": "小熊读书",
+      "expectedPresent": true,
+      "source": "reports\\reference-pdfs\\旧文字样本.doc.pdf"
+    },
+    {
+      "file": "旧文字模板.dot",
+      "status": "PASS",
+      "pages": 2,
+      "expectedText": "小熊读书",
+      "expectedPresent": true,
+      "source": "reports\\reference-pdfs\\旧文字模板.dot.pdf"
+    },
+    {
+      "file": "演示样本.pptx",
+      "status": "PASS",
+      "pages": 2,
+      "expectedText": "小熊读书",
+      "expectedPresent": true,
+      "source": "reports\\reference-pdfs\\演示样本.pptx.pdf"
+    },
+    {
+      "file": "旧演示样本.ppt",
+      "status": "PASS",
+      "pages": 2,
+      "expectedText": "小熊读书",
+      "expectedPresent": true,
+      "source": "reports\\reference-pdfs\\旧演示样本.ppt.pdf"
+    },
+    {
+      "file": "旧演示模板.pot",
+      "status": "PASS",
+      "pages": 2,
+      "expectedText": "小熊读书",
+      "expectedPresent": true,
+      "source": "reports\\reference-pdfs\\旧演示模板.pot.pdf"
+    },
+    {
+      "file": "旧演示播放.pps",
+      "status": "PASS",
+      "pages": 2,
+      "expectedText": "小熊读书",
+      "expectedPresent": true,
+      "source": "reports\\reference-pdfs\\旧演示播放.pps.pdf"
+    },
+    {
+      "file": "办公表格.xml",
+      "status": "PASS",
+      "pages": 1,
+      "expectedText": "办公 XML 测试",
+      "expectedPresent": true,
+      "source": "reports\\reference-pdfs\\办公表格.xml.pdf"
+    },
+    {
+      "file": "演示变体.pptm",
+      "status": "PASS",
+      "pages": 2,
+      "expectedText": "小熊读书",
+      "expectedPresent": true,
+      "source": "reports\\reference-pdfs\\演示变体.pptm.pdf"
+    },
+    {
+      "file": "演示变体.potx",
+      "status": "PASS",
+      "pages": 2,
+      "expectedText": "小熊读书",
+      "expectedPresent": true,
+      "source": "reports\\reference-pdfs\\演示变体.potx.pdf"
+    },
+    {
+      "file": "演示变体.potm",
+      "status": "PASS",
+      "pages": 2,
+      "expectedText": "小熊读书",
+      "expectedPresent": true,
+      "source": "reports\\reference-pdfs\\演示变体.potm.pdf"
+    },
+    {
+      "file": "演示变体.ppsx",
+      "status": "PASS",
+      "pages": 2,
+      "expectedText": "小熊读书",
+      "expectedPresent": true,
+      "source": "reports\\reference-pdfs\\演示变体.ppsx.pdf"
+    },
+    {
+      "file": "演示变体.ppsm",
+      "status": "PASS",
+      "pages": 2,
+      "expectedText": "小熊读书",
+      "expectedPresent": true,
+      "source": "reports\\reference-pdfs\\演示变体.ppsm.pdf"
+    },
+    {
+      "file": "编辑样本.txt",
+      "status": "PASS",
+      "sha256": "0a41073111868b6f356273938745a28d9cb3b743ec6782f93f57beed4d3710f6",
+      "reader": "Python utf-8-sig decoder"
+    },
+    {
+      "file": "编辑样本.csv",
+      "status": "PASS",
+      "sha256": "5c0230f92d50af076c00c3787bb97e50ca1b8e50b20a0eed2836ae4594cb9caa",
+      "reader": "Python utf-8-sig decoder"
+    }
+  ]
+}
