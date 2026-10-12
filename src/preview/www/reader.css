@@ -1,1 +1,78 @@
-:root{font-family:"Microsoft YaHei UI",sans-serif;color:#0f172a;background:#f1f5f9;font-size:15px}*{box-sizing:border-box}body{margin:0}#document{min-height:100vh}.docx-wrapper{background:#f1f5f9!important;padding:28px!important}.docx-wrapper>section.docx{box-shadow:0 2px 12px #0f172a12;margin-bottom:24px!important;scroll-margin-top:65px}.doc-page-nav{position:sticky;top:0;background:white;z-index:3;padding:12px 22px;display:flex;align-items:center;gap:15px;border-bottom:1px solid #e2e8f0}.doc-page-nav select{font:inherit;border:1px solid #cbd5e1;padding:6px 12px;border-radius:6px}.html-document{background:white;min-height:100vh;padding:38px;overflow-wrap:anywhere}.xml-document{white-space:pre-wrap;font:15px/1.8 "Cascadia Mono",monospace;background:white;margin:0;padding:30px}.sheet-header{position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:12px;padding:14px 20px;background:white;border-bottom:1px solid #e2e8f0;flex-wrap:wrap}.sheet-header select,.sheet-header button{font:inherit;border:1px solid #cbd5e1;background:#fff;padding:7px 12px;border-radius:6px}.sheet-header button{cursor:pointer}.sheet-header button:disabled{opacity:.4;cursor:default}.sheet-table-wrap{padding:16px;overflow:auto}.sheet-table{border-collapse:collapse;background:white;font-size:14px;table-layout:fixed}.sheet-table td,.sheet-table th{border:1px solid #e2e8f0;min-width:110px;max-width:420px;padding:9px 12px;white-space:pre-wrap;overflow-wrap:anywhere;vertical-align:top}.sheet-table th{background:#f8fafc;font-weight:500;position:sticky;top:0}.sheet-table .row-number{min-width:52px;width:52px;color:#64748b;background:#f8fafc;text-align:center}.sheet-table .number{text-align:right}.sheet-table .selected{background:#fef08a;outline:2px solid #eab308}.formula{color:#7c3aed}.sheet-note{padding:14px 20px;background:#fff;color:#475569}.document-error{padding:40px;color:#991b1b;font-size:18px}@media print{.sheet-header,.doc-page-nav{display:none}.sheet-table-wrap{padding:0}.docx-wrapper{padding:0!important;background:white!important}.docx-wrapper>section.docx{box-shadow:none;page-break-after:always}.html-document{padding:0}}
+/* 颜色与外壳（WPF 的 Themes/Light.xaml、Dark.xaml）保持一致 */
+:root {
+  --canvas: #e9e6e0; --surface: #fff; --alt: #f4f2ee; --border: #ddd8cf;
+  --text: #1f1d1a; --muted: #6b665e; --accent: #2f6f5e; --hover: #ece9e3;
+  --mark: #fde68a; --mark-line: #d97706; --formula: #6d28d9; --error: #b42318;
+  --scroll: #c9c3b8; --scroll-hover: #a39e94;
+  color-scheme: light;
+  font-family: "Microsoft YaHei UI", sans-serif; font-size: 14px;
+  color: var(--text); background: var(--canvas);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --canvas: #141312; --surface: #262522; --alt: #1b1a18; --border: #3a3833;
+    --text: #ece9e3; --muted: #a39e94; --accent: #5fb49c; --hover: #32302c;
+    --mark: #5c4a12; --mark-line: #eab308; --formula: #c4b5fd; --error: #f97066;
+    --scroll: #4a4741; --scroll-hover: #6b665e;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+#document { min-height: 100vh; }
+::-webkit-scrollbar { width: 14px; height: 14px; }
+::-webkit-scrollbar-thumb { background: var(--scroll); border-radius: 7px; border: 3px solid transparent; background-clip: content-box; }
+::-webkit-scrollbar-thumb:hover { background-color: var(--scroll-hover); }
+::-webkit-scrollbar-corner { background: transparent; }
+
+/* 页内工具条：Word 的页码跳转、表格的工作表与翻页 */
+.doc-page-nav, .sheet-header {
+  position: sticky; top: 0; z-index: 3; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  padding: 7px 14px; background: var(--surface); border-bottom: 1px solid var(--border); color: var(--muted); font-size: 13px;
+}
+.doc-page-nav select, .sheet-header select, .sheet-header button {
+  font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 5px 11px; height: 30px;
+}
+.sheet-header button { cursor: pointer; }
+.sheet-header button:hover:not(:disabled), .doc-page-nav select:hover, .sheet-header select:hover { background: var(--hover); }
+.sheet-header button:disabled { opacity: .38; cursor: default; }
+.doc-page-nav select:focus-visible, .sheet-header select:focus-visible, .sheet-header button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.sheet-header span { margin-left: 6px; }
+
+/* Word：纸张始终是白底黑字，周围跟随深浅色 */
+.docx-wrapper { background: var(--canvas) !important; padding: 28px !important; }
+.docx-wrapper > section.docx {
+  background: #fff; color: #000; color-scheme: light;
+  box-shadow: 0 1px 3px #0000001f, 0 6px 20px #00000014; margin-bottom: 24px !important; scroll-margin-top: 56px;
+}
+
+/* 网页与网页归档：按白纸显示，原文档的颜色是照着白底写的 */
+.html-document { background: #fff; color: #1f1d1a; color-scheme: light; min-height: 100vh; padding: 38px; overflow-wrap: anywhere; }
+.xml-document { white-space: pre-wrap; font: 14px/1.8 "Cascadia Mono", Consolas, "Microsoft YaHei UI", monospace; background: var(--surface); margin: 0; padding: 30px; min-height: 100vh; }
+
+/* 表格 */
+.sheet-table-wrap { padding: 16px; overflow: auto; }
+.sheet-table { border-collapse: collapse; background: var(--surface); font-size: 13.5px; table-layout: fixed; }
+.sheet-table td, .sheet-table th {
+  border: 1px solid var(--border); min-width: 110px; max-width: 420px; padding: 7px 11px;
+  white-space: pre-wrap; overflow-wrap: anywhere; vertical-align: top;
+}
+.sheet-table th { background: var(--alt); color: var(--muted); font-weight: 500; position: sticky; top: 0; }
+.sheet-table .row-number { min-width: 52px; width: 52px; color: var(--muted); background: var(--alt); text-align: center; }
+.sheet-table .number { text-align: right; font-variant-numeric: tabular-nums; }
+.sheet-table .selected { background: var(--mark); outline: 2px solid var(--mark-line); outline-offset: -1px; }
+.formula { color: var(--formula); }
+.sheet-note { padding: 9px 16px; background: var(--alt); border-bottom: 1px solid var(--border); color: var(--muted); font-size: 13px; }
+.document-error { padding: 40px; color: var(--error); font-size: 17px; }
+
+@media print {
+  :root { color-scheme: light; background: #fff; color: #000; }
+  .sheet-header, .doc-page-nav { display: none; }
+  .sheet-table-wrap { padding: 0; }
+  .sheet-table, .sheet-table th, .sheet-table .row-number { background: #fff; color: #000; }
+  .sheet-table td, .sheet-table th { border-color: #999; }
+  .docx-wrapper { padding: 0 !important; background: #fff !important; }
+  .docx-wrapper > section.docx { box-shadow: none; page-break-after: always; }
+  .html-document { padding: 0; }
+  .xml-document { background: #fff; }
+}

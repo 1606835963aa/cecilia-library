@@ -93,8 +93,8 @@
         wrapper.append(table);
         container.append(wrapper);
         send("status", `${page.names[sheet]} · ${page.totalRows} 行 × ${page.totalColumns} 列`);
-        if (page.found === false)
-            send("status", "没有找到");
+        if (page.found !== undefined)
+            send("find", `${page.foundIndex ?? 0}/${page.foundCount ?? 0}`);
         if (page.selected)
             container.querySelector(".selected")?.scrollIntoView({ block: "center" });
     }
@@ -196,11 +196,11 @@
         }
         if (event.data.type === "find") {
             if (worker)
-                worker.postMessage({ type: "find", query: event.data.query, sheet });
+                worker.postMessage({ type: "find", query: event.data.query, sheet, backward: !!event.data.backward });
             else {
-                const found = window.find(event.data.query ?? "", false, false, true);
+                const found = window.find(event.data.query ?? "", false, !!event.data.backward, true);
                 if (!found)
-                    send("status", "没有找到");
+                    send("find", "0/0");
             }
         }
     });

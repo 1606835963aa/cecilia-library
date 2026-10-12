@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using Microsoft.Web.WebView2.Core;
 
 namespace LightReader.App;
@@ -88,6 +89,21 @@ public partial class MainWindow
             results.Add(new{file="flow:search across sheet row pages",status=found=="true"?"PASS":"FAIL",evidence=found});
             browser.Find("右侧列测试");await Task.Delay(400);found=await browser.EvaluateAsync("document.querySelector('.selected')?.textContent === '右侧列测试'");
             results.Add(new{file="flow:search across column pages",status=found=="true"?"PASS":"FAIL",evidence=found});
+            var counted=System.Text.RegularExpressions.Regex.IsMatch(SearchCount.Text,@"^\d+ / \d+$");
+            results.Add(new{file="flow:sheet search shows position and total",status=counted?"PASS":"FAIL",evidence=SearchCount.Text});
+            await AddFileAsync(Path.Combine(projectRoot,"tests","fixtures","阅读样本.docx"));
+            SearchInput.Text="小熊读书";Find(false);await Task.Delay(800);var firstMatch=SearchCount.Text;Find(false);await Task.Delay(400);var secondMatch=SearchCount.Text;Find(true);await Task.Delay(400);
+            var wordTotal=System.Text.RegularExpressions.Regex.Match(firstMatch,@"^1 / (\d+)$");
+            results.Add(new{file="flow:Word search count, next and previous",status=wordTotal.Success&&secondMatch==(wordTotal.Groups[1].Value=="1"?"1 / 1":"2 / "+wordTotal.Groups[1].Value)&&SearchCount.Text==firstMatch?"PASS":"FAIL",evidence=$"{firstMatch} -> {secondMatch} -> {SearchCount.Text}"});
+            await AddFileAsync(Path.Combine(projectRoot,"tests","fixtures","文本样本.txt"));
+            SearchInput.Text="小熊读书";Find(false);
+            results.Add(new{file="flow:text search count and selection",status=SearchCount.Text.StartsWith("1 / ")&&textBox?.SelectedText=="小熊读书"?"PASS":"FAIL",evidence=SearchCount.Text});
+            var darkBefore=App.IsDark;App.ApplyTheme(darkBefore?"light":"dark");
+            await AddFileAsync(Path.Combine(projectRoot,"tests","fixtures","数据样本.xlsx"));await Task.Delay(300);
+            var scheme=await browser!.EvaluateAsync("matchMedia('(prefers-color-scheme: dark)').matches");
+            var shell=((SolidColorBrush)FindResource("Bg")).Color;
+            results.Add(new{file="flow:theme switch reaches shell and preview",status=App.IsDark!=darkBefore&&scheme==(App.IsDark?"true":"false")&&shell==(App.IsDark?Color.FromRgb(0x1B,0x1A,0x18):Color.FromRgb(0xF4,0xF2,0xEE))?"PASS":"FAIL",evidence=$"dark={App.IsDark}, preview={scheme}, shell={shell}"});
+            App.ApplyTheme(settings.Theme);
             foreach(var extension in new[]{"txt","csv"})
             {
                 var original=Path.Combine(projectRoot,"tests","fixtures",extension=="txt"?"文本样本.txt":"数据样本.csv");var before=await File.ReadAllBytesAsync(original);

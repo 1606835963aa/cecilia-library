@@ -1,7 +1,7 @@
 (() => {
-    type HostMessage = { type: string; id: string; kind: string; url: string; text?: string; extension: string; query?: string; assets?:Record<string,string>;baseUrl?:string };
+    type HostMessage = { type: string; id: string; kind: string; url: string; text?: string; extension: string; query?: string; backward?: boolean; assets?:Record<string,string>;baseUrl?:string };
     type Cell = { row: number; col: number; value: string; numeric: boolean; formulaOnly: boolean; spanRows?: number; spanCols?: number };
-    type SheetPage = { type: string; names: string[]; sheet: number; start: number; rows: number; columns: number; totalRows: number; totalColumns: number; firstColumn: number; cells: Cell[]; formulaMissing: number; found?: boolean; selected?: {row:number;col:number}; error?:string };
+    type SheetPage = { type: string; names: string[]; sheet: number; start: number; rows: number; columns: number; totalRows: number; totalColumns: number; firstColumn: number; cells: Cell[]; formulaMissing: number; found?: boolean; foundIndex?: number; foundCount?: number; selected?: {row:number;col:number}; error?:string };
     const bridge = (window as unknown as { chrome: { webview: { postMessage(data: unknown): void; addEventListener(type:string, fn:(event:{data:HostMessage})=>void):void } } }).chrome.webview;
     const container = document.getElementById("document")!;
     let requestId = "", serial = 0, worker: Worker | undefined, sheet = 0, start = 0, firstColumn = 0;
@@ -42,7 +42,7 @@
             for(const cell of byRow.get(r)??[]){const td=document.createElement("td");td.textContent=cell.value;td.dataset.row=String(cell.row);td.dataset.col=String(cell.col);if(cell.numeric)td.classList.add("number");if(cell.formulaOnly)td.classList.add("formula");if(cell.spanRows)td.rowSpan=cell.spanRows;if(cell.spanCols)td.colSpan=cell.spanCols;if(page.selected?.row===cell.row&&page.selected?.col===cell.col)td.classList.add("selected");row.append(td);}table.append(row);
         }
         wrapper.append(table);container.append(wrapper); send("status",`${page.names[sheet]} · ${page.totalRows} 行 × ${page.totalColumns} 列`);
-        if(page.found===false)send("status","没有找到");if(page.selected)container.querySelector(".selected")?.scrollIntoView({block:"center"});
+        if(page.found!==undefined)send("find",`${page.foundIndex??0}/${page.foundCount??0}`);if(page.selected)container.querySelector(".selected")?.scrollIntoView({block:"center"});
     }
     async function open(message: HostMessage) {
         const generation=++serial; requestId=message.id;worker?.terminate();worker=undefined;container.replaceChildren();
@@ -80,8 +80,8 @@
     bridge.addEventListener("message",event=>{
         if(event.data.type==="open"){container.className="";void open(event.data);}
         if(event.data.type==="find"){
-            if(worker)worker.postMessage({type:"find",query:event.data.query,sheet});
-            else {const found=(window as unknown as {find(q:string,c:boolean,b:boolean,w:boolean):boolean}).find(event.data.query??"",false,false,true);if(!found)send("status","没有找到");}
+            if(worker)worker.postMessage({type:"find",query:event.data.query,sheet,backward:!!event.data.backward});
+            else {const found=(window as unknown as {find(q:string,c:boolean,b:boolean,w:boolean):boolean}).find(event.data.query??"",false,!!event.data.backward,true);if(!found)send("find","0/0");}
         }
     });
     bridge.postMessage({type:"ready"});

@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +17,8 @@ public sealed class DocumentTab(string path)
 {
     public string Path { get; } = path;
     public string Name => System.IO.Path.GetFileName(Path);
+    public string Badge => FileBadge.For(Path).Text;
+    public Brush BadgeBrush => FileBadge.For(Path).Brush;
     public TextDocument? Text { get; set; }
     public string? EditBuffer { get; set; }
     public bool Editing { get; set; }
@@ -30,7 +33,6 @@ public partial class MainWindow : Window
     private BrowserReader? browser;
     private NativePdfReader? nativePdf;
     private string? pdfSource;
-    private readonly Button pdfMode=new(){Content="文字与搜索",Visibility=Visibility.Collapsed};
     private CancellationTokenSource? operation;
     private DocumentTab? current;
     private DocumentInfo? info;
@@ -42,10 +44,19 @@ public partial class MainWindow : Window
     private Func<Task>? action;
     private bool suppressTabChange;
     private long displayGeneration;
+    private string findQuery = "";
+    private int findIndex = -1;
     public MainWindow(string[] paths, string? verificationRoot = null, string? benchmarkFile = null,string? stateFile=null)
     {
         InitializeComponent(); Tabs.ItemsSource = documents;
-        ((StackPanel)((DockPanel)Toolbar.Child).Children[0]).Children.Add(pdfMode);pdfMode.Click+=PdfMode;
+        documents.CollectionChanged += (_, _) => AppTitle.Visibility = documents.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
+        App.ThemeChanged += OnThemeChanged; App.ApplyTheme(settings.Theme); UpdateThemeButton();
+        if (settings.WindowWidth >= MinWidth && settings.WindowHeight >= MinHeight)
+        { Width = Math.Min(settings.WindowWidth, SystemParameters.WorkArea.Width); Height = Math.Min(settings.WindowHeight, SystemParameters.WorkArea.Height); }
+        if (settings.Maximized) WindowState = WindowState.Maximized;
+        OnStateChanged(this, EventArgs.Empty);
+        SourceInitialized += (_, _) => { ((System.Windows.Interop.HwndSource)PresentationSource.FromVisual(this)).AddHook(WindowMessage); ApplyWindowTheme(); };
+        ShowHome();
         Loaded += async (_, _) => { if (benchmarkFile != null) await RunBenchmarkAsync(benchmarkFile); else if (verificationRoot != null) await RunVerificationAsync(verificationRoot); else {foreach (var path in paths) await AddFileAsync(path);if(stateFile!=null)await File.WriteAllTextAsync(stateFile,System.Text.Json.JsonSerializer.Serialize(new{shown=Viewer.Visibility==Visibility.Visible,status=Status.Text,renderer=nativePdf!=null?"Windows.Data.Pdf":browser!=null?"WebView2":"WPF"}));} };
     }
     private async void OpenDialog(object sender, RoutedEventArgs e)
@@ -73,12 +84,13 @@ public partial class MainWindow : Window
         var cancellation = operation.Token;
         var generation = ++displayGeneration;
         current = tab; info = null; textBox = null; frames.Clear(); imageScroll = null; zoom = 1; ZoomLabel.Text = "100%";
-        nativePdf?.Dispose();nativePdf=null;pdfSource=null;pdfMode.Visibility=Visibility.Collapsed;
+        nativePdf?.Dispose();nativePdf=null;pdfSource=null;pdfMode.Visibility=Visibility.Collapsed;ViewerTools.Content=null;
         HidePanels(); Toolbar.Visibility = Visibility.Visible; Viewer.Content = null;
+        if (Tabs.SelectedItem != tab) { suppressTabChange = true; Tabs.SelectedItem = tab; suppressTabChange = false; }
         EditButton.Visibility = SaveButton.Visibility = PreciseButton.Visibility = ImagePages.Visibility = Visibility.Collapsed;
         SearchButton.IsEnabled = true; PrintButton.IsEnabled = true;
         FormatLabel.Text = System.IO.Path.GetExtension(tab.Path).TrimStart('.').ToUpperInvariant();
-        Title = tab.Name + " · 轻阅";
+        Title = tab.Name + " · " + App.DisplayName;
         var timer = Stopwatch.StartNew();
         try
         {
@@ -102,7 +114,7 @@ public partial class MainWindow : Window
                         SetMessage("正在安装组件", definition.Name, true);
                         try
                         {
-                            await components.InstallAsync(component, new Progress<(long Done, long Total)>(p => MessageDetail.Text = $"{Size(p.Done)} / {Size(p.Total)}"), cancellation);
+                            await components.InstallAsync(component, InstallProgress(), cancellation);
                             if (current == tab && !cancellation.IsCancellationRequested) await DisplayAsync(tab, precise);
                         }
                         catch (OperationCanceledException) { if (current == tab) SetMessage("安装已取消", definition.Name, false); }
@@ -124,7 +136,8 @@ public partial class MainWindow : Window
             else if (info.Kind == DocumentKind.Text || (info.Extension == "csv" && tab.Editing))
             {
                     if (tab.Text == null || !tab.Dirty) tab.Text = await TextDocument.ReadAsync(tab.Path, cancellation); cancellation.ThrowIfCancellationRequested();
-                    textBox = new TextBox { Text = tab.EditBuffer ?? tab.Text.Text, IsReadOnly = !tab.Editing, AcceptsReturn = true, AcceptsTab = true, TextWrapping = TextWrapping.Wrap, VerticalScrollBarVisibility = ScrollBarVisibility.Auto, HorizontalScrollBarVisibility = ScrollBarVisibility.Auto, BorderThickness = new(0), Padding = new(44,32,44,32), FontSize = 17, FontFamily = new("Cascadia Mono, Microsoft YaHei UI"), Background = Brushes.White };
+                    textBox = new TextBox { Text = tab.EditBuffer ?? tab.Text.Text, IsReadOnly = !tab.Editing, AcceptsReturn = true, AcceptsTab = true, TextWrapping = TextWrapping.Wrap, VerticalScrollBarVisibility = ScrollBarVisibility.Auto, HorizontalScrollBarVisibility = ScrollBarVisibility.Auto, BorderThickness = new(0), Padding = new(44,32,44,32), FontSize = 17, FontFamily = new("Cascadia Mono, Microsoft YaHei UI") };
+                    StyleTextView(textBox);
                     textBox.TextChanged += (_, _) => { if (current == tab && tab.Editing) { tab.Dirty = textBox.Text != tab.Text.Text; Status.Text = tab.Dirty ? "有未保存的修改" : "编辑中"; } };
                     Viewer.Content = textBox;
                     if (settings.ScrollPositions.TryGetValue(tab.Path, out var offset)) textBox.ScrollToVerticalOffset(offset);
@@ -135,10 +148,10 @@ public partial class MainWindow : Window
                 case DocumentKind.Rtf:
                     var flow = new FlowDocument { PagePadding = new(40), FontFamily = new("Microsoft YaHei UI") };
                     using (var source = File.OpenRead(tab.Path)) new TextRange(flow.ContentStart, flow.ContentEnd).Load(source, DataFormats.Rtf);
-                    Viewer.Content = new FlowDocumentScrollViewer { Document = flow, IsToolBarVisible = false, Background = Brushes.White }; break;
+                    Viewer.Content = new FlowDocumentScrollViewer { Document = flow, IsToolBarVisible = false, IsInactiveSelectionHighlightEnabled = true, Background = Brushes.White }; break;
                 case DocumentKind.Image:
                     var decoded = await Task.Run(() => DecodeImages(tab.Path), cancellation); cancellation.ThrowIfCancellationRequested();frames=decoded;
-                    imageScroll = new ScrollViewer { HorizontalScrollBarVisibility = ScrollBarVisibility.Auto, VerticalScrollBarVisibility = ScrollBarVisibility.Auto, Background = new SolidColorBrush(Color.FromRgb(241,245,249)) };
+                    imageScroll = new ScrollViewer { HorizontalScrollBarVisibility = ScrollBarVisibility.Auto, VerticalScrollBarVisibility = ScrollBarVisibility.Auto, Focusable = false };
                     Viewer.Content = imageScroll; frameIndex = 0; DisplayImage(); SearchButton.IsEnabled = false;
                     ImagePages.Visibility = frames.Count > 1 ? Visibility.Visible : Visibility.Collapsed; break;
                 case DocumentKind.Pdf:
@@ -158,18 +171,23 @@ public partial class MainWindow : Window
     }
     private async Task ShowBrowserAsync(DocumentInfo documentInfo, string path, CancellationToken token)
     {
-        if (browser == null) { browser = new(components); browser.StatusChanged += BrowserStatus; }
+        if (browser == null)
+        {
+            browser = new(components); browser.StatusChanged += BrowserStatus; browser.FindChanged += ShowFind; browser.SetTheme(App.IsDark);
+            // 在文档里按住 Ctrl 滚动滚轮时由浏览器自己缩放，这里把比例同步到工具栏
+            var view = browser.View; view.ZoomFactorChanged += (_, _) => { if (Viewer.Content == view) { zoom = view.ZoomFactor; ZoomLabel.Text = $"{zoom:P0}"; } };
+        }
         Viewer.Content = browser.View; browser.View.ZoomFactor=1; await browser.ShowAsync(documentInfo, path, token);
     }
     private async Task ShowPdfAsync(string path,CancellationToken token)
     {
         browser?.Dispose();browser=null;nativePdf?.Dispose();
-        var reader=new NativePdfReader();nativePdf=reader;pdfSource=path;Viewer.Content=reader;
+        var reader=new NativePdfReader();nativePdf=reader;pdfSource=path;Viewer.Content=reader;ViewerTools.Content=reader.Tools;
         reader.StatusChanged+=BrowserStatus;pdfMode.Visibility=Visibility.Visible;pdfMode.Content="文字与搜索";
         try{await reader.LoadAsync(path,token);}
         catch(Exception error)when(error is System.Runtime.InteropServices.COMException or IOException)
         {
-            token.ThrowIfCancellationRequested();reader.Dispose();nativePdf=null;
+            token.ThrowIfCancellationRequested();reader.Dispose();nativePdf=null;ViewerTools.Content=null;
             await ShowBrowserAsync(info! with{Kind=DocumentKind.Pdf},path,token);pdfMode.Content="页面阅读";
         }
     }
@@ -179,7 +197,7 @@ public partial class MainWindow : Window
         if(pdfSource==null||info==null)return;
         try
         {
-            if(nativePdf!=null){nativePdf.Dispose();nativePdf=null;await ShowBrowserAsync(info with{Kind=DocumentKind.Pdf},pdfSource,operation?.Token??CancellationToken.None);pdfMode.Content="页面阅读";}
+            if(nativePdf!=null){nativePdf.Dispose();nativePdf=null;ViewerTools.Content=null;await ShowBrowserAsync(info with{Kind=DocumentKind.Pdf},pdfSource,operation?.Token??CancellationToken.None);pdfMode.Content="页面阅读";}
             else await ShowPdfAsync(pdfSource,operation?.Token??CancellationToken.None);
         }
         catch(OperationCanceledException){}
@@ -203,12 +221,31 @@ public partial class MainWindow : Window
         ImagePageLabel.Text = $"{frameIndex + 1} / {frames.Count}";
     }
     private void HidePanels()
-    { Welcome.Visibility = RecentPanel.Visibility = ComponentPanel.Visibility = MessagePanel.Visibility = Viewer.Visibility = SearchPanel.Visibility = Visibility.Collapsed; ActionButton.Visibility = Visibility.Collapsed; action = null; }
+    { Home.Visibility = ComponentPanel.Visibility = MessagePanel.Visibility = Viewer.Visibility = SearchPanel.Visibility = Visibility.Collapsed; ActionButton.Visibility = Visibility.Collapsed; action = null; browser?.StopFind(); findQuery = ""; SearchCount.Text = ""; }
     private void SetMessage(string title, string detail, bool busy)
-    { HidePanels(); MessagePanel.Visibility = Visibility.Visible; MessageTitle.Text = title; MessageDetail.Text = detail; Progress.Visibility = busy ? Visibility.Visible : Visibility.Collapsed; CancelButton.Visibility = busy ? Visibility.Visible : Visibility.Collapsed; }
+    { HidePanels(); MessagePanel.Visibility = Visibility.Visible; MessageTitle.Text = title; MessageDetail.Text = detail; Progress.IsIndeterminate = true; Progress.Visibility = busy ? Visibility.Visible : Visibility.Collapsed; CancelButton.Visibility = busy ? Visibility.Visible : Visibility.Collapsed; }
     private async void TabChanged(object sender, SelectionChangedEventArgs e) { if (!suppressTabChange && Tabs.SelectedItem is DocumentTab tab) await DisplayAsync(tab); }
-    private async void OnDrop(object sender, DragEventArgs e) { if (e.Data.GetData(DataFormats.FileDrop) is string[] paths) foreach (var path in paths) await AddFileAsync(path); }
-    private void OnDragOver(object sender, DragEventArgs e) { e.Effects = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None; e.Handled = true; }
+    private async void OnDrop(object sender, DragEventArgs e) { DropHint.Visibility = Visibility.Collapsed; if (e.Data.GetData(DataFormats.FileDrop) is string[] paths) foreach (var path in paths) await AddFileAsync(path); }
+    private void OnDragOver(object sender, DragEventArgs e)
+    {
+        var files = e.Data.GetDataPresent(DataFormats.FileDrop);
+        e.Effects = files ? DragDropEffects.Copy : DragDropEffects.None; DropHint.Visibility = files ? Visibility.Visible : Visibility.Collapsed; e.Handled = true;
+    }
+    private void OnDragLeave(object sender, DragEventArgs e) => DropHint.Visibility = Visibility.Collapsed;
+    private void OnWheel(object sender, MouseWheelEventArgs e)
+    { if (Keyboard.Modifiers == ModifierKeys.Control && current != null && Viewer.Visibility == Visibility.Visible) { SetZoom(zoom + (e.Delta > 0 ? .1 : -.1)); e.Handled = true; } }
+    private void TabMouseDown(object sender, MouseButtonEventArgs e) { if (e.ChangedButton == MouseButton.Middle) { CloseTab(sender, e); e.Handled = true; } }
+    private Progress<(long Done, long Total)> InstallProgress() => new(p =>
+    {
+        MessageDetail.Text = $"{Size(p.Done)} / {Size(p.Total)}";
+        if (p.Total > 0) { Progress.IsIndeterminate = false; Progress.Value = 100d * p.Done / p.Total; }
+    });
+    private void StyleTextView(TextBox box)
+    {
+        box.BorderThickness = new(0); box.VerticalContentAlignment = VerticalAlignment.Top; box.IsInactiveSelectionHighlightEnabled = true;
+        // 窗口很宽时把自动换行的文字收在中间一栏，方便阅读
+        if (box.TextWrapping == TextWrapping.Wrap) box.SizeChanged += (_, e) => { var side = Math.Max(44, (e.NewSize.Width - 980) / 2); box.Padding = new(side, 32, side, 32); };
+    }
     private async void RunAction(object sender, RoutedEventArgs e) { var next = action; if (next != null) await next(); }
     private void CancelWork(object sender, RoutedEventArgs e) { operation?.Cancel(); browser?.Dispose(); browser = null; if(MessageTitle.Text.Contains("安装")){MessageTitle.Text="正在取消安装";MessageDetail.Text="正在清理组件";} }
     private async void PrecisePreview(object sender, RoutedEventArgs e) { if (current != null) await DisplayAsync(current, true); }
@@ -235,22 +272,46 @@ public partial class MainWindow : Window
             if(double.TryParse(widthText,System.Globalization.CultureInfo.InvariantCulture,out var width)&&width>0)SetZoom(Math.Min(1,Math.Max(200,Viewer.ActualWidth-56)/width));
         }
     }
-    private void ToggleSearch(object sender, RoutedEventArgs e) { SearchPanel.Visibility = SearchPanel.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible; if (SearchPanel.Visibility == Visibility.Visible) SearchInput.Focus(); }
-    private void SearchKeyDown(object sender, KeyEventArgs e) { if (e.Key == Key.Enter) { FindNext(sender, e); e.Handled = true; } }
-    private void FindNext(object sender, RoutedEventArgs e)
+    private void ToggleSearch(object sender, RoutedEventArgs e)
+    {
+        var show = SearchPanel.Visibility != Visibility.Visible;
+        SearchPanel.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
+        if (show) { SearchInput.Focus(); SearchInput.SelectAll(); }
+        else { browser?.StopFind(); findQuery = ""; SearchCount.Text = ""; }
+    }
+    private void SearchKeyDown(object sender, KeyEventArgs e) { if (e.Key == Key.Enter) { Find(Keyboard.Modifiers == ModifierKeys.Shift); e.Handled = true; } }
+    private void SearchTextChanged(object sender, TextChangedEventArgs e) { findQuery = ""; SearchCount.Text = ""; }
+    private void FindNext(object sender, RoutedEventArgs e) => Find(false);
+    private void FindPrevious(object sender, RoutedEventArgs e) => Find(true);
+    private void ShowFind(int index, int total) => SearchCount.Text = total == 0 ? "没有找到" : index == 0 ? $"共 {total} 处" : $"{index} / {total}";
+    private void Find(bool backward)
     {
         var query = SearchInput.Text; if (query.Length == 0) return;
+        var fresh = query != findQuery; findQuery = query;
         if (textBox != null)
         {
-            var start = textBox.SelectionStart + textBox.SelectionLength;
-            var index = textBox.Text.IndexOf(query, start, StringComparison.OrdinalIgnoreCase);
-            if (index < 0) index = textBox.Text.IndexOf(query, StringComparison.OrdinalIgnoreCase);
-            if (index < 0) Status.Text = "没有找到";
-            else { textBox.Focus(); textBox.Select(index, query.Length); textBox.ScrollToLine(textBox.GetLineIndexFromCharacterIndex(index)); }
+            var text = textBox.Text; var matches = new List<int>();
+            for (var i = text.IndexOf(query, StringComparison.OrdinalIgnoreCase); i >= 0; i = text.IndexOf(query, i + query.Length, StringComparison.OrdinalIgnoreCase)) matches.Add(i);
+            if (matches.Count == 0) { ShowFind(0, 0); return; }
+            findIndex = fresh ? Math.Max(0, matches.FindIndex(m => m >= textBox.SelectionStart)) : ((findIndex + (backward ? -1 : 1)) % matches.Count + matches.Count) % matches.Count;
+            // 文本框获得过一次焦点后，才会在焦点回到搜索框时继续显示选中的高亮
+            textBox.Focus(); textBox.Select(matches[findIndex], query.Length); SearchInput.Focus(); textBox.ScrollToLine(textBox.GetLineIndexFromCharacterIndex(matches[findIndex])); ShowFind(findIndex + 1, matches.Count);
         }
         else if (Viewer.Content is FlowDocumentScrollViewer rtf)
-        { var text = new TextRange(rtf.Document.ContentStart, rtf.Document.ContentEnd).Text; Status.Text = text.Contains(query, StringComparison.OrdinalIgnoreCase) ? "文档包含这段文字" : "没有找到"; }
-        else browser?.Find(query);
+        {
+            var matches = new List<TextRange>();
+            for (var pointer = rtf.Document.ContentStart; pointer != null; pointer = pointer.GetNextContextPosition(LogicalDirection.Forward))
+            {
+                if (pointer.GetPointerContext(LogicalDirection.Forward) != TextPointerContext.Text) continue;
+                var run = pointer.GetTextInRun(LogicalDirection.Forward);
+                for (var i = run.IndexOf(query, StringComparison.OrdinalIgnoreCase); i >= 0; i = run.IndexOf(query, i + query.Length, StringComparison.OrdinalIgnoreCase))
+                    matches.Add(new(pointer.GetPositionAtOffset(i)!, pointer.GetPositionAtOffset(i + query.Length)!));
+            }
+            if (matches.Count == 0) { ShowFind(0, 0); return; }
+            findIndex = fresh ? 0 : ((findIndex + (backward ? -1 : 1)) % matches.Count + matches.Count) % matches.Count;
+            rtf.Focus(); rtf.Selection?.Select(matches[findIndex].Start, matches[findIndex].End); SearchInput.Focus(); matches[findIndex].Start.Paragraph?.BringIntoView(); ShowFind(findIndex + 1, matches.Count);
+        }
+        else browser?.Find(query, backward);
     }
     private async void Edit(object sender, RoutedEventArgs e)=>await ToggleEditAsync();
     private async Task ToggleEditAsync()
@@ -260,6 +321,7 @@ public partial class MainWindow : Window
         {
             current.Text = await TextDocument.ReadAsync(current.Path); current.EditBuffer = current.Text.Text; current.Editing = true;
             textBox = new TextBox { Text = current.EditBuffer, AcceptsReturn = true, AcceptsTab = true, FontSize = 16, FontFamily = new("Cascadia Mono, Microsoft YaHei UI"), VerticalScrollBarVisibility = ScrollBarVisibility.Auto, HorizontalScrollBarVisibility = ScrollBarVisibility.Auto, Padding = new(30) };
+            StyleTextView(textBox);
             var editingTab = current;
             textBox.TextChanged += (_, _) => { editingTab.Dirty = textBox.Text != editingTab.Text!.Text; Status.Text = "有未保存的修改"; };
             Viewer.Content = textBox; EditButton.Content = "返回阅读"; SaveButton.Visibility = Visibility.Visible; Status.Text = "CSV 文本编辑"; return;
@@ -302,16 +364,31 @@ public partial class MainWindow : Window
         else if (imageScroll?.Content is Image image) dialog.PrintVisual(image, current?.Name ?? "图片");
         await Task.CompletedTask;
     }
-    private void ShowRecent(object sender, RoutedEventArgs e) { RememberBuffer(); displayGeneration++; operation?.Cancel(); HidePanels(); RecentPanel.Visibility = Visibility.Visible; Toolbar.Visibility = Visibility.Collapsed; RecentList.ItemsSource = settings.Recent.ToArray(); Status.Text = "最近文件"; }
-    private async void OpenRecent(object sender, MouseButtonEventArgs e) { if (RecentList.SelectedItem is RecentFile item) await AddFileAsync(item.Path); }
-    private void ClearRecent(object sender, RoutedEventArgs e) { settings.Recent.Clear(); settings.ScrollPositions.Clear(); settings.Save(); RecentList.ItemsSource = settings.Recent.ToArray(); }
+    private void ShowRecent(object sender, RoutedEventArgs e) => ShowHome();
+    // 离开正在看的文档，回到首页或组件页；点标签可以回到文档
+    private void LeaveDocument()
+    {
+        RememberBuffer(); displayGeneration++; operation?.Cancel(); HidePanels(); Toolbar.Visibility = Visibility.Collapsed;
+        suppressTabChange = true; Tabs.SelectedItem = null; suppressTabChange = false; FormatLabel.Text = ""; Title = App.DisplayName;
+    }
+    private void ShowHome()
+    {
+        LeaveDocument(); Home.Visibility = Visibility.Visible;
+        var recent = settings.Recent.Select(file => new RecentItem(file)).ToArray();
+        RecentList.ItemsSource = recent; RecentHeader.Visibility = recent.Length > 0 ? Visibility.Visible : Visibility.Collapsed; Status.Text = "就绪";
+    }
+    private async void OpenRecent(object sender, RoutedEventArgs e) { if ((sender as FrameworkElement)?.DataContext is RecentItem item) await AddFileAsync(item.Path); }
+    private void ClearRecent(object sender, RoutedEventArgs e) { settings.Recent.Clear(); settings.ScrollPositions.Clear(); settings.Save(); ShowHome(); }
     private void ShowComponents(object sender, RoutedEventArgs e)
     {
-        RememberBuffer(); displayGeneration++; operation?.Cancel(); HidePanels(); ComponentPanel.Visibility = Visibility.Visible; Toolbar.Visibility = Visibility.Collapsed; ComponentList.Children.Clear();
+        LeaveDocument(); ComponentPanel.Visibility = Visibility.Visible; ComponentList.Children.Clear();
         foreach (var component in components.Definitions)
         {
-            var row = new Border { Background = Brushes.White, CornerRadius = new(10), Padding = new(20), Margin = new(0,0,0,14) };
-            var panel = new DockPanel(); var button = new Button { Content = components.GetInstalled(component.Id) != null ? "移除" : "安装", Tag = component };
+            var row = new Border { CornerRadius = new(10), BorderThickness = new(1), Padding = new(20,16,16,16), Margin = new(0,0,0,12) };
+            row.SetResourceReference(Border.BackgroundProperty, "Surface"); row.SetResourceReference(Border.BorderBrushProperty, "Border");
+            var installed = components.GetInstalled(component.Id) != null;
+            var panel = new DockPanel(); var button = new Button { Content = installed ? "移除" : "安装" };
+            if (!installed) button.SetResourceReference(StyleProperty, "PrimaryButton");
             button.Click += async (_, _) =>
             {
                 try
@@ -321,7 +398,7 @@ public partial class MainWindow : Window
                     else
                     {
                         operation?.Dispose(); operation = new(); SetMessage("正在安装组件", component.Name, true);
-                        await components.InstallAsync(component.Id, new Progress<(long Done, long Total)>(p => MessageDetail.Text = $"{Size(p.Done)} / {Size(p.Total)}"), operation.Token);
+                        await components.InstallAsync(component.Id, InstallProgress(), operation.Token);
                     }
                     ShowComponents(sender, e);
                 }
@@ -329,12 +406,13 @@ public partial class MainWindow : Window
                 catch (Exception error) { SetMessage("组件操作未完成", error.Message, false); }
             };
             DockPanel.SetDock(button, Dock.Right); panel.Children.Add(button);
-            var description = new StackPanel(); description.Children.Add(new TextBlock { Text = component.Name, FontSize = 18, FontWeight = FontWeights.SemiBold });
+            var description = new StackPanel(); description.Children.Add(new TextBlock { Text = component.Name, FontSize = 16, FontWeight = FontWeights.SemiBold });
             var installedSize = components.InstalledBytes(component.Id);
-            description.Children.Add(new TextBlock { Text = installedSize > 0 ? $"已安装 · {Size(installedSize)} · {component.Version}" : $"下载 {Size(component.DownloadBytes)} · {component.Version}", Margin = new(0,9,0,0) });
+            var detail = new TextBlock { Text = installedSize > 0 ? $"已安装 · {Size(installedSize)} · {component.Version}" : $"下载 {Size(component.DownloadBytes)} · {component.Version}", Margin = new(0,7,0,0) };
+            detail.SetResourceReference(TextBlock.ForegroundProperty, "TextMuted"); description.Children.Add(detail);
             panel.Children.Add(description); row.Child = panel; ComponentList.Children.Add(row);
         }
-        Status.Text = "组件装好后可离线使用";
+        Status.Text = "格式组件";
     }
     private void ClearCache(object sender, RoutedEventArgs e)
     {
@@ -351,20 +429,72 @@ public partial class MainWindow : Window
         if (!wasCurrent) return;
         operation?.Cancel(); current = null;
         if (documents.Count > 0) { suppressTabChange = true; Tabs.SelectedItem = documents[^1]; suppressTabChange = false; await DisplayAsync(documents[^1]); }
-        else { browser?.Dispose(); browser = null;nativePdf?.Dispose();nativePdf=null; Viewer.Content = null; textBox = null; frames.Clear(); HidePanels(); Welcome.Visibility = Visibility.Visible; Toolbar.Visibility = Visibility.Collapsed; Status.Text = "就绪"; FormatLabel.Text = ""; Title = "轻阅"; }
+        else { browser?.Dispose(); browser = null;nativePdf?.Dispose();nativePdf=null; Viewer.Content = null; textBox = null; frames.Clear(); ViewerTools.Content = null; ShowHome(); }
     }
     private void OnClosing(object? sender, CancelEventArgs e)
     {
         RememberBuffer(); if (documents.Any(t => !ConfirmClose(t))) { e.Cancel = true; return; }
+        if (WindowState == WindowState.Normal) { settings.WindowWidth = Width; settings.WindowHeight = Height; }
+        settings.Maximized = WindowState == WindowState.Maximized;
         operation?.Cancel(); browser?.Dispose();nativePdf?.Dispose(); settings.Save();
     }
     private void OnKeyDown(object sender, KeyEventArgs e)
     {
+        var viewing = current != null && Toolbar.Visibility == Visibility.Visible;
+        var searching = SearchPanel.Visibility == Visibility.Visible;
+        if (Keyboard.Modifiers is ModifierKeys.None or ModifierKeys.Shift)
+        {
+            if (e.Key == Key.F3 && searching) { Find(Keyboard.Modifiers == ModifierKeys.Shift); e.Handled = true; }
+            if (Keyboard.Modifiers == ModifierKeys.Shift) return;
+            if (e.Key == Key.Escape && searching) { ToggleSearch(sender, e); e.Handled = true; }
+            if (e.Key is Key.PageDown or Key.PageUp && viewing && nativePdf != null && Keyboard.FocusedElement is not TextBox) { _ = nativePdf.StepAsync(e.Key == Key.PageDown ? 1 : -1); e.Handled = true; }
+            return;
+        }
         if (Keyboard.Modifiers != ModifierKeys.Control) return;
         if (e.Key == Key.O) { OpenDialog(sender,e); e.Handled=true; }
-        if (e.Key == Key.F && SearchButton.IsEnabled && current != null) { ToggleSearch(sender,e); e.Handled=true; }
-        if (e.Key == Key.S && SaveButton.Visibility == Visibility.Visible) { SaveAs(sender,e); e.Handled=true; }
+        if (e.Key == Key.F && SearchButton.IsEnabled && viewing) { if (searching) { SearchInput.Focus(); SearchInput.SelectAll(); } else ToggleSearch(sender,e); e.Handled=true; }
+        if (e.Key == Key.S && SaveButton.Visibility == Visibility.Visible && viewing) { SaveAs(sender,e); e.Handled=true; }
+        if (e.Key == Key.P && PrintButton.IsEnabled && viewing) { Print(sender,e); e.Handled=true; }
         if (e.Key == Key.W && current != null) { var dummy = new Button { DataContext = current }; CloseTab(dummy,e); e.Handled=true; }
+        if (e.Key is Key.OemPlus or Key.Add && viewing) { SetZoom(zoom + .1); e.Handled=true; }
+        if (e.Key is Key.OemMinus or Key.Subtract && viewing) { SetZoom(zoom - .1); e.Handled=true; }
+        if (e.Key is Key.D0 or Key.NumPad0 && viewing) { SetZoom(1); e.Handled=true; }
+        if (e.Key == Key.Tab && documents.Count > 1) { Tabs.SelectedIndex = (Tabs.SelectedIndex + 1) % documents.Count; e.Handled=true; }
     }
+    private void MinimizeWindow(object sender, RoutedEventArgs e) => SystemCommands.MinimizeWindow(this);
+    private void MaximizeWindow(object sender, RoutedEventArgs e) { if (WindowState == WindowState.Maximized) SystemCommands.RestoreWindow(this); else SystemCommands.MaximizeWindow(this); }
+    private void CloseWindow(object sender, RoutedEventArgs e) => Close();
+    private void OnStateChanged(object? sender, EventArgs e)
+    {
+        var maximized = WindowState == WindowState.Maximized;
+        // 最大化时窗口边缘会伸出屏幕一圈，这里把内容收回来
+        var edge = SystemParameters.WindowResizeBorderThickness;
+        Root.Padding = maximized ? new(edge.Left + 4, edge.Top + 4, edge.Right + 4, edge.Bottom + 4) : new(0);
+        MaximizeButton.Tag = maximized ? "" : ""; MaximizeButton.ToolTip = maximized ? "还原" : "最大化";
+    }
+    private void CycleTheme(object sender, RoutedEventArgs e)
+    {
+        settings.Theme = settings.Theme switch { "system" => "light", "light" => "dark", _ => "system" };
+        settings.Save(); App.ApplyTheme(settings.Theme); UpdateThemeButton();
+    }
+    private void UpdateThemeButton() => (ThemeButton.Tag, ThemeButton.ToolTip) = settings.Theme switch
+    {
+        "light" => ("", "外观：浅色（点击切换）"),
+        "dark" => ("", "外观：深色（点击切换）"),
+        _ => ("", "外观：跟随系统（点击切换）")
+    };
+    private void OnThemeChanged() { browser?.SetTheme(App.IsDark); ApplyWindowTheme(); }
+    private void ApplyWindowTheme()
+    {
+        var handle = new System.Windows.Interop.WindowInteropHelper(this).Handle; if (handle == IntPtr.Zero) return;
+        var dark = App.IsDark ? 1 : 0; _ = DwmSetWindowAttribute(handle, 20, ref dark, sizeof(int));
+    }
+    private IntPtr WindowMessage(IntPtr window, int message, IntPtr wParam, IntPtr lParam, ref bool handled)
+    {
+        // Windows 的深浅色设置变化时会广播这条消息
+        if (message == 0x001A && settings.Theme == "system" && lParam != IntPtr.Zero && Marshal.PtrToStringUni(lParam) == "ImmersiveColorSet") App.ApplyTheme("system");
+        return IntPtr.Zero;
+    }
+    [DllImport("dwmapi.dll")] private static extern int DwmSetWindowAttribute(IntPtr window, int attribute, ref int value, int size);
     private static string Size(long bytes) => bytes < 1024*1024 ? $"{bytes/1024d:F0} KiB" : $"{bytes/(1024d*1024):F1} MiB";
 }

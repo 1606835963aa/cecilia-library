@@ -2,9 +2,9 @@
     type Address={r:number;c:number};type Range={s:Address;e:Address};type SheetCell={t?:string;v?:unknown;w?:string;f?:string};type Sheet={ [key:string]:unknown; "!ref"?:string; "!merges"?:Range[] };
     type Book={SheetNames:string[];Sheets:Record<string,Sheet>};type API={read(data:ArrayBuffer,options:unknown):Book;utils:{decode_range(value:string):Range;encode_cell(a:Address):string;decode_cell(value:string):Address;format_cell(c:SheetCell):string}};
     const context=globalThis as unknown as {importScripts(...urls:string[]):void;XLSX:API;onmessage:(event:MessageEvent)=>void;postMessage(message:unknown):void};
-    context.importScripts("/component/sheet/xlsx.js");const api=context.XLSX;let book:Book,searchCursor=-1,lastQuery="",lastSheet=-1;
+    context.importScripts("/component/sheet/xlsx.js");const api=context.XLSX;let book:Book,searchCursor=-1,lastQuery="";
     function value(cell:SheetCell|undefined):string {if(!cell)return "";if(cell.v===undefined||cell.v===null)return cell.f?"="+cell.f:"";return cell.w??api.utils.format_cell(cell);}
-    function page(index:number,start:number,firstColumn:number,selected?:Address,found?:boolean) {
+    function page(index:number,start:number,firstColumn:number,selected?:Address,found?:boolean,foundIndex=0,foundCount=0) {
         const sheet=book.Sheets[book.SheetNames[index]];if(!sheet)throw new Error("工作表不存在");
         const range=sheet["!ref"]?api.utils.decode_range(sheet["!ref"]):{s:{r:0,c:0},e:{r:-1,c:-1}};const totalRows=range.e.r+1,totalColumns=range.e.c+1;
         start=Math.max(0,Math.min(start,Math.max(0,totalRows-1)));firstColumn=Math.max(0,Math.min(firstColumn,Math.max(0,totalColumns-1)));
@@ -20,7 +20,7 @@
             const formulaOnly=!!cell?.f&&cell.v===undefined;if(formulaOnly)formulaMissing++;
             cells.push({row:r,col:c,value:value(cell),numeric:cell?.t==="n",formulaOnly,spanRows:merge?.spanRows,spanCols:merge?.spanCols});
         }
-        context.postMessage({type:"page",names:book.SheetNames,sheet:index,start,rows,columns,totalRows,totalColumns,firstColumn,cells,formulaMissing,found,selected:selected?{row:selected.r,col:selected.c}:undefined});
+        context.postMessage({type:"page",names:book.SheetNames,sheet:index,start,rows,columns,totalRows,totalColumns,firstColumn,cells,formulaMissing,found,foundIndex,foundCount,selected:selected?{row:selected.r,col:selected.c}:undefined});
     }
     context.onmessage=async(event:MessageEvent)=>{
         try{
@@ -32,14 +32,17 @@
             }else if(message.type==="page")page(message.sheet,message.start,message.firstColumn);
             else if(message.type==="find"){
                 const query=String(message.query).toLocaleLowerCase(),index=Number(message.sheet);const sheet=book.Sheets[book.SheetNames[index]];
-                if(query!==lastQuery||index!==lastSheet){searchCursor=-1;lastQuery=query;lastSheet=index;}
+                if(query!==lastQuery){searchCursor=-1;lastQuery=query;}
                 const matches:{address:Address;sheet:number}[]=[];
-                for(let offset=0;offset<book.SheetNames.length;offset++){
-                    const sheetIndex=(index+offset)%book.SheetNames.length,target=book.Sheets[book.SheetNames[sheetIndex]];
+                for(let sheetIndex=0;sheetIndex<book.SheetNames.length;sheetIndex++){
+                    const target=book.Sheets[book.SheetNames[sheetIndex]];
                     const addresses=Object.keys(target).filter(key=>!key.startsWith("!")&&value(target[key] as SheetCell).toLocaleLowerCase().includes(query)).map(key=>api.utils.decode_cell(key)).sort((a,b)=>a.r-b.r||a.c-b.c);
                     matches.push(...addresses.map(address=>({address,sheet:sheetIndex})));
                 }
-                if(matches.length){searchCursor=(searchCursor+1)%matches.length;const match=matches[searchCursor];page(match.sheet,Math.floor(match.address.r/200)*200,Math.floor(match.address.c/50)*50,match.address,true);}else page(index,0,0,undefined,false);
+                if(matches.length){
+                    searchCursor=searchCursor<0?Math.max(0,matches.findIndex(match=>match.sheet>=index)):(searchCursor+(message.backward?-1:1)+matches.length)%matches.length;
+                    const match=matches[searchCursor];page(match.sheet,Math.floor(match.address.r/200)*200,Math.floor(match.address.c/50)*50,match.address,true,searchCursor+1,matches.length);
+                }else page(index,0,0,undefined,false);
             }
         }catch(error){context.postMessage({error:error instanceof Error?error.message:"无法读取表格"});}
     };

@@ -4,7 +4,24 @@ using System.Windows;
 namespace LightReader.App;
 public partial class App : Application
 {
+    public const string DisplayName = "塞西莉亚的图书馆";
     public static string DataRoot { get; private set; } = "";
+    public static bool IsDark { get; private set; }
+    public static event Action? ThemeChanged;
+    // mode：system 跟随 Windows 的应用颜色设置，light 浅色，dark 深色
+    public static void ApplyTheme(string mode)
+    {
+        var dark = mode == "dark" || (mode != "light" && SystemPrefersDark());
+        if (dark == IsDark) return;
+        IsDark = dark;
+        Current.Resources.MergedDictionaries[0] = new ResourceDictionary { Source = new Uri($"pack://application:,,,/Themes/{(dark ? "Dark" : "Light")}.xaml") };
+        ThemeChanged?.Invoke();
+    }
+    private static bool SystemPrefersDark()
+    {
+        try { return Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "AppsUseLightTheme", 1) is 0; }
+        catch (Exception e) when (e is System.Security.SecurityException or IOException) { return false; }
+    }
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);

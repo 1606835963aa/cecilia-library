@@ -15,8 +15,19 @@ public sealed class BrowserReader : IDisposable
     private string? document;
     internal string? SourcePath=>document;
     private bool initialized;
+    private bool dark;
+    private bool sheetDocument;
+    private string findTerm = "";
     public event Action<string>? StatusChanged;
+    // 当前第几个、共几个；没有匹配时都是 0
+    public event Action<int,int>? FindChanged;
     public BrowserReader(ComponentStore store) => components = store;
+    public void SetTheme(bool useDark)
+    {
+        dark = useDark;
+        View.DefaultBackgroundColor = dark ? System.Drawing.Color.FromArgb(0x14, 0x13, 0x12) : System.Drawing.Color.FromArgb(0xE9, 0xE6, 0xE0);
+        if (View.CoreWebView2 != null) View.CoreWebView2.Profile.PreferredColorScheme = dark ? CoreWebView2PreferredColorScheme.Dark : CoreWebView2PreferredColorScheme.Light;
+    }
     public async Task InitializeAsync()
     {
         if (initialized) { await ready.Task; return; }
@@ -25,6 +36,13 @@ public sealed class BrowserReader : IDisposable
         var environment = await CoreWebView2Environment.CreateAsync(null, Path.Combine(App.DataRoot, "webview"), options);
         await View.EnsureCoreWebView2Async(environment);
         var core = View.CoreWebView2;
+        SetTheme(dark);
+        try
+        {
+            core.Find.MatchCountChanged += (_, _) => ReportFind();
+            core.Find.ActiveMatchIndexChanged += (_, _) => ReportFind();
+        }
+        catch (Exception e) when (e is NotImplementedException or InvalidCastException or System.Runtime.InteropServices.COMException) { }
         core.Settings.AreHostObjectsAllowed = false;
         core.Settings.AreDefaultScriptDialogsEnabled = false;
         core.Settings.AreDevToolsEnabled = false;
@@ -50,6 +68,11 @@ public sealed class BrowserReader : IDisposable
                 if (type == "rendered") render?.TrySetResult();
                 if (type == "error") render?.TrySetException(new InvalidDataException(data.RootElement.GetProperty("message").GetString()));
                 if (type == "status") StatusChanged?.Invoke(data.RootElement.GetProperty("message").GetString() ?? "");
+                if (type == "find")
+                {
+                    var parts = (data.RootElement.GetProperty("message").GetString() ?? "").Split('/');
+                    if (parts.Length == 2 && int.TryParse(parts[0], out var index) && int.TryParse(parts[1], out var total)) FindChanged?.Invoke(index, total);
+                }
             }
             catch (JsonException) { }
             catch (KeyNotFoundException) { }
@@ -87,6 +110,7 @@ public sealed class BrowserReader : IDisposable
     {
         await InitializeAsync(); token.ThrowIfCancellationRequested();
         document = source; currentId = Guid.NewGuid().ToString("N");
+        StopFind(); sheetDocument = info.Kind == DocumentKind.Spreadsheet;
         if (info.Kind == DocumentKind.Pdf)
         {
             var loaded = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
@@ -112,10 +136,39 @@ public sealed class BrowserReader : IDisposable
         View.CoreWebView2.PostWebMessageAsJson(JsonSerializer.Serialize(new { type = "open", id = currentId, kind = archive==null?info.Kind.ToString().ToLowerInvariant():"html", url = "/document/" + currentId + "/source", text, extension = info.Extension, assets=archive?.Assets,baseUrl=archive?.BaseUrl }));
         await render.Task.WaitAsync(TimeSpan.FromSeconds(90), token);
     }
-    public void Find(string query)
+    public void Find(string query, bool backward = false) => _ = FindAsync(query, backward);
+    private async Task FindAsync(string query, bool backward)
     {
-        if (!View.CoreWebView2.Source.StartsWith("https://reader.local/index.html", StringComparison.Ordinal)) return;
-        View.CoreWebView2.PostWebMessageAsJson(JsonSerializer.Serialize(new { type = "find", query }));
+        var core = View.CoreWebView2;
+        if (core == null || !core.Source.StartsWith("https://reader.local/index.html", StringComparison.Ordinal)) return;
+        // 表格的数据不全在页面上，由表格组件自己跨工作表查找
+        if (!sheetDocument)
+        {
+            try
+            {
+                var find = core.Find;
+                if (query == findTerm) { if (backward) find.FindPrevious(); else find.FindNext(); return; }
+                var options = core.Environment.CreateFindOptions();
+                options.FindTerm = query; options.SuppressDefaultFindDialog = true; options.ShouldHighlightAllMatches = true;
+                findTerm = query;
+                await find.StartAsync(options); ReportFind(); return;
+            }
+            catch (Exception e) when (e is NotImplementedException or InvalidCastException or System.Runtime.InteropServices.COMException) { findTerm = ""; }
+        }
+        core.PostWebMessageAsJson(JsonSerializer.Serialize(new { type = "find", query, backward }));
+    }
+    private void ReportFind()
+    {
+        if (findTerm.Length == 0) return;
+        var find = View.CoreWebView2.Find;
+        FindChanged?.Invoke(Math.Max(0, find.ActiveMatchIndex), find.MatchCount);
+    }
+    public void StopFind()
+    {
+        if (findTerm.Length == 0) return;
+        findTerm = "";
+        try { View.CoreWebView2?.Find.Stop(); }
+        catch (Exception e) when (e is NotImplementedException or InvalidCastException or System.Runtime.InteropServices.COMException or InvalidOperationException or ObjectDisposedException) { }
     }
     public Task<string> EvaluateAsync(string expression) => View.CoreWebView2.ExecuteScriptAsync(expression);
     public void Dispose() { render?.TrySetCanceled(); View.Dispose(); }
