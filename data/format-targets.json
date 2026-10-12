@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "observedOn": "2026-10-12",
-  "productGoal": "覆盖 WPS 宣传的 47 种格式，以本地查看为主，保留少量基础编辑",
+  "productGoal": "本地查看为主，覆盖 WPS 官网公开清单的 46 个后缀，加上用户确认补入的 ODT，共 47 项",
   "targetCount": 47,
   "confirmedListedExtensionCount": 46,
   "distributionDecision": {
@@ -21,14 +21,6 @@
       "listedCount": 46
     }
   ],
-  "unresolvedTarget": {
-    "id": "F47",
-    "extension": null,
-    "definitionStatus": "NEEDS_SOURCE",
-    "implementationStatus": "NOT_IMPLEMENTED",
-    "verificationStatus": "NOT_RUN",
-    "notes": "官方宣传数与公开后缀清单不一致，尚无证据确认第 47 项；不得自行增加后缀冒充官方名单。"
-  },
   "formats": [
     {
       "id": "F01",
@@ -64,9 +56,16 @@
       "target": "view",
       "proposedModule": "office-compat",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "旧文字样本.doc",
+          "sha256": "7DC7C908D5A450696970289DB97AB32DEB6021EA088F750BF7B447E03784BA16",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -77,9 +76,16 @@
       "target": "view",
       "proposedModule": "word-preview",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "阅读样本.docx",
+          "sha256": "99BFD0FEF7E514D1534746C203E530C2449786BE25BF2CC9BDBC7B9D9BCFB670",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -90,9 +96,16 @@
       "target": "view",
       "proposedModule": "word-preview",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "静态宏类型.docm",
+          "sha256": "E795CF17A0D44ACA7041B19D17DBAA01A5A3A63A80E93789302782944D486EF2",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": "计划查看静态内容，不执行宏；编辑保存需分别核实宏及关联内容的保留能力。"
     },
     {
@@ -103,9 +116,16 @@
       "target": "view",
       "proposedModule": "office-compat",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "旧文字模板.dot",
+          "sha256": "12DFDCAFD11B10895457720D640A4343B09EEFD075AFD85A3D70416E5BC6CF38",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -116,9 +136,16 @@
       "target": "view",
       "proposedModule": "word-preview",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "模板样本.dotx",
+          "sha256": "553D9F89C832A4B6705466FCB0FE5DB1EF5F2A4212AE6561D45D64C83B1E8CDC",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -129,9 +156,16 @@
       "target": "view",
       "proposedModule": "word-preview",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "静态宏模板.dotm",
+          "sha256": "421603ED5B5413F8C6BBA009E565B9A3E20320025F5B3FAB81C49A7D7122FD9D",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": "计划查看静态内容，不执行宏；编辑保存需分别核实宏及关联内容的保留能力。"
     },
     {
@@ -140,11 +174,18 @@
       "family": "writer",
       "label": "网页归档",
       "target": "view",
-      "proposedModule": "office-compat",
+      "proposedModule": "core-web-archive",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "归档样本.mht",
+          "sha256": "06854A6F6384CAD8DE4174B100E636C4AB616CDB9339E2B5F198607536A7D87F",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -153,11 +194,18 @@
       "family": "writer",
       "label": "网页归档",
       "target": "view",
-      "proposedModule": "office-compat",
+      "proposedModule": "core-web-archive",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "归档样本.mhtml",
+          "sha256": "06854A6F6384CAD8DE4174B100E636C4AB616CDB9339E2B5F198607536A7D87F",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -168,9 +216,16 @@
       "target": "view",
       "proposedModule": "core",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "网页样本.htm",
+          "sha256": "CE8C7D421E07063731115FD5AA34D6D7F3D97F0CAAAE77A787332234D3AE2D2E",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -181,9 +236,16 @@
       "target": "view",
       "proposedModule": "core",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "网页样本.html",
+          "sha256": "CE8C7D421E07063731115FD5AA34D6D7F3D97F0CAAAE77A787332234D3AE2D2E",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -194,9 +256,16 @@
       "target": "view",
       "proposedModule": "core",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "富文本样本.rtf",
+          "sha256": "8176C74E2B7AC153AC50423EE5618846C870541459711AC0575B3BDF42A1C347",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -207,9 +276,16 @@
       "target": "view",
       "proposedModule": "core",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "文本样本.txt",
+          "sha256": "1320369935E39837E704E416365BB0CEB8324508FF5352ED60910FF60D0510F0",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -220,9 +296,22 @@
       "target": "view",
       "proposedModule": "core",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "通用样本.xml",
+          "sha256": "9837B3E6E9A8C0CF10BBB7AE38B31C6F4FE6D89D734DC9FBCA35CF8DE62B9BA4",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        },
+        {
+          "fixture": "办公表格.xml",
+          "sha256": "3F2189254A340CF3F15F75E1BC8B70AE038C90A9AB3555E56B153A957D517D4C",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": "必须按内部结构区分普通 XML、Word XML 和 SpreadsheetML；纯源码显示不等于办公文档排版查看。"
     },
     {
@@ -259,9 +348,16 @@
       "target": "view",
       "proposedModule": "spreadsheet-reader",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "旧表格样本.xls",
+          "sha256": "0DAA050480007390937E61F6264651061763F955A8798B8FFBAC230A1B198770",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -272,9 +368,16 @@
       "target": "view",
       "proposedModule": "spreadsheet-reader",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "旧表格模板.xlt",
+          "sha256": "B1F27EA336FED93A4CC54FE88552E6CB86429B1342910A98DC8804DBC51C9C1A",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -285,9 +388,16 @@
       "target": "view",
       "proposedModule": "spreadsheet-reader",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "数据样本.xlsx",
+          "sha256": "53FC109EC08134827A5D86F04138380A8647DAD5B5176AF65AAB23F6ACF43AA2",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -298,9 +408,16 @@
       "target": "view",
       "proposedModule": "spreadsheet-reader",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "静态宏表格.xlsm",
+          "sha256": "904321B1DCE0AF20A38D8E43AE9861CFE02864C787396161D7A2B0457C9C66E4",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": "计划查看静态内容，不执行宏；编辑保存需分别核实宏及关联内容的保留能力。"
     },
     {
@@ -311,9 +428,16 @@
       "target": "view",
       "proposedModule": "spreadsheet-reader",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "旧表格样本.dbf",
+          "sha256": "6BC7E95EAC908E65D34A4323ECABB9971279BE90EFA9FEAAEBEBFC3D3B364A69",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": "单独定义配套 memo 文件的读取范围，不能静默丢失长文本。"
     },
     {
@@ -324,9 +448,16 @@
       "target": "view",
       "proposedModule": "spreadsheet-reader",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "数据样本.csv",
+          "sha256": "9BF972D348232C04EB39CE35FAE8EDC948F8FC309A0548851507E4B144428304",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -337,9 +468,16 @@
       "target": "view",
       "proposedModule": "spreadsheet-reader",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "旧表格样本.prn",
+          "sha256": "C4928747228C29FC58E4EDB59B290EB3C89DBE691C2DB05657FB880CBE3525E5",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": "依据固定宽度和内容识别，不能把全部打印机输出都当作表格。"
     },
     {
@@ -350,9 +488,16 @@
       "target": "view",
       "proposedModule": "spreadsheet-reader",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "旧表格样本.dif",
+          "sha256": "6BE4D9EF5917836552BAD774F3DC57F879CFC058DA22BA96861DF289572DD9D0",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -363,9 +508,16 @@
       "target": "view",
       "proposedModule": "spreadsheet-reader",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "表格模板.xltx",
+          "sha256": "CB16A4956DDB598254900811D618CF96278F2EC3677328B30BADDEC1D9DDB49F",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -376,9 +528,16 @@
       "target": "view",
       "proposedModule": "spreadsheet-reader",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "静态宏表格模板.xltm",
+          "sha256": "282E98C3CDD83D0155677EE73E88FAD469E942385977D5B79FD26C7E8758DEA9",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": "计划查看静态内容，不执行宏；编辑保存需分别核实宏及关联内容的保留能力。"
     },
     {
@@ -387,12 +546,21 @@
       "family": "spreadsheet",
       "label": "旧版 Excel 插件",
       "target": "view",
-      "proposedModule": "spreadsheet-reader",
-      "definitionStatus": "NEEDS_DEFINITION",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
-      "notes": "插件不一定包含可显示工作表；查看范围需要定义，不能以执行插件作为查看。"
+      "proposedModule": "spreadsheet",
+      "definitionStatus": "DEFINED",
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "加载项数据.xla",
+          "sha256": "116651A487EB83087CAF97B36A5A77AB1C8B3BC44EE144BD41D57C09AE573612",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
+      "notes": "核对插件声明、三张隐藏工作表、中文和长编号；合成样本无 VBA，真实宏加载项继续扩充。",
+      "viewScope": "加载项内部静态工作表数据，包括隐藏工作表；不加载插件功能，不执行 VBA 或 Excel 4.0 宏",
+      "definitionSource": "https://support.microsoft.com/en-us/excel/file-formats-supported-in-excel-for-mac"
     },
     {
       "id": "F29",
@@ -400,12 +568,21 @@
       "family": "spreadsheet",
       "label": "Excel 插件",
       "target": "view",
-      "proposedModule": "spreadsheet-reader",
-      "definitionStatus": "NEEDS_DEFINITION",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
-      "notes": "插件不一定包含可显示工作表；查看范围需要定义，不能以执行插件作为查看。"
+      "proposedModule": "spreadsheet",
+      "definitionStatus": "DEFINED",
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "加载项数据.xlam",
+          "sha256": "E201809E26BAFAC41D097433A2B3EBD1B07AAC0FB490EA7A186E8EAE5230A21B",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
+      "notes": "核对插件声明、三张隐藏工作表、中文和长编号；合成样本无 VBA，真实宏加载项继续扩充。",
+      "viewScope": "加载项内部静态工作表数据，包括隐藏工作表；不加载插件功能，不执行 VBA 或 Excel 4.0 宏",
+      "definitionSource": "https://support.microsoft.com/en-us/excel/file-formats-supported-in-excel-for-mac"
     },
     {
       "id": "F30",
@@ -441,9 +618,16 @@
       "target": "view",
       "proposedModule": "office-compat",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "旧演示样本.ppt",
+          "sha256": "B69400612D7D3425AC365EB0D2873194D2365038B038133D669E055951A9A459",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -454,9 +638,16 @@
       "target": "view",
       "proposedModule": "office-compat",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "演示样本.pptx",
+          "sha256": "A07D1C4FF78DEFF495FE7CFA04AF52BFB4FA35BC6B57116AAAC2553E4F78E3F3",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -467,9 +658,16 @@
       "target": "view",
       "proposedModule": "office-compat",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "演示变体.pptm",
+          "sha256": "BFF3B9C4D79EB08837142EDCBF13E6DC699BB47D83E850A925146B2C6AA7FFCB",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": "计划查看静态内容，不执行宏；编辑保存需分别核实宏及关联内容的保留能力。"
     },
     {
@@ -480,9 +678,16 @@
       "target": "view",
       "proposedModule": "office-compat",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "旧演示模板.pot",
+          "sha256": "B69400612D7D3425AC365EB0D2873194D2365038B038133D669E055951A9A459",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -493,9 +698,16 @@
       "target": "view",
       "proposedModule": "office-compat",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "演示变体.potx",
+          "sha256": "28C151EF8B18C85C5C6170399D2E446C27806159BE597218D4A3350EE401AD0B",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -506,9 +718,16 @@
       "target": "view",
       "proposedModule": "office-compat",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "演示变体.potm",
+          "sha256": "FD9D2E082A12847D74B9C5B270937E75B299F3A958F2CB06D44EEE174F05F36E",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": "计划查看静态内容，不执行宏；编辑保存需分别核实宏及关联内容的保留能力。"
     },
     {
@@ -519,9 +738,16 @@
       "target": "view",
       "proposedModule": "office-compat",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "旧演示播放.pps",
+          "sha256": "B69400612D7D3425AC365EB0D2873194D2365038B038133D669E055951A9A459",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -532,9 +758,16 @@
       "target": "view",
       "proposedModule": "office-compat",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "演示变体.ppsx",
+          "sha256": "7A6B4616DAD8971063DA07B94B38B694D5703ACC493981B15585B818250B6CCB",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -545,9 +778,16 @@
       "target": "view",
       "proposedModule": "office-compat",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "演示变体.ppsm",
+          "sha256": "99BFF9247A9A8F0F83A62D07C0AF8F15E72D600AE1BB3500E62388CFE65C2153",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": "计划查看静态内容，不执行宏；编辑保存需分别核实宏及关联内容的保留能力。"
     },
     {
@@ -558,9 +798,16 @@
       "target": "view",
       "proposedModule": "core",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "图片样本.jpg",
+          "sha256": "B54F03191019C204ED0E19CFF1CC3C34B8D42A9F63A391F30405F772174E48F3",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -571,9 +818,16 @@
       "target": "view",
       "proposedModule": "core",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "图片样本.png",
+          "sha256": "5B1BB9F6B5A382851C13CC52707B90381664CD22E7E9B702EBE38D9EAD3C629C",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -584,9 +838,16 @@
       "target": "view",
       "proposedModule": "core",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "多页样本.tif",
+          "sha256": "5FB30DC227605268F94332D43E7F8E49F6A0E9A2214B63E370E07ED0C50218BC",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": "必须覆盖多页 TIFF，不能只显示第一页。"
     },
     {
@@ -597,9 +858,16 @@
       "target": "view",
       "proposedModule": "core",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "图片样本.bmp",
+          "sha256": "57DF6890B14BA094B8264BA88A5572D148101AB6487CC51D0B6DC41A8AE76B6D",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": ""
     },
     {
@@ -610,8 +878,8 @@
       "target": "view",
       "proposedModule": "office-compat",
       "definitionStatus": "NEEDS_DEFINITION",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
+      "implementationStatus": "NOT_IMPLEMENTED",
+      "verificationStatus": "NEEDS_DEFINITION",
       "evidence": [],
       "notes": "必须确认格式含义及真实样本；不得直接把视频或代码文本当作已支持演示文稿。"
     },
@@ -623,12 +891,59 @@
       "target": "view",
       "proposedModule": "core",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "扫描样本.pdf",
+          "sha256": "973F773C6E336CB0CE04480421BA18E7B77AB6D4EA611600C3291876A0AFBFD9",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        },
+        {
+          "fixture": "分页样本.pdf",
+          "sha256": "AB47BAFC921C5DC6B627A6760F4D48E6918884213181D350DDFC7149E0BF0FB2",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
       "notes": "文字型和扫描型 PDF 均须显示；扫描件全文搜索涉及另外的 OCR 组件。"
+    },
+    {
+      "id": "F47",
+      "extension": ".odt",
+      "family": "writer",
+      "label": "开放文档文字格式",
+      "target": "view",
+      "proposedModule": "office-compat",
+      "definitionStatus": "DEFINED",
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "开放文档.odt",
+          "sha256": "E79D62437C715C477FCD8084A41BFF7ABCA4A7E106563566178E88C5A7468E76",
+          "report": "reports/gui-checks.json",
+          "scope": "synthetic fixture"
+        }
+      ],
+      "notes": "用户确认的补充目标，使用 ODT 类型声明和正文校验，经办公组件分页显示；不作为 WPS 官网遗漏项。",
+      "source": "user-confirmed-supplement"
     }
   ],
-  "lastValidationAt": "2026-10-12T17:34:22.4102193+08:00",
-  "sampleVerifiedExtensionCount": 37
+  "lastValidationAt": "2026-10-12T18:14:50.7067446+08:00",
+  "sampleVerifiedExtensionCount": 40,
+  "officialCountDiscrepancy": {
+    "claimedCount": 47,
+    "listedExtensionCount": 46,
+    "status": "SOURCE_DISCREPANCY_RECORDED",
+    "notes": "官网仍未解释其宣传数与后缀清单差额；ODT 是用户确认的补充范围，不冒充 WPS 官网遗漏项。"
+  },
+  "supplementalTargetDecision": {
+    "id": "F47",
+    "extension": ".odt",
+    "confirmedByUser": true,
+    "confirmedOn": "2026-10-12",
+    "reason": "用户选择补入常见的开放文档文字格式"
+  }
 }

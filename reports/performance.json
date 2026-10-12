@@ -185,8 +185,8 @@
     "Model": "Default string",
     "TotalPhysicalMemory": 34164101120
   },
-  "mainFolderBytes": 28965713.0,
-  "zipBytes": 7773255,
+  "mainFolderBytes": 28975373.0,
+  "zipBytes": 7781197,
   "measuredAt": "2026-10-12T17:18:55.4754337+08:00",
   "excludes": [
     "shared WebView2 runtime",

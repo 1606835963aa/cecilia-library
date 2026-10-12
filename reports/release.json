@@ -1,14 +1,15 @@
 {
-  "os": "Microsoft Windows NT 10.0.26200.0",
-  "version": "0.1.0",
-  "packageBytes": 7773255,
-  "coreChecks": "19 PASS",
   "goal47": "NOT_COMPLETE",
-  "formatEvidence": "37 extensions / 39 synthetic fixtures",
-  "packageSha256": "8583EFFCDEB097A513DE78E7EE26BE388991E65B591F15A1F56CACC5131D1AFB",
-  "guiChecks": "48 PASS",
-  "builtOn": "2026-10-12T17:43:22.9848136+08:00",
-  "applicationSha256": "878FE36178618617B04DFB19D4829F0FA8D0B05502AA630CE55975B104F5CFB7",
+  "os": "Microsoft Windows NT 10.0.26200.0",
+  "packageBytes": 7781197,
+  "targetDefinition": "46 WPS listed suffixes + user-confirmed ODT",
+  "coreChecks": "22 PASS",
   "package": "dist/LightReader-0.1.0-win-x64.zip",
-  "independentChecks": "16 PASS"
+  "packageSha256": "1D2F4F82DD2CE53B327A83E47DA5975B352AA5A3FF223EE31393B7CBEFFD8E33",
+  "applicationSha256": "CCC0FADE5F3DA919A57FA91EC8C21490B790A50B98CF7D05EA57A567BA1E17BD",
+  "version": "0.1.0",
+  "guiChecks": "51 PASS",
+  "builtOn": "2026-10-12T18:17:09.2903881+08:00",
+  "independentChecks": "17 PASS",
+  "formatEvidence": "40 extensions / 42 synthetic fixtures"
 }

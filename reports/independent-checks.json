@@ -73,6 +73,14 @@
       "source": "reports\\reference-pdfs\\办公表格.xml.pdf"
     },
     {
+      "file": "开放文档.odt",
+      "status": "PASS",
+      "pages": 2,
+      "expectedText": "小熊读书",
+      "expectedPresent": true,
+      "source": "reports\\reference-pdfs\\开放文档.odt.pdf"
+    },
+    {
       "file": "演示变体.pptm",
       "status": "PASS",
       "pages": 2,

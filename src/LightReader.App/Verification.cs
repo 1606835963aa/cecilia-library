@@ -41,12 +41,15 @@ public partial class MainWindow
                 ("数据样本.csv","document.body.innerText.includes('001234567890123456') && document.body.innerText.includes('00002') && document.body.innerText.includes('有逗号,有引号')"),
                 ("旧表格样本.xls","document.body.innerText.includes('001234567890123456') && document.querySelectorAll('option').length === 3"),
                 ("旧表格模板.xlt","document.body.innerText.includes('001234567890123456') && document.querySelectorAll('option').length === 3"),
+                ("加载项数据.xla","document.body.innerText.includes('加载项数据查看') && document.body.innerText.includes('001234567890123456') && document.body.innerText.includes('2026-10-12') && document.body.innerText.includes('1,255.25') && document.querySelectorAll('option').length === 3"),
+                ("加载项数据.xlam","document.body.innerText.includes('加载项数据查看') && document.body.innerText.includes('001234567890123456') && document.body.innerText.includes('2026-10-12') && document.body.innerText.includes('1,255.25') && document.querySelectorAll('option').length === 3"),
                 ("旧表格样本.dbf","document.querySelector('table') !== null"),("旧表格样本.prn","document.querySelector('table') !== null"),("旧表格样本.dif","document.querySelector('table') !== null"),
                 ("网页样本.html","document.body.innerText.includes('中文正文') && !window.badScriptRan && !document.querySelector('[onerror]') && !document.querySelector('a[href]') && document.querySelector('#document script') === null"),
                 ("网页样本.htm","document.body.innerText.includes('中文正文')"),
                 ("通用样本.xml","document.body.innerText.includes('中文 XML 检查')"),
                 ("扫描样本.pdf",null), ("分页样本.pdf",null),
                 ("旧文字样本.doc",null), ("旧文字模板.dot",null), ("演示样本.pptx",null), ("旧演示样本.ppt",null),("旧演示模板.pot",null),("旧演示播放.pps",null), ("办公表格.xml",null),
+                ("开放文档.odt",null),
                 ("演示变体.pptm",null),("演示变体.potx",null),("演示变体.potm",null),("演示变体.ppsx",null),("演示变体.ppsm",null),("归档样本.mht",null),("归档样本.mhtml",null)
             };
             foreach(var check in checks)

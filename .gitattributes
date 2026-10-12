@@ -3,6 +3,9 @@
 *.cmd text eol=crlf
 *.cs text eol=lf
 *.ts text eol=lf
+*.js text eol=lf
+*.cjs text eol=lf
+*.py text eol=lf
 *.md text eol=lf
 *.json text eol=lf
 *.png binary
@@ -32,3 +35,6 @@
 *.ppsx binary
 *.ppsm binary
 *.dbf binary
+*.odt binary
+*.xla binary
+*.xlam binary

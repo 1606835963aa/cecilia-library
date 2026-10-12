@@ -50,7 +50,7 @@ public partial class MainWindow : Window
     }
     private async void OpenDialog(object sender, RoutedEventArgs e)
     {
-        var dialog = new OpenFileDialog { Title = "打开文档", Multiselect = true, Filter = "文档|*.doc;*.docx;*.docm;*.dot;*.dotx;*.dotm;*.wps;*.wpt;*.xls;*.xlsx;*.xlsm;*.xlt;*.xltx;*.xltm;*.et;*.ett;*.csv;*.dbf;*.prn;*.dif;*.ppt;*.pptx;*.pptm;*.pot;*.potx;*.potm;*.pps;*.ppsx;*.ppsm;*.dps;*.dpt;*.pdf;*.txt;*.rtf;*.htm;*.html;*.mht;*.mhtml;*.xml;*.jpg;*.png;*.tif;*.bmp;*.xla;*.xlam;*.ts|所有文件|*.*" };
+        var dialog = new OpenFileDialog { Title = "打开文档", Multiselect = true, Filter = "文档|*.doc;*.docx;*.docm;*.dot;*.dotx;*.dotm;*.wps;*.wpt;*.odt;*.xls;*.xlsx;*.xlsm;*.xlt;*.xltx;*.xltm;*.et;*.ett;*.csv;*.dbf;*.prn;*.dif;*.ppt;*.pptx;*.pptm;*.pot;*.potx;*.potm;*.pps;*.ppsx;*.ppsm;*.dps;*.dpt;*.pdf;*.txt;*.rtf;*.htm;*.html;*.mht;*.mhtml;*.xml;*.jpg;*.png;*.tif;*.bmp;*.xla;*.xlam;*.ts|所有文件|*.*" };
         if (dialog.ShowDialog(this) == true) foreach (var path in dialog.FileNames) await AddFileAsync(path);
     }
     internal async Task AddFileAsync(string path)
@@ -86,6 +86,7 @@ public partial class MainWindow : Window
             var inspected = await Task.Run(() => FileInspector.Inspect(tab.Path), cancellation);
             cancellation.ThrowIfCancellationRequested();
             info = inspected;
+            if (info.Extension is "xla" or "xlam") FormatLabel.Text += " · 加载项数据";
             if (info.Kind == DocumentKind.Undefined) { SetMessage("查看范围待核实", info.Problem ?? "", false); return; }
             if(!precise && info.Kind is DocumentKind.Text or DocumentKind.Rtf or DocumentKind.Image){browser?.Dispose();browser=null;}
             if (new FileInfo(tab.Path).Length > 200 * 1024 * 1024 && info.Kind is not DocumentKind.Pdf) throw new InvalidDataException("这份文件超过当前预览版本的处理范围（200 MiB）");

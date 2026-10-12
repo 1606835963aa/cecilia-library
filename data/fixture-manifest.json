@@ -16,6 +16,20 @@
       "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
     },
     {
+      "file": "加载项数据.xla",
+      "sha256": "116651a487eb83087caf97b36a5a77ab1c8b3bc44ee144bd41d57c09ae573612",
+      "bytes": 5632,
+      "origin": "synthetic",
+      "source": "scripts/make-sheet-fixtures.cjs; SheetJS 0.20.3 add-in writer; static hidden worksheets, no VBA"
+    },
+    {
+      "file": "加载项数据.xlam",
+      "sha256": "e201809e26bafac41d097433a2b3ebd1b07aac0fb490ea7a186e8eae5230a21b",
+      "bytes": 10989,
+      "origin": "synthetic",
+      "source": "scripts/make-sheet-fixtures.cjs; SheetJS 0.20.3 add-in writer; static hidden worksheets, no VBA"
+    },
+    {
       "file": "图片样本.bmp",
       "sha256": "57df6890b14ba094b8264ba88a5572d148101ab6487cc51d0b6dc41a8ae76b6d",
       "bytes": 1512054,
@@ -49,6 +63,13 @@
       "bytes": 158,
       "origin": "synthetic",
       "source": "scripts/make-fixtures.py, scripts/make-sheet-fixtures.cjs or LibreOffice documented export filters"
+    },
+    {
+      "file": "开放文档.odt",
+      "sha256": "e79d62437c715c477fcd8084a41bff7abca4a7e106563566178e88c5a7468e76",
+      "bytes": 35678,
+      "origin": "synthetic",
+      "source": "scripts/make-odt-fixture.ps1; LibreOffice writer8 export of synthetic 阅读样本.docx"
     },
     {
       "file": "归档样本.mht",

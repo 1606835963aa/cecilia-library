@@ -1,28 +1,37 @@
 from pathlib import Path
-import json, statistics
+import json, statistics, hashlib
 ROOT=Path(__file__).resolve().parent.parent
 def read(name):return json.loads((ROOT/name).read_text(encoding='utf-8-sig'))
 def write(name,data):(ROOT/name).write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')
 gui=read('reports/gui-checks.json');perf=read('reports/performance.json');core=read('reports/core-checks.json');independent=read('reports/independent-checks.json');catalog=read('data/format-targets.json')
 document_memory=read('reports/document-memory.json')
+assert all(result.get('status')=='PASS' for result in gui['results']), 'Window checks include failures or checks not run'
+assert all(result.get('status')=='PASS' for result in core['results']), 'Core checks include failures'
+assert all(result.get('status')=='PASS' for result in independent['checks']), 'Independent checks include failures'
 by_ext={}
 for result in gui['results']:
-    if result.get('status')=='PASS' and result.get('sha256'):by_ext.setdefault(Path(result['file']).suffix[1:],[]).append(result)
+    if result.get('status')=='PASS' and result.get('sha256'):
+        fixture=ROOT/'tests'/'fixtures'/result['file']
+        assert hashlib.sha256(fixture.read_bytes()).hexdigest().upper()==result['sha256'].upper(), 'Fixture changed after validation: '+result['file']
+        by_ext.setdefault(Path(result['file']).suffix.lower(),[]).append(result)
+assert all(item['extension'].startswith('.') for item in catalog['formats']), 'Catalog extensions must include the leading dot'
+assert set(by_ext).issubset({item['extension'] for item in catalog['formats']}), 'A passing fixture has no format target'
 for item in catalog['formats']:
     evidence=by_ext.get(item['extension'],[])
     if evidence:
         item['implementationStatus']='IMPLEMENTED';item['verificationStatus']='VERIFIED_SAMPLE'
         item['evidence']=[{'fixture':result['file'],'sha256':result['sha256'],'report':'reports/gui-checks.json','scope':'synthetic fixture'} for result in evidence]
-        if item['extension'] in ['mht','mhtml']:item['proposedModule']='core-web-archive'
-    elif item['extension'] in ['ts','xla','xlam']:item['implementationStatus']='NOT_IMPLEMENTED';item['verificationStatus']='NEEDS_DEFINITION'
+        if item['extension'] in ['.mht','.mhtml']:item['proposedModule']='core-web-archive'
+    elif item['definitionStatus']=='NEEDS_DEFINITION':item['implementationStatus']='NOT_IMPLEMENTED';item['verificationStatus']='NEEDS_DEFINITION'
     else:item['implementationStatus']='ROUTED_UNVERIFIED';item['verificationStatus']='NOT_RUN'
+assert sum(item['verificationStatus']=='VERIFIED_SAMPLE' for item in catalog['formats'])==len(by_ext), 'Summary differs from per-format evidence'
 catalog['lastValidationAt']=gui['ranAt'];catalog['sampleVerifiedExtensionCount']=len(by_ext)
 write('data/format-targets.json',catalog)
-doc='# 格式覆盖目标与实测\n\n目标 47 种；公开清单 46 个后缀。目前 '+str(len(by_ext))+' 个后缀有合成样本显示证据。`VERIFIED_SAMPLE` 仅表示所列样本通过，真实文档版本和复杂排版继续扩充验收。\n\n[WPS 格式宣传页](https://www.wps.com/feature/file-opener/) · [WPS 技术规格](https://www.wps.com/tech-specs/)\n\n| 编号 | 后缀 | 类型 | 当前状态 | 样本证据 |\n|---|---|---|---|---|\n'
+doc='# 格式覆盖目标与实测\n\n目标 47 项：WPS 公开清单 46 个后缀，加上用户确认补入的 ODT。目前 '+str(len(by_ext))+' 个后缀有合成样本显示证据。`VERIFIED_SAMPLE` 表示所列样本通过，真实文档版本和复杂排版继续扩充验收。\n\n[WPS 格式宣传页](https://www.wps.com/feature/file-opener/) · [WPS 技术规格](https://www.wps.com/tech-specs/)\n\n| 编号 | 后缀 | 类型 | 当前状态 | 样本证据 |\n|---|---|---|---|---|\n'
 for item in catalog['formats']:
     status={'VERIFIED_SAMPLE':'样本显示通过','NOT_RUN':'已接入候选组件，缺真实样本','NEEDS_DEFINITION':'查看对象待定义'}[item['verificationStatus']]
-    doc+=f"| {item['id']} | `.{item['extension']}` | {item['label']} | {status} | "+'、'.join(entry['fixture'] for entry in item['evidence'])+' |\n'
-doc+='| F47 | 待来源核实 | 官网数量与清单存在差额 | 未定义 | — |\n\n含宏类型的合成样本只含静态内容，未嵌入 VBA；宏文件读取与宏保留保存需另验。`.xml` 已测通用 XML 和 SpreadsheetML，Word XML 仍待扩充。DBF 的 memo 配套文件、复杂网页归档资源、Office 嵌入对象与动画继续补样本。\n\n[逐项运行结果](../reports/gui-checks.json) · [独立内容核对](../reports/independent-checks.json) · [格式目标数据](../data/format-targets.json)\n'
+    doc+=f"| {item['id']} | `{item['extension']}` | {item['label']} | {status} | "+'、'.join(entry['fixture'] for entry in item['evidence'])+' |\n'
+doc+='\n`.xla`、`.xlam` 查看加载项内部的静态工作表数据，包括隐藏工作表；插件功能与宏执行不属于查看范围。含宏类型的合成样本只含静态内容，未嵌入 VBA；真实宏文件读取和宏保留保存继续扩充。`.xml` 已测通用 XML 和 SpreadsheetML，Word XML 仍待扩充。DBF 的 memo 配套文件、复杂网页归档资源、Office 嵌入对象与动画继续补样本。\n\nWPS 官网宣传数与清单差额保留为来源记录。ODT 已由用户选择，属于我们的补充范围。\n\n[逐项运行结果](../reports/gui-checks.json) · [独立内容核对](../reports/independent-checks.json) · [格式目标数据](../data/format-targets.json)\n'
 (ROOT/'docs'/'格式支持清单.md').write_text(doc,encoding='utf-8')
 starts=[sample['uiReadyMs']/1000 for sample in perf['samples']];memory=[sample['treeWorkingSetBytes']/1048576 for sample in perf['samples']]
 memory_table='\n'.join(f"| {item['file']} | {item['renderer']} | {item['workingSetBytes']/1048576:.1f} MiB |" for item in document_memory['records'])
@@ -67,7 +76,7 @@ progress=f'''# 开发进度与验收记录
 ## 尚未完成
 
 - WPS 原生 `.wps`、`.wpt`、`.et`、`.ett`、`.dps`、`.dpt` 缺少真实格式样本，保持未验证。已有兼容路径，不能据此认定全部版本可读。
-- `.ts`、`.xla`、`.xlam` 的查看定义，以及官网第 47 项继续核实。
+- `.ts` 在 WPS 演示清单中的含义继续核实；第 47 项已按用户选择补入 ODT。
 - 普通 Word / Excel 的原格式编辑保存和 PDF 批注尚未启用。
 - 密码文件、复杂图表 / 嵌入对象、大文件、多版本原生 WPS、memo 配套文件及复杂网页归档资源继续扩充。
 - 新电脑缺少运行时的安装、组件版本更新回退、长期压力、完整生命周期峰值和卸载检查尚未完成。

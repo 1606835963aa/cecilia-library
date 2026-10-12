@@ -1,5 +1,5 @@
 {
-  "ranAt": "2026-10-12T17:27:25.4851163+08:00",
+  "ranAt": "2026-10-12T18:13:30.9376202+08:00",
   "results": [
     {
       "name": "Text encoding utf-8 BOM=False",
@@ -46,7 +46,19 @@
       "status": "PASS"
     },
     {
-      "name": "Special formats remain undefined",
+      "name": "TS remains undefined",
+      "status": "PASS"
+    },
+    {
+      "name": "Excel add-in data routes without executing the add-in",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid add-in containers rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "ODT recognized by its package type",
       "status": "PASS"
     },
     {
