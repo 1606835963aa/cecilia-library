@@ -1,23 +1,62 @@
 {
-  "measuredAt": "2026-10-12T17:28:02.5419451+08:00",
+  "measuredAt": "2026-10-13T11:00:20.1757933+08:00",
   "records": [
     {
+      "sampleAfter": "UI-ready marker + 1000ms",
+      "renderer": "WebView2",
+      "file": "阅读样本.docx",
       "processes": [
         {
           "name": "LightReader.exe",
-          "workingSetBytes": 123396096
+          "workingSetBytes": 129318912
         },
         {
           "name": "msedgewebview2.exe",
-          "workingSetBytes": 120483840
+          "workingSetBytes": 121081856
         },
         {
           "name": "msedgewebview2.exe",
-          "workingSetBytes": 10555392
+          "workingSetBytes": 10465280
         },
         {
           "name": "msedgewebview2.exe",
-          "workingSetBytes": 50339840
+          "workingSetBytes": 52326400
+        },
+        {
+          "name": "msedgewebview2.exe",
+          "workingSetBytes": 34947072
+        },
+        {
+          "name": "msedgewebview2.exe",
+          "workingSetBytes": 20680704
+        },
+        {
+          "name": "msedgewebview2.exe",
+          "workingSetBytes": 98824192
+        }
+      ],
+      "workingSetBytes": 467644416.0
+    },
+    {
+      "sampleAfter": "UI-ready marker + 1000ms",
+      "renderer": "WebView2",
+      "file": "数据样本.xlsx",
+      "processes": [
+        {
+          "name": "LightReader.exe",
+          "workingSetBytes": 130736128
+        },
+        {
+          "name": "msedgewebview2.exe",
+          "workingSetBytes": 119476224
+        },
+        {
+          "name": "msedgewebview2.exe",
+          "workingSetBytes": 10469376
+        },
+        {
+          "name": "msedgewebview2.exe",
+          "workingSetBytes": 46047232
         },
         {
           "name": "msedgewebview2.exe",
@@ -25,77 +64,38 @@
         },
         {
           "name": "msedgewebview2.exe",
-          "workingSetBytes": 20770816
+          "workingSetBytes": 20660224
         },
         {
           "name": "msedgewebview2.exe",
-          "workingSetBytes": 97849344
+          "workingSetBytes": 87609344
         }
       ],
-      "file": "阅读样本.docx",
-      "renderer": "WebView2",
-      "sampleAfter": "UI-ready marker + 1000ms",
-      "workingSetBytes": 458473472.0
+      "workingSetBytes": 450076672.0
     },
     {
-      "processes": [
-        {
-          "name": "LightReader.exe",
-          "workingSetBytes": 123322368
-        },
-        {
-          "name": "msedgewebview2.exe",
-          "workingSetBytes": 121995264
-        },
-        {
-          "name": "msedgewebview2.exe",
-          "workingSetBytes": 10547200
-        },
-        {
-          "name": "msedgewebview2.exe",
-          "workingSetBytes": 49315840
-        },
-        {
-          "name": "msedgewebview2.exe",
-          "workingSetBytes": 35090432
-        },
-        {
-          "name": "msedgewebview2.exe",
-          "workingSetBytes": 20795392
-        },
-        {
-          "name": "msedgewebview2.exe",
-          "workingSetBytes": 86839296
-        }
-      ],
-      "file": "数据样本.xlsx",
-      "renderer": "WebView2",
       "sampleAfter": "UI-ready marker + 1000ms",
-      "workingSetBytes": 447905792.0
-    },
-    {
-      "processes": [
-        {
-          "name": "LightReader.exe",
-          "workingSetBytes": 217403392
-        }
-      ],
+      "renderer": "Windows.Data.Pdf",
       "file": "分页样本.pdf",
-      "renderer": "Windows.Data.Pdf",
-      "sampleAfter": "UI-ready marker + 1000ms",
-      "workingSetBytes": 217403392.0
-    },
-    {
       "processes": [
         {
           "name": "LightReader.exe",
-          "workingSetBytes": 244948992
+          "workingSetBytes": 216932352
         }
       ],
-      "file": "旧文字样本.doc",
-      "renderer": "Windows.Data.Pdf",
+      "workingSetBytes": 216932352.0
+    },
+    {
       "sampleAfter": "UI-ready marker + 1000ms",
-      "workingSetBytes": 244948992.0
+      "renderer": "Windows.Data.Pdf",
+      "file": "旧文字样本.doc",
+      "processes": [
+        {
+          "name": "LightReader.exe",
+          "workingSetBytes": 230117376
+        }
+      ],
+      "workingSetBytes": 230117376.0
     }
   ],
   "method": "Sum of working sets, including shared pages and all descendants. One isolated profile per document; installed components, fresh Office conversion cache. Only sample after the actual document-ready marker."

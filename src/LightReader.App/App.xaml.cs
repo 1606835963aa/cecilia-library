@@ -8,6 +8,7 @@ public partial class App : Application
     public static string DataRoot { get; private set; } = "";
     public static bool IsDark { get; private set; }
     public static event Action? ThemeChanged;
+    internal static List<string> UnhandledErrors { get; } = [];
     // mode：system 跟随 Windows 的应用颜色设置，light 浅色，dark 深色
     public static void ApplyTheme(string mode)
     {
@@ -26,6 +27,9 @@ public partial class App : Application
     {
         base.OnStartup(e);
         var args = e.Args.ToList();
+        string? lifecycleConfig = null;
+        var lifecycleArg = args.IndexOf("--lifecycle-probe");
+        if(lifecycleArg>=0 && lifecycleArg+1<args.Count) { lifecycleConfig=Path.GetFullPath(args[lifecycleArg+1]);args.RemoveRange(lifecycleArg,2); }
         string? stateFile=null;
         var stateArg=args.IndexOf("--state-file");
         if(stateArg>=0&&stateArg+1<args.Count){stateFile=Path.GetFullPath(args[stateArg+1]);args.RemoveRange(stateArg,2);}
@@ -41,8 +45,13 @@ public partial class App : Application
         else DataRoot = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "LightReader");
         Directory.CreateDirectory(DataRoot);
         var window = new MainWindow(args.Where(a => !a.StartsWith("--")).ToArray(), verificationRoot, benchmarkFile,stateFile);
+        if(lifecycleConfig!=null) window.Loaded+=async(_,_)=>await window.RunLifecycleProbeAsync(lifecycleConfig);
         MainWindow = window; window.Show();
         DispatcherUnhandledException += (_, error) =>
-        { MessageBox.Show(MainWindow, error.Exception.Message, "操作未完成", MessageBoxButton.OK, MessageBoxImage.Warning); error.Handled = true; };
+        {
+            UnhandledErrors.Add(error.Exception.ToString());
+            if(verificationRoot==null&&lifecycleConfig==null) MessageBox.Show(MainWindow, error.Exception.Message, "操作未完成", MessageBoxButton.OK, MessageBoxImage.Warning);
+            error.Handled = true;
+        };
     }
 }

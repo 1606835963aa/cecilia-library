@@ -1,0 +1,4113 @@
+{
+  "applicationSha256": "1796A782425E76F3986BD99171B0C4098B3A39E00E416CCD5201EC2214250C5F",
+  "label": "before",
+  "records": [
+    {
+      "sequence": 1,
+      "step": "empty-home",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:23.5988714+08:00",
+      "elapsedMs": 1004,
+      "currentTab": null,
+      "selectedTab": null,
+      "tabCount": 0,
+      "surface": "home",
+      "renderer": "WPF",
+      "status": "就绪",
+      "browserAlive": false,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": false,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 0,
+      "workingSetBytes": 114294784,
+      "privateBytes": 73904128,
+      "managedBytes": 5878296,
+      "handleCount": 693,
+      "treeWorkingSetBytes": 113946624,
+      "treePrivateBytes": 72998912,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 113946624,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 72998912
+        }
+      ]
+    },
+    {
+      "sequence": 2,
+      "step": "opened-阅读样本.docx",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:25.3615902+08:00",
+      "elapsedMs": 2766,
+      "currentTab": "阅读样本.docx",
+      "selectedTab": "阅读样本.docx",
+      "tabCount": 1,
+      "surface": "viewer",
+      "renderer": "WebView2",
+      "status": "已打开 · 0.44 秒",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 0,
+      "workingSetBytes": 134901760,
+      "privateBytes": 80302080,
+      "managedBytes": 8065952,
+      "handleCount": 767,
+      "treeWorkingSetBytes": 471691264,
+      "treePrivateBytes": 204529664,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 134971392,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 80371712
+        },
+        {
+          "id": 7516,
+          "parentId": 10644,
+          "workingSetBytes": 120631296,
+          "createdAt": "2026-10-13T10:52:23.9644910+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 37482496
+        },
+        {
+          "id": 6896,
+          "parentId": 7516,
+          "workingSetBytes": 10452992,
+          "createdAt": "2026-10-13T10:52:23.9836700+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2568192
+        },
+        {
+          "id": 5028,
+          "parentId": 7516,
+          "workingSetBytes": 52305920,
+          "createdAt": "2026-10-13T10:52:24.0758830+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 20320256
+        },
+        {
+          "id": 7188,
+          "parentId": 7516,
+          "workingSetBytes": 34967552,
+          "createdAt": "2026-10-13T10:52:24.0782030+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10940416
+        },
+        {
+          "id": 22440,
+          "parentId": 7516,
+          "workingSetBytes": 20668416,
+          "createdAt": "2026-10-13T10:52:24.1017980+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 4680,
+          "parentId": 7516,
+          "workingSetBytes": 97693696,
+          "createdAt": "2026-10-13T10:52:24.1789120+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 44851200
+        }
+      ]
+    },
+    {
+      "sequence": 3,
+      "step": "home-after-阅读样本.docx-500ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:26.0880882+08:00",
+      "elapsedMs": 3493,
+      "currentTab": "阅读样本.docx",
+      "selectedTab": null,
+      "tabCount": 1,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 0,
+      "workingSetBytes": 140738560,
+      "privateBytes": 84533248,
+      "managedBytes": 8532672,
+      "handleCount": 765,
+      "treeWorkingSetBytes": 476368896,
+      "treePrivateBytes": 208441344,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 140828672,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 84643840
+        },
+        {
+          "id": 7516,
+          "parentId": 10644,
+          "workingSetBytes": 120365056,
+          "createdAt": "2026-10-13T10:52:23.9644910+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 37117952
+        },
+        {
+          "id": 6896,
+          "parentId": 7516,
+          "workingSetBytes": 10452992,
+          "createdAt": "2026-10-13T10:52:23.9836700+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2568192
+        },
+        {
+          "id": 5028,
+          "parentId": 7516,
+          "workingSetBytes": 52305920,
+          "createdAt": "2026-10-13T10:52:24.0758830+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 20320256
+        },
+        {
+          "id": 7188,
+          "parentId": 7516,
+          "workingSetBytes": 34967552,
+          "createdAt": "2026-10-13T10:52:24.0782030+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10940416
+        },
+        {
+          "id": 22440,
+          "parentId": 7516,
+          "workingSetBytes": 20668416,
+          "createdAt": "2026-10-13T10:52:24.1017980+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 4680,
+          "parentId": 7516,
+          "workingSetBytes": 96780288,
+          "createdAt": "2026-10-13T10:52:24.1789120+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 44855296
+        }
+      ]
+    },
+    {
+      "sequence": 4,
+      "step": "home-after-阅读样本.docx-2000ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:27.5882283+08:00",
+      "elapsedMs": 4993,
+      "currentTab": "阅读样本.docx",
+      "selectedTab": null,
+      "tabCount": 1,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 0,
+      "workingSetBytes": 144576512,
+      "privateBytes": 87465984,
+      "managedBytes": 8925376,
+      "handleCount": 770,
+      "treeWorkingSetBytes": 476913664,
+      "treePrivateBytes": 207187968,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 144617472,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 87531520
+        },
+        {
+          "id": 7516,
+          "parentId": 10644,
+          "workingSetBytes": 120823808,
+          "createdAt": "2026-10-13T10:52:23.9644910+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 37126144
+        },
+        {
+          "id": 6896,
+          "parentId": 7516,
+          "workingSetBytes": 10452992,
+          "createdAt": "2026-10-13T10:52:23.9836700+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2568192
+        },
+        {
+          "id": 5028,
+          "parentId": 7516,
+          "workingSetBytes": 48414720,
+          "createdAt": "2026-10-13T10:52:24.0758830+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16162816
+        },
+        {
+          "id": 7188,
+          "parentId": 7516,
+          "workingSetBytes": 35123200,
+          "createdAt": "2026-10-13T10:52:24.0782030+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10940416
+        },
+        {
+          "id": 22440,
+          "parentId": 7516,
+          "workingSetBytes": 20668416,
+          "createdAt": "2026-10-13T10:52:24.1017980+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 4680,
+          "parentId": 7516,
+          "workingSetBytes": 96813056,
+          "createdAt": "2026-10-13T10:52:24.1789120+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 44863488
+        }
+      ]
+    },
+    {
+      "sequence": 5,
+      "step": "home-after-阅读样本.docx-5000ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:30.5889912+08:00",
+      "elapsedMs": 7994,
+      "currentTab": "阅读样本.docx",
+      "selectedTab": null,
+      "tabCount": 1,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 0,
+      "workingSetBytes": 145575936,
+      "privateBytes": 85139456,
+      "managedBytes": 9670944,
+      "handleCount": 770,
+      "treeWorkingSetBytes": 478027776,
+      "treePrivateBytes": 204886016,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 145608704,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 85143552
+        },
+        {
+          "id": 7516,
+          "parentId": 10644,
+          "workingSetBytes": 120840192,
+          "createdAt": "2026-10-13T10:52:23.9644910+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 37138432
+        },
+        {
+          "id": 6896,
+          "parentId": 7516,
+          "workingSetBytes": 10452992,
+          "createdAt": "2026-10-13T10:52:23.9836700+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2568192
+        },
+        {
+          "id": 5028,
+          "parentId": 7516,
+          "workingSetBytes": 48455680,
+          "createdAt": "2026-10-13T10:52:24.0758830+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16228352
+        },
+        {
+          "id": 7188,
+          "parentId": 7516,
+          "workingSetBytes": 35143680,
+          "createdAt": "2026-10-13T10:52:24.0782030+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10940416
+        },
+        {
+          "id": 22440,
+          "parentId": 7516,
+          "workingSetBytes": 20668416,
+          "createdAt": "2026-10-13T10:52:24.1017980+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 4680,
+          "parentId": 7516,
+          "workingSetBytes": 96858112,
+          "createdAt": "2026-10-13T10:52:24.1789120+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 44871680
+        }
+      ]
+    },
+    {
+      "sequence": 6,
+      "step": "reopened-阅读样本.docx",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:31.2566327+08:00",
+      "elapsedMs": 8661,
+      "currentTab": "阅读样本.docx",
+      "selectedTab": "阅读样本.docx",
+      "tabCount": 1,
+      "surface": "viewer",
+      "renderer": "WebView2",
+      "status": "已打开 · 0.04 秒",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 0,
+      "workingSetBytes": 146563072,
+      "privateBytes": 85549056,
+      "managedBytes": 10080312,
+      "handleCount": 773,
+      "treeWorkingSetBytes": 492204032,
+      "treePrivateBytes": 216518656,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 146644992,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 85614592
+        },
+        {
+          "id": 7516,
+          "parentId": 10644,
+          "workingSetBytes": 121237504,
+          "createdAt": "2026-10-13T10:52:23.9644910+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 37470208
+        },
+        {
+          "id": 6896,
+          "parentId": 7516,
+          "workingSetBytes": 10452992,
+          "createdAt": "2026-10-13T10:52:23.9836700+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2568192
+        },
+        {
+          "id": 5028,
+          "parentId": 7516,
+          "workingSetBytes": 48586752,
+          "createdAt": "2026-10-13T10:52:24.0758830+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16293888
+        },
+        {
+          "id": 7188,
+          "parentId": 7516,
+          "workingSetBytes": 35143680,
+          "createdAt": "2026-10-13T10:52:24.0782030+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10940416
+        },
+        {
+          "id": 22440,
+          "parentId": 7516,
+          "workingSetBytes": 20668416,
+          "createdAt": "2026-10-13T10:52:24.1017980+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 4680,
+          "parentId": 7516,
+          "workingSetBytes": 109469696,
+          "createdAt": "2026-10-13T10:52:24.1789120+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 55635968
+        }
+      ]
+    },
+    {
+      "sequence": 7,
+      "step": "opened-数据样本.xlsx",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:32.535005+08:00",
+      "elapsedMs": 9940,
+      "currentTab": "数据样本.xlsx",
+      "selectedTab": "数据样本.xlsx",
+      "tabCount": 2,
+      "surface": "viewer",
+      "renderer": "WebView2",
+      "status": "已打开 · 0.09 秒",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 0,
+      "workingSetBytes": 147513344,
+      "privateBytes": 85135360,
+      "managedBytes": 3861320,
+      "handleCount": 776,
+      "treeWorkingSetBytes": 518721536,
+      "treePrivateBytes": 240873472,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 147464192,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 85135360
+        },
+        {
+          "id": 7516,
+          "parentId": 10644,
+          "workingSetBytes": 120700928,
+          "createdAt": "2026-10-13T10:52:23.9644910+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36818944
+        },
+        {
+          "id": 6896,
+          "parentId": 7516,
+          "workingSetBytes": 10452992,
+          "createdAt": "2026-10-13T10:52:23.9836700+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2568192
+        },
+        {
+          "id": 5028,
+          "parentId": 7516,
+          "workingSetBytes": 49942528,
+          "createdAt": "2026-10-13T10:52:24.0758830+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16330752
+        },
+        {
+          "id": 7188,
+          "parentId": 7516,
+          "workingSetBytes": 35241984,
+          "createdAt": "2026-10-13T10:52:24.0782030+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10997760
+        },
+        {
+          "id": 22440,
+          "parentId": 7516,
+          "workingSetBytes": 20668416,
+          "createdAt": "2026-10-13T10:52:24.1017980+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 4680,
+          "parentId": 7516,
+          "workingSetBytes": 134250496,
+          "createdAt": "2026-10-13T10:52:24.1789120+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 81027072
+        }
+      ]
+    },
+    {
+      "sequence": 8,
+      "step": "home-after-数据样本.xlsx-500ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:33.2301699+08:00",
+      "elapsedMs": 10635,
+      "currentTab": "数据样本.xlsx",
+      "selectedTab": null,
+      "tabCount": 2,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 0,
+      "workingSetBytes": 149082112,
+      "privateBytes": 87093248,
+      "managedBytes": 4453416,
+      "handleCount": 774,
+      "treeWorkingSetBytes": 512159744,
+      "treePrivateBytes": 241840128,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 149106688,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 87093248
+        },
+        {
+          "id": 7516,
+          "parentId": 10644,
+          "workingSetBytes": 120700928,
+          "createdAt": "2026-10-13T10:52:23.9644910+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36818944
+        },
+        {
+          "id": 6896,
+          "parentId": 7516,
+          "workingSetBytes": 10452992,
+          "createdAt": "2026-10-13T10:52:23.9836700+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2568192
+        },
+        {
+          "id": 5028,
+          "parentId": 7516,
+          "workingSetBytes": 49942528,
+          "createdAt": "2026-10-13T10:52:24.0758830+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16330752
+        },
+        {
+          "id": 7188,
+          "parentId": 7516,
+          "workingSetBytes": 35241984,
+          "createdAt": "2026-10-13T10:52:24.0782030+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10997760
+        },
+        {
+          "id": 22440,
+          "parentId": 7516,
+          "workingSetBytes": 20668416,
+          "createdAt": "2026-10-13T10:52:24.1017980+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 4680,
+          "parentId": 7516,
+          "workingSetBytes": 126046208,
+          "createdAt": "2026-10-13T10:52:24.1789120+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 80035840
+        }
+      ]
+    },
+    {
+      "sequence": 9,
+      "step": "home-after-数据样本.xlsx-2000ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:34.7303905+08:00",
+      "elapsedMs": 12135,
+      "currentTab": "数据样本.xlsx",
+      "selectedTab": null,
+      "tabCount": 2,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 0,
+      "workingSetBytes": 149151744,
+      "privateBytes": 87093248,
+      "managedBytes": 4856392,
+      "handleCount": 774,
+      "treeWorkingSetBytes": 507527168,
+      "treePrivateBytes": 240025600,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 149172224,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 87093248
+        },
+        {
+          "id": 7516,
+          "parentId": 10644,
+          "workingSetBytes": 120823808,
+          "createdAt": "2026-10-13T10:52:23.9644910+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36941824
+        },
+        {
+          "id": 6896,
+          "parentId": 7516,
+          "workingSetBytes": 10452992,
+          "createdAt": "2026-10-13T10:52:23.9836700+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2568192
+        },
+        {
+          "id": 5028,
+          "parentId": 7516,
+          "workingSetBytes": 46616576,
+          "createdAt": "2026-10-13T10:52:24.0758830+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16330752
+        },
+        {
+          "id": 7188,
+          "parentId": 7516,
+          "workingSetBytes": 35299328,
+          "createdAt": "2026-10-13T10:52:24.0782030+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 11005952
+        },
+        {
+          "id": 22440,
+          "parentId": 7516,
+          "workingSetBytes": 20668416,
+          "createdAt": "2026-10-13T10:52:24.1017980+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 4680,
+          "parentId": 7516,
+          "workingSetBytes": 124493824,
+          "createdAt": "2026-10-13T10:52:24.1789120+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 78090240
+        }
+      ]
+    },
+    {
+      "sequence": 10,
+      "step": "home-after-数据样本.xlsx-5000ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:37.7314613+08:00",
+      "elapsedMs": 15136,
+      "currentTab": "数据样本.xlsx",
+      "selectedTab": null,
+      "tabCount": 2,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 0,
+      "workingSetBytes": 149176320,
+      "privateBytes": 87093248,
+      "managedBytes": 5678792,
+      "handleCount": 774,
+      "treeWorkingSetBytes": 505376768,
+      "treePrivateBytes": 237510656,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 149176320,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 87093248
+        },
+        {
+          "id": 7516,
+          "parentId": 10644,
+          "workingSetBytes": 120819712,
+          "createdAt": "2026-10-13T10:52:23.9644910+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36937728
+        },
+        {
+          "id": 6896,
+          "parentId": 7516,
+          "workingSetBytes": 10452992,
+          "createdAt": "2026-10-13T10:52:23.9836700+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2568192
+        },
+        {
+          "id": 5028,
+          "parentId": 7516,
+          "workingSetBytes": 46616576,
+          "createdAt": "2026-10-13T10:52:24.0758830+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16330752
+        },
+        {
+          "id": 7188,
+          "parentId": 7516,
+          "workingSetBytes": 35299328,
+          "createdAt": "2026-10-13T10:52:24.0782030+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 11005952
+        },
+        {
+          "id": 22440,
+          "parentId": 7516,
+          "workingSetBytes": 20668416,
+          "createdAt": "2026-10-13T10:52:24.1017980+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 4680,
+          "parentId": 7516,
+          "workingSetBytes": 122343424,
+          "createdAt": "2026-10-13T10:52:24.1789120+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 75579392
+        }
+      ]
+    },
+    {
+      "sequence": 11,
+      "step": "reopened-数据样本.xlsx",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:38.5170523+08:00",
+      "elapsedMs": 15922,
+      "currentTab": "数据样本.xlsx",
+      "selectedTab": "数据样本.xlsx",
+      "tabCount": 2,
+      "surface": "viewer",
+      "renderer": "WebView2",
+      "status": "已打开 · 0.09 秒",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 0,
+      "workingSetBytes": 149884928,
+      "privateBytes": 87412736,
+      "managedBytes": 7162632,
+      "handleCount": 779,
+      "treeWorkingSetBytes": 508051456,
+      "treePrivateBytes": 236404736,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 149917696,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 87412736
+        },
+        {
+          "id": 7516,
+          "parentId": 10644,
+          "workingSetBytes": 120909824,
+          "createdAt": "2026-10-13T10:52:23.9644910+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36933632
+        },
+        {
+          "id": 6896,
+          "parentId": 7516,
+          "workingSetBytes": 10452992,
+          "createdAt": "2026-10-13T10:52:23.9836700+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2568192
+        },
+        {
+          "id": 5028,
+          "parentId": 7516,
+          "workingSetBytes": 46616576,
+          "createdAt": "2026-10-13T10:52:24.0758830+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16334848
+        },
+        {
+          "id": 7188,
+          "parentId": 7516,
+          "workingSetBytes": 35364864,
+          "createdAt": "2026-10-13T10:52:24.0782030+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 11067392
+        },
+        {
+          "id": 22440,
+          "parentId": 7516,
+          "workingSetBytes": 20668416,
+          "createdAt": "2026-10-13T10:52:24.1017980+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 4680,
+          "parentId": 7516,
+          "workingSetBytes": 124121088,
+          "createdAt": "2026-10-13T10:52:24.1789120+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 74092544
+        }
+      ]
+    },
+    {
+      "sequence": 12,
+      "step": "opened-分页样本.pdf",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:40.1430094+08:00",
+      "elapsedMs": 17548,
+      "currentTab": "分页样本.pdf",
+      "selectedTab": "分页样本.pdf",
+      "tabCount": 3,
+      "surface": "viewer",
+      "renderer": "Windows.Data.Pdf",
+      "status": "已打开 · 0.40 秒",
+      "browserAlive": false,
+      "nativePdfAlive": true,
+      "pdfBitmapPresented": true,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": true,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 0,
+      "workingSetBytes": 258101248,
+      "privateBytes": 233226240,
+      "managedBytes": 3214752,
+      "handleCount": 1083,
+      "treeWorkingSetBytes": 258048000,
+      "treePrivateBytes": 233226240,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 258048000,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 233226240
+        }
+      ]
+    },
+    {
+      "sequence": 13,
+      "step": "home-after-分页样本.pdf-500ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:40.8339832+08:00",
+      "elapsedMs": 18239,
+      "currentTab": "分页样本.pdf",
+      "selectedTab": null,
+      "tabCount": 3,
+      "surface": "home",
+      "renderer": "Windows.Data.Pdf",
+      "status": "就绪",
+      "browserAlive": false,
+      "nativePdfAlive": true,
+      "pdfBitmapPresented": true,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": true,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 0,
+      "workingSetBytes": 258916352,
+      "privateBytes": 234008576,
+      "managedBytes": 3902664,
+      "handleCount": 1083,
+      "treeWorkingSetBytes": 259035136,
+      "treePrivateBytes": 234008576,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 259035136,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 234008576
+        }
+      ]
+    },
+    {
+      "sequence": 14,
+      "step": "home-after-分页样本.pdf-2000ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:42.3356256+08:00",
+      "elapsedMs": 19740,
+      "currentTab": "分页样本.pdf",
+      "selectedTab": null,
+      "tabCount": 3,
+      "surface": "home",
+      "renderer": "Windows.Data.Pdf",
+      "status": "就绪",
+      "browserAlive": false,
+      "nativePdfAlive": true,
+      "pdfBitmapPresented": true,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": true,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 0,
+      "workingSetBytes": 259043328,
+      "privateBytes": 233910272,
+      "managedBytes": 4305600,
+      "handleCount": 1083,
+      "treeWorkingSetBytes": 259051520,
+      "treePrivateBytes": 233910272,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 259051520,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 233910272
+        }
+      ]
+    },
+    {
+      "sequence": 15,
+      "step": "home-after-分页样本.pdf-5000ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:45.3345144+08:00",
+      "elapsedMs": 22739,
+      "currentTab": "分页样本.pdf",
+      "selectedTab": null,
+      "tabCount": 3,
+      "surface": "home",
+      "renderer": "Windows.Data.Pdf",
+      "status": "就绪",
+      "browserAlive": false,
+      "nativePdfAlive": true,
+      "pdfBitmapPresented": true,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": true,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 0,
+      "workingSetBytes": 253112320,
+      "privateBytes": 227893248,
+      "managedBytes": 5119776,
+      "handleCount": 1083,
+      "treeWorkingSetBytes": 253120512,
+      "treePrivateBytes": 227893248,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 253120512,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 227893248
+        }
+      ]
+    },
+    {
+      "sequence": 16,
+      "step": "reopened-分页样本.pdf",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:46.0366173+08:00",
+      "elapsedMs": 23441,
+      "currentTab": "分页样本.pdf",
+      "selectedTab": "分页样本.pdf",
+      "tabCount": 3,
+      "surface": "viewer",
+      "renderer": "Windows.Data.Pdf",
+      "status": "已打开 · 0.07 秒",
+      "browserAlive": false,
+      "nativePdfAlive": true,
+      "pdfBitmapPresented": true,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": true,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 0,
+      "workingSetBytes": 261472256,
+      "privateBytes": 251355136,
+      "managedBytes": 3338992,
+      "handleCount": 1085,
+      "treeWorkingSetBytes": 261058560,
+      "treePrivateBytes": 250961920,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 261058560,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 250961920
+        }
+      ]
+    },
+    {
+      "sequence": 17,
+      "step": "opened-多页样本.tif",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:47.2037138+08:00",
+      "elapsedMs": 24608,
+      "currentTab": "多页样本.tif",
+      "selectedTab": "多页样本.tif",
+      "tabCount": 4,
+      "surface": "viewer",
+      "renderer": "WPF",
+      "status": "已打开 · 0.01 秒",
+      "browserAlive": false,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 2,
+      "retainedTextChars": 0,
+      "workingSetBytes": 253001728,
+      "privateBytes": 242503680,
+      "managedBytes": 3614296,
+      "handleCount": 1084,
+      "treeWorkingSetBytes": 252981248,
+      "treePrivateBytes": 242503680,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 252981248,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 242503680
+        }
+      ]
+    },
+    {
+      "sequence": 18,
+      "step": "home-after-多页样本.tif-500ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:47.8927026+08:00",
+      "elapsedMs": 25297,
+      "currentTab": "多页样本.tif",
+      "selectedTab": null,
+      "tabCount": 4,
+      "surface": "home",
+      "renderer": "WPF",
+      "status": "就绪",
+      "browserAlive": false,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 2,
+      "retainedTextChars": 0,
+      "workingSetBytes": 254681088,
+      "privateBytes": 243884032,
+      "managedBytes": 4428440,
+      "handleCount": 1084,
+      "treeWorkingSetBytes": 254685184,
+      "treePrivateBytes": 243884032,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 254685184,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 243884032
+        }
+      ]
+    },
+    {
+      "sequence": 19,
+      "step": "home-after-多页样本.tif-2000ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:49.3947535+08:00",
+      "elapsedMs": 26799,
+      "currentTab": "多页样本.tif",
+      "selectedTab": null,
+      "tabCount": 4,
+      "surface": "home",
+      "renderer": "WPF",
+      "status": "就绪",
+      "browserAlive": false,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 2,
+      "retainedTextChars": 0,
+      "workingSetBytes": 254570496,
+      "privateBytes": 243769344,
+      "managedBytes": 4839640,
+      "handleCount": 1084,
+      "treeWorkingSetBytes": 254578688,
+      "treePrivateBytes": 243769344,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 254578688,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 243769344
+        }
+      ]
+    },
+    {
+      "sequence": 20,
+      "step": "home-after-多页样本.tif-5000ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:52.3946363+08:00",
+      "elapsedMs": 29799,
+      "currentTab": "多页样本.tif",
+      "selectedTab": null,
+      "tabCount": 4,
+      "surface": "home",
+      "renderer": "WPF",
+      "status": "就绪",
+      "browserAlive": false,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 2,
+      "retainedTextChars": 0,
+      "workingSetBytes": 244719616,
+      "privateBytes": 233881600,
+      "managedBytes": 5655464,
+      "handleCount": 1084,
+      "treeWorkingSetBytes": 244760576,
+      "treePrivateBytes": 233881600,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 244760576,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 233881600
+        }
+      ]
+    },
+    {
+      "sequence": 21,
+      "step": "reopened-多页样本.tif",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:53.0912761+08:00",
+      "elapsedMs": 30496,
+      "currentTab": "多页样本.tif",
+      "selectedTab": "多页样本.tif",
+      "tabCount": 4,
+      "surface": "viewer",
+      "renderer": "WPF",
+      "status": "已打开 · 0.01 秒",
+      "browserAlive": false,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 2,
+      "retainedTextChars": 0,
+      "workingSetBytes": 232964096,
+      "privateBytes": 227053568,
+      "managedBytes": 3273808,
+      "handleCount": 1066,
+      "treeWorkingSetBytes": 232996864,
+      "treePrivateBytes": 227172352,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 232996864,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 227172352
+        }
+      ]
+    },
+    {
+      "sequence": 22,
+      "step": "opened-文本样本.txt",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:54.32353+08:00",
+      "elapsedMs": 31728,
+      "currentTab": "文本样本.txt",
+      "selectedTab": "文本样本.txt",
+      "tabCount": 5,
+      "surface": "viewer",
+      "renderer": "WPF",
+      "status": "已打开 · 0.01 秒",
+      "browserAlive": false,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": true,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 234541056,
+      "privateBytes": 227344384,
+      "managedBytes": 4479816,
+      "handleCount": 1077,
+      "treeWorkingSetBytes": 234594304,
+      "treePrivateBytes": 227344384,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 234594304,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 227344384
+        }
+      ]
+    },
+    {
+      "sequence": 23,
+      "step": "home-after-文本样本.txt-500ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:55.0443131+08:00",
+      "elapsedMs": 32449,
+      "currentTab": "文本样本.txt",
+      "selectedTab": null,
+      "tabCount": 5,
+      "surface": "home",
+      "renderer": "WPF",
+      "status": "就绪",
+      "browserAlive": false,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": true,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 234659840,
+      "privateBytes": 227344384,
+      "managedBytes": 5409128,
+      "handleCount": 1077,
+      "treeWorkingSetBytes": 234672128,
+      "treePrivateBytes": 227344384,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 234672128,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 227344384
+        }
+      ]
+    },
+    {
+      "sequence": 24,
+      "step": "home-after-文本样本.txt-2000ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:56.5459698+08:00",
+      "elapsedMs": 33950,
+      "currentTab": "文本样本.txt",
+      "selectedTab": null,
+      "tabCount": 5,
+      "surface": "home",
+      "renderer": "WPF",
+      "status": "就绪",
+      "browserAlive": false,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": true,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 231931904,
+      "privateBytes": 209186816,
+      "managedBytes": 5795616,
+      "handleCount": 1077,
+      "treeWorkingSetBytes": 231956480,
+      "treePrivateBytes": 209186816,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 231956480,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 209186816
+        }
+      ]
+    },
+    {
+      "sequence": 25,
+      "step": "home-after-文本样本.txt-5000ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:52:59.5447825+08:00",
+      "elapsedMs": 36949,
+      "currentTab": "文本样本.txt",
+      "selectedTab": null,
+      "tabCount": 5,
+      "surface": "home",
+      "renderer": "WPF",
+      "status": "就绪",
+      "browserAlive": false,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": true,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 231616512,
+      "privateBytes": 208789504,
+      "managedBytes": 6578088,
+      "handleCount": 1072,
+      "treeWorkingSetBytes": 231665664,
+      "treePrivateBytes": 208855040,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 231665664,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 208855040
+        }
+      ]
+    },
+    {
+      "sequence": 26,
+      "step": "reopened-文本样本.txt",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:53:00.2050028+08:00",
+      "elapsedMs": 37610,
+      "currentTab": "文本样本.txt",
+      "selectedTab": "文本样本.txt",
+      "tabCount": 5,
+      "surface": "viewer",
+      "renderer": "WPF",
+      "status": "已打开 · 0.00 秒",
+      "browserAlive": false,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": true,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 232112128,
+      "privateBytes": 209186816,
+      "managedBytes": 6953832,
+      "handleCount": 1072,
+      "treeWorkingSetBytes": 232132608,
+      "treePrivateBytes": 209186816,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 232132608,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 209186816
+        }
+      ]
+    },
+    {
+      "sequence": 27,
+      "step": "components-after-read",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:53:02.7636691+08:00",
+      "elapsedMs": 40168,
+      "currentTab": "文本样本.txt",
+      "selectedTab": null,
+      "tabCount": 5,
+      "surface": "components",
+      "renderer": "WPF",
+      "status": "格式组件",
+      "browserAlive": false,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": true,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 233652224,
+      "privateBytes": 211329024,
+      "managedBytes": 7233448,
+      "handleCount": 1072,
+      "treeWorkingSetBytes": 234991616,
+      "treePrivateBytes": 212406272,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 234991616,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 212406272
+        }
+      ]
+    },
+    {
+      "sequence": 28,
+      "step": "opened-内存文字样本.docx",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:53:04.3355587+08:00",
+      "elapsedMs": 41740,
+      "currentTab": "内存文字样本.docx",
+      "selectedTab": "内存文字样本.docx",
+      "tabCount": 6,
+      "surface": "viewer",
+      "renderer": "WebView2",
+      "status": "已打开 · 0.38 秒",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 236388352,
+      "privateBytes": 213471232,
+      "managedBytes": 8730016,
+      "handleCount": 1105,
+      "treeWorkingSetBytes": 581812224,
+      "treePrivateBytes": 350121984,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 236453888,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 213471232
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 120754176,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36917248
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 47992832,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16109568
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 34742272,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10665984
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 110694400,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 62369792
+        }
+      ]
+    },
+    {
+      "sequence": 29,
+      "step": "home-after-内存文字样本.docx-500ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:53:05.0587742+08:00",
+      "elapsedMs": 42463,
+      "currentTab": "内存文字样本.docx",
+      "selectedTab": null,
+      "tabCount": 6,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 236433408,
+      "privateBytes": 213602304,
+      "managedBytes": 9708672,
+      "handleCount": 1103,
+      "treeWorkingSetBytes": 580919296,
+      "treePrivateBytes": 350253056,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 236478464,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 213602304
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 120819712,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36909056
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 47992832,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16109568
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 34742272,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10665984
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 109711360,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 62377984
+        }
+      ]
+    },
+    {
+      "sequence": 30,
+      "step": "home-after-内存文字样本.docx-2000ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:53:06.560156+08:00",
+      "elapsedMs": 43965,
+      "currentTab": "内存文字样本.docx",
+      "selectedTab": null,
+      "tabCount": 6,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 236482560,
+      "privateBytes": 213602304,
+      "managedBytes": 10119872,
+      "handleCount": 1103,
+      "treeWorkingSetBytes": 581840896,
+      "treePrivateBytes": 350269440,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 236486656,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 213602304
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 121290752,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36921344
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 48259072,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16109568
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 34897920,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10665984
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 109731840,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 62382080
+        }
+      ]
+    },
+    {
+      "sequence": 31,
+      "step": "home-after-内存文字样本.docx-5000ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:53:09.5601931+08:00",
+      "elapsedMs": 46965,
+      "currentTab": "内存文字样本.docx",
+      "selectedTab": null,
+      "tabCount": 6,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 236421120,
+      "privateBytes": 213549056,
+      "managedBytes": 10925824,
+      "handleCount": 1101,
+      "treeWorkingSetBytes": 582504448,
+      "treePrivateBytes": 350687232,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 237031424,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 213938176
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 121303040,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36929536
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 48312320,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16183296
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 34918400,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10665984
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 109764608,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 62382080
+        }
+      ]
+    },
+    {
+      "sequence": 32,
+      "step": "opened-内存表格样本.xlsx",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:53:12.3489288+08:00",
+      "elapsedMs": 49753,
+      "currentTab": "内存表格样本.xlsx",
+      "selectedTab": "内存表格样本.xlsx",
+      "tabCount": 7,
+      "surface": "viewer",
+      "renderer": "WebView2",
+      "status": "已打开 · 1.57 秒",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 237277184,
+      "privateBytes": 214167552,
+      "managedBytes": 5270648,
+      "handleCount": 1106,
+      "treeWorkingSetBytes": 843603968,
+      "treePrivateBytes": 608923648,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 237318144,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 214167552
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 120561664,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 35958784
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 48988160,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16310272
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35004416,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10711040
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 370556928,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 321187840
+        }
+      ]
+    },
+    {
+      "sequence": 33,
+      "step": "home-after-内存表格样本.xlsx-500ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:53:13.0095385+08:00",
+      "elapsedMs": 50414,
+      "currentTab": "内存表格样本.xlsx",
+      "selectedTab": null,
+      "tabCount": 7,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 237461504,
+      "privateBytes": 219480064,
+      "managedBytes": 6397336,
+      "handleCount": 1104,
+      "treeWorkingSetBytes": 841363456,
+      "treePrivateBytes": 614240256,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 237461504,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 219480064
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 120565760,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 35958784
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 48988160,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16310272
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35004416,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10711040
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 368168960,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 321191936
+        }
+      ]
+    },
+    {
+      "sequence": 34,
+      "step": "home-after-内存表格样本.xlsx-2000ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:53:14.5105659+08:00",
+      "elapsedMs": 51915,
+      "currentTab": "内存表格样本.xlsx",
+      "selectedTab": null,
+      "tabCount": 7,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 238362624,
+      "privateBytes": 219602944,
+      "managedBytes": 7046984,
+      "handleCount": 1103,
+      "treeWorkingSetBytes": 836366336,
+      "treePrivateBytes": 608067584,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 238362624,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 219602944
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 120684544,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36065280
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 49008640,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16318464
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35041280,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10711040
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 362094592,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 314781696
+        }
+      ]
+    },
+    {
+      "sequence": 35,
+      "step": "home-after-内存表格样本.xlsx-5000ms",
+      "iteration": 0,
+      "timestamp": "2026-10-13T10:53:17.5102173+08:00",
+      "elapsedMs": 54915,
+      "currentTab": "内存表格样本.xlsx",
+      "selectedTab": null,
+      "tabCount": 7,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 238239744,
+      "privateBytes": 219389952,
+      "managedBytes": 7828232,
+      "handleCount": 1086,
+      "treeWorkingSetBytes": 835702784,
+      "treePrivateBytes": 607363072,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 238239744,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 219389952
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 120684544,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36065280
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 49008640,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16318464
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35041280,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10711040
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 361553920,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 314290176
+        }
+      ]
+    },
+    {
+      "sequence": 36,
+      "step": "cycle-open",
+      "iteration": 1,
+      "timestamp": "2026-10-13T10:53:18.1466104+08:00",
+      "elapsedMs": 55551,
+      "currentTab": "阅读样本.docx",
+      "selectedTab": "阅读样本.docx",
+      "tabCount": 7,
+      "surface": "viewer",
+      "renderer": "WebView2",
+      "status": "已打开 · 0.05 秒",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 238313472,
+      "privateBytes": 219389952,
+      "managedBytes": 8254048,
+      "handleCount": 1089,
+      "treeWorkingSetBytes": 771309568,
+      "treePrivateBytes": 525144064,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 238313472,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 219389952
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 121724928,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 37044224
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 52318208,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16343040
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35041280,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10711040
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 292737024,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 231067648
+        }
+      ]
+    },
+    {
+      "sequence": 37,
+      "step": "cycle-home",
+      "iteration": 1,
+      "timestamp": "2026-10-13T10:53:20.3663671+08:00",
+      "elapsedMs": 57771,
+      "currentTab": "阅读样本.docx",
+      "selectedTab": null,
+      "tabCount": 7,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 235245568,
+      "privateBytes": 217051136,
+      "managedBytes": 9671088,
+      "handleCount": 1087,
+      "treeWorkingSetBytes": 758091776,
+      "treePrivateBytes": 522469376,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 235245568,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 217051136
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 121720832,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 37036032
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 48582656,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16371712
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35041280,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10711040
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 286326784,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 230711296
+        }
+      ]
+    },
+    {
+      "sequence": 38,
+      "step": "cycle-open",
+      "iteration": 2,
+      "timestamp": "2026-10-13T10:53:20.9630634+08:00",
+      "elapsedMs": 58368,
+      "currentTab": "数据样本.xlsx",
+      "selectedTab": "数据样本.xlsx",
+      "tabCount": 7,
+      "surface": "viewer",
+      "renderer": "WebView2",
+      "status": "已打开 · 0.07 秒",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 235986944,
+      "privateBytes": 217534464,
+      "managedBytes": 11134240,
+      "handleCount": 1092,
+      "treeWorkingSetBytes": 768135168,
+      "treePrivateBytes": 538415104,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 235986944,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 217534464
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 120971264,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36220928
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 48787456,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16396288
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35094528,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10760192
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 296120320,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 246915072
+        }
+      ]
+    },
+    {
+      "sequence": 39,
+      "step": "cycle-home",
+      "iteration": 2,
+      "timestamp": "2026-10-13T10:53:23.1823413+08:00",
+      "elapsedMs": 60587,
+      "currentTab": "数据样本.xlsx",
+      "selectedTab": null,
+      "tabCount": 7,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 235913216,
+      "privateBytes": 217468928,
+      "managedBytes": 12565216,
+      "handleCount": 1086,
+      "treeWorkingSetBytes": 758263808,
+      "treePrivateBytes": 531468288,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 235929600,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 217468928
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 121171968,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36216832
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 46628864,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16379904
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35217408,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10772480
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 288141312,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 240041984
+        }
+      ]
+    },
+    {
+      "sequence": 40,
+      "step": "cycle-open",
+      "iteration": 3,
+      "timestamp": "2026-10-13T10:53:23.7808587+08:00",
+      "elapsedMs": 61185,
+      "currentTab": "阅读样本.docx",
+      "selectedTab": "阅读样本.docx",
+      "tabCount": 7,
+      "surface": "viewer",
+      "renderer": "WebView2",
+      "status": "已打开 · 0.04 秒",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 235917312,
+      "privateBytes": 217452544,
+      "managedBytes": 12954312,
+      "handleCount": 1089,
+      "treeWorkingSetBytes": 765587456,
+      "treePrivateBytes": 527859712,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 235929600,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 217452544
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 122122240,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 37224448
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 48840704,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16392192
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35221504,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10776576
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 292298752,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 235425792
+        }
+      ]
+    },
+    {
+      "sequence": 41,
+      "step": "cycle-home",
+      "iteration": 3,
+      "timestamp": "2026-10-13T10:53:26.0016198+08:00",
+      "elapsedMs": 63406,
+      "currentTab": "阅读样本.docx",
+      "selectedTab": null,
+      "tabCount": 7,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 244559872,
+      "privateBytes": 221958144,
+      "managedBytes": 4423528,
+      "handleCount": 1118,
+      "treeWorkingSetBytes": 647241728,
+      "treePrivateBytes": 405450752,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 244584448,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 221958144
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 122114048,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 37212160
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 48836608,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16384000
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35221504,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10776576
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 165310464,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 108531712
+        }
+      ]
+    },
+    {
+      "sequence": 42,
+      "step": "cycle-open",
+      "iteration": 4,
+      "timestamp": "2026-10-13T10:53:26.7379297+08:00",
+      "elapsedMs": 64142,
+      "currentTab": "数据样本.xlsx",
+      "selectedTab": "数据样本.xlsx",
+      "tabCount": 7,
+      "surface": "viewer",
+      "renderer": "WebView2",
+      "status": "已打开 · 0.13 秒",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 244936704,
+      "privateBytes": 221978624,
+      "managedBytes": 6103840,
+      "handleCount": 1123,
+      "treeWorkingSetBytes": 665567232,
+      "treePrivateBytes": 422629376,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 244940800,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 221978624
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 121356288,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36388864
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 50159616,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16400384
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35258368,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10813440
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 182677504,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 126459904
+        }
+      ]
+    },
+    {
+      "sequence": 43,
+      "step": "cycle-home",
+      "iteration": 4,
+      "timestamp": "2026-10-13T10:53:28.968207+08:00",
+      "elapsedMs": 66373,
+      "currentTab": "数据样本.xlsx",
+      "selectedTab": null,
+      "tabCount": 7,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 245403648,
+      "privateBytes": 221978624,
+      "managedBytes": 7724000,
+      "handleCount": 1121,
+      "treeWorkingSetBytes": 651464704,
+      "treePrivateBytes": 416366592,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 245403648,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 221978624
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 121352192,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36380672
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 46637056,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16384000
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35258368,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10813440
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 171638784,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 120221696
+        }
+      ]
+    },
+    {
+      "sequence": 44,
+      "step": "cycle-open",
+      "iteration": 5,
+      "timestamp": "2026-10-13T10:53:29.5891683+08:00",
+      "elapsedMs": 66994,
+      "currentTab": "阅读样本.docx",
+      "selectedTab": "阅读样本.docx",
+      "tabCount": 7,
+      "surface": "viewer",
+      "renderer": "WebView2",
+      "status": "已打开 · 0.06 秒",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 245358592,
+      "privateBytes": 221962240,
+      "managedBytes": 8185960,
+      "handleCount": 1124,
+      "treeWorkingSetBytes": 656089088,
+      "treePrivateBytes": 413437952,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 245362688,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 221962240
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 122277888,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 37376000
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 48848896,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16396288
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35258368,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10813440
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 173166592,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 116301824
+        }
+      ]
+    },
+    {
+      "sequence": 45,
+      "step": "cycle-home",
+      "iteration": 5,
+      "timestamp": "2026-10-13T10:53:31.812184+08:00",
+      "elapsedMs": 69217,
+      "currentTab": "阅读样本.docx",
+      "selectedTab": null,
+      "tabCount": 7,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 245657600,
+      "privateBytes": 222035968,
+      "managedBytes": 11901808,
+      "handleCount": 1122,
+      "treeWorkingSetBytes": 650895360,
+      "treePrivateBytes": 408420352,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 245661696,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 222035968
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 122273792,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 37367808
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 48844800,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16388096
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35258368,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10813440
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 167682048,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 111226880
+        }
+      ]
+    },
+    {
+      "sequence": 46,
+      "step": "cycle-open",
+      "iteration": 6,
+      "timestamp": "2026-10-13T10:53:32.5640197+08:00",
+      "elapsedMs": 69969,
+      "currentTab": "数据样本.xlsx",
+      "selectedTab": "数据样本.xlsx",
+      "tabCount": 7,
+      "surface": "viewer",
+      "renderer": "WebView2",
+      "status": "已打开 · 0.11 秒",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 245747712,
+      "privateBytes": 222052352,
+      "managedBytes": 13452392,
+      "handleCount": 1127,
+      "treeWorkingSetBytes": 663924736,
+      "treePrivateBytes": 428400640,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 245747712,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 222052352
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 121499648,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36532224
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 10477568,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 2592768
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 48857088,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16400384
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35299328,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10854400
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 181346304,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 131973120
+        }
+      ]
+    },
+    {
+      "sequence": 47,
+      "step": "cycle-home",
+      "iteration": 6,
+      "timestamp": "2026-10-13T10:53:34.77757+08:00",
+      "elapsedMs": 72182,
+      "currentTab": "数据样本.xlsx",
+      "selectedTab": null,
+      "tabCount": 7,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 245899264,
+      "privateBytes": 222064640,
+      "managedBytes": 15072496,
+      "handleCount": 1125,
+      "treeWorkingSetBytes": 604913664,
+      "treePrivateBytes": 361742336,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 245903360,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 222064640
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 121257984,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36175872
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 19476480,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 3571712
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 46653440,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16392192
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35233792,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10792960
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 115691520,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 64749568
+        }
+      ]
+    },
+    {
+      "sequence": 48,
+      "step": "cycle-open",
+      "iteration": 7,
+      "timestamp": "2026-10-13T10:53:35.4476719+08:00",
+      "elapsedMs": 72852,
+      "currentTab": "阅读样本.docx",
+      "selectedTab": "阅读样本.docx",
+      "tabCount": 7,
+      "surface": "viewer",
+      "renderer": "WebView2",
+      "status": "已打开 · 0.08 秒",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 242208768,
+      "privateBytes": 218796032,
+      "managedBytes": 3421960,
+      "handleCount": 1128,
+      "treeWorkingSetBytes": 608620544,
+      "treePrivateBytes": 355528704,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 242335744,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 218918912
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 122068992,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 37056512
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 19476480,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 3571712
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 48697344,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16400384
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35233792,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10792960
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 120111104,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 60792832
+        }
+      ]
+    },
+    {
+      "sequence": 49,
+      "step": "cycle-home",
+      "iteration": 7,
+      "timestamp": "2026-10-13T10:53:37.6588218+08:00",
+      "elapsedMs": 75063,
+      "currentTab": "阅读样本.docx",
+      "selectedTab": null,
+      "tabCount": 7,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 240402432,
+      "privateBytes": 216887296,
+      "managedBytes": 5168816,
+      "handleCount": 1126,
+      "treeWorkingSetBytes": 602681344,
+      "treePrivateBytes": 350154752,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 240402432,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 216887296
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 122064896,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 37048320
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 19476480,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 3571712
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 48693248,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16392192
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35233792,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10792960
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 116113408,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 57466880
+        }
+      ]
+    },
+    {
+      "sequence": 50,
+      "step": "cycle-open",
+      "iteration": 8,
+      "timestamp": "2026-10-13T10:53:38.3251133+08:00",
+      "elapsedMs": 75730,
+      "currentTab": "数据样本.xlsx",
+      "selectedTab": "数据样本.xlsx",
+      "tabCount": 7,
+      "surface": "viewer",
+      "renderer": "WebView2",
+      "status": "已打开 · 0.12 秒",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 240447488,
+      "privateBytes": 216903680,
+      "managedBytes": 6701992,
+      "handleCount": 1131,
+      "treeWorkingSetBytes": 616845312,
+      "treePrivateBytes": 369995776,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 240447488,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 216903680
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 121901056,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36839424
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 19476480,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 3571712
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 48877568,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16400384
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35233792,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10792960
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 130211840,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 77492224
+        }
+      ]
+    },
+    {
+      "sequence": 51,
+      "step": "cycle-home",
+      "iteration": 8,
+      "timestamp": "2026-10-13T10:53:40.5441645+08:00",
+      "elapsedMs": 77949,
+      "currentTab": "数据样本.xlsx",
+      "selectedTab": null,
+      "tabCount": 7,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 246018048,
+      "privateBytes": 221626368,
+      "managedBytes": 8313896,
+      "handleCount": 1129,
+      "treeWorkingSetBytes": 613335040,
+      "treePrivateBytes": 369815552,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 246018048,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 221626368
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 121896960,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 36831232
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 19476480,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 3571712
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 46653440,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16388096
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35233792,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10792960
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 123359232,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 72609792
+        }
+      ]
+    },
+    {
+      "sequence": 52,
+      "step": "cycle-open",
+      "iteration": 9,
+      "timestamp": "2026-10-13T10:53:41.2285206+08:00",
+      "elapsedMs": 78633,
+      "currentTab": "阅读样本.docx",
+      "selectedTab": "阅读样本.docx",
+      "tabCount": 7,
+      "surface": "viewer",
+      "renderer": "WebView2",
+      "status": "已打开 · 0.08 秒",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 246915072,
+      "privateBytes": 222416896,
+      "managedBytes": 8786536,
+      "handleCount": 1132,
+      "treeWorkingSetBytes": 621346816,
+      "treePrivateBytes": 366800896,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 246915072,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 222416896
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 120889344,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 35860480
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 19476480,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 3571712
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 48865280,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16396288
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35233792,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10792960
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 129269760,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 69767168
+        }
+      ]
+    },
+    {
+      "sequence": 53,
+      "step": "cycle-home",
+      "iteration": 9,
+      "timestamp": "2026-10-13T10:53:43.4113417+08:00",
+      "elapsedMs": 80816,
+      "currentTab": "阅读样本.docx",
+      "selectedTab": null,
+      "tabCount": 7,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 246951936,
+      "privateBytes": 222425088,
+      "managedBytes": 12503352,
+      "handleCount": 1130,
+      "treeWorkingSetBytes": 616218624,
+      "treePrivateBytes": 362651648,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 246951936,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 222425088
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 120885248,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 35852288
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 19476480,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 3571712
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 48861184,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16392192
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35233792,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10792960
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 124112896,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 65622016
+        }
+      ]
+    },
+    {
+      "sequence": 54,
+      "step": "cycle-open",
+      "iteration": 10,
+      "timestamp": "2026-10-13T10:53:44.0979389+08:00",
+      "elapsedMs": 81502,
+      "currentTab": "数据样本.xlsx",
+      "selectedTab": "数据样本.xlsx",
+      "tabCount": 7,
+      "surface": "viewer",
+      "renderer": "WebView2",
+      "status": "已打开 · 0.12 秒",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 246980608,
+      "privateBytes": 222441472,
+      "managedBytes": 14051040,
+      "handleCount": 1135,
+      "treeWorkingSetBytes": 631566336,
+      "treePrivateBytes": 383561728,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 246980608,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 222441472
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 121016320,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 35938304
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 19476480,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 3571712
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 48869376,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16404480
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35233792,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10792960
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 139292672,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 86417408
+        }
+      ]
+    },
+    {
+      "sequence": 55,
+      "step": "cycle-home",
+      "iteration": 10,
+      "timestamp": "2026-10-13T10:53:46.2771113+08:00",
+      "elapsedMs": 83682,
+      "currentTab": "数据样本.xlsx",
+      "selectedTab": null,
+      "tabCount": 7,
+      "surface": "home",
+      "renderer": "WebView2",
+      "status": "就绪",
+      "browserAlive": true,
+      "nativePdfAlive": false,
+      "pdfBitmapPresented": false,
+      "unhandledErrorCount": 0,
+      "viewerAttached": true,
+      "toolsAttached": false,
+      "textBoxAlive": false,
+      "frameCount": 0,
+      "retainedTextChars": 41,
+      "workingSetBytes": 247013376,
+      "privateBytes": 222445568,
+      "managedBytes": 15662944,
+      "handleCount": 1133,
+      "treeWorkingSetBytes": 621510656,
+      "treePrivateBytes": 378675200,
+      "processes": [
+        {
+          "id": 10644,
+          "parentId": 31844,
+          "workingSetBytes": 247013376,
+          "createdAt": "2026-10-13T10:52:21.9632090+08:00",
+          "name": "LightReader.exe",
+          "privateBytes": 222445568
+        },
+        {
+          "id": 5328,
+          "parentId": 10644,
+          "workingSetBytes": 121012224,
+          "createdAt": "2026-10-13T10:53:02.9616650+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 35930112
+        },
+        {
+          "id": 27464,
+          "parentId": 5328,
+          "workingSetBytes": 19476480,
+          "createdAt": "2026-10-13T10:53:02.9750330+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 3571712
+        },
+        {
+          "id": 18956,
+          "parentId": 5328,
+          "workingSetBytes": 46661632,
+          "createdAt": "2026-10-13T10:53:03.0699610+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 16396288
+        },
+        {
+          "id": 32136,
+          "parentId": 5328,
+          "workingSetBytes": 35233792,
+          "createdAt": "2026-10-13T10:53:03.0719550+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 10792960
+        },
+        {
+          "id": 19768,
+          "parentId": 5328,
+          "workingSetBytes": 20697088,
+          "createdAt": "2026-10-13T10:53:03.0944220+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 7995392
+        },
+        {
+          "id": 28180,
+          "parentId": 5328,
+          "workingSetBytes": 131416064,
+          "createdAt": "2026-10-13T10:53:03.1588560+08:00",
+          "name": "msedgewebview2.exe",
+          "privateBytes": 81543168
+        }
+      ]
+    }
+  ],
+  "hostOs": "Microsoft Windows NT 10.0.26200.0",
+  "fixtures": [
+    {
+      "file": "tests\\fixtures\\阅读样本.docx",
+      "bytes": 48973,
+      "sha256": "99BFD0FEF7E514D1534746C203E530C2449786BE25BF2CC9BDBC7B9D9BCFB670"
+    },
+    {
+      "file": "tests\\fixtures\\数据样本.xlsx",
+      "bytes": 6326,
+      "sha256": "53FC109EC08134827A5D86F04138380A8647DAD5B5176AF65AAB23F6ACF43AA2"
+    },
+    {
+      "file": "tests\\fixtures\\分页样本.pdf",
+      "bytes": 73142,
+      "sha256": "AB47BAFC921C5DC6B627A6760F4D48E6918884213181D350DDFC7149E0BF0FB2"
+    },
+    {
+      "file": "tests\\fixtures\\多页样本.tif",
+      "bytes": 28976,
+      "sha256": "5FB30DC227605268F94332D43E7F8E49F6A0E9A2214B63E370E07ED0C50218BC"
+    },
+    {
+      "file": "tests\\fixtures\\文本样本.txt",
+      "bytes": 73,
+      "sha256": "1320369935E39837E704E416365BB0CEB8324508FF5352ED60910FF60D0510F0"
+    },
+    {
+      "file": "tmp\\memory-fixtures\\内存文字样本.docx",
+      "bytes": 51474,
+      "sha256": "1B2C8A736E60D9ACFC89D47EBEAEA78782DD1F9A5BD3F57F662124A72AAC5B9F"
+    },
+    {
+      "file": "tmp\\memory-fixtures\\内存表格样本.xlsx",
+      "bytes": 2336195,
+      "sha256": "6A9C0A48835065B515D2B9C91C53D56157C2158AC3386F251C27197C4B863673"
+    }
+  ],
+  "iterations": 10,
+  "measuredAt": "2026-10-13T10:53:46.5086550+08:00",
+  "probe": {
+    "completedAt": "2026-10-13T10:53:46.4466897+08:00",
+    "stages": 55,
+    "checks": [
+      {
+        "name": "shown 阅读样本.docx",
+        "status": "PASS"
+      },
+      {
+        "name": "home-after-阅读样本.docx view detached",
+        "status": "FAIL"
+      },
+      {
+        "name": "shown 数据样本.xlsx",
+        "status": "PASS"
+      },
+      {
+        "name": "home-after-数据样本.xlsx view detached",
+        "status": "FAIL"
+      },
+      {
+        "name": "shown 分页样本.pdf",
+        "status": "PASS"
+      },
+      {
+        "name": "home-after-分页样本.pdf view detached",
+        "status": "FAIL"
+      },
+      {
+        "name": "shown 多页样本.tif",
+        "status": "PASS"
+      },
+      {
+        "name": "home-after-多页样本.tif view detached",
+        "status": "FAIL"
+      },
+      {
+        "name": "shown 文本样本.txt",
+        "status": "PASS"
+      },
+      {
+        "name": "home-after-文本样本.txt view detached",
+        "status": "FAIL"
+      },
+      {
+        "name": "components view detached",
+        "status": "FAIL"
+      },
+      {
+        "name": "shown 内存文字样本.docx",
+        "status": "PASS"
+      },
+      {
+        "name": "home-after-内存文字样本.docx view detached",
+        "status": "FAIL"
+      },
+      {
+        "name": "shown 内存表格样本.xlsx",
+        "status": "PASS"
+      },
+      {
+        "name": "home-after-内存表格样本.xlsx view detached",
+        "status": "FAIL"
+      },
+      {
+        "name": "cycle shown 1",
+        "status": "PASS"
+      },
+      {
+        "name": "cycle detached 1",
+        "status": "FAIL"
+      },
+      {
+        "name": "cycle shown 2",
+        "status": "PASS"
+      },
+      {
+        "name": "cycle detached 2",
+        "status": "FAIL"
+      },
+      {
+        "name": "cycle shown 3",
+        "status": "PASS"
+      },
+      {
+        "name": "cycle detached 3",
+        "status": "FAIL"
+      },
+      {
+        "name": "cycle shown 4",
+        "status": "PASS"
+      },
+      {
+        "name": "cycle detached 4",
+        "status": "FAIL"
+      },
+      {
+        "name": "cycle shown 5",
+        "status": "PASS"
+      },
+      {
+        "name": "cycle detached 5",
+        "status": "FAIL"
+      },
+      {
+        "name": "cycle shown 6",
+        "status": "PASS"
+      },
+      {
+        "name": "cycle detached 6",
+        "status": "FAIL"
+      },
+      {
+        "name": "cycle shown 7",
+        "status": "PASS"
+      },
+      {
+        "name": "cycle detached 7",
+        "status": "FAIL"
+      },
+      {
+        "name": "cycle shown 8",
+        "status": "PASS"
+      },
+      {
+        "name": "cycle detached 8",
+        "status": "FAIL"
+      },
+      {
+        "name": "cycle shown 9",
+        "status": "PASS"
+      },
+      {
+        "name": "cycle detached 9",
+        "status": "FAIL"
+      },
+      {
+        "name": "cycle shown 10",
+        "status": "PASS"
+      },
+      {
+        "name": "cycle detached 10",
+        "status": "FAIL"
+      },
+      {
+        "name": "no unhandled UI errors",
+        "status": "PASS"
+      }
+    ],
+    "unhandledErrors": []
+  },
+  "applicationVersion": "0.1.0.0",
+  "method": "Whole process tree plus previously observed surviving descendants. PID identity and child creation after parent checked to exclude reused PIDs. Natural idle; no forced GC or working-set trimming. Same isolated fresh profile and generated fixtures for before/after."
+}

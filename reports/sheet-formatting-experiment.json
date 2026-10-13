@@ -1,0 +1,383 @@
+{
+  "ranAt": "2026-10-13T03:01:32.321Z",
+  "kind": "Node parser diagnostic; separate process per parse; not a WebView memory measurement",
+  "script": "scripts/compare-sheet-formatting.cjs",
+  "nodeVersion": "v24.13.1",
+  "inputSha256": "6a9c0a48835065b515d2b9c91c53d56157c2158ac3386f251c27197c4b863673",
+  "comparisons": [
+    {
+      "filename": "加载项数据.xla",
+      "cells": 25,
+      "status": "PASS",
+      "mismatches": []
+    },
+    {
+      "filename": "加载项数据.xlam",
+      "cells": 25,
+      "status": "PASS",
+      "mismatches": []
+    },
+    {
+      "filename": "数据样本.csv",
+      "cells": 9,
+      "status": "PASS",
+      "mismatches": []
+    },
+    {
+      "filename": "数据样本.xlsx",
+      "cells": 24,
+      "status": "PASS",
+      "mismatches": []
+    },
+    {
+      "filename": "旧表格样本.dbf",
+      "cells": 22,
+      "status": "PASS",
+      "mismatches": []
+    },
+    {
+      "filename": "旧表格样本.dif",
+      "cells": 15,
+      "status": "PASS",
+      "mismatches": []
+    },
+    {
+      "filename": "旧表格样本.prn",
+      "cells": 7,
+      "status": "PASS",
+      "mismatches": []
+    },
+    {
+      "filename": "旧表格样本.xls",
+      "cells": 24,
+      "status": "PASS",
+      "mismatches": []
+    },
+    {
+      "filename": "旧表格模板.xlt",
+      "cells": 24,
+      "status": "PASS",
+      "mismatches": []
+    },
+    {
+      "filename": "表格模板.xltx",
+      "cells": 24,
+      "status": "PASS",
+      "mismatches": []
+    },
+    {
+      "filename": "静态宏表格.xlsm",
+      "cells": 24,
+      "status": "PASS",
+      "mismatches": []
+    },
+    {
+      "filename": "静态宏表格模板.xltm",
+      "cells": 24,
+      "status": "PASS",
+      "mismatches": []
+    }
+  ],
+  "samples": [
+    {
+      "date1904": false,
+      "status": "PASS",
+      "before": [
+        [
+          "A1",
+          "0123"
+        ],
+        [
+          "B1",
+          "1,234.50"
+        ],
+        [
+          "C1",
+          "2026-10-12"
+        ],
+        [
+          "D1",
+          "42"
+        ],
+        [
+          "E1",
+          "0"
+        ],
+        [
+          "F1",
+          "=SUM(20,22)"
+        ]
+      ],
+      "after": [
+        [
+          "A1",
+          "0123"
+        ],
+        [
+          "B1",
+          "1,234.50"
+        ],
+        [
+          "C1",
+          "2026-10-12"
+        ],
+        [
+          "D1",
+          "42"
+        ],
+        [
+          "E1",
+          "0"
+        ],
+        [
+          "F1",
+          "=SUM(20,22)"
+        ]
+      ]
+    },
+    {
+      "date1904": true,
+      "status": "PASS",
+      "before": [
+        [
+          "A1",
+          "0123"
+        ],
+        [
+          "B1",
+          "1,234.50"
+        ],
+        [
+          "C1",
+          "2026-10-12"
+        ],
+        [
+          "D1",
+          "42"
+        ],
+        [
+          "E1",
+          "0"
+        ],
+        [
+          "F1",
+          "=SUM(20,22)"
+        ]
+      ],
+      "after": [
+        [
+          "A1",
+          "0123"
+        ],
+        [
+          "B1",
+          "1,234.50"
+        ],
+        [
+          "C1",
+          "2026-10-12"
+        ],
+        [
+          "D1",
+          "42"
+        ],
+        [
+          "E1",
+          "0"
+        ],
+        [
+          "F1",
+          "=SUM(20,22)"
+        ]
+      ]
+    }
+  ],
+  "measures": [
+    {
+      "cellText": true,
+      "milliseconds": 2003.4329999999998,
+      "before": {
+        "rss": 71204864,
+        "heapTotal": 37765120,
+        "heapUsed": 22760472,
+        "external": 7190165,
+        "arrayBuffers": 5354517
+      },
+      "after": {
+        "rss": 405938176,
+        "heapTotal": 284901376,
+        "heapUsed": 167654104,
+        "external": 64316788,
+        "arrayBuffers": 35072814
+      },
+      "afterPage": {
+        "rss": 406167552,
+        "heapTotal": 285163520,
+        "heapUsed": 167891024,
+        "external": 64316788,
+        "arrayBuffers": 35072814
+      },
+      "count": {
+        "cells": 600012,
+        "formatted": 600012
+      },
+      "pageValues": 13550,
+      "iteration": 0
+    },
+    {
+      "cellText": false,
+      "milliseconds": 1538.5039000000002,
+      "before": {
+        "rss": 71589888,
+        "heapTotal": 37765120,
+        "heapUsed": 22747904,
+        "external": 7190165,
+        "arrayBuffers": 5354517
+      },
+      "after": {
+        "rss": 319672320,
+        "heapTotal": 202063872,
+        "heapUsed": 135788776,
+        "external": 64316788,
+        "arrayBuffers": 35072814
+      },
+      "afterPage": {
+        "rss": 319979520,
+        "heapTotal": 202063872,
+        "heapUsed": 136734448,
+        "external": 64316788,
+        "arrayBuffers": 35072814
+      },
+      "count": {
+        "cells": 600012,
+        "formatted": 2400
+      },
+      "pageValues": 13550,
+      "iteration": 0
+    },
+    {
+      "cellText": true,
+      "milliseconds": 1850.2095,
+      "before": {
+        "rss": 71315456,
+        "heapTotal": 37765120,
+        "heapUsed": 22756928,
+        "external": 7190165,
+        "arrayBuffers": 5354517
+      },
+      "after": {
+        "rss": 404869120,
+        "heapTotal": 283852800,
+        "heapUsed": 203368480,
+        "external": 64316788,
+        "arrayBuffers": 35072814
+      },
+      "afterPage": {
+        "rss": 405024768,
+        "heapTotal": 284114944,
+        "heapUsed": 203606064,
+        "external": 64316788,
+        "arrayBuffers": 35072814
+      },
+      "count": {
+        "cells": 600012,
+        "formatted": 600012
+      },
+      "pageValues": 13550,
+      "iteration": 1
+    },
+    {
+      "cellText": false,
+      "milliseconds": 1517.8251,
+      "before": {
+        "rss": 71430144,
+        "heapTotal": 38027264,
+        "heapUsed": 22756184,
+        "external": 7190165,
+        "arrayBuffers": 5354517
+      },
+      "after": {
+        "rss": 320094208,
+        "heapTotal": 202326016,
+        "heapUsed": 152279576,
+        "external": 64316788,
+        "arrayBuffers": 35072814
+      },
+      "afterPage": {
+        "rss": 320544768,
+        "heapTotal": 202588160,
+        "heapUsed": 153219192,
+        "external": 64316788,
+        "arrayBuffers": 35072814
+      },
+      "count": {
+        "cells": 600012,
+        "formatted": 2400
+      },
+      "pageValues": 13550,
+      "iteration": 1
+    },
+    {
+      "cellText": true,
+      "milliseconds": 1854.1335,
+      "before": {
+        "rss": 71221248,
+        "heapTotal": 37502976,
+        "heapUsed": 22745288,
+        "external": 7190165,
+        "arrayBuffers": 5354517
+      },
+      "after": {
+        "rss": 406487040,
+        "heapTotal": 284901376,
+        "heapUsed": 158973920,
+        "external": 64316788,
+        "arrayBuffers": 35072814
+      },
+      "afterPage": {
+        "rss": 406528000,
+        "heapTotal": 285163520,
+        "heapUsed": 159213208,
+        "external": 64316788,
+        "arrayBuffers": 35072814
+      },
+      "count": {
+        "cells": 600012,
+        "formatted": 600012
+      },
+      "pageValues": 13550,
+      "iteration": 2
+    },
+    {
+      "cellText": false,
+      "milliseconds": 1520.2989,
+      "before": {
+        "rss": 71823360,
+        "heapTotal": 37502976,
+        "heapUsed": 22753568,
+        "external": 7190165,
+        "arrayBuffers": 5354517
+      },
+      "after": {
+        "rss": 319242240,
+        "heapTotal": 202063872,
+        "heapUsed": 136311160,
+        "external": 64316788,
+        "arrayBuffers": 35072814
+      },
+      "afterPage": {
+        "rss": 319492096,
+        "heapTotal": 202063872,
+        "heapUsed": 137253984,
+        "external": 64316788,
+        "arrayBuffers": 35072814
+      },
+      "count": {
+        "cells": 600012,
+        "formatted": 2400
+      },
+      "pageValues": 13550,
+      "iteration": 2
+    }
+  ]
+}

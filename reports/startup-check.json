@@ -1,9 +1,13 @@
 {
-  "windowHandlePresent": true,
-  "responding": true,
-  "processId": 38492,
-  "title": "轻阅",
-  "checkedAt": "2026-10-12T18:18:25.4071565+08:00",
+  "executablePath": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+  "title": "塞西莉亚的图书馆",
   "componentsLinked": true,
-  "temporaryDirectoryAbsent": true
+  "responding": true,
+  "componentFileCount": 19537,
+  "temporaryDirectoryAbsent": true,
+  "windowHandlePresent": true,
+  "version": "0.1.1.0",
+  "checkedAt": "2026-10-13T11:02:48.5725777+08:00",
+  "applicationSha256": "1FE3D472CE224DA7064CF3513E7C4F244C85044B464EFBFC928A1CD939198E06",
+  "processId": 29968
 }

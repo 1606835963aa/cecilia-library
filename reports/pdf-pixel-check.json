@@ -1,0 +1,15 @@
+{
+  "kind": "Pixel comparison for synthetic PDF page after removing redundant bitmap copy",
+  "beforeSha256": "ddbe54500073f025a2a011101a92e18bf325f7f904f3b4bef2c0c6fcbc29a801",
+  "after": "reports/previews/分页样本.pdf.png",
+  "afterSha256": "ddbe54500073f025a2a011101a92e18bf325f7f904f3b4bef2c0c6fcbc29a801",
+  "beforeSize": [
+    1671,
+    2162
+  ],
+  "afterSize": [
+    1671,
+    2162
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,126 @@
+{
+  "ranAt": "2026-10-13T02:46:20.250Z",
+  "kind": "Node VM behavior checks; no browser layout or mouse verification",
+  "results": [
+    {
+      "name": "real SheetJS lazy formatting matches eager output: 加载项数据.xla",
+      "status": "PASS"
+    },
+    {
+      "name": "real SheetJS lazy formatting matches eager output: 加载项数据.xlam",
+      "status": "PASS"
+    },
+    {
+      "name": "real SheetJS lazy formatting matches eager output: 数据样本.csv",
+      "status": "PASS"
+    },
+    {
+      "name": "real SheetJS lazy formatting matches eager output: 数据样本.xlsx",
+      "status": "PASS"
+    },
+    {
+      "name": "real SheetJS lazy formatting matches eager output: 旧表格样本.dbf",
+      "status": "PASS"
+    },
+    {
+      "name": "real SheetJS lazy formatting matches eager output: 旧表格样本.dif",
+      "status": "PASS"
+    },
+    {
+      "name": "real SheetJS lazy formatting matches eager output: 旧表格样本.prn",
+      "status": "PASS"
+    },
+    {
+      "name": "real SheetJS lazy formatting matches eager output: 旧表格样本.xls",
+      "status": "PASS"
+    },
+    {
+      "name": "real SheetJS lazy formatting matches eager output: 旧表格模板.xlt",
+      "status": "PASS"
+    },
+    {
+      "name": "real SheetJS lazy formatting matches eager output: 表格模板.xltx",
+      "status": "PASS"
+    },
+    {
+      "name": "real SheetJS lazy formatting matches eager output: 静态宏表格.xlsm",
+      "status": "PASS"
+    },
+    {
+      "name": "real SheetJS lazy formatting matches eager output: 静态宏表格模板.xltm",
+      "status": "PASS"
+    },
+    {
+      "name": "real SheetJS dates, number formats, leading zeroes and formula cache match with date1904=false",
+      "status": "PASS"
+    },
+    {
+      "name": "real SheetJS dates, number formats, leading zeroes and formula cache match with date1904=true",
+      "status": "PASS"
+    },
+    {
+      "name": "search iterates forward and backward across worksheets with wraparound",
+      "status": "PASS"
+    },
+    {
+      "name": "manual worksheet switch relocates the same query to the current worksheet",
+      "status": "PASS"
+    },
+    {
+      "name": "first backward search uses the last match in the current worksheet",
+      "status": "PASS"
+    },
+    {
+      "name": "query cache avoids rescanning other worksheets on repeated searches",
+      "status": "PASS"
+    },
+    {
+      "name": "empty search yields 0/0 without relocating the current page",
+      "status": "PASS"
+    },
+    {
+      "name": "saved sheet/row/column position is used on the first worker page",
+      "status": "PASS"
+    },
+    {
+      "name": "clipped merged cells retain their source value and remaining span",
+      "status": "PASS"
+    },
+    {
+      "name": "expired worker fetch cannot replace a newer workbook",
+      "status": "PASS"
+    },
+    {
+      "name": "switching files terminates and detaches the previous table worker",
+      "status": "PASS"
+    },
+    {
+      "name": "old document search requests do not reach the active worker",
+      "status": "PASS"
+    },
+    {
+      "name": "late DOCX renderer cannot overwrite a newer text view",
+      "status": "PASS"
+    },
+    {
+      "name": "late DOCX download is cancelled before its data is rendered",
+      "status": "PASS"
+    },
+    {
+      "name": "component script load is shared and obsolete opens do not start downloading",
+      "status": "PASS"
+    },
+    {
+      "name": "blank table cells retain every grid cell and its row/column coordinates",
+      "status": "PASS"
+    },
+    {
+      "name": "merged, selected and formula cells preserve their original grid semantics",
+      "status": "PASS"
+    },
+    {
+      "name": "saved table/window scroll is restored and position messages carry the current id",
+      "status": "PASS"
+    }
+  ]
+}

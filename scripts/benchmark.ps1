@@ -31,7 +31,9 @@ for ($index=0; $index -lt $ColdRuns+$RepeatRuns; $index++) {
     $samples += $sample
     $reader.WaitForExit()
 }
-$compressed = Join-Path $projectRoot 'dist\LightReader-0.1.0-win-x64.zip'
+$project=[xml](Get-Content -LiteralPath 'src\LightReader.App\LightReader.App.csproj' -Raw)
+$version=$project.Project.PropertyGroup.Version
+$compressed = Join-Path $projectRoot ('dist\LightReader-'+$version+'-win-x64.zip')
 Compress-Archive -LiteralPath 'dist\LightReader' -DestinationPath $compressed -Force
 $versions = & '.\.tools\dotnet\dotnet.exe' --list-runtimes
 $disk = Get-CimInstance Win32_LogicalDisk -Filter "DeviceID='Z:'" | Select-Object DeviceID,DriveType,FileSystem,VolumeName

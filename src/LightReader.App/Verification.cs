@@ -69,7 +69,7 @@ public partial class MainWindow
                 if(check.File=="富文本样本.rtf")passed &= Viewer.Content is FlowDocumentScrollViewer rich && new System.Windows.Documents.TextRange(rich.Document.ContentStart,rich.Document.ContentEnd).Text.Contains("小熊读书");
                 if(Viewer.Content==browser?.View && browser!=null)
                 { await using var screenshot=File.Create(Path.Combine(capture,check.File+".png"));await browser.View.CoreWebView2.CapturePreviewAsync(CoreWebView2CapturePreviewImageFormat.Png,screenshot); }
-                if(nativePdf!=null){nativePdf.SavePreview(Path.Combine(capture,check.File+".png"));evidence=$"Windows.Data.Pdf: {nativePdf.PageCount} pages";passed &= nativePdf.PageCount>0;}
+                if(nativePdf!=null){nativePdf.SavePreview(Path.Combine(capture,check.File+".png"));evidence=$"Windows.Data.Pdf: {nativePdf.PageCount} pages, bitmap={nativePdf.HasRenderedPage}";passed &= nativePdf.PageCount>0&&nativePdf.HasRenderedPage;}
                 results.Add(new{file=check.File,status=passed?"PASS":"FAIL",milliseconds=watch.ElapsedMilliseconds,sha256=hash,evidence,previewSource=nativePdf!=null?pdfSource:Viewer.Content==browser?.View?browser?.SourcePath:null,error=MessagePanel.Visibility==Visibility.Visible?MessageDetail.Text:"",hostWorkingSet=Process.GetCurrentProcess().WorkingSet64});
                 await File.WriteAllTextAsync(Path.Combine(reports,"gui-checks.json"),JsonSerializer.Serialize(new{ranAt=DateTimeOffset.Now,results},new JsonSerializerOptions{WriteIndented=true}));
             }
@@ -119,6 +119,8 @@ public partial class MainWindow
             }
             await Task.WhenAll(AddFileAsync(Path.Combine(projectRoot,"tests","fixtures","阅读样本.docx")),AddFileAsync(Path.Combine(projectRoot,"tests","fixtures","文本样本.txt")));
             results.Add(new{file="flow:rapid file switch",status=current?.Name=="文本样本.txt" && textBox?.Text.Contains("小熊读书")==true && Viewer.Visibility==Visibility.Visible?"PASS":"FAIL"});
+            await RunReadingStabilityChecksAsync(projectRoot,results);
+            results.Add(new{file="flow:no unhandled UI errors",status=App.UnhandledErrors.Count==0?"PASS":"FAIL",errors=App.UnhandledErrors.ToArray()});
         }
         catch(Exception error){results.Add(new{file="runner",status="FAIL",error=error.ToString()});}
         await File.WriteAllTextAsync(Path.Combine(reports,"gui-checks.json"),JsonSerializer.Serialize(new{ranAt=DateTimeOffset.Now,results},new JsonSerializerOptions{WriteIndented=true}));

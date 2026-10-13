@@ -3,10 +3,70 @@
     const bridge = window.chrome.webview;
     const container = document.getElementById("document");
     let requestId = "", serial = 0, worker, sheet = 0, start = 0, firstColumn = 0;
+    let fetchController, tableWrapper, positionTimer, positionReady = false;
+    const scriptLoads = new Map();
     function send(type, message = "") { bridge.postMessage({ type, id: requestId, message }); }
     function script(url) {
-        return new Promise((resolve, reject) => { const el = document.createElement("script"); el.src = url; el.onload = () => resolve(); el.onerror = () => reject(new Error("预览组件加载失败")); document.head.append(el); });
+        const loaded = scriptLoads.get(url);
+        if (loaded)
+            return loaded;
+        const pending = new Promise((resolve, reject) => { const el = document.createElement("script"); el.src = url; el.onload = () => resolve(); el.onerror = () => { el.remove(); reject(new Error("预览组件加载失败")); }; document.head.append(el); });
+        scriptLoads.set(url, pending);
+        void pending.catch(() => scriptLoads.delete(url));
+        return pending;
     }
+    function releaseWorker() { if (worker) {
+        worker.onmessage = null;
+        worker.onerror = null;
+        worker.terminate();
+        worker = undefined;
+    } }
+    function releaseDocument() {
+        positionReady = false;
+        if (positionTimer !== undefined) {
+            clearTimeout(positionTimer);
+            positionTimer = undefined;
+        }
+        fetchController?.abort();
+        fetchController = undefined;
+        releaseWorker();
+        tableWrapper = undefined;
+        window.getSelection()?.removeAllRanges();
+        container.replaceChildren();
+        container.className = "";
+    }
+    function offset(value) { return typeof value === "number" && Number.isFinite(value) ? Math.max(0, Math.min(10000000, value)) : 0; }
+    function publishPosition() {
+        if (!positionReady)
+            return;
+        const position = { scrollX: window.scrollX, scrollY: window.scrollY };
+        if (worker && tableWrapper)
+            Object.assign(position, { sheet, start, firstColumn, tableScrollLeft: tableWrapper.scrollLeft, tableScrollTop: tableWrapper.scrollTop });
+        send("position", JSON.stringify(position));
+    }
+    function positionChanged() {
+        if (!positionReady || positionTimer !== undefined)
+            return;
+        const generation = serial;
+        publishPosition();
+        positionTimer = window.setTimeout(() => { positionTimer = undefined; if (generation === serial)
+            publishPosition(); }, 120);
+    }
+    async function restorePosition(generation, position) {
+        positionReady = false;
+        await new Promise(resolve => window.setTimeout(resolve, 0));
+        if (generation !== serial)
+            return;
+        window.scrollTo(offset(position?.scrollX), offset(position?.scrollY));
+        if (tableWrapper) {
+            tableWrapper.scrollLeft = offset(position?.tableScrollLeft);
+            tableWrapper.scrollTop = offset(position?.tableScrollTop);
+        }
+        positionReady = true;
+        publishPosition();
+    }
+    window.addEventListener("scroll", positionChanged, { passive: true });
+    window.addEventListener("pagehide", () => { ++serial; releaseDocument(); });
     function sanitize(root) {
         root.querySelectorAll("script,iframe,frame,object,embed,form,input,button,textarea,link,meta,base,svg,math,video,audio").forEach(e => e.remove());
         root.querySelectorAll("*").forEach(el => {
@@ -23,6 +83,7 @@
         name = String.fromCharCode(65 + (n - 1) % 26) + name; return name; }
     function displaySheet(page) {
         container.replaceChildren();
+        tableWrapper = undefined;
         sheet = page.sheet;
         start = page.start;
         firstColumn = page.firstColumn;
@@ -50,6 +111,8 @@
         }
         const wrapper = document.createElement("div");
         wrapper.className = "sheet-table-wrap";
+        tableWrapper = wrapper;
+        wrapper.addEventListener("scroll", positionChanged, { passive: true });
         const table = document.createElement("table");
         table.className = "sheet-table";
         const head = document.createElement("tr");
@@ -97,30 +160,40 @@
             send("find", `${page.foundIndex ?? 0}/${page.foundCount ?? 0}`);
         if (page.selected)
             container.querySelector(".selected")?.scrollIntoView({ block: "center" });
+        positionChanged();
     }
     async function open(message) {
         const generation = ++serial;
+        releaseDocument();
         requestId = message.id;
-        worker?.terminate();
-        worker = undefined;
-        container.replaceChildren();
+        window.scrollTo(0, 0);
+        const controller = new AbortController();
+        fetchController = controller;
         try {
             if (message.kind === "word") {
                 if (!window.JSZip)
                     await script("/component/word/jszip.js");
+                if (generation !== serial)
+                    return;
                 if (!window.docx)
                     await script("/component/word/docx-preview.js");
-                const response = await fetch(message.url);
+                if (generation !== serial)
+                    return;
+                const response = await fetch(message.url, { signal: controller.signal });
                 if (!response.ok)
                     throw new Error("读取文档失败");
+                if (generation !== serial)
+                    return;
                 const blob = await response.blob();
                 if (generation !== serial)
                     return;
                 const renderer = window.docx;
                 const temporary = document.createElement("div");
                 await renderer.renderAsync(blob, temporary, null, { inWrapper: true, ignoreWidth: false, ignoreHeight: false, breakPages: true, renderHeaders: true, renderFooters: true, renderFootnotes: true, useBase64URL: true });
-                if (generation !== serial)
+                if (generation !== serial) {
+                    temporary.replaceChildren();
                     return;
+                }
                 sanitize(temporary);
                 container.append(...temporary.childNodes);
                 const pages = [...container.querySelectorAll('section.docx')];
@@ -137,23 +210,29 @@
                     nav.append(total);
                     container.prepend(nav);
                 }
-                send("rendered");
+                await restorePosition(generation, message.position);
+                if (generation === serial)
+                    send("rendered");
             }
             else if (message.kind === "spreadsheet") {
                 worker = new Worker("/sheet-worker.js");
                 const target = worker;
                 let first = true;
-                target.onmessage = (event) => { if (generation !== serial)
+                target.onmessage = async (event) => { if (generation !== serial)
                     return; if (event.data.error) {
+                    releaseWorker();
                     send("error", event.data.error);
                     return;
-                } displaySheet(event.data); if (first) {
-                    first = false;
-                    send("rendered");
+                } const initial = first; first = false; displaySheet(event.data); if (initial) {
+                    await restorePosition(generation, message.position);
+                    if (generation === serial)
+                        send("rendered");
                 } };
-                target.onerror = () => { if (generation === serial)
-                    send("error", "表格组件处理失败"); };
-                target.postMessage({ type: "open", url: message.url, extension: message.extension });
+                target.onerror = () => { if (generation === serial) {
+                    releaseWorker();
+                    send("error", "表格组件处理失败");
+                } };
+                target.postMessage({ type: "open", url: message.url, extension: message.extension, position: message.position });
             }
             else if (message.kind === "html") {
                 const parsed = new DOMParser().parseFromString(message.text ?? "", "text/html");
@@ -174,27 +253,33 @@
                 sanitize(parsed.body);
                 container.className = "html-document";
                 container.append(...parsed.body.childNodes);
-                send("rendered");
+                await restorePosition(generation, message.position);
+                if (generation === serial)
+                    send("rendered");
             }
             else {
                 const pre = document.createElement("pre");
                 pre.className = "xml-document";
                 pre.textContent = message.text ?? "";
                 container.append(pre);
-                send("rendered");
+                await restorePosition(generation, message.position);
+                if (generation === serial)
+                    send("rendered");
             }
         }
         catch (error) {
-            if (generation === serial)
+            if (generation === serial && !controller.signal.aborted)
                 send("error", error instanceof Error ? error.message : "预览失败");
+        }
+        finally {
+            if (fetchController === controller)
+                fetchController = undefined;
         }
     }
     bridge.addEventListener("message", event => {
-        if (event.data.type === "open") {
-            container.className = "";
+        if (event.data.type === "open")
             void open(event.data);
-        }
-        if (event.data.type === "find") {
+        if (event.data.type === "find" && event.data.id === requestId) {
             if (worker)
                 worker.postMessage({ type: "find", query: event.data.query, sheet, backward: !!event.data.backward });
             else {

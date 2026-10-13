@@ -1,14 +1,46 @@
 (() => {
-    type HostMessage = { type: string; id: string; kind: string; url: string; text?: string; extension: string; query?: string; backward?: boolean; assets?:Record<string,string>;baseUrl?:string };
+    type Position = { scrollX?: number; scrollY?: number; sheet?: number; start?: number; firstColumn?: number; tableScrollLeft?: number; tableScrollTop?: number };
+    type HostMessage = { type: string; id: string; kind: string; url: string; text?: string; extension: string; query?: string; backward?: boolean; assets?:Record<string,string>;baseUrl?:string;position?:Position };
     type Cell = { row: number; col: number; value: string; numeric: boolean; formulaOnly: boolean; spanRows?: number; spanCols?: number };
     type SheetPage = { type: string; names: string[]; sheet: number; start: number; rows: number; columns: number; totalRows: number; totalColumns: number; firstColumn: number; cells: Cell[]; formulaMissing: number; found?: boolean; foundIndex?: number; foundCount?: number; selected?: {row:number;col:number}; error?:string };
     const bridge = (window as unknown as { chrome: { webview: { postMessage(data: unknown): void; addEventListener(type:string, fn:(event:{data:HostMessage})=>void):void } } }).chrome.webview;
     const container = document.getElementById("document")!;
     let requestId = "", serial = 0, worker: Worker | undefined, sheet = 0, start = 0, firstColumn = 0;
+    let fetchController: AbortController | undefined, tableWrapper: HTMLElement | undefined, positionTimer: number | undefined, positionReady = false;
+    const scriptLoads = new Map<string, Promise<void>>();
     function send(type: string, message = "") { bridge.postMessage({ type, id: requestId, message }); }
     function script(url: string): Promise<void> {
-        return new Promise((resolve,reject)=> { const el=document.createElement("script"); el.src=url; el.onload=()=>resolve(); el.onerror=()=>reject(new Error("预览组件加载失败")); document.head.append(el); });
+        const loaded=scriptLoads.get(url);if(loaded)return loaded;
+        const pending=new Promise<void>((resolve,reject)=> { const el=document.createElement("script"); el.src=url; el.onload=()=>resolve(); el.onerror=()=>{el.remove();reject(new Error("预览组件加载失败"));}; document.head.append(el); });
+        scriptLoads.set(url,pending);void pending.catch(()=>scriptLoads.delete(url));return pending;
     }
+    function releaseWorker() { if(worker){worker.onmessage=null;worker.onerror=null;worker.terminate();worker=undefined;} }
+    function releaseDocument() {
+        positionReady=false;if(positionTimer!==undefined){clearTimeout(positionTimer);positionTimer=undefined;}
+        fetchController?.abort();fetchController=undefined;releaseWorker();tableWrapper=undefined;
+        window.getSelection()?.removeAllRanges();container.replaceChildren();container.className="";
+    }
+    function offset(value: unknown): number { return typeof value==="number"&&Number.isFinite(value)?Math.max(0,Math.min(10000000,value)):0; }
+    function publishPosition() {
+        if(!positionReady)return;
+        const position:Position={scrollX:window.scrollX,scrollY:window.scrollY};
+        if(worker&&tableWrapper)Object.assign(position,{sheet,start,firstColumn,tableScrollLeft:tableWrapper.scrollLeft,tableScrollTop:tableWrapper.scrollTop});
+        send("position",JSON.stringify(position));
+    }
+    function positionChanged() {
+        if(!positionReady||positionTimer!==undefined)return;
+        const generation=serial;publishPosition();positionTimer=window.setTimeout(()=>{positionTimer=undefined;if(generation===serial)publishPosition();},120);
+    }
+    async function restorePosition(generation:number,position?:Position) {
+        positionReady=false;
+        await new Promise<void>(resolve=>window.setTimeout(resolve,0));
+        if(generation!==serial)return;
+        window.scrollTo(offset(position?.scrollX),offset(position?.scrollY));
+        if(tableWrapper){tableWrapper.scrollLeft=offset(position?.tableScrollLeft);tableWrapper.scrollTop=offset(position?.tableScrollTop);}
+        positionReady=true;publishPosition();
+    }
+    window.addEventListener("scroll",positionChanged,{passive:true});
+    window.addEventListener("pagehide",()=>{++serial;releaseDocument();});
     function sanitize(root: HTMLElement) {
         root.querySelectorAll("script,iframe,frame,object,embed,form,input,button,textarea,link,meta,base,svg,math,video,audio").forEach(e=>e.remove());
         root.querySelectorAll("*").forEach(el=>{
@@ -21,7 +53,7 @@
     }
     function columnName(index: number): string { let name=""; for(let n=index+1;n>0;n=Math.floor((n-1)/26))name=String.fromCharCode(65+(n-1)%26)+name; return name; }
     function displaySheet(page: SheetPage) {
-        container.replaceChildren(); sheet=page.sheet; start=page.start; firstColumn=page.firstColumn;
+        container.replaceChildren();tableWrapper=undefined; sheet=page.sheet; start=page.start; firstColumn=page.firstColumn;
         const toolbar=document.createElement("div"); toolbar.className="sheet-header";
         const selector=document.createElement("select"); selector.setAttribute("aria-label","工作表");
         page.names.forEach((name,i)=>{ const option=document.createElement("option"); option.textContent=name; option.value=String(i); option.selected=i===sheet; selector.append(option); });
@@ -33,7 +65,7 @@
         button("右侧列",firstColumn+page.columns<page.totalColumns,()=>worker?.postMessage({type:"page",sheet,start,firstColumn:firstColumn+50}));
         const summary=document.createElement("span");summary.textContent=`第 ${page.rows ? start+1:0}–${start+page.rows} 行 / ${page.totalRows} 行`;toolbar.append(summary);container.append(toolbar);
         if(page.formulaMissing>0){const note=document.createElement("div");note.className="sheet-note";note.textContent="部分公式没有已保存的结果，显示公式内容";container.append(note);}
-        const wrapper=document.createElement("div");wrapper.className="sheet-table-wrap";
+        const wrapper=document.createElement("div");wrapper.className="sheet-table-wrap";tableWrapper=wrapper;wrapper.addEventListener("scroll",positionChanged,{passive:true});
         const table=document.createElement("table");table.className="sheet-table";const head=document.createElement("tr");const corner=document.createElement("th");corner.className="row-number";head.append(corner);
         for(let c=firstColumn;c<firstColumn+page.columns;c++){const th=document.createElement("th");th.textContent=columnName(c);head.append(th);}table.append(head);
         const byRow=new Map<number,Cell[]>();page.cells.forEach(c=>{if(!byRow.has(c.row))byRow.set(c.row,[]);byRow.get(c.row)!.push(c);});
@@ -42,18 +74,20 @@
             for(const cell of byRow.get(r)??[]){const td=document.createElement("td");td.textContent=cell.value;td.dataset.row=String(cell.row);td.dataset.col=String(cell.col);if(cell.numeric)td.classList.add("number");if(cell.formulaOnly)td.classList.add("formula");if(cell.spanRows)td.rowSpan=cell.spanRows;if(cell.spanCols)td.colSpan=cell.spanCols;if(page.selected?.row===cell.row&&page.selected?.col===cell.col)td.classList.add("selected");row.append(td);}table.append(row);
         }
         wrapper.append(table);container.append(wrapper); send("status",`${page.names[sheet]} · ${page.totalRows} 行 × ${page.totalColumns} 列`);
-        if(page.found!==undefined)send("find",`${page.foundIndex??0}/${page.foundCount??0}`);if(page.selected)container.querySelector(".selected")?.scrollIntoView({block:"center"});
+        if(page.found!==undefined)send("find",`${page.foundIndex??0}/${page.foundCount??0}`);if(page.selected)container.querySelector(".selected")?.scrollIntoView({block:"center"});positionChanged();
     }
     async function open(message: HostMessage) {
-        const generation=++serial; requestId=message.id;worker?.terminate();worker=undefined;container.replaceChildren();
+        const generation=++serial;releaseDocument();requestId=message.id;window.scrollTo(0,0);const controller=new AbortController();fetchController=controller;
         try {
             if(message.kind==="word"){
                 if(!(window as unknown as {JSZip?:unknown}).JSZip)await script("/component/word/jszip.js");
+                if(generation!==serial)return;
                 if(!(window as unknown as {docx?:unknown}).docx)await script("/component/word/docx-preview.js");
-                const response=await fetch(message.url);if(!response.ok)throw new Error("读取文档失败");const blob=await response.blob();if(generation!==serial)return;
+                if(generation!==serial)return;
+                const response=await fetch(message.url,{signal:controller.signal});if(!response.ok)throw new Error("读取文档失败");if(generation!==serial)return;const blob=await response.blob();if(generation!==serial)return;
                 const renderer=(window as unknown as {docx:{renderAsync(data:Blob,body:HTMLElement,styles:HTMLElement|null,options:unknown):Promise<void>}}).docx;
                 const temporary=document.createElement("div");await renderer.renderAsync(blob,temporary,null,{inWrapper:true,ignoreWidth:false,ignoreHeight:false,breakPages:true,renderHeaders:true,renderFooters:true,renderFootnotes:true,useBase64URL:true});
-                if(generation!==serial)return;sanitize(temporary);container.append(...temporary.childNodes);
+                if(generation!==serial){temporary.replaceChildren();return;}sanitize(temporary);container.append(...temporary.childNodes);
                 const pages=[...container.querySelectorAll<HTMLElement>('section.docx')];
                 if(pages.length>1){
                     const nav=document.createElement('div');nav.className='doc-page-nav';const select=document.createElement('select');select.setAttribute('aria-label','跳转页码');
@@ -61,25 +95,26 @@
                     select.onchange=()=>pages[Number(select.value)].scrollIntoView({block:'start'});nav.append(select);
                     const total=document.createElement('span');total.textContent=`共 ${pages.length} 页`;nav.append(total);container.prepend(nav);
                 }
-                send("rendered");
+                await restorePosition(generation,message.position);if(generation===serial)send("rendered");
             }else if(message.kind==="spreadsheet"){
                 worker=new Worker("/sheet-worker.js");const target=worker;
-                let first=true;target.onmessage=(event:MessageEvent<SheetPage>)=>{if(generation!==serial)return;if(event.data.error){send("error",event.data.error);return;}displaySheet(event.data);if(first){first=false;send("rendered");}};
-                target.onerror=()=>{if(generation===serial)send("error","表格组件处理失败");};target.postMessage({type:"open",url:message.url,extension:message.extension});
+                let first=true;target.onmessage=async(event:MessageEvent<SheetPage>)=>{if(generation!==serial)return;if(event.data.error){releaseWorker();send("error",event.data.error);return;}const initial=first;first=false;displaySheet(event.data);if(initial){await restorePosition(generation,message.position);if(generation===serial)send("rendered");}};
+                target.onerror=()=>{if(generation===serial){releaseWorker();send("error","表格组件处理失败");}};target.postMessage({type:"open",url:message.url,extension:message.extension,position:message.position});
             }else if(message.kind==="html"){
                 const parsed=new DOMParser().parseFromString(message.text??"","text/html");
                 const resolve=(url:string)=>{let asset=message.assets?.[url];if(!asset&&message.baseUrl){try{asset=message.assets?.[new URL(url,message.baseUrl).href];}catch{}}return asset;};
                 parsed.querySelectorAll("img[src]").forEach(img=>{const asset=resolve(img.getAttribute("src")!);if(asset?.startsWith("data:image/"))img.setAttribute("src",asset);});
                 parsed.querySelectorAll("link[rel=stylesheet]").forEach(link=>{const asset=resolve(link.getAttribute("href")??"");if(asset?.startsWith("css:")){const style=document.createElement("style");style.textContent=asset.slice(4);parsed.body.prepend(style);}});
-                parsed.head.querySelectorAll("style").forEach(style=>parsed.body.prepend(style));sanitize(parsed.body);container.className="html-document";container.append(...parsed.body.childNodes);send("rendered");
+                parsed.head.querySelectorAll("style").forEach(style=>parsed.body.prepend(style));sanitize(parsed.body);container.className="html-document";container.append(...parsed.body.childNodes);await restorePosition(generation,message.position);if(generation===serial)send("rendered");
             }else{
-                const pre=document.createElement("pre");pre.className="xml-document";pre.textContent=message.text??"";container.append(pre);send("rendered");
+                const pre=document.createElement("pre");pre.className="xml-document";pre.textContent=message.text??"";container.append(pre);await restorePosition(generation,message.position);if(generation===serial)send("rendered");
             }
-        }catch(error){if(generation===serial)send("error",error instanceof Error?error.message:"预览失败");}
+        }catch(error){if(generation===serial&&!controller.signal.aborted)send("error",error instanceof Error?error.message:"预览失败");}
+        finally{if(fetchController===controller)fetchController=undefined;}
     }
     bridge.addEventListener("message",event=>{
-        if(event.data.type==="open"){container.className="";void open(event.data);}
-        if(event.data.type==="find"){
+        if(event.data.type==="open")void open(event.data);
+        if(event.data.type==="find"&&event.data.id===requestId){
             if(worker)worker.postMessage({type:"find",query:event.data.query,sheet,backward:!!event.data.backward});
             else {const found=(window as unknown as {find(q:string,c:boolean,b:boolean,w:boolean):boolean}).find(event.data.query??"",false,!!event.data.backward,true);if(!found)send("find","0/0");}
         }

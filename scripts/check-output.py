@@ -5,6 +5,7 @@ import shutil
 from pypdf import PdfReader
 ROOT=Path(__file__).resolve().parent.parent
 gui=json.loads((ROOT/'reports'/'gui-checks.json').read_text(encoding='utf-8-sig'))
+assert gui['results'] and gui['results'][-1].get('file')=='flow:no unhandled UI errors', 'Wait for the completed window report before independent checks'
 checks=[]
 for result in gui['results']:
     source=result.get('retainedPdf') or result.get('previewSource')

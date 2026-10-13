@@ -1,15 +1,30 @@
 {
-  "goal47": "NOT_COMPLETE",
+  "version": "0.1.1",
+  "validatedAt": "2026-10-13T11:01:32.706790+08:00",
+  "package": "dist/LightReader-0.1.1-win-x64.zip",
+  "packageBytes": 7853610,
+  "packageSha256": "D9F82F476F8CE6F2BCE7D48C9B96158FBFDD29C721D725EF5FF287C82BC454BD",
+  "applicationSha256": "1FE3D472CE224DA7064CF3513E7C4F244C85044B464EFBFC928A1CD939198E06",
   "os": "Microsoft Windows NT 10.0.26200.0",
-  "packageBytes": 7781197,
-  "targetDefinition": "46 WPS listed suffixes + user-confirmed ODT",
   "coreChecks": "22 PASS",
-  "package": "dist/LightReader-0.1.0-win-x64.zip",
-  "packageSha256": "1D2F4F82DD2CE53B327A83E47DA5975B352AA5A3FF223EE31393B7CBEFFD8E33",
-  "applicationSha256": "CCC0FADE5F3DA919A57FA91EC8C21490B790A50B98CF7D05EA57A567BA1E17BD",
-  "version": "0.1.0",
-  "guiChecks": "51 PASS",
-  "builtOn": "2026-10-12T18:17:09.2903881+08:00",
+  "guiChecks": "80 PASS",
   "independentChecks": "17 PASS",
-  "formatEvidence": "40 extensions / 42 synthetic fixtures"
+  "previewBehaviorChecks": "30 PASS",
+  "lifecycle": {
+    "snapshots": 55,
+    "checks": 36,
+    "status": "PASS"
+  },
+  "pdfLifecycle": {
+    "iterations": 10,
+    "snapshots": 41,
+    "checks": 31,
+    "status": "PASS"
+  },
+  "pdfPixelComparison": "PASS",
+  "formatEvidence": "40 extensions / 42 synthetic fixtures",
+  "goal47": "NOT_COMPLETE",
+  "targetDefinition": "46 WPS listed suffixes + user-confirmed ODT",
+  "realMouseVerification": "BLOCKED_ENV: Computer Use trusted RPC module could not load",
+  "conversionVerification": "Synthetic PDF conversion cache reused for final window checks; separately cold-opened DOC for document memory snapshot"
 }
