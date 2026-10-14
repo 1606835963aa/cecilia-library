@@ -1,0 +1,64 @@
+{
+  "checkedOn": "2026-10-14",
+  "application": "塞西莉亚的图书馆",
+  "issueStatus": "UNRESOLVED",
+  "userFeedback": "PDF Choose another app does not show either Cecilia Library in Chinese or LightReader after reopening",
+  "programChange": "AssemblyTitle and Product metadata only; no reader logic or registry schema change",
+  "publishedVersion": "0.1.1",
+  "publishedMetadata": {
+    "fileDescription": "塞西莉亚的图书馆",
+    "productName": "塞西莉亚的图书馆",
+    "executableHash": "1B51A972E4F5D5BA4CFA118E8EBF21AE895817011B190242119E34F2361AA86F",
+    "assemblyHash": "46DFE77790739E6F4F55ED00C9F485D51EF493A8AD18DFDA195DE19D3540FB71",
+    "syntheticPdf": {
+      "renderer": "Windows.Data.Pdf",
+      "shown": true,
+      "status": "PASS"
+    },
+    "notificationSent": true
+  },
+  "build": {
+    "warnings": 0,
+    "errors": 0,
+    "status": "PASS"
+  },
+  "nativeCandidateChecks": {
+    "status": "PASS",
+    "pdfAllHandlerCount": 20,
+    "report": "reports/windows-open-with-checks.json",
+    "checks": 80,
+    "matchingPdfHandlers": 1,
+    "pdfRecommendedHandlerCount": 7
+  },
+  "readOnlyObservations": {
+    "ownHiddenFlagsFound": false,
+    "existingPdfDefaultCommandKeyResolvable": false,
+    "existingPdfDefaultIssueCauseConfirmed": false,
+    "executablePathCharacters": 62,
+    "mergedRegistry32And64Agree": true,
+    "localNtfsDrive": true,
+    "executableExists": true
+  },
+  "actualChooser": {
+    "userReportsMissing": true,
+    "screenshotObtained": false,
+    "reason": "Computer Use: Trusted RPC package must resolve within a configured trusted module directory: @oai/sky/service",
+    "status": "BLOCKED_ENV"
+  },
+  "validationScope": "Published file metadata, build, synthetic native-PDF display and native candidate enumeration; no full rendering/performance retest, default reassignment, Explorer restart, or registry reset",
+  "externalCases": [
+    {
+      "relevance": "Windows 11 PDF handler absent; reported fix adds ProgID and OpenWithProgids; these registrations already exist here",
+      "url": "https://github.com/pdfarranger/pdfarranger/issues/1170"
+    },
+    {
+      "relevance": "Default PDF list and portable-registration feedback; no confirmed cause for this machine",
+      "url": "https://github.com/sumatrapdfreader/sumatrapdf/discussions/2942"
+    },
+    {
+      "relevance": "Windows default-app Settings list, a related but different UI",
+      "url": "https://github.com/microsoft/vscode/issues/252655"
+    }
+  ],
+  "nextEvidence": "Actual PDF Choose another app list screenshot; do not infer visible-list acceptance from native enumeration"
+}

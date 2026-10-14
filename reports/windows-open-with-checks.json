@@ -1,7 +1,7 @@
 ﻿{
     "scope":  "Current desktop user; sample-verified extensions only",
     "method":  "Read-only SHAssocEnumHandlers and IAssocHandler name/recommendation queries; no dialog clicks",
-    "checkedAt":  "2026-10-14T10:57:41.5617110+08:00",
+    "checkedAt":  "2026-10-14T11:17:23.0880979+08:00",
     "results":  [
                     {
                         "filter":  "all",

@@ -71,9 +71,10 @@
   ],
   "registrationSchemaVersion": 2,
   "pdfMenuFeedback": {
-    "userReported": "Application not visible in the PDF chooser",
+    "userReported": "Still missing after reopening; neither Chinese name nor LightReader is visible",
     "nativeBeforeChange": "Already listed as recommended with the correct Chinese name and executable",
     "nativeAfterChange": "Listed as recommended",
-    "visibleMenuAcceptance": "BLOCKED_ENV; not visually confirmed"
+    "visibleMenuAcceptance": "BLOCKED_ENV; not visually confirmed",
+    "followupReport": "reports/windows-open-with-followup.json"
   }
 }
