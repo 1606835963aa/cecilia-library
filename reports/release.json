@@ -1,30 +1,50 @@
 {
-  "version": "0.1.1",
-  "validatedAt": "2026-10-13T11:01:32.706790+08:00",
-  "package": "dist/LightReader-0.1.1-win-x64.zip",
-  "packageBytes": 7853610,
-  "packageSha256": "D9F82F476F8CE6F2BCE7D48C9B96158FBFDD29C721D725EF5FF287C82BC454BD",
-  "applicationSha256": "1FE3D472CE224DA7064CF3513E7C4F244C85044B464EFBFC928A1CD939198E06",
-  "os": "Microsoft Windows NT 10.0.26200.0",
+  "version": "0.1.2",
+  "validatedAt": "2026-10-14T11:13:51.310945+00:00",
+  "package": "dist\\LightReader-0.1.2-win-x64.zip",
+  "packageBytes": 7861624,
+  "packageSha256": "8A499D259D5957D74126F7E6A9CAC2B9D490306D11472912F82EA8E5B873CB44",
+  "applicationSha256": "F64FFE5930E8F43F61E3ABE1FCD8EDB316AB3CDA068B75E836BB53191B779035",
+  "build": "PASS; 0 .NET warnings, 0 errors; npm reports a pre-existing unknown store-dir configuration",
   "coreChecks": "22 PASS",
-  "guiChecks": "80 PASS",
+  "guiChecks": "83 PASS",
   "independentChecks": "17 PASS",
-  "previewBehaviorChecks": "30 PASS",
+  "previewBehaviorChecks": "35 PASS",
+  "nativeWps": {
+    "verifiedExtensions": [
+      ".dps",
+      ".dpt",
+      ".et",
+      ".ett",
+      ".wps",
+      ".wpt"
+    ],
+    "completeSamples": 6,
+    "completePages": 44,
+    "additionalBlankSmokeSamples": 1,
+    "structure": "PASS",
+    "display": "PASS",
+    "independentContent": "PASS",
+    "visual": "PASS",
+    "status": "VERIFIED_SAMPLE"
+  },
   "lifecycle": {
     "snapshots": 55,
     "checks": 36,
     "status": "PASS"
   },
   "pdfLifecycle": {
-    "iterations": 10,
-    "snapshots": 41,
-    "checks": 31,
-    "status": "PASS"
+    "iterations": 20,
+    "snapshots": 81,
+    "checks": 61,
+    "status": "PASS",
+    "earlierRun": "INTERRUPTED; cause unconfirmed; reports/pdf-012-interrupted.json"
   },
-  "pdfPixelComparison": "PASS",
-  "formatEvidence": "40 extensions / 42 synthetic fixtures",
-  "goal47": "NOT_COMPLETE",
+  "pdfPixelComparison": "3 PASS",
+  "formatEvidence": "46 extensions: 40 synthetic + 6 public WPS originals",
+  "goal47": "NOT_COMPLETE: .ts definition pending",
   "targetDefinition": "46 WPS listed suffixes + user-confirmed ODT",
   "realMouseVerification": "BLOCKED_ENV: Computer Use trusted RPC module could not load",
-  "conversionVerification": "Synthetic PDF conversion cache reused for final window checks; separately cold-opened DOC for document memory snapshot"
+  "windowsPdfChooser": "User confirmed resolved after manually selecting EXE once; no association changes in 0.1.2",
+  "conversionVerification": "Cold and cached WPS samples checked; final full window regression reused the isolated synthetic conversion cache. One cold GUI run exceeded its test timeout before the complete rerun."
 }

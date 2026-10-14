@@ -1,7 +1,13 @@
 {
   "checkedOn": "2026-10-14",
   "application": "塞西莉亚的图书馆",
-  "issueStatus": "UNRESOLVED",
+  "issueStatus": "RESOLVED_USER_CONFIRMED",
+  "resolution": {
+    "confirmedOn": "2026-10-14",
+    "source": "User feedback in this project chat",
+    "observed": "After manually choosing the executable once, the application appeared in the choices; user confirmed completion and requested no further association work",
+    "additionalAssociationChanges": false
+  },
   "userFeedback": "PDF Choose another app does not show either Cecilia Library in Chinese or LightReader after reopening",
   "programChange": "AssemblyTitle and Product metadata only; no reader logic or registry schema change",
   "publishedVersion": "0.1.1",
@@ -60,5 +66,5 @@
       "url": "https://github.com/microsoft/vscode/issues/252655"
     }
   ],
-  "nextEvidence": "Actual PDF Choose another app list screenshot; do not infer visible-list acceptance from native enumeration"
+  "nextEvidence": null
 }

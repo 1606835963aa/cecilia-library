@@ -1,0 +1,443 @@
+{
+  "checkedAt": "2026-10-14T10:53:07.637755+00:00",
+  "kind": "Independent PDF extraction with pypdf and bitmap checks with Pillow; visual review recorded separately",
+  "applicationSha256": "F64FFE5930E8F43F61E3ABE1FCD8EDB316AB3CDA068B75E836BB53191B779035",
+  "checks": [
+    {
+      "id": "wps-writer",
+      "file": "writer.wps",
+      "extension": ".wps",
+      "status": "PASS",
+      "sha256": "132A528221AF85B562547C158C2CCFBAD68377D77BED8EFED91982DE6CD26ADB",
+      "pages": 6,
+      "referencePdfSha256": "765867940B272E7764757A68F3452C12993156949A5A209664FE6C9CA9D2786F",
+      "textChecks": [
+        {
+          "text": "AngularJS Git Commit Message",
+          "present": true
+        },
+        {
+          "text": "Generating CHANGELOG.md",
+          "present": true
+        },
+        {
+          "text": "Breaking changes",
+          "present": true
+        }
+      ],
+      "pageChecks": [
+        {
+          "page": 1,
+          "width": 1671,
+          "height": 2162,
+          "hasInk": true
+        },
+        {
+          "page": 2,
+          "width": 1671,
+          "height": 2162,
+          "hasInk": true
+        },
+        {
+          "page": 3,
+          "width": 1671,
+          "height": 2162,
+          "hasInk": true
+        },
+        {
+          "page": 4,
+          "width": 1671,
+          "height": 2162,
+          "hasInk": true
+        },
+        {
+          "page": 5,
+          "width": 1671,
+          "height": 2162,
+          "hasInk": true
+        },
+        {
+          "page": 6,
+          "width": 1671,
+          "height": 2162,
+          "hasInk": true
+        }
+      ]
+    },
+    {
+      "id": "wps-writer-template",
+      "file": "Memo.wpt",
+      "extension": ".wpt",
+      "status": "PASS",
+      "sha256": "8C1E5A7891AAFBA1432D01D1E2FC5E4C9FD51751C876EBC437CA204ABF40248D",
+      "pages": 1,
+      "referencePdfSha256": "B130E986A714D9D7D980870C2F1AF2F052F36FB5674A5DDF04A7A852742B369E",
+      "textChecks": [
+        {
+          "text": "Memo",
+          "present": true
+        },
+        {
+          "text": "Your Company Name",
+          "present": true
+        },
+        {
+          "text": "Type your meno here",
+          "present": true
+        }
+      ],
+      "pageChecks": [
+        {
+          "page": 1,
+          "width": 1671,
+          "height": 2363,
+          "hasInk": true
+        }
+      ]
+    },
+    {
+      "id": "wps-sheet",
+      "file": "sheet.et",
+      "extension": ".et",
+      "status": "PASS",
+      "sha256": "D04E20AEEFDD569370CD72BC1E5F33DA38436997AB0D6C4E08D37EB83791C777",
+      "pages": 9,
+      "referencePdfSha256": "74BD809AFCBA4BEF72AF2B0EF9575D9AC9DAFE8304A34FFDFE225A4CE757A494",
+      "textChecks": [
+        {
+          "text": "个人工作计划",
+          "present": true
+        },
+        {
+          "text": "工作项目记录",
+          "present": true
+        },
+        {
+          "text": "时间安排",
+          "present": true
+        }
+      ],
+      "pageChecks": [
+        {
+          "page": 1,
+          "width": 1671,
+          "height": 2363,
+          "hasInk": true
+        },
+        {
+          "page": 2,
+          "width": 1671,
+          "height": 2363,
+          "hasInk": true
+        },
+        {
+          "page": 3,
+          "width": 1671,
+          "height": 2363,
+          "hasInk": true
+        },
+        {
+          "page": 4,
+          "width": 1671,
+          "height": 2363,
+          "hasInk": true
+        },
+        {
+          "page": 5,
+          "width": 1671,
+          "height": 2162,
+          "hasInk": true
+        },
+        {
+          "page": 6,
+          "width": 1671,
+          "height": 2162,
+          "hasInk": true
+        },
+        {
+          "page": 7,
+          "width": 1671,
+          "height": 2162,
+          "hasInk": true
+        },
+        {
+          "page": 8,
+          "width": 1671,
+          "height": 2162,
+          "hasInk": true
+        },
+        {
+          "page": 9,
+          "width": 1671,
+          "height": 2162,
+          "hasInk": true
+        }
+      ]
+    },
+    {
+      "id": "wps-sheet-template",
+      "file": "Invoice.ett",
+      "extension": ".ett",
+      "status": "PASS",
+      "sha256": "224CD55D529111D0985412C565D6AABDFC2CB24A3923BC6DE7D3E039EDA22A19",
+      "pages": 1,
+      "referencePdfSha256": "F30438923BAF51DD027DAB349886C47A5AB7091DFEBC851831A22CDCED5359E2",
+      "textChecks": [
+        {
+          "text": "The Flower Gallery Limited",
+          "present": true
+        },
+        {
+          "text": "Invoice",
+          "present": true
+        },
+        {
+          "text": "Grand Total",
+          "present": true
+        }
+      ],
+      "pageChecks": [
+        {
+          "page": 1,
+          "width": 1671,
+          "height": 2363,
+          "hasInk": true
+        }
+      ]
+    },
+    {
+      "id": "wps-presentation",
+      "file": "presentation.dps",
+      "extension": ".dps",
+      "status": "PASS",
+      "sha256": "1889A48255D87AA79A0E2C5AF795EFF781C774AA53176B1531BDA7E772A191C7",
+      "pages": 15,
+      "referencePdfSha256": "75F5413801C0655D86F38575DC8DEC15419FE7E3F4757275844A51B9DB3A00ED",
+      "textChecks": [
+        {
+          "text": "年终工作总结汇报",
+          "present": true
+        },
+        {
+          "text": "ANNUAL WORK SUMMARY",
+          "present": true
+        },
+        {
+          "text": "NEXT YEAR WORK PLAN",
+          "present": true
+        }
+      ],
+      "pageChecks": [
+        {
+          "page": 1,
+          "width": 1671,
+          "height": 936,
+          "hasInk": true
+        },
+        {
+          "page": 2,
+          "width": 1671,
+          "height": 936,
+          "hasInk": true
+        },
+        {
+          "page": 3,
+          "width": 1671,
+          "height": 936,
+          "hasInk": true
+        },
+        {
+          "page": 4,
+          "width": 1671,
+          "height": 936,
+          "hasInk": true
+        },
+        {
+          "page": 5,
+          "width": 1671,
+          "height": 936,
+          "hasInk": true
+        },
+        {
+          "page": 6,
+          "width": 1671,
+          "height": 936,
+          "hasInk": true
+        },
+        {
+          "page": 7,
+          "width": 1671,
+          "height": 936,
+          "hasInk": true
+        },
+        {
+          "page": 8,
+          "width": 1671,
+          "height": 936,
+          "hasInk": true
+        },
+        {
+          "page": 9,
+          "width": 1671,
+          "height": 936,
+          "hasInk": true
+        },
+        {
+          "page": 10,
+          "width": 1671,
+          "height": 936,
+          "hasInk": true
+        },
+        {
+          "page": 11,
+          "width": 1671,
+          "height": 936,
+          "hasInk": true
+        },
+        {
+          "page": 12,
+          "width": 1671,
+          "height": 936,
+          "hasInk": true
+        },
+        {
+          "page": 13,
+          "width": 1671,
+          "height": 936,
+          "hasInk": true
+        },
+        {
+          "page": 14,
+          "width": 1671,
+          "height": 936,
+          "hasInk": true
+        },
+        {
+          "page": 15,
+          "width": 1671,
+          "height": 936,
+          "hasInk": true
+        }
+      ]
+    },
+    {
+      "id": "wps-presentation-blank",
+      "file": "newfile.dps",
+      "extension": ".dps",
+      "status": "SMOKE_ONLY",
+      "sha256": "350411F57490A8BCFEADE63A40AD4883F112927068A88C73DB729291FA0B522A",
+      "pages": 1,
+      "referencePdfSha256": "1EE45D2E96EF6B952673996746963396798BB331C70147D396B0FE9FF9481530",
+      "textChecks": [],
+      "pageChecks": [
+        {
+          "page": 1,
+          "width": 1671,
+          "height": 940,
+          "hasInk": false
+        }
+      ]
+    },
+    {
+      "id": "wps-presentation-template",
+      "file": "Books.dpt",
+      "extension": ".dpt",
+      "status": "PASS",
+      "sha256": "9375E32AFA2657FB2AD2E8EDDACFAF46899F641FB8BA8D90980A267359380EDF",
+      "pages": 12,
+      "referencePdfSha256": "A38DB35674EF37EA866757452E7517E4A069B9C8A5EBA8DEEEAC18903477032C",
+      "textChecks": [
+        {
+          "text": "Diagram",
+          "present": true
+        },
+        {
+          "text": "Click to add text",
+          "present": true
+        }
+      ],
+      "pageChecks": [
+        {
+          "page": 1,
+          "width": 1671,
+          "height": 1253,
+          "hasInk": true
+        },
+        {
+          "page": 2,
+          "width": 1671,
+          "height": 1253,
+          "hasInk": true
+        },
+        {
+          "page": 3,
+          "width": 1671,
+          "height": 1253,
+          "hasInk": true
+        },
+        {
+          "page": 4,
+          "width": 1671,
+          "height": 1253,
+          "hasInk": true
+        },
+        {
+          "page": 5,
+          "width": 1671,
+          "height": 1253,
+          "hasInk": true
+        },
+        {
+          "page": 6,
+          "width": 1671,
+          "height": 1253,
+          "hasInk": true
+        },
+        {
+          "page": 7,
+          "width": 1671,
+          "height": 1253,
+          "hasInk": true
+        },
+        {
+          "page": 8,
+          "width": 1671,
+          "height": 1253,
+          "hasInk": true
+        },
+        {
+          "page": 9,
+          "width": 1671,
+          "height": 1253,
+          "hasInk": true
+        },
+        {
+          "page": 10,
+          "width": 1671,
+          "height": 1253,
+          "hasInk": true
+        },
+        {
+          "page": 11,
+          "width": 1671,
+          "height": 1253,
+          "hasInk": true
+        },
+        {
+          "page": 12,
+          "width": 1671,
+          "height": 1253,
+          "hasInk": true
+        }
+      ]
+    }
+  ],
+  "verifiedExtensions": [
+    ".dps",
+    ".dpt",
+    ".et",
+    ".ett",
+    ".wps",
+    ".wpt"
+  ]
+}

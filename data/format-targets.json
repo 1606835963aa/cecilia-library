@@ -30,9 +30,16 @@
       "target": "view",
       "proposedModule": "office-compat",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "writer.wps",
+          "sha256": "132A528221AF85B562547C158C2CCFBAD68377D77BED8EFED91982DE6CD26ADB",
+          "report": "reports/native-wps-independent.json",
+          "scope": "public WPS original; display, structure, independent content and visual review"
+        }
+      ],
       "notes": "依据文件内容识别，按版本分别测试；同后缀不能保证同结构。"
     },
     {
@@ -43,9 +50,16 @@
       "target": "view",
       "proposedModule": "office-compat",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "Memo.wpt",
+          "sha256": "8C1E5A7891AAFBA1432D01D1E2FC5E4C9FD51751C876EBC437CA204ABF40248D",
+          "report": "reports/native-wps-independent.json",
+          "scope": "public WPS original; display, structure, independent content and visual review"
+        }
+      ],
       "notes": "依据文件内容识别，按版本分别测试；同后缀不能保证同结构。"
     },
     {
@@ -322,9 +336,16 @@
       "target": "view",
       "proposedModule": "spreadsheet-reader",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "sheet.et",
+          "sha256": "D04E20AEEFDD569370CD72BC1E5F33DA38436997AB0D6C4E08D37EB83791C777",
+          "report": "reports/native-wps-independent.json",
+          "scope": "public WPS original; display, structure, independent content and visual review"
+        }
+      ],
       "notes": "依据文件内容识别，按版本分别测试；同后缀不能保证同结构。"
     },
     {
@@ -335,9 +356,16 @@
       "target": "view",
       "proposedModule": "spreadsheet-reader",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "Invoice.ett",
+          "sha256": "224CD55D529111D0985412C565D6AABDFC2CB24A3923BC6DE7D3E039EDA22A19",
+          "report": "reports/native-wps-independent.json",
+          "scope": "public WPS original; display, structure, independent content and visual review"
+        }
+      ],
       "notes": "依据文件内容识别，按版本分别测试；同后缀不能保证同结构。"
     },
     {
@@ -592,9 +620,16 @@
       "target": "view",
       "proposedModule": "office-compat",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "presentation.dps",
+          "sha256": "1889A48255D87AA79A0E2C5AF795EFF781C774AA53176B1531BDA7E772A191C7",
+          "report": "reports/native-wps-independent.json",
+          "scope": "public WPS original; display, structure, independent content and visual review"
+        }
+      ],
       "notes": "依据文件内容识别，按版本分别测试；同后缀不能保证同结构。"
     },
     {
@@ -605,9 +640,16 @@
       "target": "view",
       "proposedModule": "office-compat",
       "definitionStatus": "DEFINED",
-      "implementationStatus": "ROUTED_UNVERIFIED",
-      "verificationStatus": "NOT_RUN",
-      "evidence": [],
+      "implementationStatus": "IMPLEMENTED",
+      "verificationStatus": "VERIFIED_SAMPLE",
+      "evidence": [
+        {
+          "fixture": "Books.dpt",
+          "sha256": "9375E32AFA2657FB2AD2E8EDDACFAF46899F641FB8BA8D90980A267359380EDF",
+          "report": "reports/native-wps-independent.json",
+          "scope": "public WPS original; display, structure, independent content and visual review"
+        }
+      ],
       "notes": "依据文件内容识别，按版本分别测试；同后缀不能保证同结构。"
     },
     {
@@ -931,8 +973,8 @@
       "source": "user-confirmed-supplement"
     }
   ],
-  "lastValidationAt": "2026-10-13T10:56:35.9202736+08:00",
-  "sampleVerifiedExtensionCount": 40,
+  "lastValidationAt": "2026-10-14T19:00:11.0938103+08:00",
+  "sampleVerifiedExtensionCount": 46,
   "officialCountDiscrepancy": {
     "claimedCount": 47,
     "listedExtensionCount": 46,
@@ -945,5 +987,7 @@
     "confirmedByUser": true,
     "confirmedOn": "2026-10-12",
     "reason": "用户选择补入常见的开放文档文字格式"
-  }
+  },
+  "syntheticVerifiedExtensionCount": 40,
+  "publicOriginalVerifiedExtensionCount": 6
 }

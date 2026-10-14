@@ -6,9 +6,36 @@
     let book, searchCursor = -1, lastQuery = "", matches = [], openSerial = 0, load;
     let currentSheet = 0, currentStart = 0, currentFirstColumn = 0;
     function integer(value) { return typeof value === "number" && Number.isFinite(value) ? Math.max(0, Math.floor(value)) : 0; }
+    // SheetJS caches formatted text on the supplied cell. Keep that cache temporary,
+    // so searching a whole workbook does not retain a second set of cell strings.
     function value(cell) { if (!cell)
         return ""; if (cell.v === undefined || cell.v === null)
-        return cell.f ? "=" + cell.f : ""; return cell.w ?? api.utils.format_cell(cell); }
+        return cell.f ? "=" + cell.f : ""; return cell.w ?? api.utils.format_cell({ ...cell }); }
+    function cellAt(sheet, address) { return sheet["!data"] ? sheet["!data"]?.[address.r]?.[address.c] : sheet[api.utils.encode_cell(address)]; }
+    function* populatedCells(sheet) {
+        const data = sheet["!data"];
+        if (data) {
+            // Array keys enumerate populated rows/columns without expanding a sparse
+            // sheet's entire declared rectangle or allocating all cell addresses.
+            for (const rowKey in data) {
+                const r = Number(rowKey), row = data[r];
+                if (!row || !Number.isInteger(r) || r < 0)
+                    continue;
+                for (const columnKey in row) {
+                    const c = Number(columnKey), cell = row[c];
+                    if (cell && Number.isInteger(c) && c >= 0)
+                        yield { address: { r, c }, cell };
+                }
+            }
+        }
+        else
+            for (const key in sheet)
+                if (/^[A-Z]+[1-9][0-9]*$/.test(key)) {
+                    const cell = sheet[key];
+                    if (cell)
+                        yield { address: api.utils.decode_cell(key), cell };
+                }
+    }
     function page(index, start, firstColumn, selected, found, foundIndex = 0, foundCount = 0) {
         if (!book)
             return;
@@ -39,7 +66,7 @@
                 const merge = merged.get(`${r},${c}`);
                 if (merge?.skip)
                     continue;
-                const cell = sheet[api.utils.encode_cell(merge?.source ?? { r, c })];
+                const cell = cellAt(sheet, merge?.source ?? { r, c });
                 const formulaOnly = !!cell?.f && cell.v === undefined;
                 if (formulaOnly)
                     formulaMissing++;
@@ -71,7 +98,7 @@
                 const data = await response.arrayBuffer();
                 if (generation !== openSerial)
                     return;
-                book = api.read(data, { type: "array", cellDates: true, cellNF: true, cellText: false, raw: message.extension === "csv", codepage: 936 });
+                book = api.read(data, { type: "array", dense: true, cellDates: true, cellNF: true, cellText: false, raw: message.extension === "csv", codepage: 936 });
                 if (book.SheetNames.length === 0)
                     throw new Error("文件没有可显示的工作表");
                 page(integer(message.position?.sheet), integer(message.position?.start), integer(message.position?.firstColumn));
@@ -99,7 +126,11 @@
                     matches = [];
                     for (let sheetIndex = 0; sheetIndex < book.SheetNames.length; sheetIndex++) {
                         const target = book.Sheets[book.SheetNames[sheetIndex]];
-                        const addresses = Object.keys(target).filter(key => !key.startsWith("!") && value(target[key]).toLocaleLowerCase().includes(query)).map(key => api.utils.decode_cell(key)).sort((a, b) => a.r - b.r || a.c - b.c);
+                        const addresses = [];
+                        for (const entry of populatedCells(target))
+                            if (value(entry.cell).toLocaleLowerCase().includes(query))
+                                addresses.push(entry.address);
+                        addresses.sort((a, b) => a.r - b.r || a.c - b.c);
                         for (const address of addresses)
                             matches.push({ address, sheet: sheetIndex });
                     }

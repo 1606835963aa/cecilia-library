@@ -27,6 +27,9 @@ public partial class App : Application
     {
         base.OnStartup(e);
         var args = e.Args.ToList();
+        string? nativeWpsRoot = null;
+        var nativeWpsArg = args.IndexOf("--verify-native-wps");
+        if(nativeWpsArg>=0 && nativeWpsArg+1<args.Count) { nativeWpsRoot=Path.GetFullPath(args[nativeWpsArg+1]);args.RemoveRange(nativeWpsArg,2); }
         string? lifecycleConfig = null;
         var lifecycleArg = args.IndexOf("--lifecycle-probe");
         if(lifecycleArg>=0 && lifecycleArg+1<args.Count) { lifecycleConfig=Path.GetFullPath(args[lifecycleArg+1]);args.RemoveRange(lifecycleArg,2); }
@@ -46,11 +49,12 @@ public partial class App : Application
         Directory.CreateDirectory(DataRoot);
         var window = new MainWindow(args.Where(a => !a.StartsWith("--")).ToArray(), verificationRoot, benchmarkFile,stateFile);
         if(lifecycleConfig!=null) window.Loaded+=async(_,_)=>await window.RunLifecycleProbeAsync(lifecycleConfig);
+        if(nativeWpsRoot!=null) window.Loaded+=async(_,_)=>await window.RunNativeWpsChecksAsync(nativeWpsRoot);
         MainWindow = window; window.Show();
         DispatcherUnhandledException += (_, error) =>
         {
             UnhandledErrors.Add(error.Exception.ToString());
-            if(verificationRoot==null&&lifecycleConfig==null) MessageBox.Show(MainWindow, error.Exception.Message, "操作未完成", MessageBoxButton.OK, MessageBoxImage.Warning);
+            if(verificationRoot==null&&lifecycleConfig==null&&nativeWpsRoot==null) MessageBox.Show(MainWindow, error.Exception.Message, "操作未完成", MessageBoxButton.OK, MessageBoxImage.Warning);
             error.Handled = true;
         };
     }

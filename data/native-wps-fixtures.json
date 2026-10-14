@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "sourceRepository": "https://github.com/henriquead7/wps-osistematico-templates",
+  "sourceCommit": "aa887f54b94fc0d44881ddf7689b87ab94a2be7e",
+  "storage": "tests/external-fixtures/native-wps",
+  "fixtures": [
+    {"id":"wps-writer","extension":".wps","file":"writer.wps","sha256":"132A528221AF85B562547C158C2CCFBAD68377D77BED8EFED91982DE6CD26ADB","scope":"public-preview-sample","sourcePage":"https://cube.cndinfo.com/docs/ecosystem/ams/preview","url":"https://front-end-huawei-cdn.devops.cndinfo.com/static/docs/fed-doc/preview/preview.wps","expectedPages":6,"expectedText":["AngularJS Git Commit Message","Generating CHANGELOG.md","Breaking changes"]},
+    {"id":"wps-writer-template","extension":".wpt","file":"Memo.wpt","sha256":"8C1E5A7891AAFBA1432D01D1E2FC5E4C9FD51751C876EBC437CA204ABF40248D","scope":"public-template","sourcePath":"opt/kingsoft/wps-office/office6/mui/id_ID/templates/wps/Business/Memo.wpt","expectedPages":1,"expectedText":["Memo","Your Company Name","Type your meno here"]},
+    {"id":"wps-sheet","extension":".et","file":"sheet.et","sha256":"D04E20AEEFDD569370CD72BC1E5F33DA38436997AB0D6C4E08D37EB83791C777","scope":"public-preview-sample","sourcePage":"https://cube.cndinfo.com/docs/ecosystem/ams/preview","url":"https://front-end-huawei-cdn.devops.cndinfo.com/static/docs/fed-doc/preview/preview.et","sheetCount":5,"expectedPages":9,"expectedText":["个人工作计划","工作项目记录","时间安排"]},
+    {"id":"wps-sheet-template","extension":".ett","file":"Invoice.ett","sha256":"224CD55D529111D0985412C565D6AABDFC2CB24A3923BC6DE7D3E039EDA22A19","scope":"public-template","sourcePath":"opt/kingsoft/wps-office/office6/mui/id_ID/templates/et/Business/Invoice.ett","sheetCount":1,"expectedPages":1,"expectedText":["The Flower Gallery Limited","Invoice","Grand Total"]},
+    {"id":"wps-presentation","extension":".dps","file":"presentation.dps","sha256":"1889A48255D87AA79A0E2C5AF795EFF781C774AA53176B1531BDA7E772A191C7","scope":"public-preview-sample","sourcePage":"https://cube.cndinfo.com/docs/ecosystem/ams/preview","url":"https://front-end-huawei-cdn.devops.cndinfo.com/static/docs/fed-doc/preview/preview.dps","expectedPages":15,"expectedText":["年终工作总结汇报","ANNUAL WORK SUMMARY","NEXT YEAR WORK PLAN"]},
+    {"id":"wps-presentation-blank","extension":".dps","file":"newfile.dps","sha256":"350411F57490A8BCFEADE63A40AD4883F112927068A88C73DB729291FA0B522A","scope":"blank-smoke","sourcePath":"opt/kingsoft/wps-office/office6/mui/id_ID/templates/newfile.dps","expectedPages":1,"expectedText":[]},
+    {"id":"wps-presentation-template","extension":".dpt","file":"Books.dpt","sha256":"9375E32AFA2657FB2AD2E8EDDACFAF46899F641FB8BA8D90980A267359380EDF","scope":"public-template","sourcePath":"opt/kingsoft/wps-office/office6/mui/id_ID/templates/wpp/Education/Books.dpt","expectedPages":12,"expectedText":["Diagram","Click to add text"]}
+  ]
+}

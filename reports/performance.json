@@ -1,198 +1,198 @@
 {
-  "zipBytes": 7853610,
   "cpu": {
     "Name": "12th Gen Intel(R) Core(TM) i5-12600KF"
   },
+  "mainFolderBytes": 29155599.0,
+  "machine": {
+    "Manufacturer": "Maxsun",
+    "Model": "Default string",
+    "TotalPhysicalMemory": 34164101120
+  },
+  "zipBytes": 7861624,
+  "samples": [
+    {
+      "uiReadyMs": 714.1373,
+      "workingSetBytes": 114274304,
+      "privateBytes": 73015296,
+      "browserInitialized": false,
+      "runtime": "10.0.12",
+      "childCount": 0,
+      "treeWorkingSetBytes": 113893376.0,
+      "launchToRecordMs": 1685,
+      "category": "new-profile"
+    },
+    {
+      "uiReadyMs": 681.9205,
+      "workingSetBytes": 114188288,
+      "privateBytes": 73011200,
+      "browserInitialized": false,
+      "runtime": "10.0.12",
+      "childCount": 0,
+      "treeWorkingSetBytes": 113905664.0,
+      "launchToRecordMs": 1547,
+      "category": "new-profile"
+    },
+    {
+      "uiReadyMs": 630.3955,
+      "workingSetBytes": 113901568,
+      "privateBytes": 71557120,
+      "browserInitialized": false,
+      "runtime": "10.0.12",
+      "childCount": 0,
+      "treeWorkingSetBytes": 113598464.0,
+      "launchToRecordMs": 1570,
+      "category": "new-profile"
+    },
+    {
+      "uiReadyMs": 699.1628,
+      "workingSetBytes": 113999872,
+      "privateBytes": 73175040,
+      "browserInitialized": false,
+      "runtime": "10.0.12",
+      "childCount": 0,
+      "treeWorkingSetBytes": 113664000.0,
+      "launchToRecordMs": 1667,
+      "category": "new-profile"
+    },
+    {
+      "uiReadyMs": 628.5043,
+      "workingSetBytes": 114135040,
+      "privateBytes": 71180288,
+      "browserInitialized": false,
+      "runtime": "10.0.12",
+      "childCount": 0,
+      "treeWorkingSetBytes": 113864704.0,
+      "launchToRecordMs": 1581,
+      "category": "new-profile"
+    },
+    {
+      "uiReadyMs": 656.9682,
+      "workingSetBytes": 114339840,
+      "privateBytes": 72744960,
+      "browserInitialized": false,
+      "runtime": "10.0.12",
+      "childCount": 0,
+      "treeWorkingSetBytes": 114032640.0,
+      "launchToRecordMs": 1553,
+      "category": "repeat-profile"
+    },
+    {
+      "uiReadyMs": 673.4387,
+      "workingSetBytes": 114110464,
+      "privateBytes": 72593408,
+      "browserInitialized": false,
+      "runtime": "10.0.12",
+      "childCount": 0,
+      "treeWorkingSetBytes": 113688576.0,
+      "launchToRecordMs": 1654,
+      "category": "repeat-profile"
+    },
+    {
+      "uiReadyMs": 675.1715,
+      "workingSetBytes": 114343936,
+      "privateBytes": 74305536,
+      "browserInitialized": false,
+      "runtime": "10.0.12",
+      "childCount": 0,
+      "treeWorkingSetBytes": 113999872.0,
+      "launchToRecordMs": 1680,
+      "category": "repeat-profile"
+    },
+    {
+      "uiReadyMs": 635.1365,
+      "workingSetBytes": 114360320,
+      "privateBytes": 71278592,
+      "browserInitialized": false,
+      "runtime": "10.0.12",
+      "childCount": 0,
+      "treeWorkingSetBytes": 114012160.0,
+      "launchToRecordMs": 1591,
+      "category": "repeat-profile"
+    },
+    {
+      "uiReadyMs": 665.4408,
+      "workingSetBytes": 114266112,
+      "privateBytes": 72232960,
+      "browserInitialized": false,
+      "runtime": "10.0.12",
+      "childCount": 0,
+      "treeWorkingSetBytes": 113885184.0,
+      "launchToRecordMs": 1690,
+      "category": "repeat-profile"
+    },
+    {
+      "uiReadyMs": 693.3966,
+      "workingSetBytes": 114491392,
+      "privateBytes": 74170368,
+      "browserInitialized": false,
+      "runtime": "10.0.12",
+      "childCount": 0,
+      "treeWorkingSetBytes": 114118656.0,
+      "launchToRecordMs": 1752,
+      "category": "repeat-profile"
+    },
+    {
+      "uiReadyMs": 707.2166,
+      "workingSetBytes": 114188288,
+      "privateBytes": 72515584,
+      "browserInitialized": false,
+      "runtime": "10.0.12",
+      "childCount": 0,
+      "treeWorkingSetBytes": 113758208.0,
+      "launchToRecordMs": 1715,
+      "category": "repeat-profile"
+    },
+    {
+      "uiReadyMs": 675.762,
+      "workingSetBytes": 114266112,
+      "privateBytes": 72925184,
+      "browserInitialized": false,
+      "runtime": "10.0.12",
+      "childCount": 0,
+      "treeWorkingSetBytes": 113893376.0,
+      "launchToRecordMs": 1666,
+      "category": "repeat-profile"
+    },
+    {
+      "uiReadyMs": 687.0986,
+      "workingSetBytes": 114147328,
+      "privateBytes": 73609216,
+      "browserInitialized": false,
+      "runtime": "10.0.12",
+      "childCount": 0,
+      "treeWorkingSetBytes": 113782784.0,
+      "launchToRecordMs": 1651,
+      "category": "repeat-profile"
+    },
+    {
+      "uiReadyMs": 639.9321,
+      "workingSetBytes": 114434048,
+      "privateBytes": 71307264,
+      "browserInitialized": false,
+      "runtime": "10.0.12",
+      "childCount": 0,
+      "treeWorkingSetBytes": 114065408.0,
+      "launchToRecordMs": 1643,
+      "category": "repeat-profile"
+    }
+  ],
+  "measuredAt": "2026-10-14T19:12:49.5016329+08:00",
+  "disk": {
+    "DeviceID": "Z:",
+    "DriveType": 3,
+    "FileSystem": "NTFS",
+    "VolumeName": "固态"
+  },
+  "sharedRuntimes": [
+    "Microsoft.AspNetCore.App 10.0.12 [Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\.tools\\dotnet\\shared\\Microsoft.AspNetCore.App]",
+    "Microsoft.NETCore.App 10.0.12 [Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\.tools\\dotnet\\shared\\Microsoft.NETCore.App]",
+    "Microsoft.WindowsDesktop.App 10.0.12 [Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\.tools\\dotnet\\shared\\Microsoft.WindowsDesktop.App]"
+  ],
   "excludes": [
     "shared WebView2 runtime",
     "shared .NET runtime",
     "optional components",
     "developer SDK",
     "document cache"
-  ],
-  "machine": {
-    "Manufacturer": "Maxsun",
-    "Model": "Default string",
-    "TotalPhysicalMemory": 34164101120
-  },
-  "samples": [
-    {
-      "uiReadyMs": 599.0113,
-      "workingSetBytes": 113905664,
-      "privateBytes": 73728000,
-      "browserInitialized": false,
-      "runtime": "10.0.12",
-      "childCount": 0,
-      "treeWorkingSetBytes": 113614848.0,
-      "launchToRecordMs": 1453,
-      "category": "new-profile"
-    },
-    {
-      "uiReadyMs": 606.4939,
-      "workingSetBytes": 114114560,
-      "privateBytes": 72777728,
-      "browserInitialized": false,
-      "runtime": "10.0.12",
-      "childCount": 0,
-      "treeWorkingSetBytes": 113946624.0,
-      "launchToRecordMs": 1488,
-      "category": "new-profile"
-    },
-    {
-      "uiReadyMs": 623.1325,
-      "workingSetBytes": 114016256,
-      "privateBytes": 71741440,
-      "browserInitialized": false,
-      "runtime": "10.0.12",
-      "childCount": 0,
-      "treeWorkingSetBytes": 113750016.0,
-      "launchToRecordMs": 1501,
-      "category": "new-profile"
-    },
-    {
-      "uiReadyMs": 605.512,
-      "workingSetBytes": 114171904,
-      "privateBytes": 72380416,
-      "browserInitialized": false,
-      "runtime": "10.0.12",
-      "childCount": 0,
-      "treeWorkingSetBytes": 113860608.0,
-      "launchToRecordMs": 1413,
-      "category": "new-profile"
-    },
-    {
-      "uiReadyMs": 620.3548,
-      "workingSetBytes": 114077696,
-      "privateBytes": 72687616,
-      "browserInitialized": false,
-      "runtime": "10.0.12",
-      "childCount": 0,
-      "treeWorkingSetBytes": 113774592.0,
-      "launchToRecordMs": 1505,
-      "category": "new-profile"
-    },
-    {
-      "uiReadyMs": 626.0938,
-      "workingSetBytes": 113987584,
-      "privateBytes": 72699904,
-      "browserInitialized": false,
-      "runtime": "10.0.12",
-      "childCount": 0,
-      "treeWorkingSetBytes": 113635328.0,
-      "launchToRecordMs": 1509,
-      "category": "repeat-profile"
-    },
-    {
-      "uiReadyMs": 627.6605,
-      "workingSetBytes": 114503680,
-      "privateBytes": 71065600,
-      "browserInitialized": false,
-      "runtime": "10.0.12",
-      "childCount": 0,
-      "treeWorkingSetBytes": 114065408.0,
-      "launchToRecordMs": 1470,
-      "category": "repeat-profile"
-    },
-    {
-      "uiReadyMs": 599.0494,
-      "workingSetBytes": 114110464,
-      "privateBytes": 73973760,
-      "browserInitialized": false,
-      "runtime": "10.0.12",
-      "childCount": 0,
-      "treeWorkingSetBytes": 113770496.0,
-      "launchToRecordMs": 1426,
-      "category": "repeat-profile"
-    },
-    {
-      "uiReadyMs": 640.5652,
-      "workingSetBytes": 114475008,
-      "privateBytes": 73834496,
-      "browserInitialized": false,
-      "runtime": "10.0.12",
-      "childCount": 0,
-      "treeWorkingSetBytes": 114036736.0,
-      "launchToRecordMs": 1546,
-      "category": "repeat-profile"
-    },
-    {
-      "uiReadyMs": 626.2088,
-      "workingSetBytes": 114601984,
-      "privateBytes": 74158080,
-      "browserInitialized": false,
-      "runtime": "10.0.12",
-      "childCount": 0,
-      "treeWorkingSetBytes": 114163712.0,
-      "launchToRecordMs": 1491,
-      "category": "repeat-profile"
-    },
-    {
-      "uiReadyMs": 622.5115,
-      "workingSetBytes": 114737152,
-      "privateBytes": 71933952,
-      "browserInitialized": false,
-      "runtime": "10.0.12",
-      "childCount": 0,
-      "treeWorkingSetBytes": 114339840.0,
-      "launchToRecordMs": 1465,
-      "category": "repeat-profile"
-    },
-    {
-      "uiReadyMs": 647.7544,
-      "workingSetBytes": 114544640,
-      "privateBytes": 71118848,
-      "browserInitialized": false,
-      "runtime": "10.0.12",
-      "childCount": 0,
-      "treeWorkingSetBytes": 114126848.0,
-      "launchToRecordMs": 1467,
-      "category": "repeat-profile"
-    },
-    {
-      "uiReadyMs": 658.3287,
-      "workingSetBytes": 114728960,
-      "privateBytes": 72548352,
-      "browserInitialized": false,
-      "runtime": "10.0.12",
-      "childCount": 0,
-      "treeWorkingSetBytes": 114335744.0,
-      "launchToRecordMs": 1501,
-      "category": "repeat-profile"
-    },
-    {
-      "uiReadyMs": 627.7894,
-      "workingSetBytes": 114536448,
-      "privateBytes": 73097216,
-      "browserInitialized": false,
-      "runtime": "10.0.12",
-      "childCount": 0,
-      "treeWorkingSetBytes": 114126848.0,
-      "launchToRecordMs": 1465,
-      "category": "repeat-profile"
-    },
-    {
-      "uiReadyMs": 631.171,
-      "workingSetBytes": 114499584,
-      "privateBytes": 72818688,
-      "browserInitialized": false,
-      "runtime": "10.0.12",
-      "childCount": 0,
-      "treeWorkingSetBytes": 114085888.0,
-      "launchToRecordMs": 1466,
-      "category": "repeat-profile"
-    }
-  ],
-  "sharedRuntimes": [
-    "Microsoft.AspNetCore.App 10.0.12 [Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\.tools\\dotnet\\shared\\Microsoft.AspNetCore.App]",
-    "Microsoft.NETCore.App 10.0.12 [Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\.tools\\dotnet\\shared\\Microsoft.NETCore.App]",
-    "Microsoft.WindowsDesktop.App 10.0.12 [Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\.tools\\dotnet\\shared\\Microsoft.WindowsDesktop.App]"
-  ],
-  "mainFolderBytes": 29131693.0,
-  "measuredAt": "2026-10-13T10:59:46.9325952+08:00",
-  "disk": {
-    "DeviceID": "Z:",
-    "DriveType": 3,
-    "FileSystem": "NTFS",
-    "VolumeName": "固态"
-  }
+  ]
 }

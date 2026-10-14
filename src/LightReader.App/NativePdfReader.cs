@@ -22,6 +22,7 @@ public sealed class NativePdfReader : Grid,IDisposable
     private uint requestedPage;
     private double zoom=1;
     private long generation;
+    private int renderCount;
     private bool disposed;
     private readonly CancellationTokenSource lifetime=new();
     private readonly SemaphoreSlim renderGate=new(1,1);
@@ -35,6 +36,7 @@ public sealed class NativePdfReader : Grid,IDisposable
     internal uint DisplayedPage=>pageIndex;
     internal bool HasRenderedPage=>image.Source!=null&&!disposed;
     internal bool HasOpenSource=>source!=null;
+    internal int RenderCount=>Volatile.Read(ref renderCount);
     public double VerticalOffset=>scroll.VerticalOffset;
     public event Action<string>? StatusChanged;
     // 翻页控件，由主窗口放进工具栏
@@ -78,10 +80,21 @@ public sealed class NativePdfReader : Grid,IDisposable
     }
     public Task ShowPageAsync(uint index,CancellationToken token=default)
     {
+        token.ThrowIfCancellationRequested();
         if(document==null||disposed){token.ThrowIfCancellationRequested();return Task.CompletedTask;}
         if(index>=PageCount)throw new ArgumentOutOfRangeException(nameof(index));
         requestedPage=index;
+        if(rendering==null && presentation?.IsCompleted!=false && pageIndex==index && image.Source is BitmapSource bitmap && bitmap.PixelWidth==RenderWidth())
+        {
+            generation++;UpdateImageSize(bitmap);return presentation=Task.CompletedTask;
+        }
         return presentation=ShowPageCoreAsync(index,token);
+    }
+    private uint RenderWidth()=>(uint)Math.Clamp(Math.Max(800,ActualWidth-PageInset)*1.5*zoom,800,3200);
+    private void UpdateImageSize(BitmapSource bitmap)
+    {
+        var available=Math.Max(300,ActualWidth>0?ActualWidth-PageInset:1000);
+        image.Width=available*zoom;image.Height=image.Width*bitmap.PixelHeight/bitmap.PixelWidth;
     }
     private async Task ShowPageCoreAsync(uint index,CancellationToken token)
     {
@@ -91,14 +104,13 @@ public sealed class NativePdfReader : Grid,IDisposable
         rendering?.Cancel();
         using var cancellation=CancellationTokenSource.CreateLinkedTokenSource(token,lifetime.Token);
         rendering=cancellation;
-        var width=(uint)Math.Clamp(Math.Max(800,ActualWidth-PageInset)*1.5*zoom,800,3200);
+        var width=RenderWidth();
         try
         {
             var bitmap=await RenderAsync(index,width,cancellation.Token);
             if(serial!=generation||disposed)return;
             image.Source=bitmap;
-            var available=Math.Max(300,ActualWidth>0?ActualWidth-PageInset:1000);
-            image.Width=available*zoom;image.Height=image.Width*bitmap.PixelHeight/bitmap.PixelWidth;
+            UpdateImageSize(bitmap);
             if(index!=pageIndex)scroll.ScrollToTop();
             pageIndex=index;pageInput.Text=(index+1).ToString();
             StatusChanged?.Invoke($"第 {index+1} / {PageCount} 页");
@@ -121,6 +133,7 @@ public sealed class NativePdfReader : Grid,IDisposable
             var loaded=document??throw new OperationCanceledException();
             using var page=loaded.GetPage(index);using var output=new InMemoryRandomAccessStream();
             await page.RenderToStreamAsync(output,new PdfPageRenderOptions{DestinationWidth=width}).AsTask(cancellation.Token).ConfigureAwait(false);
+            Interlocked.Increment(ref renderCount);
             cancellation.Token.ThrowIfCancellationRequested();
             output.Seek(0);using var input=output.AsStreamForRead();
             var decoder=BitmapDecoder.Create(input,BitmapCreateOptions.None,BitmapCacheOption.OnLoad);var bitmap=decoder.Frames[0];bitmap.Freeze();return bitmap;

@@ -15,6 +15,7 @@ public sealed class BrowserReader : IDisposable
     private TaskCompletionSource? render;
     private string currentId = "";
     private string? document;
+    private readonly List<Stream> resourceStreams = [];
     internal string? SourcePath=>document;
     private bool disposed;
     private bool coreConfigured;
@@ -153,7 +154,12 @@ public sealed class BrowserReader : IDisposable
         var contentType = Path.GetExtension(file).ToLowerInvariant() switch { ".js" => "text/javascript", ".css" => "text/css", ".html" => "text/html", ".pdf" => "application/pdf", _ => "application/octet-stream" };
         var headers = $"Content-Type: {contentType}\r\nCache-Control: no-store\r\nX-Content-Type-Options: nosniff";
         if (contentType == "text/html") headers += "\r\nContent-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data: blob:; connect-src 'self'; worker-src 'self' blob:; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'";
-        try { e.Response = core.Environment.CreateWebResourceResponse(File.Open(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite), 200, "OK", headers); }
+        try
+        {
+            var source=File.Open(file,FileMode.Open,FileAccess.Read,FileShare.ReadWrite);
+            try { e.Response=core.Environment.CreateWebResourceResponse(source,200,"OK",headers);resourceStreams.Add(source); }
+            catch { source.Dispose();throw; }
+        }
         catch (IOException) { e.Response = core.Environment.CreateWebResourceResponse(new MemoryStream(), 404, "Unavailable", "Content-Type: text/plain"); }
         catch (UnauthorizedAccessException) { e.Response = core.Environment.CreateWebResourceResponse(new MemoryStream(), 403, "Blocked", "Content-Type: text/plain"); }
     }
@@ -253,7 +259,9 @@ public sealed class BrowserReader : IDisposable
         if (disposed) return;
         StopFind(); disposed = true; documentGeneration++;
         showing?.Cancel(); lifetime.Cancel(); ready.TrySetCanceled(); render?.TrySetCanceled();
-        document = null; currentId = ""; View.Dispose();
+        document = null; currentId = "";
+        try { View.Dispose(); }
+        finally { foreach(var source in resourceStreams)source.Dispose();resourceStreams.Clear(); }
         StatusChanged = null; FindChanged = null; PositionChanged = null; ReadingFailed = null;
     }
 }

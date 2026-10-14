@@ -32,7 +32,7 @@ public partial class MainWindow
                 currentTab=current?.Name,selectedTab=(Tabs.SelectedItem as DocumentTab)?.Name,tabCount=documents.Count,
                 surface=Home.Visibility==Visibility.Visible?"home":ComponentPanel.Visibility==Visibility.Visible?"components":Viewer.Visibility==Visibility.Visible?"viewer":"message",
                 renderer=nativePdf!=null?"Windows.Data.Pdf":browser!=null?"WebView2":"WPF",status=Status.Text,
-                browserAlive=browser!=null,nativePdfAlive=nativePdf!=null,pdfBitmapPresented=nativePdf?.HasRenderedPage??false,unhandledErrorCount=App.UnhandledErrors.Count,viewerAttached=Viewer.Content!=null,toolsAttached=ViewerTools.Content!=null,
+                browserAlive=browser!=null,nativePdfAlive=nativePdf!=null,pdfBitmapPresented=nativePdf?.HasRenderedPage??false,pdfRenderCount=nativePdf?.RenderCount??0,unhandledErrorCount=App.UnhandledErrors.Count,viewerAttached=Viewer.Content!=null,toolsAttached=ViewerTools.Content!=null,
                 textBoxAlive=textBox!=null,frameCount=frames.Count,retainedTextChars=documents.Sum(tab=>(tab.Text?.Text.Length??0)+(tab.EditBuffer?.Length??0)),
                 workingSetBytes=process.WorkingSet64,privateBytes=process.PrivateMemorySize64,managedBytes=GC.GetTotalMemory(false),handleCount=process.HandleCount};
             await Publish(Path.Combine(output,$"stage-{sequence:D4}.json"),record);

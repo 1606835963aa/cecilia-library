@@ -1,0 +1,102 @@
+{
+  "ranAt": "2026-10-14T10:53:06.108Z",
+  "kind": "Pinned public originals; OLE streams and WPS producer metadata; no extension substitution",
+  "results": [
+    {
+      "id": "wps-writer",
+      "file": "writer.wps",
+      "extension": ".wps",
+      "status": "PASS",
+      "sha256": "132A528221AF85B562547C158C2CCFBAD68377D77BED8EFED91982DE6CD26ADB",
+      "bytes": 112378,
+      "stream": "WordDocument",
+      "producerMarkers": [
+        "KSOProductBuildVer"
+      ]
+    },
+    {
+      "id": "wps-writer-template",
+      "file": "Memo.wpt",
+      "extension": ".wpt",
+      "status": "PASS",
+      "sha256": "8C1E5A7891AAFBA1432D01D1E2FC5E4C9FD51751C876EBC437CA204ABF40248D",
+      "bytes": 34816,
+      "stream": "WordDocument",
+      "producerMarkers": [
+        "Kingsoft Office"
+      ]
+    },
+    {
+      "id": "wps-sheet",
+      "file": "sheet.et",
+      "extension": ".et",
+      "status": "PASS",
+      "sha256": "D04E20AEEFDD569370CD72BC1E5F33DA38436997AB0D6C4E08D37EB83791C777",
+      "bytes": 34304,
+      "stream": "Workbook",
+      "producerMarkers": [
+        "KSOProductBuildVer"
+      ],
+      "sheetCount": 5,
+      "ranges": [
+        "A1:G41",
+        "A1:H42",
+        "A1:H42",
+        "A1:H42",
+        "A1:H37"
+      ],
+      "ksoBuild": "2052-11.8.2.12085"
+    },
+    {
+      "id": "wps-sheet-template",
+      "file": "Invoice.ett",
+      "extension": ".ett",
+      "status": "PASS",
+      "sha256": "224CD55D529111D0985412C565D6AABDFC2CB24A3923BC6DE7D3E039EDA22A19",
+      "bytes": 156672,
+      "stream": "Workbook",
+      "producerMarkers": [
+        "Kingsoft Office"
+      ],
+      "sheetCount": 1,
+      "ranges": [
+        "A1:J51"
+      ],
+      "ksoBuild": null
+    },
+    {
+      "id": "wps-presentation",
+      "file": "presentation.dps",
+      "extension": ".dps",
+      "status": "PASS",
+      "sha256": "1889A48255D87AA79A0E2C5AF795EFF781C774AA53176B1531BDA7E772A191C7",
+      "bytes": 889856,
+      "stream": "PowerPoint Document",
+      "producerMarkers": [
+        "KSOProductBuildVer"
+      ]
+    },
+    {
+      "id": "wps-presentation-blank",
+      "file": "newfile.dps",
+      "extension": ".dps",
+      "status": "SMOKE_ONLY",
+      "sha256": "350411F57490A8BCFEADE63A40AD4883F112927068A88C73DB729291FA0B522A",
+      "bytes": 89088,
+      "stream": "PowerPoint Document",
+      "producerMarkers": []
+    },
+    {
+      "id": "wps-presentation-template",
+      "file": "Books.dpt",
+      "extension": ".dpt",
+      "status": "PASS",
+      "sha256": "9375E32AFA2657FB2AD2E8EDDACFAF46899F641FB8BA8D90980A267359380EDF",
+      "bytes": 718848,
+      "stream": "PowerPoint Document",
+      "producerMarkers": [
+        "KSOProductBuildVer"
+      ]
+    }
+  ]
+}

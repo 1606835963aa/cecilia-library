@@ -16,11 +16,13 @@ $known=@{}
 $records=@()
 $sequence=1
 $timer=[Diagnostics.Stopwatch]::StartNew()
+$complete=$null
 try {
     while(!(Test-Path -LiteralPath (Join-Path $run 'complete.json'))){
         $stage=Join-Path $run ('stage-{0:D4}.json' -f $sequence)
         if(!(Test-Path -LiteralPath $stage)){
-            if($reader.HasExited -or $timer.Elapsed.TotalMinutes -gt 15){throw 'Lifecycle probe did not finish'}
+            if($reader.HasExited){throw ('Lifecycle probe exited before completion; exit code '+$reader.ExitCode+'; last sampled stage '+($sequence-1))}
+            if($timer.Elapsed.TotalMinutes -gt 15){throw 'Lifecycle sampler timed out after 15 minutes'}
             Start-Sleep -Milliseconds 60
             continue
         }
@@ -57,6 +59,14 @@ try {
     @{label=$Label;samples=$records.Count;failedChecks=@($complete.checks | Where-Object status -ne 'PASS').Count;error=$complete.error} | ConvertTo-Json
     if($complete.error){throw $complete.error}
     if(!$AllowFailedChecks -and @($complete.checks | Where-Object status -ne 'PASS').Count -gt 0){throw 'Lifecycle checks failed; inspect the saved report'}
+} catch {
+    if($null -eq $complete){
+        $exitCode=if($reader.HasExited){$reader.ExitCode}else{$null}
+        @{label=$Label;status='INTERRUPTED';measuredAt=(Get-Date).ToString('o');applicationSha256=(Get-FileHash -LiteralPath (Join-Path ([IO.Path]::GetDirectoryName($executable)) 'LightReader.dll')).Hash;
+            iterations=$Iterations;records=$records;exitCode=$exitCode;lastSampledStage=$sequence-1;probe=@{error=$_.Exception.Message;checks=@();unhandledErrors=$null};
+            method='Incomplete lifecycle sample; not acceptance. Available process-tree checkpoints retained.'} | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $Report -Encoding UTF8
+    }
+    throw
 } finally {
     if(!$reader.HasExited){Stop-Process -Id $reader.Id}
 }

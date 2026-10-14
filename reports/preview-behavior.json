@@ -1,5 +1,5 @@
 {
-  "ranAt": "2026-10-13T02:46:20.250Z",
+  "ranAt": "2026-10-14T10:59:24.352Z",
   "kind": "Node VM behavior checks; no browser layout or mouse verification",
   "results": [
     {
@@ -51,11 +51,31 @@
       "status": "PASS"
     },
     {
+      "name": "real SheetJS lazy formatting matches eager output: sheet.et",
+      "status": "PASS"
+    },
+    {
+      "name": "real SheetJS lazy formatting matches eager output: Invoice.ett",
+      "status": "PASS"
+    },
+    {
       "name": "real SheetJS dates, number formats, leading zeroes and formula cache match with date1904=false",
       "status": "PASS"
     },
     {
       "name": "real SheetJS dates, number formats, leading zeroes and formula cache match with date1904=true",
+      "status": "PASS"
+    },
+    {
+      "name": "dense search handles sparse far-edge cells and restores their page",
+      "status": "PASS"
+    },
+    {
+      "name": "dense merged cells preserve their source across page boundaries",
+      "status": "PASS"
+    },
+    {
+      "name": "searching formatted real cells does not retain formatted strings in the workbook",
       "status": "PASS"
     },
     {

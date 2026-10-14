@@ -1,5 +1,5 @@
 from pathlib import Path
-import json, statistics, hashlib
+import json, statistics, hashlib, sys
 from datetime import datetime
 from xml.etree import ElementTree
 ROOT=Path(__file__).resolve().parent.parent
@@ -29,23 +29,46 @@ for result in gui['results']:
         by_ext.setdefault(Path(result['file']).suffix.lower(),[]).append(result)
 assert all(item['extension'].startswith('.') for item in catalog['formats']), 'Catalog extensions must include the leading dot'
 assert set(by_ext).issubset({item['extension'] for item in catalog['formats']}), 'A passing fixture has no format target'
+synthetic_extensions=set(by_ext)
+native_manifest=read('data/native-wps-fixtures.json') if (ROOT/'data/native-wps-fixtures.json').exists() else None
+if native_manifest and (ROOT/'reports/native-wps-visual.json').exists():
+    native=read('reports/native-wps-independent.json');native_display=read('reports/native-wps-display.json');native_visual=read('reports/native-wps-visual.json')
+    assert native['applicationSha256']==native_display['applicationSha256']==native_visual['applicationSha256'], 'Native evidence uses different applications'
+    assert not native_display['unhandledErrors'], 'Native display had unhandled errors'
+    assert all(item['status'] in ['PASS','SMOKE_ONLY'] for item in native['checks']), 'Native content check failed'
+    for result in native['checks']:
+        if result['status']!='PASS':continue
+        fixture=next(item for item in native_manifest['fixtures'] if item['id']==result['id'])
+        source=ROOT/native_manifest['storage']/fixture['file']
+        assert hashlib.sha256(source.read_bytes()).hexdigest().upper()==result['sha256'], 'Native source changed'
+        shown=next(item for item in native_display['results'] if item['id']==result['id'])
+        assert shown['status']=='PASS' and shown['sourceUnchanged'], 'Native display or release failed'
+        assert result['id'] in native_visual['reviewedIds'] and native_visual['status']=='PASS', 'Native visual review missing'
+        by_ext.setdefault(result['extension'],[]).append({'file':result['file'],'sha256':result['sha256'],'native':True})
 for item in catalog['formats']:
     evidence=by_ext.get(item['extension'],[])
     if evidence:
         item['implementationStatus']='IMPLEMENTED';item['verificationStatus']='VERIFIED_SAMPLE'
-        item['evidence']=[{'fixture':result['file'],'sha256':result['sha256'],'report':'reports/gui-checks.json','scope':'synthetic fixture'} for result in evidence]
+        item['evidence']=[{'fixture':result['file'],'sha256':result['sha256'],'report':'reports/native-wps-independent.json' if result.get('native') else 'reports/gui-checks.json','scope':'public WPS original; display, structure, independent content and visual review' if result.get('native') else 'synthetic fixture'} for result in evidence]
         if item['extension'] in ['.mht','.mhtml']:item['proposedModule']='core-web-archive'
     elif item['definitionStatus']=='NEEDS_DEFINITION':item['implementationStatus']='NOT_IMPLEMENTED';item['verificationStatus']='NEEDS_DEFINITION'
     else:item['implementationStatus']='ROUTED_UNVERIFIED';item['verificationStatus']='NOT_RUN'
 assert sum(item['verificationStatus']=='VERIFIED_SAMPLE' for item in catalog['formats'])==len(by_ext), 'Summary differs from per-format evidence'
 catalog['lastValidationAt']=gui['ranAt'];catalog['sampleVerifiedExtensionCount']=len(by_ext)
+catalog['syntheticVerifiedExtensionCount']=len(synthetic_extensions)
+catalog['publicOriginalVerifiedExtensionCount']=len(set(by_ext)-synthetic_extensions)
 write('data/format-targets.json',catalog)
 doc='# 格式覆盖目标与实测\n\n目标 47 项：WPS 公开清单 46 个后缀，加上用户确认补入的 ODT。目前 '+str(len(by_ext))+' 个后缀有合成样本显示证据。`VERIFIED_SAMPLE` 表示所列样本通过，真实文档版本和复杂排版继续扩充验收。\n\n[WPS 格式宣传页](https://www.wps.com/feature/file-opener/) · [WPS 技术规格](https://www.wps.com/tech-specs/)\n\n| 编号 | 后缀 | 类型 | 当前状态 | 样本证据 |\n|---|---|---|---|---|\n'
+doc=doc.replace(str(len(by_ext))+' 个后缀有合成样本显示证据',str(len(by_ext))+' 个后缀有样本显示证据：'+str(len(synthetic_extensions))+' 项合成样本、'+str(len(set(by_ext)-synthetic_extensions))+' 项公开 WPS 原生样本')
 for item in catalog['formats']:
     status={'VERIFIED_SAMPLE':'样本显示通过','NOT_RUN':'已接入候选组件，缺真实样本','NEEDS_DEFINITION':'查看对象待定义'}[item['verificationStatus']]
     doc+=f"| {item['id']} | `{item['extension']}` | {item['label']} | {status} | "+'、'.join(entry['fixture'] for entry in item['evidence'])+' |\n'
 doc+='\n`.xla`、`.xlam` 查看加载项内部的静态工作表数据，包括隐藏工作表；插件功能与宏执行不属于查看范围。含宏类型的合成样本只含静态内容，未嵌入 VBA；真实宏文件读取和宏保留保存继续扩充。`.xml` 已测通用 XML 和 SpreadsheetML，Word XML 仍待扩充。DBF 的 memo 配套文件、复杂网页归档资源、Office 嵌入对象与动画继续补样本。\n\nWPS 官网宣传数与清单差额保留为来源记录。ODT 已由用户选择，属于我们的补充范围。\n\n[逐项运行结果](../reports/gui-checks.json) · [独立内容核对](../reports/independent-checks.json) · [格式目标数据](../data/format-targets.json)\n'
+if len(set(by_ext)-synthetic_extensions):doc+='\n[六种 WPS 原生格式的样本、44 页检查及来源](WPS原生格式验证.md)。空白演示文件不增加覆盖数量。\n'
 (ROOT/'docs'/'格式支持清单.md').write_text(doc,encoding='utf-8')
+if '--formats-only' in sys.argv:
+    print(json.dumps({'formats':len(by_ext),'syntheticFormats':len(synthetic_extensions),'nativeFormats':len(set(by_ext)-synthetic_extensions)},ensure_ascii=False))
+    raise SystemExit()
 starts=[sample['uiReadyMs']/1000 for sample in perf['samples']];memory=[sample['treeWorkingSetBytes']/1048576 for sample in perf['samples']]
 memory_table='\n'.join(f"| {item['file']} | {item['renderer']} | {item['workingSetBytes']/1048576:.1f} MiB |" for item in document_memory['records'])
 def point(report,step,iteration=None):
@@ -60,6 +83,10 @@ previous=(ROOT/'docs/开发进度.md').read_text(encoding='utf-8')
 registration_section=''
 if '## Windows 默认应用入口（' in previous:
     registration_section=('## Windows 默认应用入口（'+previous.split('## Windows 默认应用入口（',1)[1].split('\n## ',1)[0]).rstrip()+'\n\n'
+current_round_section=''
+if '## 本轮更新（0.1.2' in previous:
+    current_round_section=('## 本轮更新（0.1.2'+previous.split('## 本轮更新（0.1.2',1)[1].split('\n## ',1)[0]).rstrip()+'\n\n'
+native_remaining='六种 WPS 原生格式的公开样本已通过；不同年代版本、密码和复杂对象继续扩充。' if len(set(by_ext)-synthetic_extensions)==6 else 'WPS 原生六种格式的真实样本继续补齐，逐项结果见格式清单。'
 ui_section=''
 if '## 界面（' in previous:
     ui_section=('## 界面（'+previous.split('## 界面（',1)[1].split('\n## ',1)[0]).rstrip()
@@ -69,7 +96,10 @@ progress=f'''# 开发进度与验收记录
 
 版本：{version} 预览版。记录日期：{record_date}。
 
-程序显示名为“塞西莉亚的图书馆”。本轮完成阅读视图释放、阅读位置恢复、快速切换任务隔离，以及 PDF 绘制顺序和表格按需格式化。TXT / CSV 的未保存修改仍能随标签保留。
+程序显示名为“塞西莉亚的图书馆”。已完成基础阅读、按需组件和 TXT / CSV 基础编辑。各轮更新和验证范围分别保留。
+
+{current_round_section}
+## 本版检查与启动记录
 
 | 项目 | 结果 |
 |---|---|
@@ -79,8 +109,8 @@ progress=f'''# 开发进度与验收记录
 | 有样本显示证据的后缀 | {len(by_ext)} 项 |
 | 独立读取核对 | {len(independent['checks'])} 项通过，PDF 用 pypdf、文本用 Python 解码 |
 | 预览逻辑检查 | {len(preview['results'])} 项通过，包含真实 SheetJS 读取与模拟异步行为 |
-| 阅读生命周期 | 改动前后各 {len(after['records'])} 次采样；优化后检查通过 |
-| PDF 反复打开关闭 | {pdf['iterations']} 轮，{len(pdf['records'])} 次采样，文件流释放与画面检查通过 |
+| 阅读生命周期（0.1.1 历史） | 改动前后各 {len(after['records'])} 次采样；优化后检查通过 |
+| PDF 反复打开关闭（0.1.1 历史） | {pdf['iterations']} 轮，{len(pdf['records'])} 次采样，文件流释放与画面检查通过 |
 | 主程序压缩包 | {perf['zipBytes']/1048576:.2f} MiB |
 | 主程序文件夹 | {perf['mainFolderBytes']/1048576:.2f} MiB |
 | 空窗口启动中位数 | {statistics.median(starts):.2f} 秒，最慢 {max(starts):.2f} 秒 |
@@ -93,7 +123,7 @@ progress=f'''# 开发进度与验收记录
 
 体积数字不包含共享 .NET / WebView2 运行时、可选组件、文档缓存和开发 SDK。打开文档时的浏览器子进程另计，见 [文档内存记录](../reports/document-memory.json)。完整兼容引擎用于旧版 Office 和分页布局，不常驻后台。
 
-| 独立打开样本 | 显示路线 | 全部进程工作集快照 |
+| 独立打开样本（0.1.1 历史） | 显示路线 | 全部进程工作集快照 |
 |---|---|---|
 {memory_table}
 
@@ -119,7 +149,7 @@ PDF 减少了页面图片复制，样本页面与优化前逐像素一致。原�
 
 {registration_section}## 尚未完成
 
-- WPS 原生 `.wps`、`.wpt`、`.et`、`.ett`、`.dps`、`.dpt` 缺少真实格式样本，保持未验证。已有兼容路径，不能据此认定全部版本可读。
+- {native_remaining}
 - `.ts` 在 WPS 演示清单中的含义继续核实；第 47 项已按用户选择补入 ODT。
 - 普通 Word / Excel 的原格式编辑保存和 PDF 批注尚未启用。
 - 密码文件、复杂图表 / 嵌入对象、大文件、多版本原生 WPS、memo 配套文件及复杂网页归档资源继续扩充。
@@ -128,7 +158,7 @@ PDF 减少了页面图片复制，样本页面与优化前逐像素一致。原�
 
 ## 下一批工作
 
-补实际鼠标、打开对话框、拖拽与打印操作验收；继续降低阅读期间 Word / 表格的占用和 PDF 原生内存，扩充复杂文件与 WPS 原生样本，完善运行时引导、更新与长期压力测试。
+核实 `.ts` 定义及有效样本；继续降低阅读期间 Word / 大表格占用，扩充复杂文件与 WPS 年代版本，补实际鼠标、拖拽与打印验收，以及运行时引导、更新和长期压力测试。
 
 [格式覆盖](格式支持清单.md) · [使用说明](使用说明.md) · [核心检查](../reports/core-checks.json) · [窗口检查](../reports/gui-checks.json) · [性能原始记录](../reports/performance.json) · [预览逻辑](../reports/preview-behavior.json)
 '''

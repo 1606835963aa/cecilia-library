@@ -97,12 +97,13 @@ async function main() {
   const realAPI = require(path.join(root, 'components/sheet/0.20.3/xlsx.js'));
   const asArray = data => data.buffer.slice(data.byteOffset, data.byteOffset + data.byteLength);
   const cellValue = cell => !cell ? '' : cell.v === undefined || cell.v === null ? (cell.f ? '=' + cell.f : '') : (cell.w ?? realAPI.utils.format_cell(cell));
-  const fixtures = fs.readdirSync(path.join(root, 'tests/fixtures')).filter(filename => /\.(csv|xls|xlsx|xlt|xltx|xlsm|xltm|xla|xlam|dbf|prn|dif)$/.test(filename));
-  for (const filename of fixtures) await check('real SheetJS lazy formatting matches eager output: ' + filename, async () => {
-    const extension = path.extname(filename).slice(1), bytes = asArray(fs.readFileSync(path.join(root, 'tests/fixtures', filename)));
+  const fixtures = fs.readdirSync(path.join(root, 'tests/fixtures')).filter(filename => /\.(csv|xls|xlsx|xlt|xltx|xlsm|xltm|xla|xlam|dbf|prn|dif)$/.test(filename)).map(filename=>({filename,folder:'tests/fixtures'}));
+  for(const filename of ['sheet.et','Invoice.ett'])if(fs.existsSync(path.join(root,'tests/external-fixtures/native-wps',filename)))fixtures.push({filename,folder:'tests/external-fixtures/native-wps'});
+  for (const {filename,folder} of fixtures) await check('real SheetJS lazy formatting matches eager output: ' + filename, async () => {
+    const extension = path.extname(filename).slice(1), bytes = asArray(fs.readFileSync(path.join(root, folder, filename)));
     const before = realAPI.read(bytes, { type: 'array', cellDates: true, cellNF: true, cellText: true, raw: extension === 'csv', codepage: 936 });
     const worker = makeWorker(undefined, async () => ({ ok: true, arrayBuffer: async () => bytes }), realAPI);
-    await worker.send({ ...open('fixture'), extension }); assert.equal(worker.readOptions().cellText, false);
+    await worker.send({ ...open('fixture'), extension }); assert.equal(worker.readOptions().cellText, false); assert.equal(worker.readOptions().dense, true);
     assert.equal(worker.readOptions().cellNF, true); assert.equal(worker.readOptions().cellDates, true);
     for (let sheet = 0; sheet < before.SheetNames.length; sheet++) {
       const original = before.Sheets[before.SheetNames[sheet]], range = original['!ref'] ? realAPI.utils.decode_range(original['!ref']) : { e: { r: 0, c: 0 } };
@@ -126,6 +127,28 @@ async function main() {
     const worker = makeWorker(undefined, async () => ({ ok: true, arrayBuffer: async () => bytes }), realAPI); await worker.send(open('formats'));
     assert.deepEqual(Array.from(worker.last().cells, cell => cell.value), ['0123', '1,234.50', '2026-10-12', '42', '0', '=SUM(20,22)']);
     assert.equal(worker.last().formulaMissing, 1); assert.equal(worker.last().cells[5].formulaOnly, true);
+  });
+  await check('dense search handles sparse far-edge cells and restores their page', async () => {
+    const data=[];data[0]=[{v:'target start'}];data[1048575]=[];data[1048575][16383]={v:'target end'};
+    const worker=makeWorker({SheetNames:['sparse'],Sheets:{sparse:{'!ref':'A1:XFD1048576','!data':data}}});
+    await worker.send(open('dense'));await worker.send({type:'find',query:'target',sheet:0});
+    assert.equal(worker.last().foundCount,2);await worker.send({type:'find',query:'target',sheet:0});
+    assert.equal(worker.last().selected.row,1048575);assert.equal(worker.last().selected.col,16383);
+    assert.equal(worker.last().cells.find(cell=>cell.row===1048575&&cell.col===16383).value,'target end');
+  });
+  await check('dense merged cells preserve their source across page boundaries', async () => {
+    const data=[];data[198]=[{v:'merged content'}];
+    const worker=makeWorker({SheetNames:['merged'],Sheets:{merged:{'!ref':'A1:H205','!data':data,'!merges':[{s:{r:198,c:0},e:{r:202,c:2}}]}}});
+    await worker.send(open('dense','spreadsheet',{start:200,firstColumn:1}));
+    const cell=worker.last().cells.find(cell=>cell.row===200&&cell.col===1);
+    assert.equal(cell.value,'merged content');assert.equal(cell.spanRows,3);assert.equal(cell.spanCols,2);
+  });
+  await check('searching formatted real cells does not retain formatted strings in the workbook', async () => {
+    const cell={t:'n',v:1234.5,z:'#,##0.00'},data=[[cell]],stored={SheetNames:['one'],Sheets:{one:{'!ref':'A1','!data':data}}};
+    const worker=makeWorker(stored,undefined,{read:()=>stored,utils:realAPI.utils});
+    await worker.send(open('formats'));await worker.send({type:'find',query:'1,234.50',sheet:0});
+    assert.equal(worker.last().foundCount,1);assert.equal(worker.last().cells[0].value,'1,234.50');
+    assert.equal(cell.w,undefined);assert.equal(cell.v,1234.5);assert.equal(cell.z,'#,##0.00');
   });
   await check('search iterates forward and backward across worksheets with wraparound', async () => {
     const worker = makeWorker(book); await worker.send(open('test'));

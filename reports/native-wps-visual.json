@@ -1,0 +1,28 @@
+{
+  "reviewedAt": "2026-10-14T10:56:04.793805+00:00",
+  "status": "PASS",
+  "applicationSha256": "F64FFE5930E8F43F61E3ABE1FCD8EDB316AB3CDA068B75E836BB53191B779035",
+  "reviewedIds": [
+    "wps-writer",
+    "wps-writer-template",
+    "wps-sheet",
+    "wps-sheet-template",
+    "wps-presentation",
+    "wps-presentation-template"
+  ],
+  "reviewedDocumentPages": 44,
+  "additionalBlankPages": 1,
+  "quickSheetViewsReviewed": [
+    "wps-sheet",
+    "wps-sheet-template"
+  ],
+  "method": "Viewed all document page thumbnails in two local contact sheets and both full-size quick spreadsheet previews; application-owned captures; no external WPS UI comparison",
+  "observations": {
+    "writer": "Six pages of text, headings and examples visible",
+    "writerTemplate": "One-page memo layout visible",
+    "sheet": "Five worksheets available in quick view; nine original print pages include column/page splits",
+    "sheetTemplate": "Grid displays cached date and data; one-page precise view retains logo and layout",
+    "presentation": "15 slides show text, shapes, diagrams and chart",
+    "presentationTemplate": "12 slides show background images, shapes and text"
+  }
+}

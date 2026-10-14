@@ -24,6 +24,15 @@ public partial class MainWindow
             await Check("home releases "+file,async()=>
             {await AddFileAsync(Fixture(file));ShowHome();await Task.Delay(200);return Home.Visibility==Visibility.Visible&&Detached();});
         }
+        foreach(var file in new[]{"阅读样本.docx","数据样本.xlsx"})
+        {
+            await Check("home releases browser source file "+file,async()=>
+            {
+                await AddFileAsync(Fixture(file));ShowHome();
+                using var exclusive=new FileStream(Fixture(file),FileMode.Open,FileAccess.Read,FileShare.None);
+                return Detached()&&exclusive.Length>0;
+            });
+        }
         await Check("components releases reading view",async()=>
         {await AddFileAsync(Fixture("数据样本.xlsx"));ShowComponents(this,new RoutedEventArgs());return ComponentPanel.Visibility==Visibility.Visible&&Detached();});
         await Check("CSV editor releases browser",async()=>
@@ -125,6 +134,12 @@ public partial class MainWindow
             var reader=nativePdf!;var page=reader.ShowPageAsync(0);var next=reader.ShowPageAsync(1);var resize=reader.SetZoomAsync(1.7);
             await Task.WhenAll(page,next,resize);await reader.RestorePositionAsync(1,0,CancellationToken.None);
             return reader.HasRenderedPage&&reader.DisplayedPage==1;
+        });
+        await Check("PDF unchanged page restore reuses bitmap",async()=>
+        {
+            await Task.Delay(300);var reader=nativePdf!;var before=reader.RenderCount;var page=reader.DisplayedPage;
+            await reader.ShowPageAsync(page);await reader.RestorePositionAsync(page,reader.VerticalOffset,CancellationToken.None);
+            return reader.HasRenderedPage&&reader.DisplayedPage==page&&reader.RenderCount==before;
         });
         await Check("PDF disposal releases source file",async()=>
         {

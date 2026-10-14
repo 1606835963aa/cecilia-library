@@ -1,5 +1,5 @@
 (() => {
-    type Address={r:number;c:number};type Range={s:Address;e:Address};type SheetCell={t?:string;v?:unknown;w?:string;f?:string};type Sheet={ [key:string]:unknown; "!ref"?:string; "!merges"?:Range[] };
+    type Address={r:number;c:number};type Range={s:Address;e:Address};type SheetCell={t?:string;v?:unknown;w?:string;f?:string};type Sheet={ [key:string]:unknown; "!ref"?:string; "!merges"?:Range[]; "!data"?:(SheetCell|undefined)[][] };
     type Book={SheetNames:string[];Sheets:Record<string,Sheet>};type API={read(data:ArrayBuffer,options:unknown):Book;utils:{decode_range(value:string):Range;encode_cell(a:Address):string;decode_cell(value:string):Address;format_cell(c:SheetCell):string}};
     const context=globalThis as unknown as {importScripts(...urls:string[]):void;XLSX:API;onmessage:(event:MessageEvent)=>void;postMessage(message:unknown):void};
     type Match={address:Address;sheet:number};
@@ -7,7 +7,20 @@
     let book:Book|undefined,searchCursor=-1,lastQuery="",matches:Match[]=[],openSerial=0,load:AbortController|undefined;
     let currentSheet=0,currentStart=0,currentFirstColumn=0;
     function integer(value:unknown):number{return typeof value==="number"&&Number.isFinite(value)?Math.max(0,Math.floor(value)):0;}
-    function value(cell:SheetCell|undefined):string {if(!cell)return "";if(cell.v===undefined||cell.v===null)return cell.f?"="+cell.f:"";return cell.w??api.utils.format_cell(cell);}
+    // SheetJS caches formatted text on the supplied cell. Keep that cache temporary,
+    // so searching a whole workbook does not retain a second set of cell strings.
+    function value(cell:SheetCell|undefined):string {if(!cell)return "";if(cell.v===undefined||cell.v===null)return cell.f?"="+cell.f:"";return cell.w??api.utils.format_cell({...cell});}
+    function cellAt(sheet:Sheet,address:Address):SheetCell|undefined {return sheet["!data"]?sheet["!data"]?.[address.r]?.[address.c]:sheet[api.utils.encode_cell(address)] as SheetCell|undefined;}
+    function* populatedCells(sheet:Sheet):Generator<{address:Address;cell:SheetCell}> {
+        const data=sheet["!data"];
+        if(data){
+            // Array keys enumerate populated rows/columns without expanding a sparse
+            // sheet's entire declared rectangle or allocating all cell addresses.
+            for(const rowKey in data){const r=Number(rowKey),row=data[r];if(!row||!Number.isInteger(r)||r<0)continue;
+                for(const columnKey in row){const c=Number(columnKey),cell=row[c];if(cell&&Number.isInteger(c)&&c>=0)yield{address:{r,c},cell};}
+            }
+        }else for(const key in sheet)if(/^[A-Z]+[1-9][0-9]*$/.test(key)){const cell=sheet[key] as SheetCell|undefined;if(cell)yield{address:api.utils.decode_cell(key),cell};}
+    }
     function page(index:number,start:number,firstColumn:number,selected?:Address,found?:boolean,foundIndex=0,foundCount=0) {
         if(!book)return;
         index=Math.min(integer(index),book.SheetNames.length-1);start=integer(start);firstColumn=integer(firstColumn);
@@ -22,7 +35,7 @@
             for(let r=sr;r<=er;r++)for(let c=sc;c<=ec;c++)merged.set(`${r},${c}`,r===sr&&c===sc?{source:merge.s,spanRows:er-sr+1,spanCols:ec-sc+1}:{skip:true});
         }
         for(let r=start;r<start+rows;r++)for(let c=firstColumn;c<firstColumn+columns;c++){
-            const merge=merged.get(`${r},${c}`);if(merge?.skip)continue;const cell=sheet[api.utils.encode_cell(merge?.source??{r,c})] as SheetCell|undefined;
+            const merge=merged.get(`${r},${c}`);if(merge?.skip)continue;const cell=cellAt(sheet,merge?.source??{r,c});
             const formulaOnly=!!cell?.f&&cell.v===undefined;if(formulaOnly)formulaMissing++;
             cells.push({row:r,col:c,value:value(cell),numeric:cell?.t==="n",formulaOnly,spanRows:merge?.spanRows,spanCols:merge?.spanCols});
         }
@@ -35,7 +48,7 @@
             if(message.type==="open"){
                 generation=++openSerial;load?.abort();const controller=new AbortController();load=controller;book=undefined;matches=[];searchCursor=-1;lastQuery="";
                 const response=await fetch(message.url,{signal:controller.signal});if(!response.ok)throw new Error("读取表格失败");if(generation!==openSerial)return;const data=await response.arrayBuffer();if(generation!==openSerial)return;
-                book=api.read(data,{type:"array",cellDates:true,cellNF:true,cellText:false,raw:message.extension==="csv",codepage:936});
+                book=api.read(data,{type:"array",dense:true,cellDates:true,cellNF:true,cellText:false,raw:message.extension==="csv",codepage:936});
                 if(book.SheetNames.length===0)throw new Error("文件没有可显示的工作表");page(integer(message.position?.sheet),integer(message.position?.start),integer(message.position?.firstColumn));
                 if(load===controller)load=undefined;
             }else if(message.type==="page"){searchCursor=-1;page(message.sheet,message.start,message.firstColumn);}
@@ -47,7 +60,9 @@
                     searchCursor=-1;lastQuery=query;matches=[];
                     for(let sheetIndex=0;sheetIndex<book.SheetNames.length;sheetIndex++){
                         const target=book.Sheets[book.SheetNames[sheetIndex]];
-                        const addresses=Object.keys(target).filter(key=>!key.startsWith("!")&&value(target[key] as SheetCell).toLocaleLowerCase().includes(query)).map(key=>api.utils.decode_cell(key)).sort((a,b)=>a.r-b.r||a.c-b.c);
+                        const addresses:Address[]=[];
+                        for(const entry of populatedCells(target))if(value(entry.cell).toLocaleLowerCase().includes(query))addresses.push(entry.address);
+                        addresses.sort((a,b)=>a.r-b.r||a.c-b.c);
                         for(const address of addresses)matches.push({address,sheet:sheetIndex});
                     }
                 }

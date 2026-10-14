@@ -1,0 +1,409 @@
+{
+  "ranAt": "2026-10-14T18:53:05.6099959+08:00",
+  "applicationSha256": "F64FFE5930E8F43F61E3ABE1FCD8EDB316AB3CDA068B75E836BB53191B779035",
+  "kind": "Application-owned display checks; public source files remain local; PDF text and visual checks recorded separately",
+  "results": [
+    {
+      "id": "wps-writer",
+      "file": "writer.wps",
+      "status": "PASS",
+      "sha256": "132A528221AF85B562547C158C2CCFBAD68377D77BED8EFED91982DE6CD26ADB",
+      "kind": "Office",
+      "renderer": "Windows.Data.Pdf",
+      "milliseconds": 1337,
+      "pages": [
+        {
+          "page": 1,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-writer-page-1.png",
+          "sha256": "8E13FC6B38FB3368CD21492422DAFBAC23F327C2164BE6702A62B44D7F6AC43E"
+        },
+        {
+          "page": 2,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-writer-page-2.png",
+          "sha256": "DCEA97842B39D0BD9BCA9BFC864A692F226B26688D21ED52E50FB02FCF6F4C33"
+        },
+        {
+          "page": 3,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-writer-page-3.png",
+          "sha256": "7F9DC7AEBED005EF8DDC34B2E13CDDE22E60B17D87B25803C21AB928FEB8DDD1"
+        },
+        {
+          "page": 4,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-writer-page-4.png",
+          "sha256": "F5C975B06319BEBDD526BE0EE6694269D78BAA137A196405ABA94485B1854A63"
+        },
+        {
+          "page": 5,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-writer-page-5.png",
+          "sha256": "82D014219D86C3818029D762709327D01E3B3798BF1136A3552A0AFE0EF2E469"
+        },
+        {
+          "page": 6,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-writer-page-6.png",
+          "sha256": "0595DFDFC721CD3B39D55331EFBD377DA3871253F1B5639E230D0D3E734988FC"
+        }
+      ],
+      "textChecks": [],
+      "referencePdf": "reports\\private\\native-wps\\wps-writer.pdf",
+      "error": null,
+      "sourceUnchanged": true
+    },
+    {
+      "id": "wps-writer-template",
+      "file": "Memo.wpt",
+      "status": "PASS",
+      "sha256": "8C1E5A7891AAFBA1432D01D1E2FC5E4C9FD51751C876EBC437CA204ABF40248D",
+      "kind": "Office",
+      "renderer": "Windows.Data.Pdf",
+      "milliseconds": 543,
+      "pages": [
+        {
+          "page": 1,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-writer-template-page-1.png",
+          "sha256": "B682F7ABB778D811B131883371AA8F22FDAE63DA06046AA3326F6F2B1EF6A2EE"
+        }
+      ],
+      "textChecks": [],
+      "referencePdf": "reports\\private\\native-wps\\wps-writer-template.pdf",
+      "error": null,
+      "sourceUnchanged": true
+    },
+    {
+      "id": "wps-sheet",
+      "file": "sheet.et",
+      "status": "PASS",
+      "sha256": "D04E20AEEFDD569370CD72BC1E5F33DA38436997AB0D6C4E08D37EB83791C777",
+      "kind": "Spreadsheet",
+      "renderer": "Windows.Data.Pdf",
+      "milliseconds": 2503,
+      "pages": [
+        {
+          "page": 1,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-sheet-page-1.png",
+          "sha256": "77AD02B65EC7551559C20C165718512F5DED95221AF546AB96DC7D0C2B69CD8B"
+        },
+        {
+          "page": 2,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-sheet-page-2.png",
+          "sha256": "B38CB21C9B117FD1A33AB6F931FA7A040F400E8DE2A5775AD86F5C9BE139405E"
+        },
+        {
+          "page": 3,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-sheet-page-3.png",
+          "sha256": "8A9E71FBB6B6FF6530D0C3378F280FEB078E0AB65743D06F67A1D3A34D436869"
+        },
+        {
+          "page": 4,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-sheet-page-4.png",
+          "sha256": "50D5B59ED456D1FE708BB40D95B23A1C444DA0D1990017CC8A8A9878ADCD7D00"
+        },
+        {
+          "page": 5,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-sheet-page-5.png",
+          "sha256": "99CEC62FBCBB56F962FA2702B98585FB2611694F51EF04F8CED0076FB7411AEE"
+        },
+        {
+          "page": 6,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-sheet-page-6.png",
+          "sha256": "99CEC62FBCBB56F962FA2702B98585FB2611694F51EF04F8CED0076FB7411AEE"
+        },
+        {
+          "page": 7,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-sheet-page-7.png",
+          "sha256": "A282C0FAB6CABCC4A3ED6724BC388F8F23BB408D25F7B85FF9147976D7CCC375"
+        },
+        {
+          "page": 8,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-sheet-page-8.png",
+          "sha256": "679F989930700D513E4ECDA7CEC0BA1AE89742351728ACED41A8923A0AE349D0"
+        },
+        {
+          "page": 9,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-sheet-page-9.png",
+          "sha256": "BBDE1ECEE4EF59AFE462DB23AB211D98A18ADA7D42630924239CBAB8521334B3"
+        }
+      ],
+      "textChecks": [
+        {
+          "expected": "\u4E2A\u4EBA\u5DE5\u4F5C\u8BA1\u5212",
+          "found": true
+        },
+        {
+          "expected": "\u5DE5\u4F5C\u9879\u76EE\u8BB0\u5F55",
+          "found": true
+        },
+        {
+          "expected": "\u65F6\u95F4\u5B89\u6392",
+          "found": true
+        }
+      ],
+      "referencePdf": "reports\\private\\native-wps\\wps-sheet.pdf",
+      "error": null,
+      "sourceUnchanged": true
+    },
+    {
+      "id": "wps-sheet-template",
+      "file": "Invoice.ett",
+      "status": "PASS",
+      "sha256": "224CD55D529111D0985412C565D6AABDFC2CB24A3923BC6DE7D3E039EDA22A19",
+      "kind": "Spreadsheet",
+      "renderer": "Windows.Data.Pdf",
+      "milliseconds": 1218,
+      "pages": [
+        {
+          "page": 1,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-sheet-template-page-1.png",
+          "sha256": "5221B867E1A4EF8AA7805E456B698231E0BF4E00FF46821334F238858DF0B6DF"
+        }
+      ],
+      "textChecks": [
+        {
+          "expected": "The Flower Gallery Limited",
+          "found": true
+        },
+        {
+          "expected": "Invoice",
+          "found": true
+        },
+        {
+          "expected": "Grand Total",
+          "found": true
+        }
+      ],
+      "referencePdf": "reports\\private\\native-wps\\wps-sheet-template.pdf",
+      "error": null,
+      "sourceUnchanged": true
+    },
+    {
+      "id": "wps-presentation",
+      "file": "presentation.dps",
+      "status": "PASS",
+      "sha256": "1889A48255D87AA79A0E2C5AF795EFF781C774AA53176B1531BDA7E772A191C7",
+      "kind": "Office",
+      "renderer": "Windows.Data.Pdf",
+      "milliseconds": 1883,
+      "pages": [
+        {
+          "page": 1,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-page-1.png",
+          "sha256": "E54EF53C5797F8519A69808A7152BA56BCB3CF3C534A183F72DCF41C87CDA0CA"
+        },
+        {
+          "page": 2,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-page-2.png",
+          "sha256": "891CEDAADA9C8A33EA6A0B4A1E47730D7F4B9D8501FCCF328D0E71F81F257A17"
+        },
+        {
+          "page": 3,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-page-3.png",
+          "sha256": "823DD51FC4AEE26538FF5F36642DAB3366C82045A3E713B5D0CC6A44DEBD63B1"
+        },
+        {
+          "page": 4,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-page-4.png",
+          "sha256": "2F8CE50B55A9B8ABD92A6B81023482400A9803C8360B7A3589F38224E04FD087"
+        },
+        {
+          "page": 5,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-page-5.png",
+          "sha256": "43234951235751203B002A44EE33D9842DF3AFA7FD50183AE2DAE31848FD1147"
+        },
+        {
+          "page": 6,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-page-6.png",
+          "sha256": "A58CC5C938E10FB34988DCDA1B6825E8669CDD4A5E9C7BE44919E62293C1D2FD"
+        },
+        {
+          "page": 7,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-page-7.png",
+          "sha256": "FE33A76EE5F6B693C154B7BA5C7C722597B55E987D20E65E0AE12F608FD1CEB7"
+        },
+        {
+          "page": 8,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-page-8.png",
+          "sha256": "33A704C364945864176D450BD2566FB14293609802E572A3DA7EE04A081E6841"
+        },
+        {
+          "page": 9,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-page-9.png",
+          "sha256": "594E0F98239CB98CFD87A7ED2AD8459923B7DB080E87B307C059BA6D00AA086E"
+        },
+        {
+          "page": 10,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-page-10.png",
+          "sha256": "8B953F136B34ABA3FB538BBCF062003F5F654EEF6B6C72B00745CE55F35D3262"
+        },
+        {
+          "page": 11,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-page-11.png",
+          "sha256": "5717DF3A4E7C9019FA356F67BC196878D895FC7F43F7E5EB27F714045862A166"
+        },
+        {
+          "page": 12,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-page-12.png",
+          "sha256": "806E58490C28B3CE4D06E293E572BB0F3063DFAF212997B8B728608FBA32330F"
+        },
+        {
+          "page": 13,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-page-13.png",
+          "sha256": "46F8C3E656DE28E9F655C2F96DE230AD3C5E6EDA8215AEE5155F609FCDF814E4"
+        },
+        {
+          "page": 14,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-page-14.png",
+          "sha256": "C89C790EA63F54F57137DCCD1D9EBA06C72449891D796C671363924D7A0EECA4"
+        },
+        {
+          "page": 15,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-page-15.png",
+          "sha256": "A000EE341CF7E5EE1885140746400F7CACCC1B02B4CE33F557D8E0A4B06D9C12"
+        }
+      ],
+      "textChecks": [],
+      "referencePdf": "reports\\private\\native-wps\\wps-presentation.pdf",
+      "error": null,
+      "sourceUnchanged": true
+    },
+    {
+      "id": "wps-presentation-blank",
+      "file": "newfile.dps",
+      "status": "SMOKE_ONLY",
+      "sha256": "350411F57490A8BCFEADE63A40AD4883F112927068A88C73DB729291FA0B522A",
+      "kind": "Office",
+      "renderer": "Windows.Data.Pdf",
+      "milliseconds": 536,
+      "pages": [
+        {
+          "page": 1,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-blank-page-1.png",
+          "sha256": "6D81A9ECC0B556DAE2CFAD0CB5747959DB365A6812C7562FF7593111EE7F26B4"
+        }
+      ],
+      "textChecks": [],
+      "referencePdf": "reports\\private\\native-wps\\wps-presentation-blank.pdf",
+      "error": null,
+      "sourceUnchanged": true
+    },
+    {
+      "id": "wps-presentation-template",
+      "file": "Books.dpt",
+      "status": "PASS",
+      "sha256": "9375E32AFA2657FB2AD2E8EDDACFAF46899F641FB8BA8D90980A267359380EDF",
+      "kind": "Office",
+      "renderer": "Windows.Data.Pdf",
+      "milliseconds": 2881,
+      "pages": [
+        {
+          "page": 1,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-template-page-1.png",
+          "sha256": "FE793F1EC44E9D073632C158FB4435FE8A2C062D4F98446DED7440C0D4F110D8"
+        },
+        {
+          "page": 2,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-template-page-2.png",
+          "sha256": "03501047D57A383C3BD70C2A24A4D8F5927F7CD18AEBD6579CBF218EFB94C5F4"
+        },
+        {
+          "page": 3,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-template-page-3.png",
+          "sha256": "8A4A697D4DA5B52669003CEEEF1F5B43017AE0B28EFDAE17EF15AD92B6A140DB"
+        },
+        {
+          "page": 4,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-template-page-4.png",
+          "sha256": "8DDE7BD264F0508394CFED25AEB144B580473BC37627ADBE639D5A6BCBCB264D"
+        },
+        {
+          "page": 5,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-template-page-5.png",
+          "sha256": "E723D5F4F27C0A8AD4C05A49167121DEDA17062503D5909C30C1B02122002DE8"
+        },
+        {
+          "page": 6,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-template-page-6.png",
+          "sha256": "038FE69E84F645A64654E844147C5095EB2AF7C87D6D3B62095F564972D68E93"
+        },
+        {
+          "page": 7,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-template-page-7.png",
+          "sha256": "228383264D964F79DB8D888EF39E1F5B5448989A36A9BF3481BC6DB5E24B804B"
+        },
+        {
+          "page": 8,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-template-page-8.png",
+          "sha256": "63BC91A413F47F70FB79B2406FCEAC816154272841C9961C7904715BC7B7C5A4"
+        },
+        {
+          "page": 9,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-template-page-9.png",
+          "sha256": "EAC4173A6BE85590DAB300B98079110D169CB3F01FA4FA7F742F3F82098216DF"
+        },
+        {
+          "page": 10,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-template-page-10.png",
+          "sha256": "EF3F55AFEDEAC1CC5F125D2E81691CC22EEB0FEAE9D49137AD1D2A0D3E2F08B2"
+        },
+        {
+          "page": 11,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-template-page-11.png",
+          "sha256": "1A48B0EDFC9BC5A9DF44796A9D96B4D315D4882DA9A372105C1E64C96AB2982F"
+        },
+        {
+          "page": 12,
+          "rendered": true,
+          "preview": "reports\\private\\native-wps\\wps-presentation-template-page-12.png",
+          "sha256": "7DACDAEA49C4014DD71A0368A5A1A3CAA8B11854D23139F5B9047B9175AAAD1D"
+        }
+      ],
+      "textChecks": [],
+      "referencePdf": "reports\\private\\native-wps\\wps-presentation-template.pdf",
+      "error": null,
+      "sourceUnchanged": true
+    }
+  ],
+  "unhandledErrors": []
+}
