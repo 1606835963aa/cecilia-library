@@ -57,6 +57,9 @@ release_table='\n'.join(f"| {label} | {mib(point(before,step)):.1f} MiB | {mib(p
     ('普通 Word','home-after-阅读样本.docx-5000ms'),('普通表格','home-after-数据样本.xlsx-5000ms'),
     ('较大 Word','home-after-内存文字样本.docx-5000ms'),('五万行表格','home-after-内存表格样本.xlsx-5000ms')])
 previous=(ROOT/'docs/开发进度.md').read_text(encoding='utf-8')
+registration_section=''
+if '## Windows 默认应用入口（' in previous:
+    registration_section=('## Windows 默认应用入口（'+previous.split('## Windows 默认应用入口（',1)[1].split('\n## ',1)[0]).rstrip()+'\n\n'
 ui_section=''
 if '## 界面（' in previous:
     ui_section=('## 界面（'+previous.split('## 界面（',1)[1].split('\n## ',1)[0]).rstrip()
@@ -114,7 +117,7 @@ PDF 减少了页面图片复制，样本页面与优化前逐像素一致。原�
 - 编辑结果保留原始样本，保存后的 TXT / CSV 通过独立读取核对；覆盖发生外部变化的原文件会被拒绝。
 - 返回首页、组件页、取消打开、关闭最后标签和快速混合格式切换后，旧视图不会继续覆盖当前页面；PDF 翻页与缩放、Word / 表格位置恢复及未保存文本保留通过程序内部检查。
 
-## 尚未完成
+{registration_section}## 尚未完成
 
 - WPS 原生 `.wps`、`.wpt`、`.et`、`.ett`、`.dps`、`.dpt` 缺少真实格式样本，保持未验证。已有兼容路径，不能据此认定全部版本可读。
 - `.ts` 在 WPS 演示清单中的含义继续核实；第 47 项已按用户选择补入 ODT。
