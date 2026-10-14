@@ -5,19 +5,75 @@
   "candidateExtensionCount": 40,
   "applicationVersion": "0.1.1",
   "checks": [
-    { "name": "Current-user application and capability registration", "status": "PASS" },
-    { "name": "Repeated registration", "status": "PASS" },
-    { "name": "Native AssocQueryString resolves the published EXE and quoted profile/file arguments", "status": "PASS" },
-    { "name": "Existing defaults unchanged for doc/docx/xls/xlsx/pdf/pptx/html/jpg", "status": "PASS" },
-    { "name": "Synthetic PDF with Chinese and spaces in its path opens using system runtime without DOTNET_ROOT", "status": "PASS", "renderer": "Windows.Data.Pdf", "shown": true },
-    { "name": "Select the application and confirm Always in the Windows UI", "status": "BLOCKED_ENV", "reason": "Computer Use: Trusted RPC package must resolve within a configured trusted module directory: @oai/sky/service" },
-    { "name": "Remove registration", "status": "NOT_RUN" }
+    {
+      "name": "Current-user application and capability registration",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated registration",
+      "status": "PASS"
+    },
+    {
+      "name": "Native AssocQueryString resolves the published EXE and quoted profile/file arguments",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing defaults unchanged for doc/docx/xls/xlsx/pdf/pptx/html/jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "Synthetic PDF with Chinese and spaces in its path opens using system runtime without DOTNET_ROOT",
+      "status": "PASS",
+      "renderer": "Windows.Data.Pdf",
+      "shown": true
+    },
+    {
+      "name": "Select the application and confirm Always in the Windows UI",
+      "status": "BLOCKED_ENV",
+      "reason": "Computer Use: Trusted RPC package must resolve within a configured trusted module directory: @oai/sky/service"
+    },
+    {
+      "name": "Remove registration",
+      "status": "NOT_RUN"
+    },
+    {
+      "name": "Explorer/FileExts OpenWithProgids contains the candidate for 40 sample-verified extensions",
+      "status": "PASS"
+    },
+    {
+      "name": "All 40 existing UserChoice selections unchanged during registration update",
+      "status": "PASS"
+    },
+    {
+      "name": "Project startup migrates registration version 1 to 2 and preserves the document launch arguments",
+      "status": "PASS",
+      "method": "Actual registration with process-launch capture; no app UI launched"
+    },
+    {
+      "name": "SHAssocEnumHandlers lists this application for 40 extensions in both all and recommended filters",
+      "status": "PASS",
+      "report": "reports/windows-open-with-checks.json"
+    },
+    {
+      "status": "PASS",
+      "method": "Registration opt-out flag tested without removing active handlers",
+      "name": "Project startup honors registration opt-out"
+    }
   ],
   "defaultAssignment": "Not changed by registration; select the required extensions in Windows Settings",
   "scope": "Registration and launch checks only; previous rendering checks remain in gui-checks.json",
   "sources": [
     "https://learn.microsoft.com/en-us/windows/win32/shell/app-registration",
     "https://learn.microsoft.com/en-us/windows/win32/shell/default-programs",
-    "https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-default-apps-settings"
-  ]
+    "https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-default-apps-settings",
+    "https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nf-shobjidl_core-shassocenumhandlers",
+    "https://learn.microsoft.com/en-us/windows/win32/api/shlobj_core/nf-shlobj_core-shchangenotify"
+  ],
+  "registrationSchemaVersion": 2,
+  "pdfMenuFeedback": {
+    "userReported": "Application not visible in the PDF chooser",
+    "nativeBeforeChange": "Already listed as recommended with the correct Chinese name and executable",
+    "nativeAfterChange": "Listed as recommended",
+    "visibleMenuAcceptance": "BLOCKED_ENV; not visually confirmed"
+  }
 }

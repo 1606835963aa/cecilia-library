@@ -1,0 +1,968 @@
+﻿{
+    "scope":  "Current desktop user; sample-verified extensions only",
+    "method":  "Read-only SHAssocEnumHandlers and IAssocHandler name/recommendation queries; no dialog clicks",
+    "checkedAt":  "2026-10-14T10:57:41.5617110+08:00",
+    "results":  [
+                    {
+                        "filter":  "all",
+                        "extension":  ".bmp",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".bmp",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".csv",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".csv",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".dbf",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".dbf",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".dif",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".dif",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".doc",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".doc",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".docm",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".docm",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".docx",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".docx",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".dot",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".dot",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".dotm",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".dotm",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".dotx",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".dotx",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".htm",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".htm",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".html",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".html",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".jpg",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".jpg",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".mht",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".mht",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".mhtml",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".mhtml",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".odt",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".odt",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".pdf",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".pdf",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".png",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".png",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".pot",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".pot",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".potm",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".potm",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".potx",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".potx",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".pps",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".pps",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".ppsm",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".ppsm",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".ppsx",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".ppsx",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".ppt",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".ppt",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".pptm",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".pptm",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".pptx",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".pptx",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".prn",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".prn",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".rtf",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".rtf",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".tif",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".tif",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".txt",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".txt",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".xla",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".xla",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".xlam",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".xlam",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".xls",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".xls",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".xlsm",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".xlsm",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".xlsx",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".xlsx",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".xlt",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".xlt",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".xltm",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".xltm",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".xltx",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".xltx",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "all",
+                        "extension":  ".xml",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    },
+                    {
+                        "filter":  "recommended",
+                        "extension":  ".xml",
+                        "matchingHandlers":  [
+                                                 {
+                                                     "Name":  "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\dist\\LightReader\\LightReader.exe",
+                                                     "DisplayName":  "塞西莉亚的图书馆",
+                                                     "Recommended":  true
+                                                 }
+                                             ],
+                        "status":  "PASS"
+                    }
+                ],
+    "uiVerification":  "BLOCKED_ENV: Computer Use trusted RPC service cannot load"
+}

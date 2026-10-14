@@ -7,6 +7,7 @@ $capabilities='Software\CeciliaLibrary\Capabilities'
 $applicationKey='Software\Classes\Applications\LightReader.exe'
 $progKey='Software\Classes\'+$progId
 $appPathKey='Software\Microsoft\Windows\CurrentVersion\App Paths\LightReader.exe'
+$explorerTypes='Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts'
 $ownerName='CeciliaLibraryRegistration'
 $extensions=@((Get-Content -LiteralPath (Join-Path $projectRoot 'data\format-targets.json') -Raw | ConvertFrom-Json).formats | Where-Object verificationStatus -eq 'VERIFIED_SAMPLE' | ForEach-Object extension | Sort-Object -Unique)
 $userRegistry=[Microsoft.Win32.Registry]::CurrentUser
@@ -21,21 +22,25 @@ function Assert-OwnedRegistration([string]$Path){
 foreach($ownedPath in @($applicationKey,$progKey,$appPathKey,'Software\CeciliaLibrary')){Assert-OwnedRegistration $ownedPath}
 if($Remove){
     foreach($extension in $extensions){
-        $key=$userRegistry.OpenSubKey(('Software\Classes\'+$extension+'\OpenWithProgids'),$true)
-        if($key){try{$key.DeleteValue($progId,$false)}finally{$key.Dispose()}}
+        foreach($openWithPath in @(('Software\Classes\'+$extension+'\OpenWithProgids'),($explorerTypes+'\'+$extension+'\OpenWithProgids'))){
+            $key=$userRegistry.OpenSubKey($openWithPath,$true)
+            if($key){try{$key.DeleteValue($progId,$false)}finally{$key.Dispose()}}
+        }
     }
     $registered=$userRegistry.OpenSubKey('Software\RegisteredApplications',$true)
     if($registered){try{if($registered.GetValue($applicationName) -eq $capabilities){$registered.DeleteValue($applicationName,$false)}}finally{$registered.Dispose()}}
     foreach($ownedPath in @($applicationKey,$progKey,$appPathKey,'Software\CeciliaLibrary')){$userRegistry.DeleteSubKeyTree($ownedPath,$false)}
+    Set-RegistrationString 'Software\CeciliaLibrary' $ownerName '1'
+    Set-RegistrationString 'Software\CeciliaLibrary' 'RegistrationDisabled' '1'
 }else{
     $executable=Join-Path $projectRoot 'dist\LightReader\LightReader.exe'
     if(!(Test-Path -LiteralPath $executable -PathType Leaf)){throw '请先生成 dist\LightReader 中的发布程序'}
     if($extensions.Count -eq 0){throw '没有已取得样本证据的格式可以登记'}
-    $profile=Join-Path $projectRoot '.local-data'
-    New-Item -ItemType Directory -Path $profile -Force | Out-Null
-    $componentLink=Join-Path $profile 'components'
+    $dataDirectory=Join-Path $projectRoot '.local-data'
+    New-Item -ItemType Directory -Path $dataDirectory -Force | Out-Null
+    $componentLink=Join-Path $dataDirectory 'components'
     if(!(Test-Path -LiteralPath $componentLink) -and (Test-Path -LiteralPath (Join-Path $projectRoot 'components'))){New-Item -ItemType Junction -Path $componentLink -Target (Join-Path $projectRoot 'components') | Out-Null}
-    $command='"'+$executable+'" --data-dir "'+$profile+'" "%1"'
+    $command='"'+$executable+'" --data-dir "'+$dataDirectory+'" "%1"'
     $icon='"'+$executable+'",0'
     foreach($ownedPath in @($applicationKey,$progKey,$appPathKey,'Software\CeciliaLibrary')){Set-RegistrationString $ownedPath $ownerName '1'}
     Set-RegistrationString $applicationKey 'FriendlyAppName' $applicationName
@@ -54,10 +59,15 @@ if($Remove){
     foreach($extension in $extensions){
         Set-RegistrationString ($capabilities+'\FileAssociations') $extension $progId
         Set-RegistrationString ($applicationKey+'\SupportedTypes') $extension ''
-        $key=$userRegistry.CreateSubKey('Software\Classes\'+$extension+'\OpenWithProgids')
-        try{$key.SetValue($progId,[byte[]]@(),[Microsoft.Win32.RegistryValueKind]::None)}finally{$key.Dispose()}
+        foreach($openWithPath in @(('Software\Classes\'+$extension+'\OpenWithProgids'),($explorerTypes+'\'+$extension+'\OpenWithProgids'))){
+            $key=$userRegistry.CreateSubKey($openWithPath)
+            try{$key.SetValue($progId,[byte[]]@(),[Microsoft.Win32.RegistryValueKind]::None)}finally{$key.Dispose()}
+        }
     }
     Set-RegistrationString 'Software\RegisteredApplications' $applicationName $capabilities
+    Set-RegistrationString 'Software\CeciliaLibrary' 'RegisteredExecutable' $executable
+    Set-RegistrationString 'Software\CeciliaLibrary' 'RegistrationDisabled' '0'
+    Set-RegistrationString 'Software\CeciliaLibrary' 'RegistrationVersion' '2'
 }
 if(!('CeciliaLibrary.ShellAssociations' -as [type])){
     Add-Type -TypeDefinition @'
@@ -70,7 +80,8 @@ namespace CeciliaLibrary {
 }
 '@
 }
-[CeciliaLibrary.ShellAssociations]::SHChangeNotify(0x08000000,0,[IntPtr]::Zero,[IntPtr]::Zero)
+# SHCNE_ASSOCCHANGED; SHCNF_IDLIST (0) | SHCNF_FLUSH.
+[CeciliaLibrary.ShellAssociations]::SHChangeNotify(0x08000000,0x1000,[IntPtr]::Zero,[IntPtr]::Zero)
 $settingsUri='ms-settings:defaultapps?registeredAppUser='+[Uri]::EscapeDataString($applicationName)
 @{application=$applicationName;registered=!$Remove;extensionCount=$extensions.Count;scope='current-user';settingsUri=$settingsUri} | ConvertTo-Json
 if($OpenSettings -and !$Remove){Start-Process -FilePath $settingsUri}
