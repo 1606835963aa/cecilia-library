@@ -3,9 +3,19 @@
     const context = globalThis;
     context.importScripts("/component/sheet/xlsx.js");
     const api = context.XLSX;
-    let book, searchCursor = -1, lastQuery = "", matches = [], openSerial = 0, load;
+    let book, searchCursor = -1, lastQuery = "", matches = [], matchCount = 0, openSerial = 0, searchSerial = 0, load;
     let currentSheet = 0, currentStart = 0, currentFirstColumn = 0;
     function integer(value) { return typeof value === "number" && Number.isFinite(value) ? Math.max(0, Math.floor(value)) : 0; }
+    function matchAt(index) {
+        for (const set of matches) {
+            if (index < set.positions.length) {
+                const code = set.positions[index], r = Math.floor(code / set.stride);
+                return { sheet: set.sheet, address: { r, c: code - r * set.stride } };
+            }
+            index -= set.positions.length;
+        }
+        throw new Error("查找位置不存在");
+    }
     // SheetJS caches formatted text on the supplied cell. Keep that cache temporary,
     // so searching a whole workbook does not retain a second set of cell strings.
     function value(cell) { if (!cell)
@@ -83,11 +93,13 @@
         try {
             if (message.type === "open") {
                 generation = ++openSerial;
+                ++searchSerial;
                 load?.abort();
                 const controller = new AbortController();
                 load = controller;
                 book = undefined;
                 matches = [];
+                matchCount = 0;
                 searchCursor = -1;
                 lastQuery = "";
                 const response = await fetch(message.url, { signal: controller.signal });
@@ -106,54 +118,85 @@
                     load = undefined;
             }
             else if (message.type === "page") {
+                ++searchSerial;
                 searchCursor = -1;
                 page(message.sheet, message.start, message.firstColumn);
             }
             else if (message.type === "find") {
                 if (!book)
                     return;
+                const search = ++searchSerial;
                 const query = String(message.query ?? "").toLocaleLowerCase(), index = Math.min(integer(message.sheet), book.SheetNames.length - 1);
                 if (!query) {
                     lastQuery = "";
                     matches = [];
+                    matchCount = 0;
                     searchCursor = -1;
                     page(currentSheet, currentStart, currentFirstColumn, undefined, false);
                     return;
                 }
                 if (query !== lastQuery) {
                     searchCursor = -1;
-                    lastQuery = query;
+                    lastQuery = "";
                     matches = [];
+                    matchCount = 0;
+                    const found = [];
+                    let total = 0, visited = 0;
                     for (let sheetIndex = 0; sheetIndex < book.SheetNames.length; sheetIndex++) {
                         const target = book.Sheets[book.SheetNames[sheetIndex]];
-                        const addresses = [];
-                        for (const entry of populatedCells(target))
-                            if (value(entry.cell).toLocaleLowerCase().includes(query))
-                                addresses.push(entry.address);
-                        addresses.sort((a, b) => a.r - b.r || a.c - b.c);
-                        for (const address of addresses)
-                            matches.push({ address, sheet: sheetIndex });
-                    }
-                }
-                if (matches.length) {
-                    if (searchCursor < 0) {
-                        if (message.backward) {
-                            searchCursor = matches.length - 1;
-                            for (let i = matches.length - 1; i >= 0; i--)
-                                if (matches[i].sheet <= index) {
-                                    searchCursor = i;
-                                    break;
+                        const stride = target["!ref"] ? Math.max(1, api.utils.decode_range(target["!ref"]).e.c + 1) : 1;
+                        let positions = new Float64Array(0), length = 0;
+                        for (const entry of populatedCells(target)) {
+                            if (value(entry.cell).toLocaleLowerCase().includes(query)) {
+                                const code = entry.address.r * stride + entry.address.c;
+                                if (!Number.isSafeInteger(code) || entry.address.c >= stride)
+                                    throw new Error("工作表范围与单元格位置不一致");
+                                if (length === positions.length) {
+                                    const grown = new Float64Array(Math.max(1024, length * 2));
+                                    grown.set(positions);
+                                    positions = grown;
                                 }
+                                positions[length++] = code;
+                            }
+                            // Allow newer searches, clearing and page switches to cancel
+                            // an unfinished scan without publishing its partial results.
+                            if (++visited % 4096 === 0) {
+                                await new Promise(resolve => setTimeout(resolve, 0));
+                                if (search !== searchSerial || generation !== openSerial)
+                                    return;
+                            }
                         }
-                        else {
-                            const first = matches.findIndex(match => match.sheet >= index);
-                            searchCursor = first < 0 ? 0 : first;
+                        if (length) {
+                            const used = positions.subarray(0, length);
+                            used.sort();
+                            found.push({ sheet: sheetIndex, stride, positions: used });
+                            total += length;
+                        }
+                    }
+                    matches = found;
+                    matchCount = total;
+                    lastQuery = query;
+                }
+                if (matchCount) {
+                    if (searchCursor < 0) {
+                        let offset = 0;
+                        searchCursor = message.backward ? matchCount - 1 : 0;
+                        for (const set of matches) {
+                            if (message.backward) {
+                                if (set.sheet <= index)
+                                    searchCursor = offset + set.positions.length - 1;
+                            }
+                            else if (set.sheet >= index) {
+                                searchCursor = offset;
+                                break;
+                            }
+                            offset += set.positions.length;
                         }
                     }
                     else
-                        searchCursor = (searchCursor + (message.backward ? -1 : 1) + matches.length) % matches.length;
-                    const match = matches[searchCursor];
-                    page(match.sheet, Math.floor(match.address.r / 200) * 200, Math.floor(match.address.c / 50) * 50, match.address, true, searchCursor + 1, matches.length);
+                        searchCursor = (searchCursor + (message.backward ? -1 : 1) + matchCount) % matchCount;
+                    const match = matchAt(searchCursor);
+                    page(match.sheet, Math.floor(match.address.r / 200) * 200, Math.floor(match.address.c / 50) * 50, match.address, true, searchCursor + 1, matchCount);
                 }
                 else
                     page(currentSheet, currentStart, currentFirstColumn, undefined, false);

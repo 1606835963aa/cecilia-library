@@ -155,6 +155,19 @@ public partial class MainWindow
             try{await loading;}catch(OperationCanceledException){}
             return await WaitUntil(()=>!reader.HasOpenSource);
         });
+        await Check("PDF extreme page bitmap and repeated zoom stay bounded",async()=>
+        {
+            // A tiny generated test file with an intentionally long page.
+            var path=Path.Combine(root,"tmp","memory-fixtures","超长页面样本.pdf");
+            using var reader=new NativePdfReader();
+            await reader.LoadAsync(path,CancellationToken.None);
+            foreach(var value in new[]{1d,1.5,3}){
+                await reader.SetZoomAsync(value);
+                if(!reader.HasRenderedPage||reader.RenderedPixels>PdfRenderBudget.MaximumPixels||reader.RenderedWidth>PdfRenderBudget.MaximumDimension||reader.RenderedHeight>PdfRenderBudget.MaximumDimension)return false;
+            }
+            var before=reader.RenderCount;await reader.ShowPageAsync(0);
+            return reader.RenderCount==before;
+        });
         await Check("image page and zoom survive home",async()=>
         {await AddFileAsync(Fixture("多页样本.tif"));NextImage(this,new RoutedEventArgs());SetZoom(1.6);ShowHome();await AddFileAsync(Fixture("多页样本.tif"));return frameIndex==1&&Math.Abs(zoom-1.6)<0.01;});
         await Check("Word scroll and zoom survive home",async()=>

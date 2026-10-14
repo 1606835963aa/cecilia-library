@@ -1,50 +1,48 @@
 {
-  "version": "0.1.2",
-  "validatedAt": "2026-10-14T11:13:51.310945+00:00",
-  "package": "dist\\LightReader-0.1.2-win-x64.zip",
-  "packageBytes": 7861624,
-  "packageSha256": "8A499D259D5957D74126F7E6A9CAC2B9D490306D11472912F82EA8E5B873CB44",
-  "applicationSha256": "F64FFE5930E8F43F61E3ABE1FCD8EDB316AB3CDA068B75E836BB53191B779035",
-  "build": "PASS; 0 .NET warnings, 0 errors; npm reports a pre-existing unknown store-dir configuration",
-  "coreChecks": "22 PASS",
-  "guiChecks": "83 PASS",
-  "independentChecks": "17 PASS",
-  "previewBehaviorChecks": "35 PASS",
+  "version": "0.1.3",
+  "validatedAt": "2026-10-14T14:00:33.460227+00:00",
+  "package": "dist/LightReader-0.1.3-win-x64.zip",
+  "packageBytes": 7865678,
+  "packageSha256": "0E2F03608C940CF4045DD8BDB05777F156E7C4D37BEB01643DDB770D7308E293",
+  "applicationSha256": "BB99492BF3207210F7C5004AF9B39B89D6AD5960D54F4AE0CB778D03FE723A0A",
+  "previewWorkerSha256": "F0C77B85CD6B215C7A9375EE63EE4C3D44C59AE1BC2304688DC994415ED105E5",
+  "build": "PASS; 0 .NET warnings, 0 errors; existing npm store-dir configuration warning",
+  "coreChecks": 25,
+  "guiChecks": 84,
+  "independentChecks": 17,
+  "previewBehaviorChecks": 40,
   "nativeWps": {
-    "verifiedExtensions": [
-      ".dps",
-      ".dpt",
-      ".et",
-      ".ett",
-      ".wps",
-      ".wpt"
-    ],
-    "completeSamples": 6,
-    "completePages": 44,
-    "additionalBlankSmokeSamples": 1,
-    "structure": "PASS",
-    "display": "PASS",
-    "independentContent": "PASS",
-    "visual": "PASS",
-    "status": "VERIFIED_SAMPLE"
+    "status": "VERIFIED_SAMPLE",
+    "extensions": 6,
+    "pages": 44,
+    "additionalBlankSmokePages": 1,
+    "unchangedPageImages": 45,
+    "quickViewsReviewed": 2
   },
   "lifecycle": {
+    "status": "PASS",
     "snapshots": 55,
-    "checks": 36,
-    "status": "PASS"
+    "checks": 36
   },
   "pdfLifecycle": {
-    "iterations": 20,
-    "snapshots": 81,
-    "checks": 61,
     "status": "PASS",
-    "earlierRun": "INTERRUPTED; cause unconfirmed; reports/pdf-012-interrupted.json"
+    "iterations": 30,
+    "snapshots": 121,
+    "checks": 91,
+    "historicalInterruption": "reports/pdf-012-interrupted.json; cause unconfirmed"
+  },
+  "largeSearch": {
+    "status": "PASS",
+    "matchesPerQuery": 600000,
+    "iterations": 3,
+    "snapshotsPerRun": 11,
+    "stableMemoryReduction": "NOT_ESTABLISHED; first two new-version checkpoints higher"
   },
   "pdfPixelComparison": "3 PASS",
   "formatEvidence": "46 extensions: 40 synthetic + 6 public WPS originals",
-  "goal47": "NOT_COMPLETE: .ts definition pending",
-  "targetDefinition": "46 WPS listed suffixes + user-confirmed ODT",
-  "realMouseVerification": "BLOCKED_ENV: Computer Use trusted RPC module could not load",
-  "windowsPdfChooser": "User confirmed resolved after manually selecting EXE once; no association changes in 0.1.2",
-  "conversionVerification": "Cold and cached WPS samples checked; final full window regression reused the isolated synthetic conversion cache. One cold GUI run exceeded its test timeout before the complete rerun."
+  "goal47": "NOT_COMPLETE: TS definition unconfirmed after primary-source cross-check",
+  "tsResearch": "reports/ts-format-research.json",
+  "realMouseVerification": "BLOCKED_ENV: Trusted RPC package must resolve within a configured trusted module directory: @oai/sky/service",
+  "conversionRegression": "Unchanged converter; 22 verified prior synthetic/public PDF outputs seeded in isolated profile; original hashes and engine version checked",
+  "windowsPdfChooser": "Previously resolved by user; no association changes in 0.1.3"
 }

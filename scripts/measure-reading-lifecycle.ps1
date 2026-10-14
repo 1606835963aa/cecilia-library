@@ -1,4 +1,4 @@
-﻿param([string]$Application='dist\LightReader\LightReader.exe',[string]$Label='after',[int]$Iterations=10,[string]$Report,[switch]$PdfOnly,[switch]$AllowFailedChecks)
+﻿param([string]$Application='dist\LightReader\LightReader.exe',[string]$Label='after',[int]$Iterations=10,[string]$Report,[switch]$PdfOnly,[switch]$SearchOnly,[switch]$AllowFailedChecks)
 $ErrorActionPreference='Stop'
 $projectRoot=Split-Path $PSScriptRoot -Parent
 Set-Location -LiteralPath $projectRoot
@@ -8,7 +8,7 @@ $run=Join-Path $projectRoot ('tmp\lifecycle-'+$Label+'-'+[guid]::NewGuid().ToStr
 $profile=Join-Path $run 'profile'
 New-Item -ItemType Directory -Path $profile -Force | Out-Null
 New-Item -ItemType Junction -Path (Join-Path $profile 'components') -Target (Join-Path $projectRoot 'components') | Out-Null
-@{projectRoot=$projectRoot;outputDirectory=$run;iterations=$Iterations;pdfOnly=$PdfOnly.IsPresent} | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $run 'config.json') -Encoding UTF8
+@{projectRoot=$projectRoot;outputDirectory=$run;iterations=$Iterations;pdfOnly=$PdfOnly.IsPresent;searchOnly=$SearchOnly.IsPresent} | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $run 'config.json') -Encoding UTF8
 $env:DOTNET_ROOT=Join-Path $projectRoot '.tools\dotnet'
 $reader=Start-Process -FilePath $executable -ArgumentList @('--lifecycle-probe',('"'+(Join-Path $run 'config.json')+'"'),'--data-dir',('"'+$profile+'"')) -WindowStyle Hidden -PassThru
 $readerStarted=$reader.StartTime.ToUniversalTime()
@@ -52,7 +52,7 @@ try {
     }
     $complete=Get-Content -LiteralPath (Join-Path $run 'complete.json') -Raw | ConvertFrom-Json
     $dll=Join-Path ([IO.Path]::GetDirectoryName($executable)) 'LightReader.dll'
-    $fixtures=@('tests\fixtures\阅读样本.docx','tests\fixtures\数据样本.xlsx','tests\fixtures\分页样本.pdf','tests\fixtures\多页样本.tif','tests\fixtures\文本样本.txt','tmp\memory-fixtures\内存文字样本.docx','tmp\memory-fixtures\内存表格样本.xlsx') | ForEach-Object {
+    $fixtures=@('tests\fixtures\阅读样本.docx','tests\fixtures\数据样本.xlsx','tests\fixtures\分页样本.pdf','tests\fixtures\多页样本.tif','tests\fixtures\文本样本.txt','tmp\memory-fixtures\内存文字样本.docx','tmp\memory-fixtures\内存表格样本.xlsx','tmp\memory-fixtures\搜索表格样本.xlsx') | ForEach-Object {
         @{file=$_;bytes=(Get-Item -LiteralPath $_).Length;sha256=(Get-FileHash -LiteralPath $_).Hash}
     }
     @{label=$Label;measuredAt=(Get-Date).ToString('o');applicationSha256=(Get-FileHash -LiteralPath $dll).Hash;applicationVersion=[Diagnostics.FileVersionInfo]::GetVersionInfo($dll).FileVersion;hostOs=[Environment]::OSVersion.VersionString;iterations=$Iterations;method='Whole process tree plus previously observed surviving descendants. PID identity and child creation after parent checked to exclude reused PIDs. Natural idle; no forced GC or working-set trimming. Same isolated fresh profile and generated fixtures for before/after.';fixtures=$fixtures;records=$records;probe=$complete} | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $Report -Encoding UTF8

@@ -1,5 +1,5 @@
 {
-  "ranAt": "2026-10-14T18:50:14.1537259+08:00",
+  "ranAt": "2026-10-14T21:49:08.9576427+08:00",
   "results": [
     {
       "name": "Text encoding utf-8 BOM=False",
@@ -35,6 +35,18 @@
     },
     {
       "name": "PDF recognized by contents",
+      "status": "PASS"
+    },
+    {
+      "name": "PDF ordinary portrait and landscape keep requested resolution",
+      "status": "PASS"
+    },
+    {
+      "name": "PDF extreme page ratios keep bitmap size bounded",
+      "status": "PASS"
+    },
+    {
+      "name": "PDF invalid dimensions rejected",
       "status": "PASS"
     },
     {

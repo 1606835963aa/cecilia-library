@@ -1,0 +1,28 @@
+{
+  "sourceCommit": "e6414ac",
+  "method": "Prior verified PDF outputs; original fixture hash and unchanged LibreOffice version in cache key; conversion itself unchanged in 0.1.3",
+  "fixtures": [
+    "tests\\fixtures\\扫描样本.pdf",
+    "tests\\fixtures\\分页样本.pdf",
+    "tests\\fixtures\\旧文字样本.doc",
+    "tests\\fixtures\\旧文字模板.dot",
+    "tests\\fixtures\\演示样本.pptx",
+    "tests\\fixtures\\旧演示样本.ppt",
+    "tests\\fixtures\\旧演示模板.pot",
+    "tests\\fixtures\\旧演示播放.pps",
+    "tests\\fixtures\\办公表格.xml",
+    "tests\\fixtures\\开放文档.odt",
+    "tests\\fixtures\\演示变体.pptm",
+    "tests\\fixtures\\演示变体.potx",
+    "tests\\fixtures\\演示变体.potm",
+    "tests\\fixtures\\演示变体.ppsx",
+    "tests\\fixtures\\演示变体.ppsm",
+    "tests\\external-fixtures\\native-wps\\writer.wps",
+    "tests\\external-fixtures\\native-wps\\Memo.wpt",
+    "tests\\external-fixtures\\native-wps\\sheet.et",
+    "tests\\external-fixtures\\native-wps\\Invoice.ett",
+    "tests\\external-fixtures\\native-wps\\presentation.dps",
+    "tests\\external-fixtures\\native-wps\\newfile.dps",
+    "tests\\external-fixtures\\native-wps\\Books.dpt"
+  ]
+}

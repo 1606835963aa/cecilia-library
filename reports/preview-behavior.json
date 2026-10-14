@@ -1,5 +1,5 @@
 {
-  "ranAt": "2026-10-14T10:59:24.352Z",
+  "ranAt": "2026-10-14T13:55:35.670Z",
   "kind": "Node VM behavior checks; no browser layout or mouse verification",
   "results": [
     {
@@ -140,6 +140,26 @@
     },
     {
       "name": "saved table/window scroll is restored and position messages carry the current id",
+      "status": "PASS"
+    },
+    {
+      "name": "600000 matches keep exact count, order and backward wrap",
+      "status": "PASS"
+    },
+    {
+      "name": "pending large search is cancelled by clear",
+      "status": "PASS"
+    },
+    {
+      "name": "pending large search is cancelled by query",
+      "status": "PASS"
+    },
+    {
+      "name": "pending large search is cancelled by page",
+      "status": "PASS"
+    },
+    {
+      "name": "pending large search is cancelled by open",
       "status": "PASS"
     }
   ]

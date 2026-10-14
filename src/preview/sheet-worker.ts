@@ -2,11 +2,15 @@
     type Address={r:number;c:number};type Range={s:Address;e:Address};type SheetCell={t?:string;v?:unknown;w?:string;f?:string};type Sheet={ [key:string]:unknown; "!ref"?:string; "!merges"?:Range[]; "!data"?:(SheetCell|undefined)[][] };
     type Book={SheetNames:string[];Sheets:Record<string,Sheet>};type API={read(data:ArrayBuffer,options:unknown):Book;utils:{decode_range(value:string):Range;encode_cell(a:Address):string;decode_cell(value:string):Address;format_cell(c:SheetCell):string}};
     const context=globalThis as unknown as {importScripts(...urls:string[]):void;XLSX:API;onmessage:(event:MessageEvent)=>void;postMessage(message:unknown):void};
-    type Match={address:Address;sheet:number};
+    type MatchSet={sheet:number;stride:number;positions:Float64Array};
     context.importScripts("/component/sheet/xlsx.js");const api=context.XLSX;
-    let book:Book|undefined,searchCursor=-1,lastQuery="",matches:Match[]=[],openSerial=0,load:AbortController|undefined;
+    let book:Book|undefined,searchCursor=-1,lastQuery="",matches:MatchSet[]=[],matchCount=0,openSerial=0,searchSerial=0,load:AbortController|undefined;
     let currentSheet=0,currentStart=0,currentFirstColumn=0;
     function integer(value:unknown):number{return typeof value==="number"&&Number.isFinite(value)?Math.max(0,Math.floor(value)):0;}
+    function matchAt(index:number):{sheet:number;address:Address} {
+        for(const set of matches){if(index<set.positions.length){const code=set.positions[index],r=Math.floor(code/set.stride);return{sheet:set.sheet,address:{r,c:code-r*set.stride}};}index-=set.positions.length;}
+        throw new Error("查找位置不存在");
+    }
     // SheetJS caches formatted text on the supplied cell. Keep that cache temporary,
     // so searching a whole workbook does not retain a second set of cell strings.
     function value(cell:SheetCell|undefined):string {if(!cell)return "";if(cell.v===undefined||cell.v===null)return cell.f?"="+cell.f:"";return cell.w??api.utils.format_cell({...cell});}
@@ -46,32 +50,45 @@
         const message=event.data;let generation=openSerial;
         try{
             if(message.type==="open"){
-                generation=++openSerial;load?.abort();const controller=new AbortController();load=controller;book=undefined;matches=[];searchCursor=-1;lastQuery="";
+                generation=++openSerial;++searchSerial;load?.abort();const controller=new AbortController();load=controller;book=undefined;matches=[];matchCount=0;searchCursor=-1;lastQuery="";
                 const response=await fetch(message.url,{signal:controller.signal});if(!response.ok)throw new Error("读取表格失败");if(generation!==openSerial)return;const data=await response.arrayBuffer();if(generation!==openSerial)return;
                 book=api.read(data,{type:"array",dense:true,cellDates:true,cellNF:true,cellText:false,raw:message.extension==="csv",codepage:936});
                 if(book.SheetNames.length===0)throw new Error("文件没有可显示的工作表");page(integer(message.position?.sheet),integer(message.position?.start),integer(message.position?.firstColumn));
                 if(load===controller)load=undefined;
-            }else if(message.type==="page"){searchCursor=-1;page(message.sheet,message.start,message.firstColumn);}
+            }else if(message.type==="page"){++searchSerial;searchCursor=-1;page(message.sheet,message.start,message.firstColumn);}
             else if(message.type==="find"){
                 if(!book)return;
+                const search=++searchSerial;
                 const query=String(message.query??"").toLocaleLowerCase(),index=Math.min(integer(message.sheet),book.SheetNames.length-1);
-                if(!query){lastQuery="";matches=[];searchCursor=-1;page(currentSheet,currentStart,currentFirstColumn,undefined,false);return;}
+                if(!query){lastQuery="";matches=[];matchCount=0;searchCursor=-1;page(currentSheet,currentStart,currentFirstColumn,undefined,false);return;}
                 if(query!==lastQuery){
-                    searchCursor=-1;lastQuery=query;matches=[];
+                    searchCursor=-1;lastQuery="";matches=[];matchCount=0;
+                    const found:MatchSet[]=[];let total=0,visited=0;
                     for(let sheetIndex=0;sheetIndex<book.SheetNames.length;sheetIndex++){
                         const target=book.Sheets[book.SheetNames[sheetIndex]];
-                        const addresses:Address[]=[];
-                        for(const entry of populatedCells(target))if(value(entry.cell).toLocaleLowerCase().includes(query))addresses.push(entry.address);
-                        addresses.sort((a,b)=>a.r-b.r||a.c-b.c);
-                        for(const address of addresses)matches.push({address,sheet:sheetIndex});
+                        const stride=target["!ref"]?Math.max(1,api.utils.decode_range(target["!ref"]).e.c+1):1;
+                        let positions=new Float64Array(0),length=0;
+                        for(const entry of populatedCells(target)){
+                            if(value(entry.cell).toLocaleLowerCase().includes(query)){
+                                const code=entry.address.r*stride+entry.address.c;
+                                if(!Number.isSafeInteger(code)||entry.address.c>=stride)throw new Error("工作表范围与单元格位置不一致");
+                                if(length===positions.length){const grown=new Float64Array(Math.max(1024,length*2));grown.set(positions);positions=grown;}
+                                positions[length++]=code;
+                            }
+                            // Allow newer searches, clearing and page switches to cancel
+                            // an unfinished scan without publishing its partial results.
+                            if(++visited%4096===0){await new Promise<void>(resolve=>setTimeout(resolve,0));if(search!==searchSerial||generation!==openSerial)return;}
+                        }
+                        if(length){const used=positions.subarray(0,length);used.sort();found.push({sheet:sheetIndex,stride,positions:used});total+=length;}
                     }
+                    matches=found;matchCount=total;lastQuery=query;
                 }
-                if(matches.length){
+                if(matchCount){
                     if(searchCursor<0){
-                        if(message.backward){searchCursor=matches.length-1;for(let i=matches.length-1;i>=0;i--)if(matches[i].sheet<=index){searchCursor=i;break;}}
-                        else{const first=matches.findIndex(match=>match.sheet>=index);searchCursor=first<0?0:first;}
-                    }else searchCursor=(searchCursor+(message.backward?-1:1)+matches.length)%matches.length;
-                    const match=matches[searchCursor];page(match.sheet,Math.floor(match.address.r/200)*200,Math.floor(match.address.c/50)*50,match.address,true,searchCursor+1,matches.length);
+                        let offset=0;searchCursor=message.backward?matchCount-1:0;
+                        for(const set of matches){if(message.backward){if(set.sheet<=index)searchCursor=offset+set.positions.length-1;}else if(set.sheet>=index){searchCursor=offset;break;}offset+=set.positions.length;}
+                    }else searchCursor=(searchCursor+(message.backward?-1:1)+matchCount)%matchCount;
+                    const match=matchAt(searchCursor);page(match.sheet,Math.floor(match.address.r/200)*200,Math.floor(match.address.c/50)*50,match.address,true,searchCursor+1,matchCount);
                 }else page(currentSheet,currentStart,currentFirstColumn,undefined,false);
             }
         }catch(error){if(generation===openSerial)context.postMessage({error:error instanceof Error?error.message:"无法读取表格"});}

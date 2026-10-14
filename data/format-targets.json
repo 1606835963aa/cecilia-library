@@ -923,7 +923,13 @@
       "implementationStatus": "NOT_IMPLEMENTED",
       "verificationStatus": "NEEDS_DEFINITION",
       "evidence": [],
-      "notes": "必须确认格式含义及真实样本；不得直接把视频或代码文本当作已支持演示文稿。"
+      "notes": "必须确认格式含义及真实样本；不得直接把视频或代码文本当作已支持演示文稿。",
+      "definitionReview": {
+        "date": "2026-10-14",
+        "status": "DEFINITION_UNCONFIRMED",
+        "report": "reports/ts-format-research.json",
+        "document": "docs/TS格式核实.md"
+      }
     },
     {
       "id": "F46",
@@ -973,7 +979,7 @@
       "source": "user-confirmed-supplement"
     }
   ],
-  "lastValidationAt": "2026-10-14T19:00:11.0938103+08:00",
+  "lastValidationAt": "2026-10-14T21:56:38.8356887+08:00",
   "sampleVerifiedExtensionCount": 46,
   "officialCountDiscrepancy": {
     "claimedCount": 47,

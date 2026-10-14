@@ -1,6 +1,6 @@
 {
-  "ranAt": "2026-10-14T18:53:05.6099959+08:00",
-  "applicationSha256": "F64FFE5930E8F43F61E3ABE1FCD8EDB316AB3CDA068B75E836BB53191B779035",
+  "ranAt": "2026-10-14T21:56:47.8586341+08:00",
+  "applicationSha256": "BB99492BF3207210F7C5004AF9B39B89D6AD5960D54F4AE0CB778D03FE723A0A",
   "kind": "Application-owned display checks; public source files remain local; PDF text and visual checks recorded separately",
   "results": [
     {
@@ -10,7 +10,7 @@
       "sha256": "132A528221AF85B562547C158C2CCFBAD68377D77BED8EFED91982DE6CD26ADB",
       "kind": "Office",
       "renderer": "Windows.Data.Pdf",
-      "milliseconds": 1337,
+      "milliseconds": 1314,
       "pages": [
         {
           "page": 1,
@@ -61,7 +61,7 @@
       "sha256": "8C1E5A7891AAFBA1432D01D1E2FC5E4C9FD51751C876EBC437CA204ABF40248D",
       "kind": "Office",
       "renderer": "Windows.Data.Pdf",
-      "milliseconds": 543,
+      "milliseconds": 569,
       "pages": [
         {
           "page": 1,
@@ -82,7 +82,7 @@
       "sha256": "D04E20AEEFDD569370CD72BC1E5F33DA38436997AB0D6C4E08D37EB83791C777",
       "kind": "Spreadsheet",
       "renderer": "Windows.Data.Pdf",
-      "milliseconds": 2503,
+      "milliseconds": 1840,
       "pages": [
         {
           "page": 1,
@@ -164,7 +164,7 @@
       "sha256": "224CD55D529111D0985412C565D6AABDFC2CB24A3923BC6DE7D3E039EDA22A19",
       "kind": "Spreadsheet",
       "renderer": "Windows.Data.Pdf",
-      "milliseconds": 1218,
+      "milliseconds": 1031,
       "pages": [
         {
           "page": 1,
@@ -198,7 +198,7 @@
       "sha256": "1889A48255D87AA79A0E2C5AF795EFF781C774AA53176B1531BDA7E772A191C7",
       "kind": "Office",
       "renderer": "Windows.Data.Pdf",
-      "milliseconds": 1883,
+      "milliseconds": 1277,
       "pages": [
         {
           "page": 1,
@@ -303,7 +303,7 @@
       "sha256": "350411F57490A8BCFEADE63A40AD4883F112927068A88C73DB729291FA0B522A",
       "kind": "Office",
       "renderer": "Windows.Data.Pdf",
-      "milliseconds": 536,
+      "milliseconds": 508,
       "pages": [
         {
           "page": 1,
@@ -324,7 +324,7 @@
       "sha256": "9375E32AFA2657FB2AD2E8EDDACFAF46899F641FB8BA8D90980A267359380EDF",
       "kind": "Office",
       "renderer": "Windows.Data.Pdf",
-      "milliseconds": 2881,
+      "milliseconds": 1735,
       "pages": [
         {
           "page": 1,

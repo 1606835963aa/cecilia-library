@@ -1,0 +1,20 @@
+{
+  "reviewedOn": "2026-10-14",
+  "status": "DEFINITION_UNCONFIRMED",
+  "extension": ".ts",
+  "targetCount": 47,
+  "sampleVerifiedCount": 46,
+  "sources": [
+    {"url": "https://www.wps.com/feature/file-opener/", "observation": "Lists ts under PowerPoint; no format name, specification or sample"},
+    {"url": "https://www.wps.com/tech-specs/", "observation": "Lists .ts under Presentation; no definition"},
+    {"url": "https://open.wps.cn/documents/app-integration-dev/docs-center/online-preview-edit/format", "observation": "11 defined presentation suffixes; TS absent; online-service scope"},
+    {"url": "https://open.wps.cn/documents/app-integration-dev/wps365/client/wpsoffice/jsapi/wpp/enum/PpSaveAsFileType", "observation": "Desktop save-format constants have no TS mapping; absence does not prove import unsupported"},
+    {"url": "https://www.typescriptlang.org/docs/handbook/typescript-tooling-in-5-minutes.html", "observation": "TypeScript source uses .ts; no evidence this is the WPS marketing format"},
+    {"url": "https://doc.qt.io/qt-6/linguist-ts-file-format.html", "observation": "Qt translation XML TS format; no evidence this is the WPS marketing format"},
+    {"url": "https://support.microsoft.com/en-us/powerpoint/video-and-audio-file-formats-supported-in-powerpoint", "observation": "MPEG-2 Transport Stream uses .ts; media support differs from standalone document opening"}
+  ],
+  "conclusion": "WPS marketing entry remains ambiguous. Neither an unsupported-format claim nor a particular TS interpretation is established.",
+  "sampleDisplay": "NOT_RUN: no traceable sample matching the WPS entry",
+  "countChanged": false,
+  "nextEvidence": "Official definition of the advertised entry, or a traceable desktop WPS sample tied to that definition"
+}

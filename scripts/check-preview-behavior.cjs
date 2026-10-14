@@ -26,7 +26,7 @@ function encodeCell({ r, c }) {
 function makeWorker(book, fetchOverride, realAPI) {
   const messages = []; let formatted = 0, reads = 0, readOptions;
   const context = {
-    AbortController, importScripts() {}, postMessage: value => messages.push(value),
+    AbortController, setTimeout, importScripts() {}, postMessage: value => messages.push(value),
     fetch: fetchOverride || (async () => ({ ok: true, arrayBuffer: async () => new ArrayBuffer(0) })),
     XLSX: { read: (data, options) => { reads++; readOptions = options; return realAPI ? realAPI.read(data, options) : book; }, utils: realAPI ? {
       ...realAPI.utils, format_cell: cell => { formatted++; return realAPI.utils.format_cell(cell); }
@@ -266,6 +266,30 @@ async function main() {
       assert.deepEqual(JSON.parse(sent.message), position);
       for (let i = 0; i < 100; i++) reader.listeners.scroll(); assert.ok(reader.messages.filter(message => message.type === 'position').length <= 2);
     } finally { reader.dispose(); }
+  });
+  await check('600000 matches keep exact count, order and backward wrap', async () => {
+    const data = Array.from({ length: 50000 }, (_, r) => Array.from({ length: 12 }, (_, c) => ({ v: `match ${r}:${c}` })));
+    const worker = makeWorker({ SheetNames: ['large'], Sheets: { large: { '!ref': 'A1:L50000', '!data': data } } });
+    await worker.send(open('large')); await worker.send({ type: 'find', query: 'match', sheet: 0 });
+    assert.equal(worker.last().foundCount, 600000); assert.equal(worker.last().foundIndex, 1);
+    await worker.send({ type: 'find', query: 'match', sheet: 0, backward: true });
+    assert.equal(worker.last().foundIndex, 600000); assert.equal(worker.last().selected.row, 49999); assert.equal(worker.last().selected.col, 11);
+  });
+  for (const action of ['clear', 'query', 'page', 'open']) await check(`pending large search is cancelled by ${action}`, async () => {
+    const data = Array.from({ length: 9000 }, (_, r) => [{ v: r === 8999 ? 'unique' : 'match' }]);
+    const worker = makeWorker({ SheetNames: ['large'], Sheets: { large: { '!ref': 'A1:A9000', '!data': data } } });
+    await worker.send(open('large')); const pending = worker.send({ type: 'find', query: 'match', sheet: 0 });
+    if (action === 'clear') await worker.send({ type: 'find', query: '', sheet: 0 });
+    if (action === 'query') await worker.send({ type: 'find', query: 'unique', sheet: 0 });
+    if (action === 'page') await worker.send({ type: 'page', sheet: 0, start: 200, firstColumn: 0 });
+    if (action === 'open') await worker.send(open('replacement'));
+    const count = worker.messages.length, latest = worker.last(); await pending;
+    assert.equal(worker.messages.length, count); assert.equal(worker.last(), latest);
+    if (action === 'clear') assert.equal(latest.foundCount, 0);
+    if (action === 'query') { assert.equal(latest.foundCount, 1); assert.equal(latest.selected.row, 8999); }
+    if (action === 'page') assert.equal(latest.start, 200);
+    // A cancelled query must never be reused as a partially populated cache.
+    await worker.send({ type: 'find', query: 'match', sheet: 0 }); assert.equal(worker.last().foundCount, 8999);
   });
   const report = { ranAt: new Date().toISOString(), kind: 'Node VM behavior checks; no browser layout or mouse verification', results };
   const outputIndex = process.argv.indexOf('--output');

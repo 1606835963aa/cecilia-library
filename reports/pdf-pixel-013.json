@@ -1,0 +1,36 @@
+{
+  "baselineCommit": "e6414ac2e88f3b6315576ad62b6ce97f17e1e5aa",
+  "kind": "Before/after application-owned rendered PNG pixels; excludes changes outside these three synthetic PDF pages",
+  "checks": [
+    {
+      "file": "reports/previews/分页样本.pdf.png",
+      "status": "PASS",
+      "beforeSha256": "ddbe54500073f025a2a011101a92e18bf325f7f904f3b4bef2c0c6fcbc29a801",
+      "afterSha256": "ddbe54500073f025a2a011101a92e18bf325f7f904f3b4bef2c0c6fcbc29a801",
+      "size": [
+        1671,
+        2162
+      ]
+    },
+    {
+      "file": "reports/previews/扫描样本.pdf.png",
+      "status": "PASS",
+      "beforeSha256": "d04f4823a0e41a73b0f9b272228a91f8ebb06ca87fff3e243de802dccd27cc51",
+      "afterSha256": "d04f4823a0e41a73b0f9b272228a91f8ebb06ca87fff3e243de802dccd27cc51",
+      "size": [
+        1671,
+        1040
+      ]
+    },
+    {
+      "file": "reports/previews/native-pdf-page2.png",
+      "status": "PASS",
+      "beforeSha256": "2bfe99f489b3a7ad3020356242f17dd8f553e6b77e2e7c90b86d9a597481cc34",
+      "afterSha256": "2bfe99f489b3a7ad3020356242f17dd8f553e6b77e2e7c90b86d9a597481cc34",
+      "size": [
+        1671,
+        2162
+      ]
+    }
+  ]
+}

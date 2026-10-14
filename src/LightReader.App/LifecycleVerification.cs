@@ -15,6 +15,7 @@ public partial class MainWindow
         var output=config.RootElement.GetProperty("outputDirectory").GetString()!;
         var iterations=config.RootElement.GetProperty("iterations").GetInt32();
         var pdfOnly=config.RootElement.TryGetProperty("pdfOnly",out var pdfFlag)&&pdfFlag.GetBoolean();
+        var searchOnly=config.RootElement.TryGetProperty("searchOnly",out var searchFlag)&&searchFlag.GetBoolean();
         var sequence=0;
         var watch=Stopwatch.StartNew();
         var checks=new List<object>();
@@ -53,6 +54,27 @@ public partial class MainWindow
         try
         {
             await Task.Delay(1000);await Sample("empty-home");
+            if(searchOnly)
+            {
+                await AddFileAsync(Path.Combine(root,"tmp","memory-fixtures","搜索表格样本.xlsx"));await Task.Delay(1000);await Sample("search-open");
+                async Task<bool> Find(string query,int expectedCount)
+                {
+                    var result=new TaskCompletionSource<int>(TaskCreationOptions.RunContinuationsAsynchronously);
+                    var reader=browser??throw new IOException("Search reader missing");
+                    void Found(int index,int total)=>result.TrySetResult(total);
+                    reader.FindChanged+=Found;
+                    try{reader.Find(query);return await result.Task.WaitAsync(TimeSpan.FromSeconds(60))==expectedCount;}
+                    finally{reader.FindChanged-=Found;}
+                }
+                for(var iteration=1;iteration<=iterations;iteration++)
+                {
+                    Check("all 600000 matches "+iteration,await Find("检索样本",600000));await Task.Delay(1000);await Sample("search-matches",iteration);
+                    Check("clear search "+iteration,await Find("",0));await Task.Delay(1000);await Sample("search-cleared",iteration);
+                }
+                await HomeSamples("search-home");Check("no unhandled UI errors",App.UnhandledErrors.Count==0);
+                await Publish(Path.Combine(output,"complete.json"),new{completedAt=DateTimeOffset.Now,stages=sequence,checks,unhandledErrors=App.UnhandledErrors});
+                Close();return;
+            }
             if(pdfOnly)
             {
                 var file=Fixture("分页样本.pdf");

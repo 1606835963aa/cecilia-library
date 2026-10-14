@@ -8,6 +8,7 @@ using System.Windows.Media.Imaging;
 using Windows.Data.Pdf;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using LightReader.Core;
 
 namespace LightReader.App;
 public sealed class NativePdfReader : Grid,IDisposable
@@ -23,6 +24,7 @@ public sealed class NativePdfReader : Grid,IDisposable
     private double zoom=1;
     private long generation;
     private int renderCount;
+    private PdfRenderSize presentedSize;
     private bool disposed;
     private readonly CancellationTokenSource lifetime=new();
     private readonly SemaphoreSlim renderGate=new(1,1);
@@ -37,6 +39,9 @@ public sealed class NativePdfReader : Grid,IDisposable
     internal bool HasRenderedPage=>image.Source!=null&&!disposed;
     internal bool HasOpenSource=>source!=null;
     internal int RenderCount=>Volatile.Read(ref renderCount);
+    internal long RenderedPixels=>image.Source is BitmapSource bitmap?(long)bitmap.PixelWidth*bitmap.PixelHeight:0;
+    internal int RenderedWidth=>(image.Source as BitmapSource)?.PixelWidth??0;
+    internal int RenderedHeight=>(image.Source as BitmapSource)?.PixelHeight??0;
     public double VerticalOffset=>scroll.VerticalOffset;
     public event Action<string>? StatusChanged;
     // 翻页控件，由主窗口放进工具栏
@@ -84,19 +89,25 @@ public sealed class NativePdfReader : Grid,IDisposable
         if(document==null||disposed){token.ThrowIfCancellationRequested();return Task.CompletedTask;}
         if(index>=PageCount)throw new ArgumentOutOfRangeException(nameof(index));
         requestedPage=index;
-        if(rendering==null && presentation?.IsCompleted!=false && pageIndex==index && image.Source is BitmapSource bitmap && bitmap.PixelWidth==RenderWidth())
+        var size=CalculateRenderSize(index,RenderWidth());
+        if(rendering==null && presentation?.IsCompleted!=false && pageIndex==index && image.Source is BitmapSource bitmap && presentedSize==size)
         {
             generation++;UpdateImageSize(bitmap);return presentation=Task.CompletedTask;
         }
-        return presentation=ShowPageCoreAsync(index,token);
+        return presentation=ShowPageCoreAsync(index,size,token);
     }
     private uint RenderWidth()=>(uint)Math.Clamp(Math.Max(800,ActualWidth-PageInset)*1.5*zoom,800,3200);
+    private PdfRenderSize CalculateRenderSize(uint index,uint width)
+    {
+        using var page=(document??throw new OperationCanceledException()).GetPage(index);
+        return PdfRenderBudget.ForPage(page.Size.Width,page.Size.Height,width);
+    }
     private void UpdateImageSize(BitmapSource bitmap)
     {
         var available=Math.Max(300,ActualWidth>0?ActualWidth-PageInset:1000);
         image.Width=available*zoom;image.Height=image.Width*bitmap.PixelHeight/bitmap.PixelWidth;
     }
-    private async Task ShowPageCoreAsync(uint index,CancellationToken token)
+    private async Task ShowPageCoreAsync(uint index,PdfRenderSize size,CancellationToken token)
     {
         token.ThrowIfCancellationRequested();
         if(document==null||disposed)return;
@@ -104,12 +115,12 @@ public sealed class NativePdfReader : Grid,IDisposable
         rendering?.Cancel();
         using var cancellation=CancellationTokenSource.CreateLinkedTokenSource(token,lifetime.Token);
         rendering=cancellation;
-        var width=RenderWidth();
         try
         {
-            var bitmap=await RenderAsync(index,width,cancellation.Token);
+            var bitmap=await RenderAsync(index,size,cancellation.Token);
             if(serial!=generation||disposed)return;
             image.Source=bitmap;
+            presentedSize=size;
             UpdateImageSize(bitmap);
             if(index!=pageIndex)scroll.ScrollToTop();
             pageIndex=index;pageInput.Text=(index+1).ToString();
@@ -123,7 +134,7 @@ public sealed class NativePdfReader : Grid,IDisposable
         var target=requestedPage+delta;
         return target>=0&&target<PageCount?ShowPageAsync((uint)target):Task.CompletedTask;
     }
-    private async Task<BitmapSource> RenderAsync(uint index,uint width,CancellationToken token)
+    private async Task<BitmapSource> RenderAsync(uint index,PdfRenderSize size,CancellationToken token)
     {
         using var cancellation=CancellationTokenSource.CreateLinkedTokenSource(token,lifetime.Token);
         await renderGate.WaitAsync(cancellation.Token).ConfigureAwait(false);
@@ -132,7 +143,7 @@ public sealed class NativePdfReader : Grid,IDisposable
             cancellation.Token.ThrowIfCancellationRequested();
             var loaded=document??throw new OperationCanceledException();
             using var page=loaded.GetPage(index);using var output=new InMemoryRandomAccessStream();
-            await page.RenderToStreamAsync(output,new PdfPageRenderOptions{DestinationWidth=width}).AsTask(cancellation.Token).ConfigureAwait(false);
+            await page.RenderToStreamAsync(output,new PdfPageRenderOptions{DestinationWidth=size.Width,DestinationHeight=size.Height}).AsTask(cancellation.Token).ConfigureAwait(false);
             Interlocked.Increment(ref renderCount);
             cancellation.Token.ThrowIfCancellationRequested();
             output.Seek(0);using var input=output.AsStreamForRead();
@@ -202,7 +213,8 @@ public sealed class NativePdfReader : Grid,IDisposable
         public override IDocumentPaginatorSource Source=>null!;
         public override DocumentPage GetPage(int pageNumber)
         {
-            var bitmap=Task.Run(()=>reader.RenderAsync((uint)pageNumber,2400,CancellationToken.None)).GetAwaiter().GetResult();
+            var request=reader.CalculateRenderSize((uint)pageNumber,2400);
+            var bitmap=Task.Run(()=>reader.RenderAsync((uint)pageNumber,request,CancellationToken.None)).GetAwaiter().GetResult();
             var drawing=new DrawingVisual();var width=Math.Min(PageSize.Width,PageSize.Height*bitmap.PixelWidth/bitmap.PixelHeight);var height=width*bitmap.PixelHeight/bitmap.PixelWidth;
             using(var context=drawing.RenderOpen())context.DrawImage(bitmap,new Rect((PageSize.Width-width)/2,0,width,height));
             return new DocumentPage(drawing,PageSize,new Rect(PageSize),new Rect(PageSize));

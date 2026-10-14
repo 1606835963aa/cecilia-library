@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-10-14T10:53:07.637755+00:00",
+  "checkedAt": "2026-10-14T13:57:06.294795+00:00",
   "kind": "Independent PDF extraction with pypdf and bitmap checks with Pillow; visual review recorded separately",
-  "applicationSha256": "F64FFE5930E8F43F61E3ABE1FCD8EDB316AB3CDA068B75E836BB53191B779035",
+  "applicationSha256": "BB99492BF3207210F7C5004AF9B39B89D6AD5960D54F4AE0CB778D03FE723A0A",
   "checks": [
     {
       "id": "wps-writer",

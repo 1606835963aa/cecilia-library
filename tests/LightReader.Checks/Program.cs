@@ -38,6 +38,26 @@ try
         try{await d.SaveAsAsync(file,"changed",true,cancel.Token);throw new Exception("Cancelled save completed");}catch(OperationCanceledException){Assert(await File.ReadAllTextAsync(file)=="original","Original damaged");Assert(!Directory.GetFiles(root,"*.tmp").Any(),"Staging left");}
     });
     await Check("PDF recognized by contents",async()=>{var p=Path.Combine(root,"wrong.txt");await File.WriteAllTextAsync(p,"%PDF-1.7\n");Assert(FileInspector.Inspect(p).Kind==DocumentKind.Pdf,"Signature ignored");});
+    await Check("PDF ordinary portrait and landscape keep requested resolution",()=>{
+        foreach(var page in new[]{(595d,842d),(842d,595d)})foreach(var width in new uint[]{800,1200,2400,3200})
+            Assert(PdfRenderBudget.ForPage(page.Item1,page.Item2,width)==new PdfRenderSize(width,0),"Ordinary page reduced");
+        return Task.CompletedTask;
+    });
+    await Check("PDF extreme page ratios keep bitmap size bounded",()=>{
+        foreach(var ratio in new[]{0.000001,0.01,1,1.6384,5,50,1000,1000000})foreach(var width in new uint[]{800,1200,2400,3200}){
+            var size=PdfRenderBudget.ForPage(100,100*ratio,width);
+            var w=size.Width>0?size.Width:Math.Max(1,Math.Ceiling(size.Height/ratio));
+            var h=size.Height>0?size.Height:Math.Max(1,Math.Ceiling(size.Width*ratio));
+            Assert(w*h<=PdfRenderBudget.MaximumPixels&&w<=PdfRenderBudget.MaximumDimension&&h<=PdfRenderBudget.MaximumDimension,"Unbounded bitmap");
+        }
+        return Task.CompletedTask;
+    });
+    await Check("PDF invalid dimensions rejected",()=>{
+        foreach(var value in new[]{0d,-1d,double.NaN,double.PositiveInfinity}){
+            try{PdfRenderBudget.ForPage(100,value,1200);throw new Exception("Invalid size accepted");}catch(InvalidDataException){}
+        }
+        return Task.CompletedTask;
+    });
     await Check("Renamed DOCX rejected",async()=>{var p=Path.Combine(root,"fake.docx");await File.WriteAllTextAsync(p,"not a document");try{FileInspector.Inspect(p);throw new Exception("Accepted fake");}catch(InvalidDataException){}});
     await Check("XML external entities rejected",async()=>{var p=Path.Combine(root,"external.xml");await File.WriteAllTextAsync(p,"<!DOCTYPE x [<!ENTITY secret SYSTEM 'file:///C:/Windows/win.ini'>]><x>&secret;</x>");try{FileInspector.Inspect(p);throw new Exception("DTD accepted");}catch(System.Xml.XmlException){}});
     await Check("TS remains undefined",async()=>{var p=Path.Combine(root,"special.ts");await File.WriteAllTextAsync(p,"sample");Assert(FileInspector.Inspect(p).Kind==DocumentKind.Undefined,"TS guessed");});

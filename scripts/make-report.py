@@ -1,5 +1,5 @@
 from pathlib import Path
-import json, statistics, hashlib, sys
+import json, statistics, hashlib, sys, re
 from datetime import datetime
 from xml.etree import ElementTree
 ROOT=Path(__file__).resolve().parent.parent
@@ -83,9 +83,7 @@ previous=(ROOT/'docs/开发进度.md').read_text(encoding='utf-8')
 registration_section=''
 if '## Windows 默认应用入口（' in previous:
     registration_section=('## Windows 默认应用入口（'+previous.split('## Windows 默认应用入口（',1)[1].split('\n## ',1)[0]).rstrip()+'\n\n'
-current_round_section=''
-if '## 本轮更新（0.1.2' in previous:
-    current_round_section=('## 本轮更新（0.1.2'+previous.split('## 本轮更新（0.1.2',1)[1].split('\n## ',1)[0]).rstrip()+'\n\n'
+current_round_section='\n\n'.join(match.group(0).rstrip() for match in re.finditer(r'^## 本轮更新（.*?(?=^## |\Z)',previous,re.MULTILINE|re.DOTALL))+'\n\n'
 native_remaining='六种 WPS 原生格式的公开样本已通过；不同年代版本、密码和复杂对象继续扩充。' if len(set(by_ext)-synthetic_extensions)==6 else 'WPS 原生六种格式的真实样本继续补齐，逐项结果见格式清单。'
 ui_section=''
 if '## 界面（' in previous:
@@ -150,15 +148,15 @@ PDF 减少了页面图片复制，样本页面与优化前逐像素一致。原�
 {registration_section}## 尚未完成
 
 - {native_remaining}
-- `.ts` 在 WPS 演示清单中的含义继续核实；第 47 项已按用户选择补入 ODT。
+- `.ts` 重新交叉核对官方资料后仍缺确定格式定义，详见 [TS 格式核实](TS格式核实.md)；目标保留 WPS 清单 46 项加 ODT。
 - 普通 Word / Excel 的原格式编辑保存和 PDF 批注尚未启用。
 - 密码文件、复杂图表 / 嵌入对象、大文件、多版本原生 WPS、memo 配套文件及复杂网页归档资源继续扩充。
 - 新电脑缺少运行时的安装、组件版本更新回退、长期压力、完整生命周期峰值和卸载检查尚未完成。
-- Computer Use 窗口接口连续两次加载失败，错误为 `Trusted RPC package must resolve within a configured trusted module directory: @oai/sky/service`。本次取得的是程序内部集成检查和预览表面截图；打开对话框、拖拽和打印对话框的实际鼠标操作仍待验证。
+- Computer Use 本轮再次加载失败，错误为 `Trusted RPC package must resolve within a configured trusted module directory: @oai/sky/service`。本次取得的是程序内部集成检查和预览表面截图；打开对话框、拖拽和打印对话框的实际鼠标操作仍待验证。
 
 ## 下一批工作
 
-核实 `.ts` 定义及有效样本；继续降低阅读期间 Word / 大表格占用，扩充复杂文件与 WPS 年代版本，补实际鼠标、拖拽与打印验收，以及运行时引导、更新和长期压力测试。
+取得 `.ts` 的正式定义或可追溯样本后再接入；继续定位 PDF 空闲占用与长期增长，优化大表格完整解析，改进超长 PDF 的分块绘制，扩充复杂文档，并补实际鼠标、拖拽、打印和运行时安装验收。
 
 [格式覆盖](格式支持清单.md) · [使用说明](使用说明.md) · [核心检查](../reports/core-checks.json) · [窗口检查](../reports/gui-checks.json) · [性能原始记录](../reports/performance.json) · [预览逻辑](../reports/preview-behavior.json)
 '''
