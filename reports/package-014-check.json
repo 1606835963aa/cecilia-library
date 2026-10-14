@@ -1,0 +1,13 @@
+{
+  "method": "Unzipped release into fresh project tmp folder; opened synthetic PDF with isolated profile and shared .NET runtime; no developer output assemblies used",
+  "status": "PASS",
+  "elapsedMs": 1250,
+  "applicationSha256": "C26E0A677E7DEAD16FEE306FFF9A4F26E13F585A038C95C1B6D479425A9B2D5D",
+  "state": {
+    "shown": true,
+    "status": "已打开 · 0.61 秒",
+    "renderer": "Windows.Data.Pdf"
+  },
+  "workerSha256": "C086B774862252A5B627377BCA395AEAC63EED984FCA8FB736CD0350275C7202",
+  "packageSha256": "B75B5139D172498974D83AA427AB7C3FBDD38E53DBB8B536C423CA1337C4E795"
+}

@@ -15,4 +15,6 @@ if ($LASTEXITCODE -ne 0) { throw 'Application build failed' }
 if ($Publish) {
  & $dotnetPath publish 'src\LightReader.App\LightReader.App.csproj' -c Release --no-restore --no-self-contained -o 'dist\LightReader'
  if ($LASTEXITCODE -ne 0) { throw 'Publish failed' }
+ & $dotnetPath publish 'src\LightReader.PdfWorker\LightReader.PdfWorker.csproj' -c Release --no-restore --no-self-contained -o 'dist\LightReader'
+ if ($LASTEXITCODE -ne 0) { throw 'PDF worker publish failed' }
 }

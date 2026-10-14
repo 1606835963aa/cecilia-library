@@ -168,6 +168,40 @@ public partial class MainWindow
             var before=reader.RenderCount;await reader.ShowPageAsync(0);
             return reader.RenderCount==before;
         });
+        await Check("PDF worker exits while rendering to home",async()=>
+        {
+            await AddFileAsync(Fixture("分页样本.pdf"));var reader=nativePdf!;
+            var drawing=reader.SetZoomAsync(2.8);await Task.Delay(10);ShowHome();
+            try{await drawing;}catch(OperationCanceledException){}
+            await reader.Released.WaitAsync(TimeSpan.FromSeconds(5));
+            using var exclusive=new FileStream(Fixture("分页样本.pdf"),FileMode.Open,FileAccess.Read,FileShare.None);
+            return Detached()&&!reader.HasOpenSource&&exclusive.Length>0;
+        });
+        await Check("PDF worker failure keeps shell responsive and can reopen",async()=>
+        {
+            await AddFileAsync(Fixture("分页样本.pdf"));var reader=nativePdf!;reader.StopWorkerForVerification();
+            if(!await WaitUntil(()=>nativePdf==null&&MessagePanel.Visibility==Visibility.Visible))return false;
+            await AddFileAsync(Fixture("分页样本.pdf"));
+            return nativePdf is{HasRenderedPage:true}&&nativePdf.WorkerId!=reader.WorkerId;
+        });
+        await Check("PDF print paginator renders all pages",async()=>
+        {
+            await AddFileAsync(Fixture("分页样本.pdf"));var paginator=nativePdf!.Paginator(new(600,800));
+            for(var page=0;page<paginator.PageCount;page++){
+                using var printed=paginator.GetPage(page);
+                if(printed.Visual==null||printed.Size.Width!=600||printed.Size.Height!=800)return false;
+            }
+            return paginator.PageCount==2;
+        });
+        await Check("PDF malformed source closes worker and releases file",async()=>
+        {
+            var path=Path.Combine(root,"tmp","malformed-worker.pdf");await File.WriteAllTextAsync(path,"%PDF-1.7\nmalformed\n");
+            using var reader=new NativePdfReader();var rejected=false;
+            try{await reader.LoadAsync(path,CancellationToken.None);}catch(IOException){rejected=true;}
+            await reader.Released.WaitAsync(TimeSpan.FromSeconds(5));
+            using var exclusive=new FileStream(path,FileMode.Open,FileAccess.Read,FileShare.None);
+            return rejected&&!reader.HasOpenSource&&exclusive.Length>0;
+        });
         await Check("image page and zoom survive home",async()=>
         {await AddFileAsync(Fixture("多页样本.tif"));NextImage(this,new RoutedEventArgs());SetZoom(1.6);ShowHome();await AddFileAsync(Fixture("多页样本.tif"));return frameIndex==1&&Math.Abs(zoom-1.6)<0.01;});
         await Check("Word scroll and zoom survive home",async()=>

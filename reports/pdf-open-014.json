@@ -1,0 +1,126 @@
+{
+  "records": [
+    {
+      "milliseconds": 1093.7587,
+      "round": 1,
+      "state": {
+        "shown": true,
+        "status": "已打开 · 0.43 秒",
+        "renderer": "Windows.Data.Pdf"
+      },
+      "label": "before",
+      "applicationVersion": "0.1.3.0",
+      "applicationSha256": "BB99492BF3207210F7C5004AF9B39B89D6AD5960D54F4AE0CB778D03FE723A0A"
+    },
+    {
+      "milliseconds": 1291.9896,
+      "round": 1,
+      "state": {
+        "shown": true,
+        "status": "已打开 · 0.61 秒",
+        "renderer": "Windows.Data.Pdf"
+      },
+      "label": "after",
+      "applicationVersion": "0.1.4.0",
+      "applicationSha256": "C26E0A677E7DEAD16FEE306FFF9A4F26E13F585A038C95C1B6D479425A9B2D5D"
+    },
+    {
+      "milliseconds": 1034.1324,
+      "round": 2,
+      "state": {
+        "shown": true,
+        "status": "已打开 · 0.40 秒",
+        "renderer": "Windows.Data.Pdf"
+      },
+      "label": "before",
+      "applicationVersion": "0.1.3.0",
+      "applicationSha256": "BB99492BF3207210F7C5004AF9B39B89D6AD5960D54F4AE0CB778D03FE723A0A"
+    },
+    {
+      "milliseconds": 1142.7176,
+      "round": 2,
+      "state": {
+        "shown": true,
+        "status": "已打开 · 0.53 秒",
+        "renderer": "Windows.Data.Pdf"
+      },
+      "label": "after",
+      "applicationVersion": "0.1.4.0",
+      "applicationSha256": "C26E0A677E7DEAD16FEE306FFF9A4F26E13F585A038C95C1B6D479425A9B2D5D"
+    },
+    {
+      "milliseconds": 999.9448,
+      "round": 3,
+      "state": {
+        "shown": true,
+        "status": "已打开 · 0.37 秒",
+        "renderer": "Windows.Data.Pdf"
+      },
+      "label": "before",
+      "applicationVersion": "0.1.3.0",
+      "applicationSha256": "BB99492BF3207210F7C5004AF9B39B89D6AD5960D54F4AE0CB778D03FE723A0A"
+    },
+    {
+      "milliseconds": 1141.039,
+      "round": 3,
+      "state": {
+        "shown": true,
+        "status": "已打开 · 0.54 秒",
+        "renderer": "Windows.Data.Pdf"
+      },
+      "label": "after",
+      "applicationVersion": "0.1.4.0",
+      "applicationSha256": "C26E0A677E7DEAD16FEE306FFF9A4F26E13F585A038C95C1B6D479425A9B2D5D"
+    },
+    {
+      "milliseconds": 1013.917,
+      "round": 4,
+      "state": {
+        "shown": true,
+        "status": "已打开 · 0.40 秒",
+        "renderer": "Windows.Data.Pdf"
+      },
+      "label": "before",
+      "applicationVersion": "0.1.3.0",
+      "applicationSha256": "BB99492BF3207210F7C5004AF9B39B89D6AD5960D54F4AE0CB778D03FE723A0A"
+    },
+    {
+      "milliseconds": 1122.3263,
+      "round": 4,
+      "state": {
+        "shown": true,
+        "status": "已打开 · 0.54 秒",
+        "renderer": "Windows.Data.Pdf"
+      },
+      "label": "after",
+      "applicationVersion": "0.1.4.0",
+      "applicationSha256": "C26E0A677E7DEAD16FEE306FFF9A4F26E13F585A038C95C1B6D479425A9B2D5D"
+    },
+    {
+      "milliseconds": 1044.0068,
+      "round": 5,
+      "state": {
+        "shown": true,
+        "status": "已打开 · 0.40 秒",
+        "renderer": "Windows.Data.Pdf"
+      },
+      "label": "before",
+      "applicationVersion": "0.1.3.0",
+      "applicationSha256": "BB99492BF3207210F7C5004AF9B39B89D6AD5960D54F4AE0CB778D03FE723A0A"
+    },
+    {
+      "milliseconds": 1165.8979,
+      "round": 5,
+      "state": {
+        "shown": true,
+        "status": "已打开 · 0.54 秒",
+        "renderer": "Windows.Data.Pdf"
+      },
+      "label": "after",
+      "applicationVersion": "0.1.4.0",
+      "applicationSha256": "C26E0A677E7DEAD16FEE306FFF9A4F26E13F585A038C95C1B6D479425A9B2D5D"
+    }
+  ],
+  "sourceSha256": "AB47BAFC921C5DC6B627A6760F4D48E6918884213181D350DDFC7149E0BF0FB2",
+  "method": "Alternating before/after launches with fresh isolated profiles; stopwatch spans process start through application-owned native first-page ready marker; 20ms polling, not a screen paint measurement"
+}

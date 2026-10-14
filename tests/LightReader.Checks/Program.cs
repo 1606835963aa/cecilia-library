@@ -58,6 +58,30 @@ try
         }
         return Task.CompletedTask;
     });
+    await Check("PDF worker protocol round trips consecutive images",async()=>{
+        using var pipe=new MemoryStream();var image=new byte[]{137,80,78,71};
+        await PdfWorkerProtocol.WriteAsync(pipe,new(true,ImageLength:image.Length),image,CancellationToken.None);
+        await PdfWorkerProtocol.WriteAsync(pipe,new(true,PageCount:2),ReadOnlyMemory<byte>.Empty,CancellationToken.None);
+        pipe.Position=0;var first=await PdfWorkerProtocol.ReadAsync(pipe,CancellationToken.None);var second=await PdfWorkerProtocol.ReadAsync(pipe,CancellationToken.None);
+        Assert(first.Image.SequenceEqual(image)&&second.Reply.PageCount==2&&second.Image.Length==0,"Frames misaligned");
+    });
+    await Check("PDF worker protocol rejects invalid lengths before allocation",async()=>{
+        foreach(var length in new[]{-1,0,PdfWorkerProtocol.MaximumMetadataBytes+1}){
+            using var pipe=new MemoryStream(BitConverter.GetBytes(length));
+            try{await PdfWorkerProtocol.ReadAsync(pipe,CancellationToken.None);throw new Exception("Invalid length accepted");}catch(InvalidDataException){}
+        }
+        var json=System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(new PdfWorkerReply(true,ImageLength:PdfWorkerProtocol.MaximumImageBytes+1));
+        using var bad=new MemoryStream();bad.Write(BitConverter.GetBytes(json.Length));bad.Write(json);bad.Position=0;
+        try{await PdfWorkerProtocol.ReadAsync(bad,CancellationToken.None);throw new Exception("Oversize image accepted");}catch(InvalidDataException){}
+    });
+    await Check("PDF worker protocol rejects truncated images",async()=>{
+        using var pipe=new MemoryStream();await PdfWorkerProtocol.WriteAsync(pipe,new(true,ImageLength:3),new byte[]{1,2,3},CancellationToken.None);pipe.SetLength(pipe.Length-1);pipe.Position=0;
+        try{await PdfWorkerProtocol.ReadAsync(pipe,CancellationToken.None);throw new Exception("Truncation accepted");}catch(EndOfStreamException){}
+    });
+    await Check("PDF worker protocol honours cancellation",async()=>{
+        using var pipe=new MemoryStream();using var cancel=new CancellationTokenSource();cancel.Cancel();
+        try{await PdfWorkerProtocol.ReadAsync(pipe,cancel.Token);throw new Exception("Cancellation ignored");}catch(OperationCanceledException){}
+    });
     await Check("Renamed DOCX rejected",async()=>{var p=Path.Combine(root,"fake.docx");await File.WriteAllTextAsync(p,"not a document");try{FileInspector.Inspect(p);throw new Exception("Accepted fake");}catch(InvalidDataException){}});
     await Check("XML external entities rejected",async()=>{var p=Path.Combine(root,"external.xml");await File.WriteAllTextAsync(p,"<!DOCTYPE x [<!ENTITY secret SYSTEM 'file:///C:/Windows/win.ini'>]><x>&secret;</x>");try{FileInspector.Inspect(p);throw new Exception("DTD accepted");}catch(System.Xml.XmlException){}});
     await Check("TS remains undefined",async()=>{var p=Path.Combine(root,"special.ts");await File.WriteAllTextAsync(p,"sample");Assert(FileInspector.Inspect(p).Kind==DocumentKind.Undefined,"TS guessed");});

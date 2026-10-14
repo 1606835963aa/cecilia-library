@@ -1,0 +1,8 @@
+{
+  "method": "Application-owned test exits parent immediately while PDF is displayed, without disposing the reader; worker must exit and source must unlock",
+  "status": "PASS",
+  "sourceUnlocked": true,
+  "workerSha256": "C086B774862252A5B627377BCA395AEAC63EED984FCA8FB736CD0350275C7202",
+  "applicationSha256": "C26E0A677E7DEAD16FEE306FFF9A4F26E13F585A038C95C1B6D479425A9B2D5D",
+  "elapsedMs": 3909
+}

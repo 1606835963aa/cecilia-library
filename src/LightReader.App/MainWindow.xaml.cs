@@ -256,6 +256,11 @@ public partial class MainWindow : Window
         browser?.Dispose();browser=null;nativePdf?.Dispose();
         var reader=new NativePdfReader();nativePdf=reader;pdfSource=path;Viewer.Content=reader;ViewerTools.Content=reader.Tools;
         reader.StatusChanged += status => { if (IsCurrentDisplay(tab, generation, token) && ReferenceEquals(nativePdf, reader)) BrowserStatus(status); };
+        reader.ReadingFailed += detail =>
+        {
+            if(!IsCurrentDisplay(tab,generation,token)||!ReferenceEquals(nativePdf,reader))return;
+            ReleaseReadingView();SetMessage("PDF 阅读组件已停止",detail,false);Status.Text="可以重新打开";
+        };
         pdfMode.Content="文字与搜索";
         try
         {

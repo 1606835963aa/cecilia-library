@@ -1,5 +1,5 @@
 {
-  "ranAt": "2026-10-14T21:49:08.9576427+08:00",
+  "ranAt": "2026-10-14T22:14:42.0061247+08:00",
   "results": [
     {
       "name": "Text encoding utf-8 BOM=False",
@@ -47,6 +47,22 @@
     },
     {
       "name": "PDF invalid dimensions rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "PDF worker protocol round trips consecutive images",
+      "status": "PASS"
+    },
+    {
+      "name": "PDF worker protocol rejects invalid lengths before allocation",
+      "status": "PASS"
+    },
+    {
+      "name": "PDF worker protocol rejects truncated images",
+      "status": "PASS"
+    },
+    {
+      "name": "PDF worker protocol honours cancellation",
       "status": "PASS"
     },
     {

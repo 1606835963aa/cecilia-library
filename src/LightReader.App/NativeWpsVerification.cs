@@ -72,7 +72,7 @@ public partial class MainWindow
                     var smoke=fixture.GetProperty("scope").GetString()=="blank-smoke";
                     var renderer=nativePdf!=null?"Windows.Data.Pdf":browser!=null?"WebView2":"none";
                     var errorMessage=shown?null:MessageDetail.Text;
-                    ShowHome();
+                    var pdfReader=nativePdf;ShowHome();if(pdfReader!=null)await pdfReader.Released.WaitAsync(TimeSpan.FromSeconds(5));
                     bool sourceUnchanged;
                     using(var exclusive=new FileStream(path,FileMode.Open,FileAccess.Read,FileShare.None))
                         sourceUnchanged=exclusive.Length>0&&hash==Convert.ToHexString(SHA256.HashData(exclusive));

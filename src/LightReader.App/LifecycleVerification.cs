@@ -33,7 +33,7 @@ public partial class MainWindow
                 currentTab=current?.Name,selectedTab=(Tabs.SelectedItem as DocumentTab)?.Name,tabCount=documents.Count,
                 surface=Home.Visibility==Visibility.Visible?"home":ComponentPanel.Visibility==Visibility.Visible?"components":Viewer.Visibility==Visibility.Visible?"viewer":"message",
                 renderer=nativePdf!=null?"Windows.Data.Pdf":browser!=null?"WebView2":"WPF",status=Status.Text,
-                browserAlive=browser!=null,nativePdfAlive=nativePdf!=null,pdfBitmapPresented=nativePdf?.HasRenderedPage??false,pdfRenderCount=nativePdf?.RenderCount??0,unhandledErrorCount=App.UnhandledErrors.Count,viewerAttached=Viewer.Content!=null,toolsAttached=ViewerTools.Content!=null,
+                browserAlive=browser!=null,nativePdfAlive=nativePdf!=null,pdfBitmapPresented=nativePdf?.HasRenderedPage??false,pdfWorkerId=nativePdf?.WorkerId,pdfRenderCount=nativePdf?.RenderCount??0,unhandledErrorCount=App.UnhandledErrors.Count,viewerAttached=Viewer.Content!=null,toolsAttached=ViewerTools.Content!=null,
                 textBoxAlive=textBox!=null,frameCount=frames.Count,retainedTextChars=documents.Sum(tab=>(tab.Text?.Text.Length??0)+(tab.EditBuffer?.Length??0)),
                 workingSetBytes=process.WorkingSet64,privateBytes=process.PrivateMemorySize64,managedBytes=GC.GetTotalMemory(false),handleCount=process.HandleCount};
             await Publish(Path.Combine(output,$"stage-{sequence:D4}.json"),record);
@@ -82,7 +82,13 @@ public partial class MainWindow
                 {
                     await AddFileAsync(file);await Task.Delay(1000);
                     Check("PDF bitmap "+iteration,nativePdf?.HasRenderedPage==true);
-                    await Sample("pdf-cycle-open",iteration);await HomeSamples("pdf-cycle-home",iteration);
+                    await Sample("pdf-cycle-open",iteration);
+                    if(config.RootElement.TryGetProperty("parentExit",out var exitFlag)&&exitFlag.GetBoolean())
+                    {
+                        await Publish(Path.Combine(output,"parent-exit.json"),new{parentId=Environment.ProcessId,workerId=nativePdf?.WorkerId});
+                        Environment.Exit(0);
+                    }
+                    await HomeSamples("pdf-cycle-home",iteration);
                     try { using var exclusive=new FileStream(file,FileMode.Open,FileAccess.Read,FileShare.None);Check("PDF file released "+iteration,true); }
                     catch(IOException){Check("PDF file released "+iteration,false);}
                 }

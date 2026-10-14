@@ -1,0 +1,627 @@
+{
+  "ranAt": "2026-10-14T22:22:11.8493998+08:00",
+  "results": [
+    {
+      "file": "component:word",
+      "status": "PASS",
+      "milliseconds": 4,
+      "installedBytes": 219333
+    },
+    {
+      "file": "component:sheet",
+      "status": "PASS",
+      "milliseconds": 0,
+      "installedBytes": 963844
+    },
+    {
+      "file": "文本样本.txt",
+      "status": "PASS",
+      "milliseconds": 766,
+      "sha256": "1320369935E39837E704E416365BB0CEB8324508FF5352ED60910FF60D0510F0",
+      "evidence": "",
+      "previewSource": null,
+      "error": "",
+      "hostWorkingSet": 126836736
+    },
+    {
+      "file": "富文本样本.rtf",
+      "status": "PASS",
+      "milliseconds": 732,
+      "sha256": "8176C74E2B7AC153AC50423EE5618846C870541459711AC0575B3BDF42A1C347",
+      "evidence": "",
+      "previewSource": null,
+      "error": "",
+      "hostWorkingSet": 136527872
+    },
+    {
+      "file": "图片样本.png",
+      "status": "PASS",
+      "milliseconds": 716,
+      "sha256": "5B1BB9F6B5A382851C13CC52707B90381664CD22E7E9B702EBE38D9EAD3C629C",
+      "evidence": "",
+      "previewSource": null,
+      "error": "",
+      "hostWorkingSet": 158892032
+    },
+    {
+      "file": "图片样本.jpg",
+      "status": "PASS",
+      "milliseconds": 731,
+      "sha256": "B54F03191019C204ED0E19CFF1CC3C34B8D42A9F63A391F30405F772174E48F3",
+      "evidence": "",
+      "previewSource": null,
+      "error": "",
+      "hostWorkingSet": 168873984
+    },
+    {
+      "file": "图片样本.bmp",
+      "status": "PASS",
+      "milliseconds": 750,
+      "sha256": "57DF6890B14BA094B8264BA88A5572D148101AB6487CC51D0B6DC41A8AE76B6D",
+      "evidence": "",
+      "previewSource": null,
+      "error": "",
+      "hostWorkingSet": 173580288
+    },
+    {
+      "file": "多页样本.tif",
+      "status": "PASS",
+      "milliseconds": 734,
+      "sha256": "5FB30DC227605268F94332D43E7F8E49F6A0E9A2214B63E370E07ED0C50218BC",
+      "evidence": "",
+      "previewSource": null,
+      "error": "",
+      "hostWorkingSet": 165482496
+    },
+    {
+      "file": "阅读样本.docx",
+      "status": "PASS",
+      "milliseconds": 1388,
+      "sha256": "99BFD0FEF7E514D1534746C203E530C2449786BE25BF2CC9BDBC7B9D9BCFB670",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\阅读样本.docx",
+      "error": "",
+      "hostWorkingSet": 177147904
+    },
+    {
+      "file": "模板样本.dotx",
+      "status": "PASS",
+      "milliseconds": 1033,
+      "sha256": "553D9F89C832A4B6705466FCB0FE5DB1EF5F2A4212AE6561D45D64C83B1E8CDC",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\模板样本.dotx",
+      "error": "",
+      "hostWorkingSet": 180224000
+    },
+    {
+      "file": "静态宏类型.docm",
+      "status": "PASS",
+      "milliseconds": 1063,
+      "sha256": "E795CF17A0D44ACA7041B19D17DBAA01A5A3A63A80E93789302782944D486EF2",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\静态宏类型.docm",
+      "error": "",
+      "hostWorkingSet": 181481472
+    },
+    {
+      "file": "静态宏模板.dotm",
+      "status": "PASS",
+      "milliseconds": 1742,
+      "sha256": "421603ED5B5413F8C6BBA009E565B9A3E20320025F5B3FAB81C49A7D7122FD9D",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\静态宏模板.dotm",
+      "error": "",
+      "hostWorkingSet": 184176640
+    },
+    {
+      "file": "数据样本.xlsx",
+      "status": "PASS",
+      "milliseconds": 1134,
+      "sha256": "53FC109EC08134827A5D86F04138380A8647DAD5B5176AF65AAB23F6ACF43AA2",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\数据样本.xlsx",
+      "error": "",
+      "hostWorkingSet": 185827328
+    },
+    {
+      "file": "表格模板.xltx",
+      "status": "PASS",
+      "milliseconds": 1130,
+      "sha256": "CB16A4956DDB598254900811D618CF96278F2EC3677328B30BADDEC1D9DDB49F",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\表格模板.xltx",
+      "error": "",
+      "hostWorkingSet": 187232256
+    },
+    {
+      "file": "静态宏表格.xlsm",
+      "status": "PASS",
+      "milliseconds": 1156,
+      "sha256": "904321B1DCE0AF20A38D8E43AE9861CFE02864C787396161D7A2B0457C9C66E4",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\静态宏表格.xlsm",
+      "error": "",
+      "hostWorkingSet": 186720256
+    },
+    {
+      "file": "静态宏表格模板.xltm",
+      "status": "PASS",
+      "milliseconds": 1037,
+      "sha256": "282E98C3CDD83D0155677EE73E88FAD469E942385977D5B79FD26C7E8758DEA9",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\静态宏表格模板.xltm",
+      "error": "",
+      "hostWorkingSet": 186798080
+    },
+    {
+      "file": "数据样本.csv",
+      "status": "PASS",
+      "milliseconds": 1056,
+      "sha256": "9BF972D348232C04EB39CE35FAE8EDC948F8FC309A0548851507E4B144428304",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\数据样本.csv",
+      "error": "",
+      "hostWorkingSet": 186826752
+    },
+    {
+      "file": "旧表格样本.xls",
+      "status": "PASS",
+      "milliseconds": 1124,
+      "sha256": "0DAA050480007390937E61F6264651061763F955A8798B8FFBAC230A1B198770",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\旧表格样本.xls",
+      "error": "",
+      "hostWorkingSet": 186863616
+    },
+    {
+      "file": "旧表格模板.xlt",
+      "status": "PASS",
+      "milliseconds": 1046,
+      "sha256": "B1F27EA336FED93A4CC54FE88552E6CB86429B1342910A98DC8804DBC51C9C1A",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\旧表格模板.xlt",
+      "error": "",
+      "hostWorkingSet": 187469824
+    },
+    {
+      "file": "加载项数据.xla",
+      "status": "PASS",
+      "milliseconds": 1097,
+      "sha256": "116651A487EB83087CAF97B36A5A77AB1C8B3BC44EE144BD41D57C09AE573612",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\加载项数据.xla",
+      "error": "",
+      "hostWorkingSet": 187637760
+    },
+    {
+      "file": "加载项数据.xlam",
+      "status": "PASS",
+      "milliseconds": 1054,
+      "sha256": "E201809E26BAFAC41D097433A2B3EBD1B07AAC0FB490EA7A186E8EAE5230A21B",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\加载项数据.xlam",
+      "error": "",
+      "hostWorkingSet": 186142720
+    },
+    {
+      "file": "旧表格样本.dbf",
+      "status": "PASS",
+      "milliseconds": 1092,
+      "sha256": "6BC7E95EAC908E65D34A4323ECABB9971279BE90EFA9FEAAEBEBFC3D3B364A69",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\旧表格样本.dbf",
+      "error": "",
+      "hostWorkingSet": 186400768
+    },
+    {
+      "file": "旧表格样本.prn",
+      "status": "PASS",
+      "milliseconds": 1102,
+      "sha256": "C4928747228C29FC58E4EDB59B290EB3C89DBE691C2DB05657FB880CBE3525E5",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\旧表格样本.prn",
+      "error": "",
+      "hostWorkingSet": 186531840
+    },
+    {
+      "file": "旧表格样本.dif",
+      "status": "PASS",
+      "milliseconds": 1128,
+      "sha256": "6BE4D9EF5917836552BAD774F3DC57F879CFC058DA22BA96861DF289572DD9D0",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\旧表格样本.dif",
+      "error": "",
+      "hostWorkingSet": 186822656
+    },
+    {
+      "file": "网页样本.html",
+      "status": "PASS",
+      "milliseconds": 1030,
+      "sha256": "CE8C7D421E07063731115FD5AA34D6D7F3D97F0CAAAE77A787332234D3AE2D2E",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\网页样本.html",
+      "error": "",
+      "hostWorkingSet": 185925632
+    },
+    {
+      "file": "网页样本.htm",
+      "status": "PASS",
+      "milliseconds": 1007,
+      "sha256": "CE8C7D421E07063731115FD5AA34D6D7F3D97F0CAAAE77A787332234D3AE2D2E",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\网页样本.htm",
+      "error": "",
+      "hostWorkingSet": 186265600
+    },
+    {
+      "file": "通用样本.xml",
+      "status": "PASS",
+      "milliseconds": 1036,
+      "sha256": "9837B3E6E9A8C0CF10BBB7AE38B31C6F4FE6D89D734DC9FBCA35CF8DE62B9BA4",
+      "evidence": "true",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\通用样本.xml",
+      "error": "",
+      "hostWorkingSet": 184799232
+    },
+    {
+      "file": "扫描样本.pdf",
+      "status": "PASS",
+      "milliseconds": 1456,
+      "sha256": "973F773C6E336CB0CE04480421BA18E7B77AB6D4EA611600C3291876A0AFBFD9",
+      "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\扫描样本.pdf",
+      "error": "",
+      "hostWorkingSet": 189681664
+    },
+    {
+      "file": "分页样本.pdf",
+      "status": "PASS",
+      "milliseconds": 1285,
+      "sha256": "AB47BAFC921C5DC6B627A6760F4D48E6918884213181D350DDFC7149E0BF0FB2",
+      "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\分页样本.pdf",
+      "error": "",
+      "hostWorkingSet": 196792320
+    },
+    {
+      "file": "旧文字样本.doc",
+      "status": "PASS",
+      "milliseconds": 1311,
+      "sha256": "7DC7C908D5A450696970289DB97AB32DEB6021EA088F750BF7B447E03784BA16",
+      "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\D924DD8E9F9412ED8CE479FF5EE1E9ED54F241B7CA5BDE3B13FAAE0E1EEA9B11\\document.pdf",
+      "error": "",
+      "hostWorkingSet": 197926912
+    },
+    {
+      "file": "旧文字模板.dot",
+      "status": "PASS",
+      "milliseconds": 1310,
+      "sha256": "12DFDCAFD11B10895457720D640A4343B09EEFD075AFD85A3D70416E5BC6CF38",
+      "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\E301351D995F31B292F02F48C53E3A71C4098DD2A9146AF62CE86E28E8E124A6\\document.pdf",
+      "error": "",
+      "hostWorkingSet": 198729728
+    },
+    {
+      "file": "演示样本.pptx",
+      "status": "PASS",
+      "milliseconds": 1234,
+      "sha256": "A07D1C4FF78DEFF495FE7CFA04AF52BFB4FA35BC6B57116AAAC2553E4F78E3F3",
+      "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\D75B9CDC08686D51608204E13923B052A0C92B81A32A04EA67F8D3F99901E0DD\\document.pdf",
+      "error": "",
+      "hostWorkingSet": 194027520
+    },
+    {
+      "file": "旧演示样本.ppt",
+      "status": "PASS",
+      "milliseconds": 1230,
+      "sha256": "B69400612D7D3425AC365EB0D2873194D2365038B038133D669E055951A9A459",
+      "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\91259CB554C17010897E00563857CF98E6E0B9CB9249C47BA325744263AF78F7\\document.pdf",
+      "error": "",
+      "hostWorkingSet": 196440064
+    },
+    {
+      "file": "旧演示模板.pot",
+      "status": "PASS",
+      "milliseconds": 1211,
+      "sha256": "B69400612D7D3425AC365EB0D2873194D2365038B038133D669E055951A9A459",
+      "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\91259CB554C17010897E00563857CF98E6E0B9CB9249C47BA325744263AF78F7\\document.pdf",
+      "error": "",
+      "hostWorkingSet": 196751360
+    },
+    {
+      "file": "旧演示播放.pps",
+      "status": "PASS",
+      "milliseconds": 1239,
+      "sha256": "B69400612D7D3425AC365EB0D2873194D2365038B038133D669E055951A9A459",
+      "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\91259CB554C17010897E00563857CF98E6E0B9CB9249C47BA325744263AF78F7\\document.pdf",
+      "error": "",
+      "hostWorkingSet": 197103616
+    },
+    {
+      "file": "办公表格.xml",
+      "status": "PASS",
+      "milliseconds": 1303,
+      "sha256": "3F2189254A340CF3F15F75E1BC8B70AE038C90A9AB3555E56B153A957D517D4C",
+      "evidence": "Windows.Data.Pdf: 1 pages, bitmap=True",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\925D4F0C45394BEBD6A5EED3EDE45FFB41A6E8621211D5A1714B4AF0E05513AD\\document.pdf",
+      "error": "",
+      "hostWorkingSet": 203403264
+    },
+    {
+      "file": "开放文档.odt",
+      "status": "PASS",
+      "milliseconds": 1266,
+      "sha256": "E79D62437C715C477FCD8084A41BFF7ABCA4A7E106563566178E88C5A7468E76",
+      "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\9DCC924F9640AEC98104A240D38E29C71A3832E8C2F897525F353B642230F415\\document.pdf",
+      "error": "",
+      "hostWorkingSet": 201334784
+    },
+    {
+      "file": "演示变体.pptm",
+      "status": "PASS",
+      "milliseconds": 1213,
+      "sha256": "BFF3B9C4D79EB08837142EDCBF13E6DC699BB47D83E850A925146B2C6AA7FFCB",
+      "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\53AABF9E0F749E2E857A8D8C28DC7EFAD22FA83480E624ED50E5BF386D067A7E\\document.pdf",
+      "error": "",
+      "hostWorkingSet": 195461120
+    },
+    {
+      "file": "演示变体.potx",
+      "status": "PASS",
+      "milliseconds": 1233,
+      "sha256": "28C151EF8B18C85C5C6170399D2E446C27806159BE597218D4A3350EE401AD0B",
+      "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\F1999D323681F01F6E54876E3308B382890C7300533DA83E1647276C386327FB\\document.pdf",
+      "error": "",
+      "hostWorkingSet": 195190784
+    },
+    {
+      "file": "演示变体.potm",
+      "status": "PASS",
+      "milliseconds": 1201,
+      "sha256": "FD9D2E082A12847D74B9C5B270937E75B299F3A958F2CB06D44EEE174F05F36E",
+      "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\FDE58CB52A98ED7292D8CBBE3763F698B91530B5E189DC303A105628E41DDB71\\document.pdf",
+      "error": "",
+      "hostWorkingSet": 200511488
+    },
+    {
+      "file": "演示变体.ppsx",
+      "status": "PASS",
+      "milliseconds": 1226,
+      "sha256": "7A6B4616DAD8971063DA07B94B38B694D5703ACC493981B15585B818250B6CCB",
+      "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\166B39DC3EBE4396FAFC64417C21BC7BC194301E4FD5A5FC296925F4875FE58A\\document.pdf",
+      "error": "",
+      "hostWorkingSet": 200638464
+    },
+    {
+      "file": "演示变体.ppsm",
+      "status": "PASS",
+      "milliseconds": 1228,
+      "sha256": "99BFF9247A9A8F0F83A62D07C0AF8F15E72D600AE1BB3500E62388CFE65C2153",
+      "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\4CA4FE5F1809DC9F9368A190B4D76A51C8474B065DA17E6309C5BC85D49AB4C9\\document.pdf",
+      "error": "",
+      "hostWorkingSet": 200880128
+    },
+    {
+      "file": "归档样本.mht",
+      "status": "PASS",
+      "milliseconds": 1181,
+      "sha256": "06854A6F6384CAD8DE4174B100E636C4AB616CDB9339E2B5F198607536A7D87F",
+      "evidence": "",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\归档样本.mht",
+      "error": "",
+      "hostWorkingSet": 189444096
+    },
+    {
+      "file": "归档样本.mhtml",
+      "status": "PASS",
+      "milliseconds": 882,
+      "sha256": "06854A6F6384CAD8DE4174B100E636C4AB616CDB9339E2B5F198607536A7D87F",
+      "evidence": "",
+      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\归档样本.mhtml",
+      "error": "",
+      "hostWorkingSet": 190779392
+    },
+    {
+      "file": "flow:native PDF page2 and text-view toggle",
+      "status": "PASS"
+    },
+    {
+      "file": "flow:reset zoom and Word page navigation",
+      "status": "PASS"
+    },
+    {
+      "file": "flow:search across sheet row pages",
+      "status": "PASS",
+      "evidence": "true"
+    },
+    {
+      "file": "flow:search across column pages",
+      "status": "PASS",
+      "evidence": "true"
+    },
+    {
+      "file": "flow:sheet search shows position and total",
+      "status": "PASS",
+      "evidence": "1 / 1"
+    },
+    {
+      "file": "flow:Word search count, next and previous",
+      "status": "PASS",
+      "evidence": "1 / 1 -> 1 / 1 -> 1 / 1"
+    },
+    {
+      "file": "flow:text search count and selection",
+      "status": "PASS",
+      "evidence": "1 / 1"
+    },
+    {
+      "file": "flow:theme switch reaches shell and preview",
+      "status": "PASS",
+      "evidence": "dark=True, preview=true, shell=#FF1B1A18"
+    },
+    {
+      "file": "flow:edit switch and save txt",
+      "status": "PASS",
+      "output": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\saved\\编辑样本.txt"
+    },
+    {
+      "file": "flow:edit switch and save csv",
+      "status": "PASS",
+      "output": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\saved\\编辑样本.csv"
+    },
+    {
+      "file": "flow:rapid file switch",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:home releases 阅读样本.docx",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:home releases 数据样本.xlsx",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:home releases 分页样本.pdf",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:home releases 多页样本.tif",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:home releases 文本样本.txt",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:home releases browser source file 阅读样本.docx",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:home releases browser source file 数据样本.xlsx",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:components releases reading view",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:CSV editor releases browser",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:dirty txt survives home and components",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:dirty csv survives home and components",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:clean text baseline released",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:save snapshot survives home reopen and new edits",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:save completion keeps subsequently selected document",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:PDF page and zoom survive home",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:PDF flip during zoom stays on requested page",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:PDF unchanged page restore reuses bitmap",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:PDF disposal releases source file",
+      "status": "FAIL",
+      "error": "System.IO.IOException: The process cannot access the file 'Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\分页样本.pdf' because it is being used by another process.\r\n   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)\r\n   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)\r\n   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)\r\n   at LightReader.App.MainWindow.<>c__DisplayClass94_0.<<RunReadingStabilityChecksAsync>b__12>d.MoveNext() in Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\src\\LightReader.App\\ReadingVerification.cs:line 148\r\n--- End of stack trace from previous location ---\r\n   at LightReader.App.MainWindow.<>c__DisplayClass94_0.<<RunReadingStabilityChecksAsync>g__Check|0>d.MoveNext() in Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\src\\LightReader.App\\ReadingVerification.cs:line 15"
+    },
+    {
+      "file": "reading:PDF cancelled load cleans stream",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:PDF extreme page bitmap and repeated zoom stay bounded",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:PDF worker exits while rendering to home",
+      "status": "FAIL",
+      "error": "System.IO.IOException: The process cannot access the file 'Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\分页样本.pdf' because it is being used by another process.\r\n   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)\r\n   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)\r\n   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)\r\n   at LightReader.App.MainWindow.<>c__DisplayClass94_0.<<RunReadingStabilityChecksAsync>b__15>d.MoveNext() in Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\src\\LightReader.App\\ReadingVerification.cs:line 177\r\n--- End of stack trace from previous location ---\r\n   at LightReader.App.MainWindow.<>c__DisplayClass94_0.<<RunReadingStabilityChecksAsync>g__Check|0>d.MoveNext() in Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\src\\LightReader.App\\ReadingVerification.cs:line 15"
+    },
+    {
+      "file": "reading:PDF worker failure keeps shell responsive and can reopen",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:PDF print paginator renders all pages",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:PDF malformed source closes worker and releases file",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:image page and zoom survive home",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:Word scroll and zoom survive home",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:sheet row and column page survive home",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:closing background tab keeps active view",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:last tab closes to detached home",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:initializing Word cancelled to home",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:rapid mixed format switch ends at text",
+      "status": "PASS"
+    },
+    {
+      "file": "reading:missing file releases preceding view",
+      "status": "PASS"
+    },
+    {
+      "file": "flow:no unhandled UI errors",
+      "status": "PASS",
+      "errors": []
+    }
+  ],
+  "status": "FAIL_BEFORE_FIX",
+  "applicationSha256": "40B1530E1EA60390DB81046F6F2F2BA37938286E8376CAFDD03B42EA172B3E62",
+  "resolution": "Explicit close command disposes the PDF source before acknowledgement; caller waits for the close and process exit. Final gui-checks.json has 88 PASS."
+}

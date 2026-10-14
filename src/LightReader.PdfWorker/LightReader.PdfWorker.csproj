@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>WinExe</OutputType><TargetFramework>net10.0-windows10.0.19041.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><AssemblyName>LightReader.PdfWorker</AssemblyName><Version>0.1.4</Version><PlatformTarget>x64</PlatformTarget></PropertyGroup>
+  <ItemGroup><ProjectReference Include="..\LightReader.Core\LightReader.Core.csproj"/></ItemGroup>
+</Project>
