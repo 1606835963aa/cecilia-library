@@ -60,6 +60,7 @@ public partial class MainWindow : Window
     public MainWindow(string[] paths, string? verificationRoot = null, string? benchmarkFile = null,string? stateFile=null)
     {
         InitializeComponent(); Tabs.ItemsSource = documents;
+        VersionLabel.Text = $"Vol. {System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString(3)}";
         documents.CollectionChanged += (_, _) => AppTitle.Visibility = documents.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
         App.ThemeChanged += OnThemeChanged; App.ApplyTheme(settings.Theme); UpdateThemeButton();
         if (settings.WindowWidth >= MinWidth && settings.WindowHeight >= MinHeight)
@@ -520,7 +521,7 @@ public partial class MainWindow : Window
     private void ShowHome()
     {
         LeaveDocument(); Home.Visibility = Visibility.Visible;
-        var recent = settings.Recent.Select(file => new RecentItem(file)).ToArray();
+        var recent = settings.Recent.Select((file, index) => new RecentItem(file, index + 1)).ToArray();
         RecentList.ItemsSource = recent; RecentHeader.Visibility = recent.Length > 0 ? Visibility.Visible : Visibility.Collapsed; Status.Text = "就绪";
     }
     private async void OpenRecent(object sender, RoutedEventArgs e) { if ((sender as FrameworkElement)?.DataContext is RecentItem item) await AddFileAsync(item.Path); }
@@ -528,13 +529,17 @@ public partial class MainWindow : Window
     private void ShowComponents(object sender, RoutedEventArgs e)
     {
         LeaveDocument(); ComponentPanel.Visibility = Visibility.Visible; ComponentList.Children.Clear();
-        foreach (var component in components.Definitions)
+        foreach (var (component, index) in components.Definitions.Select((c, i) => (c, i)))
         {
-            var row = new Border { CornerRadius = new(10), BorderThickness = new(1), Padding = new(20,16,16,16), Margin = new(0,0,0,12) };
-            row.SetResourceReference(Border.BackgroundProperty, "Surface"); row.SetResourceReference(Border.BorderBrushProperty, "Border");
+            // 目录式的一行：编号、名称与版本、操作按钮，底部一条细线
+            var row = new Border { BorderThickness = new(0,0,0,1), Padding = new(4,18,12,18), MinHeight = 96 };
+            row.SetResourceReference(Border.BorderBrushProperty, "Border");
             var installed = components.GetInstalled(component.Id) != null;
-            var panel = new DockPanel(); var button = new Button { Content = installed ? "移除" : "安装" };
-            if (!installed) button.SetResourceReference(StyleProperty, "PrimaryButton");
+            var panel = new DockPanel(); var button = new Button { Content = installed ? "移除" : "安装", Padding = new(22,9,22,9), VerticalAlignment = VerticalAlignment.Center };
+            if (!installed) { button.SetResourceReference(StyleProperty, "PrimaryButton"); button.Tag = "→"; }
+            var number = new TextBlock { Text = (index + 1).ToString("00"), FontSize = 30, Width = 56, VerticalAlignment = VerticalAlignment.Center };
+            number.SetResourceReference(StyleProperty, "LatinText");
+            DockPanel.SetDock(number, Dock.Left); panel.Children.Add(number);
             button.Click += async (_, _) =>
             {
                 if (ComponentPanel.Visibility != Visibility.Visible) return;
@@ -554,9 +559,11 @@ public partial class MainWindow : Window
                 catch (Exception error) { if (generation == displayGeneration && !token.IsCancellationRequested) SetMessage("组件操作未完成", error.Message, false); }
             };
             DockPanel.SetDock(button, Dock.Right); panel.Children.Add(button);
-            var description = new StackPanel(); description.Children.Add(new TextBlock { Text = component.Name, FontSize = 16, FontWeight = FontWeights.SemiBold });
+            var description = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
+            var name = new TextBlock { Text = component.Name, FontSize = 23, FontWeight = FontWeights.Bold };
+            name.SetResourceReference(TextBlock.FontFamilyProperty, "SerifFont"); description.Children.Add(name);
             var installedSize = components.InstalledBytes(component.Id);
-            var detail = new TextBlock { Text = installedSize > 0 ? $"已安装 · {Size(installedSize)} · {component.Version}" : $"下载 {Size(component.DownloadBytes)} · {component.Version}", Margin = new(0,7,0,0) };
+            var detail = new TextBlock { Text = installedSize > 0 ? $"已安装 · {Size(installedSize)} · {component.Version}" : $"下载 {Size(component.DownloadBytes)} · {component.Version}", Margin = new(0,8,0,0), FontSize = 12.5 };
             detail.SetResourceReference(TextBlock.ForegroundProperty, "TextMuted"); description.Children.Add(detail);
             panel.Children.Add(description); row.Child = panel; ComponentList.Children.Add(row);
         }

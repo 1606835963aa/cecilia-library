@@ -1,19 +1,19 @@
 /* 颜色与外壳（WPF 的 Themes/Light.xaml、Dark.xaml）保持一致 */
 :root {
-  --canvas: #e9e6e0; --surface: #fff; --alt: #f4f2ee; --border: #ddd8cf;
-  --text: #1f1d1a; --muted: #6b665e; --accent: #2f6f5e; --hover: #ece9e3;
-  --mark: #fde68a; --mark-line: #d97706; --formula: #6d28d9; --error: #b42318;
-  --scroll: #c9c3b8; --scroll-hover: #a39e94;
+  --canvas: #e6e1d3; --surface: #faf8f2; --alt: #f2eee4; --border: #d6d0c1;
+  --text: #173a33; --muted: #4b605a; --accent: #1f6f64; --hover: #e8e3d6;
+  --mark: #cdebe3; --mark-line: #1f6f64; --formula: #7e5b1a; --error: #b42318;
+  --scroll: #cbc4b4; --scroll-hover: #a39c8c;
   color-scheme: light;
   font-family: "Microsoft YaHei UI", sans-serif; font-size: 14px;
   color: var(--text); background: var(--canvas);
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --canvas: #141312; --surface: #262522; --alt: #1b1a18; --border: #3a3833;
-    --text: #ece9e3; --muted: #a39e94; --accent: #5fb49c; --hover: #32302c;
-    --mark: #5c4a12; --mark-line: #eab308; --formula: #c4b5fd; --error: #f97066;
-    --scroll: #4a4741; --scroll-hover: #6b665e;
+    --canvas: #0b1412; --surface: #16241f; --alt: #0f1a17; --border: #2a3b35;
+    --text: #ece6d6; --muted: #b7b6a7; --accent: #7fd3c1; --hover: #1e2e29;
+    --mark: #1d3a33; --mark-line: #7fd3c1; --formula: #e2c27e; --error: #f97066;
+    --scroll: #34463f; --scroll-hover: #4e625a;
     color-scheme: dark;
   }
 }
@@ -31,7 +31,7 @@ body { margin: 0; }
   padding: 7px 14px; background: var(--surface); border-bottom: 1px solid var(--border); color: var(--muted); font-size: 13px;
 }
 .doc-page-nav select, .sheet-header select, .sheet-header button {
-  font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 5px 11px; height: 30px;
+  font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 99px; padding: 5px 13px; height: 30px;
 }
 .sheet-header button { cursor: pointer; }
 .sheet-header button:hover:not(:disabled), .doc-page-nav select:hover, .sheet-header select:hover { background: var(--hover); }

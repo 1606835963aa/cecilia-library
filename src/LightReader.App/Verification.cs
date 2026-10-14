@@ -102,7 +102,7 @@ public partial class MainWindow
             await AddFileAsync(Path.Combine(projectRoot,"tests","fixtures","数据样本.xlsx"));await Task.Delay(300);
             var scheme=await browser!.EvaluateAsync("matchMedia('(prefers-color-scheme: dark)').matches");
             var shell=((SolidColorBrush)FindResource("Bg")).Color;
-            results.Add(new{file="flow:theme switch reaches shell and preview",status=App.IsDark!=darkBefore&&scheme==(App.IsDark?"true":"false")&&shell==(App.IsDark?Color.FromRgb(0x1B,0x1A,0x18):Color.FromRgb(0xF4,0xF2,0xEE))?"PASS":"FAIL",evidence=$"dark={App.IsDark}, preview={scheme}, shell={shell}"});
+            results.Add(new{file="flow:theme switch reaches shell and preview",status=App.IsDark!=darkBefore&&scheme==(App.IsDark?"true":"false")&&shell==(App.IsDark?Color.FromRgb(0x0F,0x1A,0x17):Color.FromRgb(0xF2,0xEE,0xE4))?"PASS":"FAIL",evidence=$"dark={App.IsDark}, preview={scheme}, shell={shell}"});
             App.ApplyTheme(settings.Theme);
             foreach(var extension in new[]{"txt","csv"})
             {

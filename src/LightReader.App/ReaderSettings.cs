@@ -32,14 +32,14 @@ public static class FileBadge
 {
     private static readonly (string Extensions, string Text, Brush Brush)[] groups =
     [
-        (" doc docx docm dot dotx dotm wps wpt odt rtf ", "W", Fill(0x3B, 0x6F, 0xB6)),
-        (" xls xlsx xlsm xlt xltx xltm et ett csv dbf prn dif xla xlam ", "X", Fill(0x2E, 0x8B, 0x57)),
-        (" ppt pptx pptm pot potx potm pps ppsx ppsm dps dpt ", "P", Fill(0xC8, 0x63, 0x2B)),
-        (" pdf ", "PDF", Fill(0xC0, 0x39, 0x2B)),
-        (" jpg jpeg png tif tiff bmp ", "图", Fill(0x8E, 0x5B, 0xB5)),
-        (" htm html mht mhtml xml ", "网", Fill(0x4A, 0x7C, 0x8C))
+        (" doc docx docm dot dotx dotm wps wpt odt rtf ", "W", Fill(0x2F, 0x5F, 0x92)),
+        (" xls xlsx xlsm xlt xltx xltm et ett csv dbf prn dif xla xlam ", "X", Fill(0x24, 0x69, 0x4B)),
+        (" ppt pptx pptm pot potx potm pps ppsx ppsm dps dpt ", "P", Fill(0x9A, 0x50, 0x20)),
+        (" pdf ", "PDF", Fill(0x9B, 0x35, 0x39)),
+        (" jpg jpeg png tif tiff bmp ", "图", Fill(0x6B, 0x4F, 0xA0)),
+        (" htm html mht mhtml xml ", "网", Fill(0x3E, 0x6B, 0x79))
     ];
-    private static readonly Brush other = Fill(0x7A, 0x74, 0x6A);
+    private static readonly Brush other = Fill(0x6A, 0x64, 0x5B);
     private static Brush Fill(byte r, byte g, byte b) { var brush = new SolidColorBrush(Color.FromRgb(r, g, b)); brush.Freeze(); return brush; }
     public static (string Text, Brush Brush) For(string path)
     {
@@ -48,9 +48,11 @@ public static class FileBadge
         return ("文", other);
     }
 }
-public sealed class RecentItem(RecentFile file)
+public sealed class RecentItem(RecentFile file, int number = 0)
 {
     public string Path => file.Path;
+    public string Number => number.ToString("00");
+    public string Kind => System.IO.Path.GetExtension(file.Path).TrimStart('.').ToUpperInvariant();
     public string Name => file.Name;
     public string Folder => System.IO.Path.GetDirectoryName(file.Path) ?? "";
     public string Badge => FileBadge.For(file.Path).Text;

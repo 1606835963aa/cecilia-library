@@ -6,22 +6,28 @@
       </ResourceDictionary.MergedDictionaries>
 
       <FontFamily x:Key="IconFont">Segoe Fluent Icons, Segoe MDL2 Assets</FontFamily>
+      <!-- 宋体只含界面里写好的字，缺字时退回微软雅黑；拉丁斜体用于编号、时间和英文小标题 -->
+      <FontFamily x:Key="SerifFont">./Fonts/#Cecilia Serif, Microsoft YaHei UI</FontFamily>
+      <FontFamily x:Key="LatinFont">./Fonts/#Cecilia Latin, ./Fonts/#Cecilia Serif, Microsoft YaHei UI</FontFamily>
 
       <Style x:Key="FocusRing">
         <Setter Property="Control.Template">
           <Setter.Value>
             <ControlTemplate>
-              <Rectangle Stroke="{DynamicResource Accent}" StrokeThickness="1.5" RadiusX="6" RadiusY="6" SnapsToDevicePixels="True"/>
+              <Rectangle Stroke="{DynamicResource Accent}" StrokeThickness="1.5" RadiusX="8" RadiusY="8" SnapsToDevicePixels="True"/>
             </ControlTemplate>
           </Setter.Value>
         </Setter>
       </Style>
 
-      <!-- 文字按钮；Tag 填图标字符时在文字前显示图标 -->
+      <!-- 文字按钮：细边框的胶囊形，悬停时填满墨色；Tag 填图标字符时在文字前显示图标 -->
       <Style x:Key="BaseButton" TargetType="Button">
-        <Setter Property="Background" Value="{DynamicResource SurfaceAlt}"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{DynamicResource Text}"/>
-        <Setter Property="Padding" Value="14,7"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Text}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FontFamily" Value="{StaticResource SerifFont}"/>
+        <Setter Property="Padding" Value="18,7"/>
         <Setter Property="Margin" Value="3,0"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
@@ -30,17 +36,21 @@
           <Setter.Value>
             <ControlTemplate TargetType="Button">
               <Grid>
-                <Border CornerRadius="6" Background="{TemplateBinding Background}"/>
-                <Border x:Name="Hover" CornerRadius="6" Background="{DynamicResource Text}" Opacity="0"/>
+                <Border x:Name="Frame" CornerRadius="99" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
+                <Border x:Name="Hover" CornerRadius="99" Background="{DynamicResource Text}" Opacity="0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}">
-                  <TextBlock x:Name="Icon" Text="{TemplateBinding Tag}" FontFamily="{StaticResource IconFont}" FontSize="15" VerticalAlignment="Center" Margin="0,1,7,0"/>
+                  <TextBlock x:Name="Icon" Text="{TemplateBinding Tag}" FontFamily="{StaticResource IconFont}" FontSize="14" VerticalAlignment="Center" Margin="0,1,8,0"/>
                   <ContentPresenter VerticalAlignment="Center" RecognizesAccessKey="False"/>
                 </StackPanel>
               </Grid>
               <ControlTemplate.Triggers>
                 <Trigger Property="Tag" Value="{x:Null}"><Setter TargetName="Icon" Property="Visibility" Value="Collapsed"/></Trigger>
-                <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Hover" Property="Opacity" Value="0.08"/></Trigger>
-                <Trigger Property="IsPressed" Value="True"><Setter TargetName="Hover" Property="Opacity" Value="0.15"/></Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                  <Setter Property="Foreground" Value="{DynamicResource Bg}"/>
+                  <Trigger.EnterActions><BeginStoryboard><Storyboard><DoubleAnimation Storyboard.TargetName="Hover" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.25"/></Storyboard></BeginStoryboard></Trigger.EnterActions>
+                  <Trigger.ExitActions><BeginStoryboard><Storyboard><DoubleAnimation Storyboard.TargetName="Hover" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.2"/></Storyboard></BeginStoryboard></Trigger.ExitActions>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True"><Setter TargetName="Frame" Property="Opacity" Value="0.7"/></Trigger>
                 <Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.38"/></Trigger>
               </ControlTemplate.Triggers>
             </ControlTemplate>
@@ -48,25 +58,105 @@
         </Setter>
       </Style>
       <Style TargetType="Button" BasedOn="{StaticResource BaseButton}"/>
+      <!-- 主要操作：实心墨色胶囊，悬停换成风青色；Tag 填 → 时在文字后显示箭头 -->
       <Style x:Key="PrimaryButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
-        <Setter Property="Background" Value="{DynamicResource Accent}"/>
-        <Setter Property="Foreground" Value="{DynamicResource OnAccent}"/>
+        <Setter Property="Background" Value="{DynamicResource Text}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Bg}"/>
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="Button">
+              <Grid>
+                <Border CornerRadius="99" Background="{TemplateBinding Background}"/>
+                <Border x:Name="Hover" CornerRadius="99" Background="{DynamicResource Accent}" Opacity="0"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}">
+                  <TextBlock x:Name="Icon" Text="{TemplateBinding Tag}" FontFamily="{StaticResource IconFont}" FontSize="14" VerticalAlignment="Center" Margin="0,1,8,0"/>
+                  <ContentPresenter VerticalAlignment="Center" RecognizesAccessKey="False"/>
+                  <TextBlock x:Name="Arrow" Text="→" FontFamily="{StaticResource LatinFont}" FontSize="18" Margin="10,-3,0,0" VerticalAlignment="Center" Visibility="Collapsed">
+                    <TextBlock.RenderTransform><TranslateTransform/></TextBlock.RenderTransform>
+                  </TextBlock>
+                </StackPanel>
+              </Grid>
+              <ControlTemplate.Triggers>
+                <Trigger Property="Tag" Value="{x:Null}"><Setter TargetName="Icon" Property="Visibility" Value="Collapsed"/></Trigger>
+                <Trigger Property="Tag" Value="→">
+                  <Setter TargetName="Icon" Property="Visibility" Value="Collapsed"/>
+                  <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                  <Setter Property="Foreground" Value="{DynamicResource OnAccent}"/>
+                  <Trigger.EnterActions><BeginStoryboard><Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="Hover" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.25"/>
+                    <DoubleAnimation Storyboard.TargetName="Arrow" Storyboard.TargetProperty="RenderTransform.X" To="4" Duration="0:0:0.3"/>
+                  </Storyboard></BeginStoryboard></Trigger.EnterActions>
+                  <Trigger.ExitActions><BeginStoryboard><Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="Hover" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.2"/>
+                    <DoubleAnimation Storyboard.TargetName="Arrow" Storyboard.TargetProperty="RenderTransform.X" To="0" Duration="0:0:0.3"/>
+                  </Storyboard></BeginStoryboard></Trigger.ExitActions>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.38"/></Trigger>
+              </ControlTemplate.Triggers>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
       </Style>
-      <Style x:Key="ToolButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+      <!-- 工具栏按钮：无边框，悬停时浅色底 -->
+      <Style x:Key="ToolButton" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Padding" Value="9,6"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextMuted}"/>
+        <Setter Property="FontFamily" Value="{StaticResource SerifFont}"/>
+        <Setter Property="Padding" Value="11,6"/>
         <Setter Property="Margin" Value="1,0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusRing}"/>
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="Button">
+              <Border x:Name="Bg" CornerRadius="8" Background="{TemplateBinding Background}">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}">
+                  <TextBlock x:Name="Icon" Text="{TemplateBinding Tag}" FontFamily="{StaticResource IconFont}" FontSize="14" VerticalAlignment="Center" Margin="0,1,7,0"/>
+                  <ContentPresenter VerticalAlignment="Center" RecognizesAccessKey="False"/>
+                </StackPanel>
+              </Border>
+              <ControlTemplate.Triggers>
+                <Trigger Property="Tag" Value="{x:Null}"><Setter TargetName="Icon" Property="Visibility" Value="Collapsed"/></Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                  <Setter TargetName="Bg" Property="Background" Value="{DynamicResource SurfaceAlt}"/>
+                  <Setter Property="Foreground" Value="{DynamicResource Text}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.38"/></Trigger>
+              </ControlTemplate.Triggers>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
       </Style>
-      <Style x:Key="LinkButton" TargetType="Button" BasedOn="{StaticResource ToolButton}">
+      <!-- 文字链接：风青色加下划线 -->
+      <Style x:Key="LinkButton" TargetType="Button">
         <Setter Property="Foreground" Value="{DynamicResource Accent}"/>
+        <Setter Property="FontFamily" Value="{StaticResource SerifFont}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusRing}"/>
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="Button">
+              <Border Background="Transparent" BorderBrush="{TemplateBinding Foreground}" BorderThickness="0,0,0,1" Padding="0,0,0,1">
+                <ContentPresenter RecognizesAccessKey="False"/>
+              </Border>
+              <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True"><Setter Property="Foreground" Value="{DynamicResource Text}"/></Trigger>
+              </ControlTemplate.Triggers>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
       </Style>
 
       <!-- 只有图标的按钮；Tag 填图标字符 -->
       <Style x:Key="IconButton" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{DynamicResource Text}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextMuted}"/>
         <Setter Property="FontSize" Value="15"/>
-        <Setter Property="Width" Value="32"/>
+        <Setter Property="Width" Value="34"/>
         <Setter Property="Height" Value="32"/>
         <Setter Property="Margin" Value="1,0"/>
         <Setter Property="Cursor" Value="Hand"/>
@@ -75,14 +165,14 @@
         <Setter Property="Template">
           <Setter.Value>
             <ControlTemplate TargetType="Button">
-              <Grid>
-                <Border CornerRadius="6" Background="{TemplateBinding Background}"/>
-                <Border x:Name="Hover" CornerRadius="6" Background="{DynamicResource Text}" Opacity="0"/>
+              <Border x:Name="Bg" CornerRadius="8" Background="{TemplateBinding Background}">
                 <TextBlock Text="{TemplateBinding Tag}" FontFamily="{StaticResource IconFont}" FontSize="{TemplateBinding FontSize}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-              </Grid>
+              </Border>
               <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Hover" Property="Opacity" Value="0.08"/></Trigger>
-                <Trigger Property="IsPressed" Value="True"><Setter TargetName="Hover" Property="Opacity" Value="0.15"/></Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                  <Setter TargetName="Bg" Property="Background" Value="{DynamicResource SurfaceAlt}"/>
+                  <Setter Property="Foreground" Value="{DynamicResource Text}"/>
+                </Trigger>
                 <Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.38"/></Trigger>
               </ControlTemplate.Triggers>
             </ControlTemplate>
@@ -92,7 +182,7 @@
 
       <!-- 窗口右上角的最小化、最大化、关闭 -->
       <Style x:Key="CaptionButton" TargetType="Button">
-        <Setter Property="Foreground" Value="{DynamicResource Text}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextMuted}"/>
         <Setter Property="Width" Value="46"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
@@ -118,7 +208,7 @@
               </Border>
               <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                  <Setter TargetName="Bg" Property="Background" Value="#C42B1C"/>
+                  <Setter TargetName="Bg" Property="Background" Value="#C4473B"/>
                   <Setter Property="Foreground" Value="White"/>
                 </Trigger>
               </ControlTemplate.Triggers>
@@ -127,7 +217,7 @@
         </Setter>
       </Style>
 
-      <!-- 列表里的整行按钮，例如最近文件 -->
+      <!-- 目录式整行按钮，例如最近文件：底部细线，悬停时墨色渐入、文字反白 -->
       <Style x:Key="RowButton" TargetType="Button">
         <Setter Property="Foreground" Value="{DynamicResource Text}"/>
         <Setter Property="Cursor" Value="Hand"/>
@@ -136,15 +226,51 @@
         <Setter Property="Template">
           <Setter.Value>
             <ControlTemplate TargetType="Button">
-              <Border x:Name="Bg" CornerRadius="8" Background="Transparent" Padding="12,10">
-                <ContentPresenter/>
-              </Border>
+              <Grid>
+                <Border Background="Transparent" BorderBrush="{DynamicResource Border}" BorderThickness="0,0,0,1"/>
+                <Border x:Name="Hover" Background="{DynamicResource Text}" Opacity="0"/>
+                <ContentPresenter Margin="4,0,12,0"/>
+              </Grid>
               <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Bg" Property="Background" Value="{DynamicResource SurfaceAlt}"/></Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                  <Setter Property="Foreground" Value="{DynamicResource Bg}"/>
+                  <Trigger.EnterActions><BeginStoryboard><Storyboard><DoubleAnimation Storyboard.TargetName="Hover" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.3"/></Storyboard></BeginStoryboard></Trigger.EnterActions>
+                  <Trigger.ExitActions><BeginStoryboard><Storyboard><DoubleAnimation Storyboard.TargetName="Hover" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.25"/></Storyboard></BeginStoryboard></Trigger.ExitActions>
+                </Trigger>
               </ControlTemplate.Triggers>
             </ControlTemplate>
           </Setter.Value>
         </Setter>
+      </Style>
+      <!-- 整行按钮里的次要文字：平时用浅一档的颜色，悬停时跟着整行反白 -->
+      <Style x:Key="RowText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource TextFaint}"/>
+        <Style.Triggers>
+          <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=Button}}" Value="True">
+            <Setter Property="Foreground" Value="{DynamicResource Bg}"/>
+          </DataTrigger>
+        </Style.Triggers>
+      </Style>
+      <!-- 英文斜体小字：编号、时间、页码 -->
+      <Style x:Key="LatinText" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource LatinFont}"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextFaint}"/>
+      </Style>
+      <!-- 页面眉栏里的宋体小字 -->
+      <Style x:Key="MetaText" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource SerifFont}"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextMuted}"/>
+      </Style>
+      <!-- 键盘按键 -->
+      <Style x:Key="KeyCap" TargetType="Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="Padding" Value="6,1"/>
+        <Setter Property="Margin" Value="3,0,0,0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
       </Style>
 
       <Style TargetType="TextBox">
@@ -160,7 +286,7 @@
         <Setter Property="Template">
           <Setter.Value>
             <ControlTemplate TargetType="TextBox">
-              <Border x:Name="Frame" CornerRadius="6" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+              <Border x:Name="Frame" CornerRadius="8" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                 <ScrollViewer x:Name="PART_ContentHost" Focusable="False"/>
               </Border>
               <ControlTemplate.Triggers>
@@ -176,7 +302,7 @@
         <Setter Property="Template">
           <Setter.Value>
             <ControlTemplate TargetType="ToolTip">
-              <Border CornerRadius="6" Background="{DynamicResource Surface}" BorderBrush="{DynamicResource Border}" BorderThickness="1" Padding="9,5">
+              <Border CornerRadius="8" Background="{DynamicResource Surface}" BorderBrush="{DynamicResource Border}" BorderThickness="1" Padding="10,6">
                 <ContentPresenter/>
               </Border>
             </ControlTemplate>
@@ -185,14 +311,14 @@
       </Style>
 
       <Style TargetType="ProgressBar">
-        <Setter Property="Height" Value="4"/>
+        <Setter Property="Height" Value="3"/>
         <Setter Property="Template">
           <Setter.Value>
             <ControlTemplate TargetType="ProgressBar">
               <Grid ClipToBounds="True">
-                <Border x:Name="PART_Track" CornerRadius="2" Background="{DynamicResource SurfaceAlt}"/>
-                <Border x:Name="PART_Indicator" CornerRadius="2" Background="{DynamicResource Accent}" HorizontalAlignment="Left"/>
-                <Border x:Name="Runner" CornerRadius="2" Background="{DynamicResource Accent}" HorizontalAlignment="Left" Width="110" Visibility="Collapsed">
+                <Border x:Name="PART_Track" Height="1" Background="{DynamicResource Border}"/>
+                <Border x:Name="PART_Indicator" CornerRadius="2" Background="{DynamicResource Text}" HorizontalAlignment="Left"/>
+                <Border x:Name="Runner" CornerRadius="2" Background="{DynamicResource AccentBright}" HorizontalAlignment="Left" Width="110" Visibility="Collapsed">
                   <Border.RenderTransform><TranslateTransform X="-110"/></Border.RenderTransform>
                 </Border>
               </Grid>

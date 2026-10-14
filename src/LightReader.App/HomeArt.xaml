@@ -1,0 +1,88 @@
+<UserControl x:Class="LightReader.App.HomeArt"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Width="400" Height="340" IsHitTestVisible="False" Focusable="False">
+  <UserControl.Resources>
+    <SineEase x:Key="Ease" EasingMode="EaseInOut"/>
+    <!-- 首页的轻微动态：花朵摇摆、羽毛飘动、风线流动、星点闪烁 -->
+    <Storyboard x:Key="Motion">
+      <DoubleAnimation Storyboard.TargetName="Sway" Storyboard.TargetProperty="Angle" From="-2.5" To="2.5" Duration="0:0:3.5" AutoReverse="True" RepeatBehavior="Forever" EasingFunction="{StaticResource Ease}"/>
+      <DoubleAnimation Storyboard.TargetName="FeatherMove" Storyboard.TargetProperty="X" From="0" To="10" Duration="0:0:4.5" AutoReverse="True" RepeatBehavior="Forever" EasingFunction="{StaticResource Ease}"/>
+      <DoubleAnimation Storyboard.TargetName="FeatherMove" Storyboard.TargetProperty="Y" From="0" To="14" Duration="0:0:4.5" AutoReverse="True" RepeatBehavior="Forever" EasingFunction="{StaticResource Ease}"/>
+      <DoubleAnimation Storyboard.TargetName="FeatherTurn" Storyboard.TargetProperty="Angle" From="-18" To="-6" Duration="0:0:4.5" AutoReverse="True" RepeatBehavior="Forever" EasingFunction="{StaticResource Ease}"/>
+      <DoubleAnimation Storyboard.TargetName="Wind1" Storyboard.TargetProperty="StrokeDashOffset" From="0" To="-100" Duration="0:0:7" RepeatBehavior="Forever"/>
+      <DoubleAnimation Storyboard.TargetName="Wind2" Storyboard.TargetProperty="StrokeDashOffset" From="0" To="-100" Duration="0:0:8" RepeatBehavior="Forever"/>
+      <DoubleAnimation Storyboard.TargetName="Wind3" Storyboard.TargetProperty="StrokeDashOffset" From="0" To="-100" Duration="0:0:6" RepeatBehavior="Forever"/>
+      <DoubleAnimation Storyboard.TargetName="Stars" Storyboard.TargetProperty="Opacity" From="1" To="0.35" Duration="0:0:1.8" AutoReverse="True" RepeatBehavior="Forever" EasingFunction="{StaticResource Ease}"/>
+    </Storyboard>
+    <Style x:Key="Wind" TargetType="Path">
+      <Setter Property="Stroke" Value="{DynamicResource AccentBright}"/>
+      <Setter Property="StrokeThickness" Value="1.3"/>
+      <Setter Property="StrokeDashArray" Value="3 7"/>
+      <Setter Property="StrokeDashCap" Value="Round"/>
+      <Setter Property="StrokeStartLineCap" Value="Round"/>
+      <Setter Property="StrokeEndLineCap" Value="Round"/>
+      <Setter Property="Opacity" Value="0.55"/>
+    </Style>
+    <Geometry x:Key="Sparkle">M0,-10 C1,-2 2,-1 10,0 C2,1 1,2 0,10 C-1,2 -2,1 -10,0 C-2,-1 -1,-2 0,-10 Z</Geometry>
+  </UserControl.Resources>
+  <Grid>
+    <!-- 风线向左伸到标题后面，不参与排版 -->
+    <Canvas>
+      <Path x:Name="Wind1" Style="{StaticResource Wind}" Canvas.Left="-500" Canvas.Top="-10" Data="M0,150 C140,90 260,200 420,130 S640,60 760,110 c40,18 60,-20 30,-40 c-24,-16 -52,6 -36,26"/>
+      <Path x:Name="Wind2" Style="{StaticResource Wind}" Canvas.Left="-500" Canvas.Top="-10" Data="M80,210 C220,160 340,240 520,190 S760,150 900,190"/>
+      <Path x:Name="Wind3" Style="{StaticResource Wind}" Canvas.Left="-500" Canvas.Top="-10" Data="M260,60 C380,20 470,90 600,50 c30,-10 34,-42 6,-44 c-22,-2 -28,22 -10,30"/>
+    </Canvas>
+
+    <!-- 拱门形的拖放区 -->
+    <Path Data="M1,339 V200 A199,199 0 0 1 399,200 V339 Z" Stroke="{DynamicResource TextFaint}" StrokeThickness="1.4" StrokeDashArray="3.5 3.5"/>
+
+    <Canvas>
+      <Canvas Canvas.Left="36" Canvas.Top="54">
+        <Canvas.RenderTransform>
+          <TransformGroup>
+            <RotateTransform x:Name="FeatherTurn" Angle="-18" CenterX="22" CenterY="40"/>
+            <TranslateTransform x:Name="FeatherMove"/>
+          </TransformGroup>
+        </Canvas.RenderTransform>
+        <Path Data="M22,4 C38,18 38,46 24,70 C8,50 6,22 22,4 Z" Fill="{DynamicResource PetalShade}" Stroke="{DynamicResource Text}" StrokeThickness="1"/>
+        <Path Data="M22,8 C24,30 23,52 20,78" Stroke="{DynamicResource Text}" StrokeThickness="1"/>
+        <Path Data="M23,26 L31,20 M23,38 L33,32 M23,50 L31,45 M22,30 L14,24 M22,44 L13,39" Stroke="{DynamicResource Text}" StrokeThickness="0.8" Opacity="0.6"/>
+      </Canvas>
+      <Canvas x:Name="Stars">
+        <Path Data="{StaticResource Sparkle}" Fill="{DynamicResource Gold}" Canvas.Left="325" Canvas.Top="81">
+          <Path.RenderTransform><ScaleTransform ScaleX="1.1" ScaleY="1.1"/></Path.RenderTransform>
+        </Path>
+        <Path Data="{StaticResource Sparkle}" Fill="{DynamicResource Gold}" Canvas.Left="290" Canvas.Top="50">
+          <Path.RenderTransform><ScaleTransform ScaleX="0.6" ScaleY="0.6"/></Path.RenderTransform>
+        </Path>
+        <Path Data="{StaticResource Sparkle}" Fill="{DynamicResource Gold}" Canvas.Left="103" Canvas.Top="157" Opacity="0.7">
+          <Path.RenderTransform><ScaleTransform ScaleX="0.7" ScaleY="0.7"/></Path.RenderTransform>
+        </Path>
+      </Canvas>
+    </Canvas>
+
+    <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,24">
+      <!-- 塞西莉亚花：坐标来自设计稿，原点在花心 (110,105) -->
+      <Viewbox Width="190" Height="220" HorizontalAlignment="Center">
+        <Canvas Width="220" Height="260">
+          <Canvas.RenderTransform><RotateTransform x:Name="Sway" CenterX="110" CenterY="255"/></Canvas.RenderTransform>
+          <Path Data="M110,115 C116,165 102,205 114,255" Stroke="{DynamicResource Stem}" StrokeThickness="2.4" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+          <Path Data="M113,201 C136,183 158,191 168,175 C146,169 124,179 113,201 Z" Fill="{DynamicResource Stem}"/>
+          <Path Data="M109,229 C86,213 64,219 54,203 C76,197 98,207 109,229 Z" Fill="{DynamicResource Stem}" Opacity="0.8"/>
+          <Path Fill="{DynamicResource PetalShade}" Stroke="{DynamicResource Text}" StrokeThickness="1" Data="M110,105 C130.3,97.5 148.3,71 148.8,51.6 C130.5,58.1 110.9,83.4 110,105 Z M110,105 C123.4,122 154.2,130.9 172.8,125.4 C161,110 130.8,99.1 110,105 Z M110,105 C98,123 99,155 110,171 C121,155 122,123 110,105 Z M110,105 C89.2,99.1 59,110 47.2,125.4 C65.8,130.9 96.6,122 110,105 Z M110,105 C109.1,83.4 89.5,58.1 71.2,51.6 C71.7,71 89.7,97.5 110,105 Z"/>
+          <Path Fill="{DynamicResource Petal}" Stroke="{DynamicResource Text}" StrokeThickness="1.2" Data="M110,105 C127,83 125,39 110,17 C95,39 93,83 110,105 Z M110,105 C136.2,114.4 177.4,98.9 193.7,77.8 C168.1,70.3 125.7,82 110,105 Z M110,105 C109.2,132.8 136.7,167.2 161.7,176.2 C160.9,149.6 136.7,112.8 110,105 Z M110,105 C83.3,112.8 59.1,149.6 58.3,176.2 C83.3,167.2 110.8,132.8 110,105 Z M110,105 C94.3,82 51.9,70.3 26.3,77.8 C42.6,98.9 83.8,114.4 110,105 Z"/>
+          <Path Stroke="{DynamicResource PetalShade}" StrokeThickness="1.4" Data="M110,95 L110,33 M119.5,101.9 L178.5,82.8 M115.9,113.1 L152.3,163.2 M104.1,113.1 L67.7,163.2 M100.5,101.9 L41.5,82.8"/>
+          <Ellipse Canvas.Left="99" Canvas.Top="94" Width="22" Height="22" Fill="{DynamicResource Gold}"/>
+          <Ellipse Canvas.Left="107.4" Canvas.Top="85.4" Width="5.2" Height="5.2" Fill="{DynamicResource Gold}"/>
+          <Ellipse Canvas.Left="123.4" Canvas.Top="96.4" Width="5.2" Height="5.2" Fill="{DynamicResource Gold}"/>
+          <Ellipse Canvas.Left="117.4" Canvas.Top="116.4" Width="5.2" Height="5.2" Fill="{DynamicResource Gold}"/>
+          <Ellipse Canvas.Left="97.4" Canvas.Top="116.4" Width="5.2" Height="5.2" Fill="{DynamicResource Gold}"/>
+          <Ellipse Canvas.Left="91.4" Canvas.Top="96.4" Width="5.2" Height="5.2" Fill="{DynamicResource Gold}"/>
+        </Canvas>
+      </Viewbox>
+      <TextBlock Text="把文档拖到这里" FontFamily="{StaticResource SerifFont}" FontSize="18" HorizontalAlignment="Center" Margin="0,8,0,0"/>
+      <TextBlock Text="文字、表格、演示、PDF 与图片" FontSize="12" Foreground="{DynamicResource TextFaint}" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+    </StackPanel>
+  </Grid>
+</UserControl>

@@ -33,7 +33,7 @@ public sealed class BrowserReader : IDisposable
     {
         if (disposed) return;
         dark = useDark;
-        View.DefaultBackgroundColor = dark ? System.Drawing.Color.FromArgb(0x14, 0x13, 0x12) : System.Drawing.Color.FromArgb(0xE9, 0xE6, 0xE0);
+        View.DefaultBackgroundColor = dark ? System.Drawing.Color.FromArgb(0x0B, 0x14, 0x12) : System.Drawing.Color.FromArgb(0xE6, 0xE1, 0xD3);
         if (View.CoreWebView2 != null) View.CoreWebView2.Profile.PreferredColorScheme = dark ? CoreWebView2PreferredColorScheme.Dark : CoreWebView2PreferredColorScheme.Light;
     }
     public async Task InitializeAsync(CancellationToken token = default)
