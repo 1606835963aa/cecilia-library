@@ -1,0 +1,35 @@
+name: 问题反馈
+description: 文档打不开、显示不对、程序出错
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: 软件版本
+      description: 首页右上角 Vol. 后面的数字
+      placeholder: 0.1.4
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: Windows 版本
+      placeholder: Windows 11 24H2
+    validations:
+      required: true
+  - type: input
+    id: format
+    attributes:
+      label: 文件格式
+      description: 文件后缀，以及由哪个软件、哪个版本保存
+      placeholder: .docx，WPS 2023 保存
+  - type: textarea
+    id: steps
+    attributes:
+      label: 发生了什么
+      description: 怎样操作、看到了什么、原本希望看到什么。截图很有帮助。
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: 请不要上传含个人信息的真实文档。如果问题只在某份文件上出现，可以先删掉敏感内容，确认问题仍在后再附上。

@@ -1,0 +1,15 @@
+name: 功能建议
+description: 新格式、新功能或使用体验的改进
+labels: [enhancement]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: 想解决什么问题
+      description: 平时在什么场景下遇到，现在是怎么处理的
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: 希望怎样改进

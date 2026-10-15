@@ -1,0 +1,8 @@
+{
+  "version": "10.0.13",
+  "major": "10",
+  "url": "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/10.0.13/windowsdesktop-runtime-10.0.13-win-x64.exe",
+  "bytes": 60056984,
+  "sha256": "f5f0268b3d89ec3b9eb952b620330360b35c63593ead45816aeb26e934a4b7b6",
+  "sha512": "adaf5e06b66b145848f3a994b51ea1590d19a5c02f6e7c5899ed896bbdb020af6386d2eaef613034d697388adaf48aa8c3291343f0bbb5f8e62e37aff9564a00"
+}

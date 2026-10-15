@@ -4,7 +4,8 @@ using System.Diagnostics;
 
 namespace LightReader.Core;
 
-public sealed record ComponentAsset(string Name, string Url, string Sha256, long Bytes);
+public sealed record ComponentAsset(string Name, string Url, string Sha256, long Bytes, string[]? Mirrors = null)
+{ public IEnumerable<string> Sources => Mirrors is { Length: > 0 } ? [Url, .. Mirrors] : [Url]; }
 public sealed record ComponentDefinition(string Id, string Name, string Version, string License, ComponentAsset[] Assets, string? Installer = null,long? ExpectedInstalledBytes=null)
 { public long DownloadBytes => Assets.Sum(a => a.Bytes); }
 public sealed record ComponentCatalog(int SchemaVersion, ComponentDefinition[] Components);
@@ -43,27 +44,22 @@ public sealed class ComponentStore
             long received = 0;
             foreach (var asset in definition.Assets)
             {
-                if (Path.GetFileName(asset.Name) != asset.Name || !Uri.TryCreate(asset.Url, UriKind.Absolute, out var uri) || uri.Scheme != "https")
-                    throw new InvalidDataException("组件清单无效");
-                using var response = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead, token);
-                response.EnsureSuccessStatusCode();
-                await using var source = await response.Content.ReadAsStreamAsync(token);
+                if (Path.GetFileName(asset.Name) != asset.Name) throw new InvalidDataException("组件清单无效");
                 var target = Path.Combine(staging, asset.Name);
-                await using (var output = File.Create(target))
+                Exception? failure = null;
+                // Mirrors carry the same file, so a source is accepted only after its size and SHA-256 match.
+                foreach (var source in asset.Sources)
                 {
-                    var buffer = new byte[65536]; int count; long fileBytes = 0;
-                    while ((count = await source.ReadAsync(buffer, token)) > 0)
+                    if (!Uri.TryCreate(source, UriKind.Absolute, out var uri) || uri.Scheme != "https") throw new InvalidDataException("组件清单无效");
+                    var before = received;
+                    try { received = await DownloadAsync(client, uri, asset, target, received, definition.DownloadBytes, progress, token); failure = null; break; }
+                    catch (Exception e) when (!token.IsCancellationRequested && e is HttpRequestException or InvalidDataException or IOException or TaskCanceledException)
                     {
-                        fileBytes += count;
-                        if (fileBytes > asset.Bytes) throw new InvalidDataException("组件大小不符");
-                        await output.WriteAsync(buffer.AsMemory(0, count), token);
-                        received += count; progress?.Report((received, definition.DownloadBytes));
+                        failure = e; received = before; progress?.Report((received, definition.DownloadBytes));
+                        if (File.Exists(target)) File.Delete(target);
                     }
-                    if (fileBytes != asset.Bytes) throw new InvalidDataException("组件下载不完整");
                 }
-                await using var verify = File.OpenRead(target);
-                var hash = Convert.ToHexString(await SHA256.HashDataAsync(verify, token));
-                if (!string.Equals(hash, asset.Sha256, StringComparison.OrdinalIgnoreCase)) throw new InvalidDataException("组件校验失败");
+                if (failure != null) throw failure;
             }
             var payload = staging;
             if (definition.Installer == "msi")
@@ -93,6 +89,28 @@ public sealed class ComponentStore
             return destination;
         }
         finally { if (Directory.Exists(staging)) Directory.Delete(staging, true); }
+    }
+    private static async Task<long> DownloadAsync(HttpClient client, Uri uri, ComponentAsset asset, string target, long received, long total, IProgress<(long Done, long Total)>? progress, CancellationToken token)
+    {
+        using var response = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead, token);
+        response.EnsureSuccessStatusCode();
+        await using var source = await response.Content.ReadAsStreamAsync(token);
+        await using (var output = File.Create(target))
+        {
+            var buffer = new byte[65536]; int count; long fileBytes = 0;
+            while ((count = await source.ReadAsync(buffer, token)) > 0)
+            {
+                fileBytes += count;
+                if (fileBytes > asset.Bytes) throw new InvalidDataException("组件大小不符");
+                await output.WriteAsync(buffer.AsMemory(0, count), token);
+                received += count; progress?.Report((received, total));
+            }
+            if (fileBytes != asset.Bytes) throw new InvalidDataException("组件下载不完整");
+        }
+        await using var verify = File.OpenRead(target);
+        var hash = Convert.ToHexString(await SHA256.HashDataAsync(verify, token));
+        if (!string.Equals(hash, asset.Sha256, StringComparison.OrdinalIgnoreCase)) throw new InvalidDataException("组件校验失败");
+        return received;
     }
     public void Remove(string id)
     {

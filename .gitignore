@@ -16,3 +16,5 @@ components/
 tests/user-fixtures/
 tests/external-fixtures/
 reports/private/
+AGENTS.local.md
+AGENTS.override.md

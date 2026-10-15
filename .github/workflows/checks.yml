@@ -1,0 +1,55 @@
+name: 检查
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+      DOTNET_NOLOGO: "1"
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: 准备 TypeScript
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: 编译阅读页面并确认已提交的结果一致
+        run: |
+          npm run build
+          git diff --exit-code -- src/preview/www
+
+      - name: 编译主程序
+        run: dotnet build src/LightReader.App/LightReader.App.csproj -c Release
+
+      - name: 准备 Word 与表格组件
+        run: dotnet run --project src/LightReader.Tooling -c Release -- "$PWD" word sheet
+
+      - name: 核心检查
+        run: dotnet run --project tests/LightReader.Checks -c Release -- "$PWD"
+
+      - name: 预览逻辑检查
+        run: node scripts/check-preview-behavior.cjs
+
+      - name: 报告中不含本机路径
+        run: python -I scripts/sanitize-reports.py --check

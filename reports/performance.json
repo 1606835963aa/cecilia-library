@@ -8,9 +8,9 @@
     "TotalPhysicalMemory": 34164101120
   },
   "sharedRuntimes": [
-    "Microsoft.AspNetCore.App 10.0.12 [Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\.tools\\dotnet\\shared\\Microsoft.AspNetCore.App]",
-    "Microsoft.NETCore.App 10.0.12 [Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\.tools\\dotnet\\shared\\Microsoft.NETCore.App]",
-    "Microsoft.WindowsDesktop.App 10.0.12 [Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\.tools\\dotnet\\shared\\Microsoft.WindowsDesktop.App]"
+    "Microsoft.AspNetCore.App 10.0.12 [.tools\\dotnet\\shared\\Microsoft.AspNetCore.App]",
+    "Microsoft.NETCore.App 10.0.12 [.tools\\dotnet\\shared\\Microsoft.NETCore.App]",
+    "Microsoft.WindowsDesktop.App 10.0.12 [.tools\\dotnet\\shared\\Microsoft.WindowsDesktop.App]"
   ],
   "mainFolderBytes": 29385064.0,
   "disk": {

@@ -24,6 +24,17 @@ if (!(Test-Path -LiteralPath (Join-Path $sdkRoot 'dotnet.exe'))) {
     Remove-Item -LiteralPath $archive
     @{ sdk=$release.sdk.version; url=$asset.url; sha512=$asset.hash } | ConvertTo-Json | Set-Content 'data\sdk-version.json' -Encoding UTF8
 }
+$innoRoot = Join-Path $projectRoot '.tools\innosetup'
+if (!(Test-Path -LiteralPath (Join-Path $innoRoot 'ISCC.exe'))) {
+    # Inno Setup 只用于生成安装包，以便携方式放在 .tools，不写入系统。
+    $innoSetup = Join-Path $scratch 'innosetup.exe'
+    Write-Output 'Downloading Inno Setup 6.7.3'
+    Fetch 'https://github.com/jrsoftware/issrc/releases/download/is-6_7_3/innosetup-6.7.3.exe' $innoSetup
+    if ((Get-FileHash -LiteralPath $innoSetup -Algorithm SHA256).Hash -ne '9C73C3BAE7ED48D44112A0F48E66742C00090BDB5BEF71D9D3C056C66E97B732') { throw 'Inno Setup checksum mismatch' }
+    $process = Start-Process -FilePath $innoSetup -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART','/PORTABLE=1','/NOICONS','/CURRENTUSER',('/DIR="' + $innoRoot + '"') -Wait -PassThru
+    Remove-Item -LiteralPath $innoSetup
+    if ($process.ExitCode -ne 0) { throw 'Inno Setup preparation failed' }
+}
 & (Join-Path $sdkRoot 'dotnet.exe') --version
 $env:DOTNET_CLI_HOME = Join-Path $scratch 'dotnet-home'
 $env:DOTNET_SKIP_FIRST_TIME_EXPERIENCE = '1'

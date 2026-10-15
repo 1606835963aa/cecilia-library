@@ -9,6 +9,7 @@ assert gui['results'] and gui['results'][-1].get('file')=='flow:no unhandled UI 
 checks=[]
 for result in gui['results']:
     source=result.get('retainedPdf') or result.get('previewSource')
+    if source:source=str(ROOT/source)
     if source and source.lower().endswith('.pdf'):
         try:
             if not result.get('retainedPdf'):

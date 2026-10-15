@@ -79,7 +79,7 @@
       "milliseconds": 1282,
       "sha256": "99BFD0FEF7E514D1534746C203E530C2449786BE25BF2CC9BDBC7B9D9BCFB670",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\阅读样本.docx",
+      "previewSource": "tests\\fixtures\\阅读样本.docx",
       "error": "",
       "hostWorkingSet": 173645824
     },
@@ -89,7 +89,7 @@
       "milliseconds": 979,
       "sha256": "553D9F89C832A4B6705466FCB0FE5DB1EF5F2A4212AE6561D45D64C83B1E8CDC",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\模板样本.dotx",
+      "previewSource": "tests\\fixtures\\模板样本.dotx",
       "error": "",
       "hostWorkingSet": 177324032
     },
@@ -99,7 +99,7 @@
       "milliseconds": 999,
       "sha256": "E795CF17A0D44ACA7041B19D17DBAA01A5A3A63A80E93789302782944D486EF2",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\静态宏类型.docm",
+      "previewSource": "tests\\fixtures\\静态宏类型.docm",
       "error": "",
       "hostWorkingSet": 180449280
     },
@@ -109,7 +109,7 @@
       "milliseconds": 967,
       "sha256": "421603ED5B5413F8C6BBA009E565B9A3E20320025F5B3FAB81C49A7D7122FD9D",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\静态宏模板.dotm",
+      "previewSource": "tests\\fixtures\\静态宏模板.dotm",
       "error": "",
       "hostWorkingSet": 182796288
     },
@@ -119,7 +119,7 @@
       "milliseconds": 963,
       "sha256": "53FC109EC08134827A5D86F04138380A8647DAD5B5176AF65AAB23F6ACF43AA2",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\数据样本.xlsx",
+      "previewSource": "tests\\fixtures\\数据样本.xlsx",
       "error": "",
       "hostWorkingSet": 186314752
     },
@@ -129,7 +129,7 @@
       "milliseconds": 1024,
       "sha256": "CB16A4956DDB598254900811D618CF96278F2EC3677328B30BADDEC1D9DDB49F",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\表格模板.xltx",
+      "previewSource": "tests\\fixtures\\表格模板.xltx",
       "error": "",
       "hostWorkingSet": 183615488
     },
@@ -139,7 +139,7 @@
       "milliseconds": 1039,
       "sha256": "904321B1DCE0AF20A38D8E43AE9861CFE02864C787396161D7A2B0457C9C66E4",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\静态宏表格.xlsm",
+      "previewSource": "tests\\fixtures\\静态宏表格.xlsm",
       "error": "",
       "hostWorkingSet": 183156736
     },
@@ -149,7 +149,7 @@
       "milliseconds": 1029,
       "sha256": "282E98C3CDD83D0155677EE73E88FAD469E942385977D5B79FD26C7E8758DEA9",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\静态宏表格模板.xltm",
+      "previewSource": "tests\\fixtures\\静态宏表格模板.xltm",
       "error": "",
       "hostWorkingSet": 180584448
     },
@@ -159,7 +159,7 @@
       "milliseconds": 1034,
       "sha256": "9BF972D348232C04EB39CE35FAE8EDC948F8FC309A0548851507E4B144428304",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\数据样本.csv",
+      "previewSource": "tests\\fixtures\\数据样本.csv",
       "error": "",
       "hostWorkingSet": 182992896
     },
@@ -169,7 +169,7 @@
       "milliseconds": 1038,
       "sha256": "0DAA050480007390937E61F6264651061763F955A8798B8FFBAC230A1B198770",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\旧表格样本.xls",
+      "previewSource": "tests\\fixtures\\旧表格样本.xls",
       "error": "",
       "hostWorkingSet": 183508992
     },
@@ -179,7 +179,7 @@
       "milliseconds": 1086,
       "sha256": "B1F27EA336FED93A4CC54FE88552E6CB86429B1342910A98DC8804DBC51C9C1A",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\旧表格模板.xlt",
+      "previewSource": "tests\\fixtures\\旧表格模板.xlt",
       "error": "",
       "hostWorkingSet": 183775232
     },
@@ -189,7 +189,7 @@
       "milliseconds": 1099,
       "sha256": "116651A487EB83087CAF97B36A5A77AB1C8B3BC44EE144BD41D57C09AE573612",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\加载项数据.xla",
+      "previewSource": "tests\\fixtures\\加载项数据.xla",
       "error": "",
       "hostWorkingSet": 179449856
     },
@@ -199,7 +199,7 @@
       "milliseconds": 1100,
       "sha256": "E201809E26BAFAC41D097433A2B3EBD1B07AAC0FB490EA7A186E8EAE5230A21B",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\加载项数据.xlam",
+      "previewSource": "tests\\fixtures\\加载项数据.xlam",
       "error": "",
       "hostWorkingSet": 182198272
     },
@@ -209,7 +209,7 @@
       "milliseconds": 1072,
       "sha256": "6BC7E95EAC908E65D34A4323ECABB9971279BE90EFA9FEAAEBEBFC3D3B364A69",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\旧表格样本.dbf",
+      "previewSource": "tests\\fixtures\\旧表格样本.dbf",
       "error": "",
       "hostWorkingSet": 182784000
     },
@@ -219,7 +219,7 @@
       "milliseconds": 1153,
       "sha256": "C4928747228C29FC58E4EDB59B290EB3C89DBE691C2DB05657FB880CBE3525E5",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\旧表格样本.prn",
+      "previewSource": "tests\\fixtures\\旧表格样本.prn",
       "error": "",
       "hostWorkingSet": 182902784
     },
@@ -229,7 +229,7 @@
       "milliseconds": 1048,
       "sha256": "6BE4D9EF5917836552BAD774F3DC57F879CFC058DA22BA96861DF289572DD9D0",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\旧表格样本.dif",
+      "previewSource": "tests\\fixtures\\旧表格样本.dif",
       "error": "",
       "hostWorkingSet": 183156736
     },
@@ -239,7 +239,7 @@
       "milliseconds": 945,
       "sha256": "CE8C7D421E07063731115FD5AA34D6D7F3D97F0CAAAE77A787332234D3AE2D2E",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\网页样本.html",
+      "previewSource": "tests\\fixtures\\网页样本.html",
       "error": "",
       "hostWorkingSet": 183029760
     },
@@ -249,7 +249,7 @@
       "milliseconds": 939,
       "sha256": "CE8C7D421E07063731115FD5AA34D6D7F3D97F0CAAAE77A787332234D3AE2D2E",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\网页样本.htm",
+      "previewSource": "tests\\fixtures\\网页样本.htm",
       "error": "",
       "hostWorkingSet": 182374400
     },
@@ -259,7 +259,7 @@
       "milliseconds": 950,
       "sha256": "9837B3E6E9A8C0CF10BBB7AE38B31C6F4FE6D89D734DC9FBCA35CF8DE62B9BA4",
       "evidence": "true",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\通用样本.xml",
+      "previewSource": "tests\\fixtures\\通用样本.xml",
       "error": "",
       "hostWorkingSet": 182538240
     },
@@ -269,10 +269,10 @@
       "milliseconds": 1248,
       "sha256": "973F773C6E336CB0CE04480421BA18E7B77AB6D4EA611600C3291876A0AFBFD9",
       "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\扫描样本.pdf",
+      "previewSource": "tests\\fixtures\\扫描样本.pdf",
       "error": "",
       "hostWorkingSet": 194859008,
-      "retainedPdf": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\reports\\reference-pdfs\\扫描样本.pdf.pdf",
+      "retainedPdf": "reports\\reference-pdfs\\扫描样本.pdf.pdf",
       "retainedPdfSha256": "973f773c6e336cb0ce04480421ba18e7b77ab6d4ea611600c3291876a0afbfd9"
     },
     {
@@ -281,10 +281,10 @@
       "milliseconds": 1231,
       "sha256": "AB47BAFC921C5DC6B627A6760F4D48E6918884213181D350DDFC7149E0BF0FB2",
       "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\分页样本.pdf",
+      "previewSource": "tests\\fixtures\\分页样本.pdf",
       "error": "",
       "hostWorkingSet": 206368768,
-      "retainedPdf": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\reports\\reference-pdfs\\分页样本.pdf.pdf",
+      "retainedPdf": "reports\\reference-pdfs\\分页样本.pdf.pdf",
       "retainedPdfSha256": "ab47bafc921c5dc6b627a6760f4d48e6918884213181d350ddfc7149e0bf0fb2"
     },
     {
@@ -293,10 +293,10 @@
       "milliseconds": 1240,
       "sha256": "7DC7C908D5A450696970289DB97AB32DEB6021EA088F750BF7B447E03784BA16",
       "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\D924DD8E9F9412ED8CE479FF5EE1E9ED54F241B7CA5BDE3B13FAAE0E1EEA9B11\\document.pdf",
+      "previewSource": "tmp\\gui-014\\cache\\D924DD8E9F9412ED8CE479FF5EE1E9ED54F241B7CA5BDE3B13FAAE0E1EEA9B11\\document.pdf",
       "error": "",
       "hostWorkingSet": 207282176,
-      "retainedPdf": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\reports\\reference-pdfs\\旧文字样本.doc.pdf",
+      "retainedPdf": "reports\\reference-pdfs\\旧文字样本.doc.pdf",
       "retainedPdfSha256": "56d89a382dc3f5f812145146368b801810f6dd12e63e2034f136370560e558f2"
     },
     {
@@ -305,10 +305,10 @@
       "milliseconds": 1295,
       "sha256": "12DFDCAFD11B10895457720D640A4343B09EEFD075AFD85A3D70416E5BC6CF38",
       "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\E301351D995F31B292F02F48C53E3A71C4098DD2A9146AF62CE86E28E8E124A6\\document.pdf",
+      "previewSource": "tmp\\gui-014\\cache\\E301351D995F31B292F02F48C53E3A71C4098DD2A9146AF62CE86E28E8E124A6\\document.pdf",
       "error": "",
       "hostWorkingSet": 205934592,
-      "retainedPdf": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\reports\\reference-pdfs\\旧文字模板.dot.pdf",
+      "retainedPdf": "reports\\reference-pdfs\\旧文字模板.dot.pdf",
       "retainedPdfSha256": "7d61621f0177e43369bd642e016ed7e9172fa968d97049e0dcf78cc91acfae21"
     },
     {
@@ -317,10 +317,10 @@
       "milliseconds": 1234,
       "sha256": "A07D1C4FF78DEFF495FE7CFA04AF52BFB4FA35BC6B57116AAAC2553E4F78E3F3",
       "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\D75B9CDC08686D51608204E13923B052A0C92B81A32A04EA67F8D3F99901E0DD\\document.pdf",
+      "previewSource": "tmp\\gui-014\\cache\\D75B9CDC08686D51608204E13923B052A0C92B81A32A04EA67F8D3F99901E0DD\\document.pdf",
       "error": "",
       "hostWorkingSet": 198426624,
-      "retainedPdf": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\reports\\reference-pdfs\\演示样本.pptx.pdf",
+      "retainedPdf": "reports\\reference-pdfs\\演示样本.pptx.pdf",
       "retainedPdfSha256": "f5f35650529e93ce481c6d721ee8e0ad13b597f14729cc748123fcf8ba10b121"
     },
     {
@@ -329,10 +329,10 @@
       "milliseconds": 1240,
       "sha256": "B69400612D7D3425AC365EB0D2873194D2365038B038133D669E055951A9A459",
       "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\91259CB554C17010897E00563857CF98E6E0B9CB9249C47BA325744263AF78F7\\document.pdf",
+      "previewSource": "tmp\\gui-014\\cache\\91259CB554C17010897E00563857CF98E6E0B9CB9249C47BA325744263AF78F7\\document.pdf",
       "error": "",
       "hostWorkingSet": 202055680,
-      "retainedPdf": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\reports\\reference-pdfs\\旧演示样本.ppt.pdf",
+      "retainedPdf": "reports\\reference-pdfs\\旧演示样本.ppt.pdf",
       "retainedPdfSha256": "76d7b0e7f97bd04ca1216f7351a08cac8d8bbcf3c791c30f42ac384d12796fb8"
     },
     {
@@ -341,10 +341,10 @@
       "milliseconds": 1274,
       "sha256": "B69400612D7D3425AC365EB0D2873194D2365038B038133D669E055951A9A459",
       "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\91259CB554C17010897E00563857CF98E6E0B9CB9249C47BA325744263AF78F7\\document.pdf",
+      "previewSource": "tmp\\gui-014\\cache\\91259CB554C17010897E00563857CF98E6E0B9CB9249C47BA325744263AF78F7\\document.pdf",
       "error": "",
       "hostWorkingSet": 200331264,
-      "retainedPdf": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\reports\\reference-pdfs\\旧演示模板.pot.pdf",
+      "retainedPdf": "reports\\reference-pdfs\\旧演示模板.pot.pdf",
       "retainedPdfSha256": "76d7b0e7f97bd04ca1216f7351a08cac8d8bbcf3c791c30f42ac384d12796fb8"
     },
     {
@@ -353,10 +353,10 @@
       "milliseconds": 1242,
       "sha256": "B69400612D7D3425AC365EB0D2873194D2365038B038133D669E055951A9A459",
       "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\91259CB554C17010897E00563857CF98E6E0B9CB9249C47BA325744263AF78F7\\document.pdf",
+      "previewSource": "tmp\\gui-014\\cache\\91259CB554C17010897E00563857CF98E6E0B9CB9249C47BA325744263AF78F7\\document.pdf",
       "error": "",
       "hostWorkingSet": 200478720,
-      "retainedPdf": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\reports\\reference-pdfs\\旧演示播放.pps.pdf",
+      "retainedPdf": "reports\\reference-pdfs\\旧演示播放.pps.pdf",
       "retainedPdfSha256": "76d7b0e7f97bd04ca1216f7351a08cac8d8bbcf3c791c30f42ac384d12796fb8"
     },
     {
@@ -365,10 +365,10 @@
       "milliseconds": 1245,
       "sha256": "3F2189254A340CF3F15F75E1BC8B70AE038C90A9AB3555E56B153A957D517D4C",
       "evidence": "Windows.Data.Pdf: 1 pages, bitmap=True",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\925D4F0C45394BEBD6A5EED3EDE45FFB41A6E8621211D5A1714B4AF0E05513AD\\document.pdf",
+      "previewSource": "tmp\\gui-014\\cache\\925D4F0C45394BEBD6A5EED3EDE45FFB41A6E8621211D5A1714B4AF0E05513AD\\document.pdf",
       "error": "",
       "hostWorkingSet": 206626816,
-      "retainedPdf": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\reports\\reference-pdfs\\办公表格.xml.pdf",
+      "retainedPdf": "reports\\reference-pdfs\\办公表格.xml.pdf",
       "retainedPdfSha256": "639d84d73a960ab4c4e7b0408e443966e6ffde740f9fcc431a1bfd3f4494272a"
     },
     {
@@ -377,10 +377,10 @@
       "milliseconds": 1274,
       "sha256": "E79D62437C715C477FCD8084A41BFF7ABCA4A7E106563566178E88C5A7468E76",
       "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\9DCC924F9640AEC98104A240D38E29C71A3832E8C2F897525F353B642230F415\\document.pdf",
+      "previewSource": "tmp\\gui-014\\cache\\9DCC924F9640AEC98104A240D38E29C71A3832E8C2F897525F353B642230F415\\document.pdf",
       "error": "",
       "hostWorkingSet": 206729216,
-      "retainedPdf": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\reports\\reference-pdfs\\开放文档.odt.pdf",
+      "retainedPdf": "reports\\reference-pdfs\\开放文档.odt.pdf",
       "retainedPdfSha256": "6b9f170928e6a1e38b59207cb18adbb7363a10c7022d2cfd0c38a2ffa4afab79"
     },
     {
@@ -389,10 +389,10 @@
       "milliseconds": 1226,
       "sha256": "BFF3B9C4D79EB08837142EDCBF13E6DC699BB47D83E850A925146B2C6AA7FFCB",
       "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\53AABF9E0F749E2E857A8D8C28DC7EFAD22FA83480E624ED50E5BF386D067A7E\\document.pdf",
+      "previewSource": "tmp\\gui-014\\cache\\53AABF9E0F749E2E857A8D8C28DC7EFAD22FA83480E624ED50E5BF386D067A7E\\document.pdf",
       "error": "",
       "hostWorkingSet": 201093120,
-      "retainedPdf": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\reports\\reference-pdfs\\演示变体.pptm.pdf",
+      "retainedPdf": "reports\\reference-pdfs\\演示变体.pptm.pdf",
       "retainedPdfSha256": "b2c5a19636f9c9558481dcc6b16811b87e4d5682332cae3ed2d7261171f89f70"
     },
     {
@@ -401,10 +401,10 @@
       "milliseconds": 1226,
       "sha256": "28C151EF8B18C85C5C6170399D2E446C27806159BE597218D4A3350EE401AD0B",
       "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\F1999D323681F01F6E54876E3308B382890C7300533DA83E1647276C386327FB\\document.pdf",
+      "previewSource": "tmp\\gui-014\\cache\\F1999D323681F01F6E54876E3308B382890C7300533DA83E1647276C386327FB\\document.pdf",
       "error": "",
       "hostWorkingSet": 201850880,
-      "retainedPdf": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\reports\\reference-pdfs\\演示变体.potx.pdf",
+      "retainedPdf": "reports\\reference-pdfs\\演示变体.potx.pdf",
       "retainedPdfSha256": "5b27ab5994db6065ab14ec255f70602d5247f73ab30d3a87efa56770d5642f5a"
     },
     {
@@ -413,10 +413,10 @@
       "milliseconds": 1225,
       "sha256": "FD9D2E082A12847D74B9C5B270937E75B299F3A958F2CB06D44EEE174F05F36E",
       "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\FDE58CB52A98ED7292D8CBBE3763F698B91530B5E189DC303A105628E41DDB71\\document.pdf",
+      "previewSource": "tmp\\gui-014\\cache\\FDE58CB52A98ED7292D8CBBE3763F698B91530B5E189DC303A105628E41DDB71\\document.pdf",
       "error": "",
       "hostWorkingSet": 202424320,
-      "retainedPdf": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\reports\\reference-pdfs\\演示变体.potm.pdf",
+      "retainedPdf": "reports\\reference-pdfs\\演示变体.potm.pdf",
       "retainedPdfSha256": "b6f10ee7883012d0c8da40360b4c55c01b24e15651b773113660b322413cba2a"
     },
     {
@@ -425,10 +425,10 @@
       "milliseconds": 1205,
       "sha256": "7A6B4616DAD8971063DA07B94B38B694D5703ACC493981B15585B818250B6CCB",
       "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\166B39DC3EBE4396FAFC64417C21BC7BC194301E4FD5A5FC296925F4875FE58A\\document.pdf",
+      "previewSource": "tmp\\gui-014\\cache\\166B39DC3EBE4396FAFC64417C21BC7BC194301E4FD5A5FC296925F4875FE58A\\document.pdf",
       "error": "",
       "hostWorkingSet": 202625024,
-      "retainedPdf": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\reports\\reference-pdfs\\演示变体.ppsx.pdf",
+      "retainedPdf": "reports\\reference-pdfs\\演示变体.ppsx.pdf",
       "retainedPdfSha256": "7cd2ce4d74a902263c8d1fe09ee4b581e0663a244a1fc169ca2d3046ec40e322"
     },
     {
@@ -437,10 +437,10 @@
       "milliseconds": 1216,
       "sha256": "99BFF9247A9A8F0F83A62D07C0AF8F15E72D600AE1BB3500E62388CFE65C2153",
       "evidence": "Windows.Data.Pdf: 2 pages, bitmap=True",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tmp\\gui-014\\cache\\4CA4FE5F1809DC9F9368A190B4D76A51C8474B065DA17E6309C5BC85D49AB4C9\\document.pdf",
+      "previewSource": "tmp\\gui-014\\cache\\4CA4FE5F1809DC9F9368A190B4D76A51C8474B065DA17E6309C5BC85D49AB4C9\\document.pdf",
       "error": "",
       "hostWorkingSet": 197324800,
-      "retainedPdf": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\reports\\reference-pdfs\\演示变体.ppsm.pdf",
+      "retainedPdf": "reports\\reference-pdfs\\演示变体.ppsm.pdf",
       "retainedPdfSha256": "b430d87413a0fb03edefc10507213c10776c856a6488c7c56c7660c92380bc5f"
     },
     {
@@ -449,7 +449,7 @@
       "milliseconds": 1148,
       "sha256": "06854A6F6384CAD8DE4174B100E636C4AB616CDB9339E2B5F198607536A7D87F",
       "evidence": "",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\归档样本.mht",
+      "previewSource": "tests\\fixtures\\归档样本.mht",
       "error": "",
       "hostWorkingSet": 194060288
     },
@@ -459,7 +459,7 @@
       "milliseconds": 877,
       "sha256": "06854A6F6384CAD8DE4174B100E636C4AB616CDB9339E2B5F198607536A7D87F",
       "evidence": "",
-      "previewSource": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\fixtures\\归档样本.mhtml",
+      "previewSource": "tests\\fixtures\\归档样本.mhtml",
       "error": "",
       "hostWorkingSet": 195112960
     },
@@ -504,12 +504,12 @@
     {
       "file": "flow:edit switch and save txt",
       "status": "PASS",
-      "output": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\saved\\编辑样本.txt"
+      "output": "tests\\saved\\编辑样本.txt"
     },
     {
       "file": "flow:edit switch and save csv",
       "status": "PASS",
-      "output": "Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\tests\\saved\\编辑样本.csv"
+      "output": "tests\\saved\\编辑样本.csv"
     },
     {
       "file": "flow:rapid file switch",

@@ -103,11 +103,20 @@ try
         var badManifest=await TestManifest("update",new string('0',64));using var updateNetwork=new FixtureNetwork("abc"u8.ToArray());var update=new ComponentStore(root,badManifest,updateNetwork);
         try{await update.InstallAsync("simulated",null,CancellationToken.None);throw new Exception("Bad update accepted");}catch(InvalidDataException){Assert(File.ReadAllText(Path.Combine(folder,"component.js"))=="abc","Working version lost");}
     });
+    await Check("Component falls back to a mirror with the same checksum",async()=>{
+        var hash=Convert.ToHexString(System.Security.Cryptography.SHA256.HashData("abc"u8));var manifest=Path.Combine(root,"test-manifest-mirror.json");
+        await File.WriteAllTextAsync(manifest,System.Text.Json.JsonSerializer.Serialize(new{schemaVersion=1,components=new[]{new{id="mirrored",name="test",version="mirror",license="test",assets=new[]{new{name="component.js",url="https://moved.invalid/component.js",mirrors=new[]{"https://tampered.invalid/component.js","https://archive.invalid/component.js"},sha256=hash,bytes=3}}}}}));
+        using var network=new MirrorNetwork();var store=new ComponentStore(root,manifest,network);var folder=await store.InstallAsync("mirrored",null,CancellationToken.None);
+        Assert(File.ReadAllText(Path.Combine(folder,"component.js"))=="abc","Mirror content wrong");Assert(network.Hosts.SequenceEqual(new[]{"moved.invalid","tampered.invalid","archive.invalid"}),"Sources not tried in order");
+    });
     await Check("Cancelled component download leaves no installation",async()=>{
         var hash=Convert.ToHexString(System.Security.Cryptography.SHA256.HashData("abc"u8));var manifest=await TestManifest("cancel",hash);using var network=new FixtureNetwork("abc"u8.ToArray());var store=new ComponentStore(root,manifest,network);using var cancel=new CancellationTokenSource();cancel.Cancel();
         try{await store.InstallAsync("simulated",null,cancel.Token);throw new Exception("Cancellation ignored");}catch(OperationCanceledException){Assert(store.GetInstalled("simulated")==null,"Cancelled install visible");}
     });
-    await Check("Cancelled Office profile-lock wait cleans work directory",async()=>{
+    // 自动检查环境不下载 356 MB 的办公兼容组件，缺少时记为跳过而不是通过。
+    if(!File.Exists(Path.Combine(projectRoot,"components","office","26.2.6","program","soffice.com")))
+    {results.Add(new{name="Cancelled Office profile-lock wait cleans work directory",status="SKIP",error="Office component not installed"});Console.WriteLine("SKIP Cancelled Office profile-lock wait cleans work directory (Office component not installed)");}
+    else await Check("Cancelled Office profile-lock wait cleans work directory",async()=>{
         var engine=Path.Combine(projectRoot,"components","office","26.2.6");var version=System.Diagnostics.FileVersionInfo.GetVersionInfo(Path.Combine(engine,"program","soffice.com")).FileVersion??"unknown";
         var data=Path.Combine(root,"office-lock-case");var profile=Path.Combine(data,"office-profile",Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(Encoding.UTF8.GetBytes(version)))[..12]);Directory.CreateDirectory(Path.GetDirectoryName(profile)!);
         using var blocker=new FileStream(profile+".lock",FileMode.Create,FileAccess.ReadWrite,FileShare.None);using var cancellation=new CancellationTokenSource();
@@ -129,6 +138,15 @@ sealed class FixtureNetwork(byte[] payload):HttpMessageHandler
     public bool Offline{get;set;} public int Requests{get;private set;}
     protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,CancellationToken token)
     {token.ThrowIfCancellationRequested();Requests++;if(Offline)throw new HttpRequestException("Simulated offline");return Task.FromResult(new HttpResponseMessage(System.Net.HttpStatusCode.OK){Content=new ByteArrayContent(payload)});}
+}
+sealed class MirrorNetwork:HttpMessageHandler
+{
+    public List<string> Hosts{get;}=[];
+    protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,CancellationToken token)
+    {
+        Hosts.Add(request.RequestUri!.Host);
+        return Task.FromResult(request.RequestUri.Host switch{"moved.invalid"=>new HttpResponseMessage(System.Net.HttpStatusCode.NotFound),"tampered.invalid"=>new HttpResponseMessage(System.Net.HttpStatusCode.OK){Content=new ByteArrayContent("xyz"u8.ToArray())},_=>new HttpResponseMessage(System.Net.HttpStatusCode.OK){Content=new ByteArrayContent("abc"u8.ToArray())}});
+    }
 }
 sealed class ArchiveNetwork(string path):HttpMessageHandler
 {

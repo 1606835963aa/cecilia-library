@@ -1,4 +1,4 @@
-﻿{
+{
     "machine":  {
                     "Manufacturer":  "Maxsun",
                     "Model":  "Default string",
@@ -22,9 +22,9 @@
                  "VolumeName":  "固态"
              },
     "sharedRuntimes":  [
-                           "Microsoft.AspNetCore.App 10.0.12 [Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\.tools\\dotnet\\shared\\Microsoft.AspNetCore.App]",
-                           "Microsoft.NETCore.App 10.0.12 [Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\.tools\\dotnet\\shared\\Microsoft.NETCore.App]",
-                           "Microsoft.WindowsDesktop.App 10.0.12 [Z:\\系统内容\\文档\\codex项目文件合集\\轻量化wps\\.tools\\dotnet\\shared\\Microsoft.WindowsDesktop.App]"
+                           "Microsoft.AspNetCore.App 10.0.12 [.tools\\dotnet\\shared\\Microsoft.AspNetCore.App]",
+                           "Microsoft.NETCore.App 10.0.12 [.tools\\dotnet\\shared\\Microsoft.NETCore.App]",
+                           "Microsoft.WindowsDesktop.App 10.0.12 [.tools\\dotnet\\shared\\Microsoft.WindowsDesktop.App]"
                        ],
     "measuredAt":  "2026-10-12T21:45:29.5432669+08:00",
     "mainFolderBytes":  29037674,

@@ -1,5 +1,5 @@
 {
-  "ranAt": "2026-10-14T23:02:28.3623462+08:00",
+  "ranAt": "2026-10-15T11:53:22.367074+08:00",
   "results": [
     {
       "name": "Text encoding utf-8 BOM=False",
@@ -107,6 +107,10 @@
     },
     {
       "name": "Installed component works without network",
+      "status": "PASS"
+    },
+    {
+      "name": "Component falls back to a mirror with the same checksum",
       "status": "PASS"
     },
     {
